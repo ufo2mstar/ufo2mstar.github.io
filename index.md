@@ -1,4 +1,12 @@
-# ufo2mstar
+# Welcome.. 
+[gimmick:googlemaps(maptype: 'terrain', zoom: 9, marker: 'false')](Eiffel Tower, Paris)
+
+# to the Desert 
+[gimmick:googlemaps](Madison Square Garden, NY)
+
+
+# of the Real!
+[gimmick:googlemaps(maptype: 'satellite', zoom: 17)](Colloseum, Rome, Italy)
 
 [Other Repos]()
 
