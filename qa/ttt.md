@@ -1,7 +1,7 @@
-Hello There!
 
 #Test Tutotial Topics
-Hey Pawan!  
+Hello There!  
+Here is just a tutorial path that I put together for anyone beginning WebApp Development and Testing..  
 For web apps in general, I feel that knowledge in these topics may be the most useful to have
 I am not sure what the time and resource constraints are, but here is my opinion..  
 ##Common Knowledge
