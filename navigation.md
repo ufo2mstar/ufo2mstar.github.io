@@ -2,8 +2,8 @@
 
 [Sample MD]()
 
-  * # SubMenu Heading 1
-  * [SubMenu Item 1](subitem1.md)
+  * # Deb helps
+  * [organize](ufo2mstar.github.io/organize)
   * [SubMenu Item 2](subitem2.md)
   - - - -
   * # SubMenu Heading 2
