@@ -2176,7 +2176,7 @@ a:focus, a:hover {
 }
 
 .resume-section {
-    margin-top: 20px;
+    margin-top: 10px;
     border-top: 1px solid rgba(0, 0, 0, .1)
 }
 
@@ -2221,7 +2221,7 @@ a:focus, a:hover {
 
 .card-container {
     position: relative;
-    margin-bottom: 70px
+    margin-bottom: 10px
 }
 
 @media (min-width: 992px) {
@@ -2511,3 +2511,7 @@ footer {
 }
 
 /*# sourceMappingURL=maps/theme.min.css.map */
+
+a{
+    color: #4db3e5;
+}
