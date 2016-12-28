@@ -1960,7 +1960,7 @@ body {
     font-family: Titillium Web, sans-serif;
     background-repeat: repeat-x;
     background-image: linear-gradient(140deg, #ff5b17, #d91b00, #ff1721);
-    background-color: #ff3417;
+    /*background-color: #ff3417;*/
     padding-top: 247px
 }
 
@@ -2509,5 +2509,3 @@ footer {
         padding: 0
     }
 }
-
-/*# sourceMappingURL=maps/theme.min.css.map */
