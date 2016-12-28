@@ -2214,7 +2214,7 @@ a:focus, a:hover {
     top: -5px;
     left: -4px;
     display: inline-block;
-    content: '_';
+    /*content: '_';*/
     color: #ff3417;
     font-weight: 200
 }
