@@ -1,0 +1,10 @@
+ Volume in drive C is Win10
+ Volume Serial Number is D6EA-C05D
+
+ Directory of C:\Users\kyu-homebase\repos\jekyll\blog\merger
+
+10/16/2017  11:38    <DIR>          .
+10/16/2017  11:38    <DIR>          ..
+10/16/2017  11:38                 0 deleteme.txt
+               1 File(s)              0 bytes
+               2 Dir(s)  54,273,073,152 bytes free
