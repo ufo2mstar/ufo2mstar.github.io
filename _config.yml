@@ -12,7 +12,7 @@ blog-title: Web logs, ahoy!
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://ufo2mstar.github.io" # the base hostname & protocol for your site
 
-permalink: /:year/:month/:day/:title/
+permalink: post/:year/:month/:day/:title/
 
 # other links
 twitter_username: ufo2m
@@ -38,8 +38,8 @@ kramdown:
   input: GFM
   syntax_highlighter: rouge
 
-# port
-# port: 1234
+# port: if you want something other than 4000 as a default
+port: 80
 
 # url
 category_dir: category/
