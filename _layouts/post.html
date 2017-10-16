@@ -10,24 +10,25 @@ layout: default
             <div class="label-card">
                 <i class="fa fa-calendar"></i>{{ page.date | date: "%F" }}
             </div>
-
+            <!--<br>-->
             <div class="label-card">
                 {% if page.author %}<i class="fa fa-user"></i>{{ page.author }}
+                <br>
                 {% endif %}
             </div>
-
             <div class="label-card">
-                {% if page.meta %}<i class="fa fa-key"></i>{{ page.meta }}  {% endif %}
+                {% if page.meta %}<i class="fa fa-key"></i>{{ page.meta }}
+                <br>
+                {% endif %}
             </div>
-
             <div class="label-card">
-            {% include category.html %}
+                {% include category.html %}
             </div>
-
+            <br>
             <div class="label-card">
-            {% include tag.html %}
+                {% include tag.html %}
             </div>
-
+            <br>
         </div>
         <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
@@ -69,7 +70,10 @@ layout: default
 
 
     </div>
-    <button class="anchor"><i class="fa fa-anchor"></i></button>
+    <button class="anchor"><i class="fa
+    <!--fa-list-alt-->
+    fa-indent
+"></i></button>
     <div class="right">
         <div class="wrap">
 
