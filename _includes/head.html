@@ -16,23 +16,13 @@
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }}"
           href="{{ '/feed.xml' | prepend: site.baseurl | prepend: site.url }}">
 
+    <!--<link rel="stylesheet" href='{{ "/css/bootstrap.css" | prepend: site.baseurl }}'>-->
+
     <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.css">-->
     <!--<link rel="stylesheet" type="text/css" href="css/index.css">-->
     <!--<script type="text/javascript" src="js/jquery-1.11.1.js"></script>-->
     <!--<script type="text/javascript" src="js/bootstrap.min.js"></script>-->
 
-    <!--{% if site.baidu_tongji_id %}-->
-    <!--<script>-->
-    <!--// 百度统计代码-->
-    <!--var _hmt = _hmt || [];-->
-    <!--(function() {-->
-    <!--var hm = document.createElement("script");-->
-    <!--hm.src = "//hm.baidu.com/hm.js?{{site.baidu_tongji_id}}";-->
-    <!--var s = document.getElementsByTagName("script")[0];-->
-    <!--s.parentNode.insertBefore(hm, s);-->
-    <!--})();-->
-    <!--</script>-->
-    <!--{% endif %}-->
     {% if site.google_analytics_id %}
     <script>
         // google analytics
@@ -63,9 +53,6 @@
             }
         }
     );
-
-
-
 
 
     </script>
