@@ -7,7 +7,7 @@
 
 # Site settings
 title: Un Ltd.
-brief-intro: web log aggregations, brought to you by
+brief-intro: web logs, brought to you by
 blog-title: Web logs, ahoy!
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://ufo2mstar.github.io" # the base hostname & protocol for your site
@@ -51,7 +51,8 @@ excerpt_separator: "\n\n\n\n"
 # paginate
 plugins:
   - jekyll-paginate
-  - jekyll-feed
+#  - jekyll-feed
+
 paginate: 6
 
 #
