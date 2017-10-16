@@ -45,13 +45,16 @@
  * variables
  */
 // Import partials from `sass_dir` (defaults to `_sass`)
-@import "reset", "header", "post", "page", "syntax-highlighting", "index", "demo", "footer", "scrollbar", "backToTop";
-// 两个人在列车上相遇
-// 一段旅程充满了诗意
-// 你突然说你要下车
-// 去寻找属于你的灵魂和身体
+//@import "reset", "header", "post", "page", "syntax-highlighting", "index", "demo", "footer", "scrollbar", "backToTop";
+//@import "reset", "header", "post", "page", "syntax-highlighting", "index", "demo", "footer", "scrollbar", "backToTop", "variables" ,"bootswatch";
+@import "variables" ,"bootswatch", "reset", "header", "post", "page", "syntax-highlighting", "index", "demo", "footer", "scrollbar", "backToTop";
+
+// two people meet on the train
+// A journey full of poetic
+// you suddenly said you got off
+// Find your soul and body that belongs to you
 //
-// 当你穷的只剩下理想时
-// 就再次回到这列车上
-// 我们谈天说地
-// 把酒言欢，赠予你新路途纹银
+// When you are poor, it's ideal
+// come back to the train again
+// We talk about it
+// The wine words Huan, give you a new road pattern silver
