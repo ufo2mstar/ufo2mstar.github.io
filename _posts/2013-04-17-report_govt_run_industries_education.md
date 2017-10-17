@@ -1,11 +1,11 @@
 ---
 layout: post
 comments: true
-title:  "Quick review: Google origins"
-date: 2013-09-12
-categories: [Research, Review]
-tags: [Optimization, Design, Google, Opinion]
-excerpt: where it all began, and how an insight can change an industry..
+title:  "Why the Public sector has a tough time keeping up"
+date: 2013-04-17
+categories: [Opinion, Journalism]
+tags: [Politics, Economics, Opinion]
+excerpt: here is a sample Government run educational website, paling in comparison to any Private sector publisher
 mathjax: false
 ---
 * content
