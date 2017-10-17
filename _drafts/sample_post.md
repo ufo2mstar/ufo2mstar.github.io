@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "title"
 date: 2016-05-23 15:14:54
 categories: [CatKod]
