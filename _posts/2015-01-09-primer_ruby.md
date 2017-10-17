@@ -1,11 +1,11 @@
 ---
 layout: post
 comments: true
-title:  "Quick start to Ruby"
+title:  "Primer: Getting up and running with Ruby"
 date: January 9, 2015, 7:08 PM
 categories: [Tutorials]
-tags: [ Ruby, OOP]
-excerpt: Yay! another Ruby tutorial
+tags: [Ruby, OOP]
+excerpt: Yay! another Ruby tutorial.. Ruby is one of the more simpler and elegant programming languages to get up and running as quickly as possible!
 mathjax: false
 ---
 * content
