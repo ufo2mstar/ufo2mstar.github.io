@@ -5,7 +5,7 @@ title:  "title"
 date: 2016-05-23 15:14:54
 categories: [CatKod]
 tags: [ SimpleTags, "other_tags"]
-excerpt: Subject to show up on the home page
+excerpt: Subject
 mathjax: false
 ---
 * content

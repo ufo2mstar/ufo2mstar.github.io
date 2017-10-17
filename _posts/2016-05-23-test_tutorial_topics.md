@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "TTT!"
+title:  "Quick guide on where-to-start: Testing edition!"
 date:   2016-05-23 15:14:54
 comments: true
 categories: Testing
