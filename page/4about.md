@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About
+title: About Me
 permalink: /about/
 icon: line-chart
 icon: id-card
@@ -10,9 +10,9 @@ type: page
 * content
 {:toc}
 
-## About me
 
-<iframe src="https://githubbadge.appspot.com/ufo2mstar" style="border: 0;height: 142px;width: 200px;overflow: hidden;" frameBorder="0"></iframe>
+<iframe src="https://githubbadge.appspot.com/ufo2mstar" style="border: 0;height: 142px;width: 200px;overflow: hidden;"
+        frameBorder="0"></iframe>
 
 
 
