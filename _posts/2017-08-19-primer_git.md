@@ -11,20 +11,23 @@ mathjax: false
 * content
 {:toc}
 
-> Oh, my dear Git.. How did I ever code without you by my side! :love_letter:
+> Oh, my dear Git... How did I ever code without you by my side! :love_letter:
 
 # Please learn Git! ASAP..
 _**Quick tip for developers**_:  if you are not using **git** (even if you are using some other [Version Control System](https://betterexplained.com/articles/a-visual-guide-to-version-control/)) for your development, please pause your life and learn it! :flushed:
 In all seriousness, I feel that it is one of the most under-rated tools that neither schools cover as a requisite in courses nor do developers spend a lot of time mastering.
 
-I am relatively new to the world of Git as well (coming form [SVN] and thinking that it was all that!)
+I am relatively new to the world of Git as well (coming from [SVN] and thinking that it was all that!)  
+
+
 ### quick side-note
 Here is some bashing or [SVN]
 1. [SVN, Git Out of Here](https://mentormate.com/blog/differences-git-svn/)
 2. [and other proselytization](http://blog.teamtreehouse.com/why-you-should-switch-from-subversion-to-git)   
 
-but to be fair, here are [some things myth busting](https://svnvsgit.com/), but personally the killer fact that it is 
-a [Distributed local VCS](https://betterexplained.com/articles/intro-to-distributed-version-control-illustrated/) does it for me.
+but to be fair, here are [some things myth busting](https://svnvsgit.com/), but personally the killer fact that it is a
+a [Distributed local VCS](https://betterexplained.com/articles/intro-to-distributed-version-control-illustrated/) does it for me, 
+(now that I understand the workflow better).
 
 
 ## Sources to start from
@@ -37,7 +40,8 @@ longer than I have, so I would like to refer to some of their good work that I h
 4. [Gitflow] - and once you are comfortable with Branching, you should take a look at this approach to collaborate 
 
 ## Interactive tutorials
-There are a lot of cool interactive tutorials that I would personally recommend as well, if you are not in a position to try it out on a computer right now:
+There are a lot of cool interactive tutorials that I would personally recommend as well if you are not in a position 
+to try it out on a computer right now:
 
 1. [Github's] - good place to start
 2. [CodeAcademy's] - another excellent resource

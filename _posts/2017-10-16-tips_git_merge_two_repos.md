@@ -11,20 +11,18 @@ mathjax: false
 * content
 {:toc}
 
-> Oh, my dear Git.. How did I ever code without you by my side! :love_letter:
-
 # Please learn Git! ASAP..
 Do check out my past post ([Primer: Gitting Started!]({{ site.base_url }}/post/2017/08/19/primer_git/)) on where to get started with git.
 
 
 # Now to merging Two Repos
-May be not an often faced problem, but it can be a little tricky.
+Perhaps not an often faced problem, but it can be a little tricky.
 So my use case was that I had a [remote repo](https://help.github.com/articles/about-remote-repositories/) that had some legacy code and I have the newer cut sitting on my local machine.
 The nostalgic fellow that I am, I did not want to lose any history (which I will probably never revert to, but its good to see where we have come from)
 Thus came the need for doing a git merge with a third merger repo :blush: and here are the steps
 
 ## Step 1: Init the Third repo locally
-You may need to commit some file first to the **Third merger _git repo_** the repo started.. I recommend the {.gitignore} file from your new repo.
+You may need to commit some file first to the **Third merger _git repo_** the repo started: I recommend the {.gitignore} file from your new repo.
 ```bash
 git init ThirdRepo
 cp UpgradedLocalRepo/.gitignore ThirdRepo/
@@ -58,9 +56,9 @@ git pull LocalRepo
 git merge LocalRepo/master
 git commit -m "NEW_MERGE: successfully imported the new repo trees"
 ```
-## Step 7: Finally the push up
+## Step 7: Finally, the push
 Now that the histories from both the git repos are roots of the **Third merger repo**, make all the necessary changes to keep or delete the backed up data from the legacy repo here
-And once we push our changes to the **remote**.. and _**Voila!**_ you have now married your old history to your new one.. and your third repo will continue happily every after! :smile:
+And once we push our changes to the **remote**.. and _**Voila!**_ you have now married your old history to your new one.. and your third repo will continue happily ever after! :smile:
 ```bash
 # once you are done with all your changes and the ThirdRepo is your final expected state, then
 git push RemoteRepo
