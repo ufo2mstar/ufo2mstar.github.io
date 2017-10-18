@@ -5,7 +5,7 @@ title:  "Primer: Gitting Started!"
 date: 2017-08-19
 categories: [VCS, Guide]
 tags: [Tips, Git, Tool]
-excerpt: The one tool, that I believe, I will be getting a lot of **return-on-investment** in my coding career.
+excerpt: The one tool, that I believe, I will be getting a lot of return-on-investment in my coding career.
 mathjax: false
 ---
 * content
