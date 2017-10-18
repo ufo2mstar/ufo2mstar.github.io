@@ -12,8 +12,7 @@ mathjax: false
 {:toc}
 
 # Please learn Git! ASAP..
-Do check out my past post ([Primer: Gitting Started!]({{ site.base_url }}/post/2017/08/19/primer_git/)) on where to get started with git.
-
+Do check out my past post ([Primer: Gitting Started!]({{ site.base_url }}/blog/2017/08/19/primer_git/)) on where to get started with git.
 
 # Now to merging Two Repos
 Perhaps not an often faced problem, but it can be a little tricky.

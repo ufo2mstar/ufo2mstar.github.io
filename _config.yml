@@ -9,8 +9,10 @@
 title: Un Ltd.
 brief-intro: web logs from
 blog-title: Greetings Earthling!
+
+url: "https://ufo2mstar.github.io" # protocol and the base hostname for your site
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://ufo2mstar.github.io" # the base hostname & protocol for your site
+#baseurl: "/blog" # the subpath of your site, e.g. /blog
 
 permalink: blog/:year/:month/:day/:title/
 
@@ -51,7 +53,8 @@ excerpt_separator: "\n\n\n\n"
 # paginate
 plugins:
   - jekyll-paginate
-  - jemoji
+  - jemoji # for github flavored emojis :) :+1:
+  - jekyll-relative-links # so that I dont have to do absolute pathing
 #  - jekyll-feed
 
 paginate: 6
