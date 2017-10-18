@@ -85,3 +85,5 @@
   
 // Works with either jQuery or Zepto
 })( window.jQuery || window.Zepto );
+
+console.log('FitVids ready');
