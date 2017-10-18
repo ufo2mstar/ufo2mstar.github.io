@@ -25,8 +25,8 @@ end
 ary = if ARGV.length > 0
         ARGV
       else
-        %w[
-gct_shot.jpg
+        [
+"download (1).png"
 ]
       end
 
