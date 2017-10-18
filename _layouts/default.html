@@ -17,6 +17,14 @@
 
     <script src='{{ " /js/main.js " | prepend: site.baseurl }}' charset="utf-8"></script>
     <script src='{{ " /js/smooth-scroll.min.js " | prepend: site.baseurl }}' charset="utf-8"></script>
+    
+    <!-- fellow developers are the best! -->
+    <script src='{{ " /js/jquery.fitvids.js" | prepend: site.baseurl }}' charset="utf-8"></script>
+
+    <script type="text/javascript">
+        $('iframe[src*="youtu"]').parent().fitVids();
+    </script>
+    
     <script type="text/javascript">
       smoothScroll.init({
         speed: 500, // Integer. How fast to complete the scroll in milliseconds

@@ -2,11 +2,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+    
+    <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }} bloggings!{% endif %}</title>
     <meta name="description"
           content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
-
+    
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -15,14 +15,20 @@
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }}"
           href="{{ '/feed.xml' | prepend: site.baseurl | prepend: site.url }}">
-
+    
+    <!-- CDNing jquery for now..-->
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    
     <!--<link rel="stylesheet" href='{{ "/css/bootstrap.css" | prepend: site.baseurl }}'>-->
-
+    
     <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.css">-->
     <!--<link rel="stylesheet" type="text/css" href="css/index.css">-->
     <!--<script type="text/javascript" src="js/jquery-1.11.1.js"></script>-->
     <!--<script type="text/javascript" src="js/bootstrap.min.js"></script>-->
-
+    
     {% if site.google_analytics_id %}
     <script>
         // google analytics
@@ -40,10 +46,10 @@
 
         ga('create', '{{site.google_analytics_id}}', 'auto');
         ga('send', 'pageview');
-
+    
     </script>
     {% endif %}
-
+    
     {% if page.mathjax %}
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -55,6 +61,7 @@
     );
 
 
+    
     </script>
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
