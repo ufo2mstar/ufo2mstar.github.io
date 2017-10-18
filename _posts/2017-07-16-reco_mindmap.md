@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Recommendation: MindMap tools for Notes"
+title:  "Reco: MindMap tools for Notes"
 date: 2017-07-16
 categories: [Recommendation]
 tags: [Graph, MindMap, Tool]
