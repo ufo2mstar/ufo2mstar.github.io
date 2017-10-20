@@ -16,6 +16,7 @@ class ZipFileGenerator
 #     @outputFile = outputFile
 #   end
 end
+
 class DiffZipFileGen < ZipFileGenerator
   attr_accessor :input_dir
 
@@ -45,15 +46,22 @@ class DiffZipFileGen < ZipFileGenerator
 
     writeEntries(entries, "", io)
     io.close
+    puts "\n#{output_file} chaching!\n\n"
   end
 
   def decomp file, dest_loc
-    unless File.exists?(dest_loc)
-      puts "creating new Decomp dir: #{dest_loc}"
-      FileUtils.mkdir_p(dest_loc)
+    if File.exists?(dest_loc)
+      puts "\ndeleting existing Decomp dir: #{dest_loc}"
+      FileUtils.remove_dir(dest_loc)
     end
+    # puts "creating new Decomp dir: #{dest_loc}"
+    FileUtils.mkdir_p(dest_loc)
 
     Zip::File.open(file) do |zip_file|
+      # if File.exists?(zip_file.name)
+      #   puts "already exists! #{zip_file}"
+      #   next
+      # end
       # Handle entries one by one
       zip_file.each do |entry|
         dest = "#{dest_loc}/#{entry.name}"
@@ -69,7 +77,7 @@ class DiffZipFileGen < ZipFileGenerator
 
       # Find specific entry
       # entry = zip_file.glob('*.csv').first
-      puts zip_file
+      puts "\n#{zip_file} chaching!"
     end
   end
 
@@ -95,16 +103,22 @@ class DiffZipFileGen < ZipFileGenerator
 
 end
 
-# zf = MyZipFileGen.new
 
-curr_dir = "#{File.expand_path(File.dirname(__FILE__))}"
-out_file = "kod.txt"
-in_file  = 'test_log'
+# exec ----------------------------------------------------------
 
-# zf = ZipFileGenerator.new "#{curr_dir}/#{in_file}", "dbp"
-# zf = MyZipFileGen.new "#{curr_dir}/#{in_file}", "dbp"
+
+# init
 zf       = DiffZipFileGen.new
-# zf.comp "#{curr_dir}/#{in_file}", out_file
 
-dest_loc = "#{curr_dir}/kod"
+# comp
+curr_dir = "#{File.expand_path(File.dirname(__FILE__))}"
+out_file = "download.png"
+in_dir  = 'com'
+
+# zf.comp "#{curr_dir}/#{in_dir}", out_file
+
+
+# decomp
+dest_loc = "#{curr_dir}/decom"
+
 zf.decomp out_file, dest_loc

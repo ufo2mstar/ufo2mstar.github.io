@@ -11,17 +11,54 @@ mathjax: false
 * content
 {:toc}
 
-# PageRank: making sense of the web 
-<a title="Google Paper" href="https://www.google.com"> Google </a> by Larry Page, Surgey Brin
-<iframe src="http://docs.google.com/gview?url=http://infolab.stanford.edu/pub/papers/google.pdf&embedded=true" style="width:100%; height:600px;" frameborder="0"></iframe>
+# Pages
 
-The paper the has influenced most of the 21st century so far.. the 
-Being a self-advertised Google fan-boy myself, I have taken keen interest in
-## Backbone of Google
+lets see how `this` looks
+<center>
+<iframe src="http://docs.google.com/viewer?url=https%3A%2F%2Fdl.dropboxusercontent.com%2Fu%2F45465797%2FStd11-Phys-EM-1.pdf&embedded=true" width="600" height="780" style="border: none;"></iframe>
 
-## Linear Algebra
+<iframe src="http://docs.google.com/viewer?url=https://dl.dropboxusercontent.com/u/45465797/Std11-Maths-EM-1.pdf&embedded=true" width="600" height="780" style="border: none;"></iframe></center>
 
-## Some more theory
+
+# kod
+
+<a title="Google Paper" href="https://www.google.com"> Google </a>
+
+<center>
+<iframe src="http://docs.google.com/gview?url=https://dl.dropboxusercontent.com/u/45465797/fischer%20-%20The%20Unknown%20Bobby%20Fischer.pdf&embedded=true" style="width:850px; height:1000px;" frameborder="0"></iframe>
+
+
+<iframe src="https://docs.google.com/file/d/0B01vDLYAHpMLdC1OYUdPWGwtZmc/preview" width="940" height="480"></iframe>
+
+</center>
+
+
+# sports and games
+
+
+<div id="puzzle">
+<div id="puzzle-container">
+<link id="puzzleCss" type="text/css" rel="stylesheet" href="http://chesstempo.com/css/dailypuzzle.css"/>
+<script type="text/javascript" src="http://chesstempo.com/js/dailypuzzle.js"></script>
+<script>
+    new Puzzle({ pieceSize: 20});
+</script>
+</div>
+<a id="ct-link" href="http://chesstempo.com/game-database.html">Chess Database</a>
+</div>
+
+   
+   
+# aal, bloxorz
+<script type="text/javascript" src="https://cdn.widgetserver.com/syndication/subscriber/InsertWidget.js"></script><script type="text/javascript">if (WIDGETBOX) WIDGETBOX.renderWidget('44e79104-351d-4141-b4aa-8f2a0da81273');</script>
+<noscript>Get the <a href="https://www.widgetbox.com/widget/bloxorz-ssuperzilla1500">Bloxorz</a> widget and many other <a href="https://www.widgetbox.com/">great free widgets</a> at <a href="https://www.widgetbox.com">Widgetbox</a>! Not seeing a widget? (<a href="http://support.widgetbox.com/">More info</a>)</noscript>
+
+# that video
+<center>
+<iframe width="640" height="360" src="http://www.youtube.com/embed/OF4HwUYwUEw" frameborder="0" allowfullscreen=""></iframe>
+</center>
+
+
 
 # Bottomline
 For all those aspiring computer scientists our there,
