@@ -87,37 +87,41 @@ blockquote {
         margin: 0;
     }
 }
-table {
-    border-top: 2px solid #777;
-    border-bottom: 2px solid #777;
-    margin: 8px 0;
-    border-collapse: collapse;
-    thead {
-        border-bottom: 1px solid #777;
-        background-color: #aaa;
-        color: #fff;
-    }
-    th {
-        padding: 2px 10px;
-        text-align: left;
-    }
-    tbody {
-        tr {
-            &:nth-of-type(2n+1) {
-                background-color: #f8f8fd;
-            }
-            &:nth-of-type(2n) {
-                background-color: #e5eaed;
-            }
-        }
-    }
-    td {
-        padding: 2px 10px;
-    }
-}
+
 p {
     margin: 0 0 10px;
 }
 img {
     max-width: 100%;
 }
+
+//
+//
+//table {
+//    border-top: 2px solid #777;
+//    border-bottom: 2px solid #777;
+//    margin: 8px 0;
+//    border-collapse: collapse;
+//    thead {
+//        border-bottom: 1px solid #777;
+//        background-color: #aaa;
+//        color: #fff;
+//    }
+//    th {
+//        padding: 2px 10px;
+//        text-align: left;
+//    }
+//    tbody {
+//        tr {
+//            &:nth-of-type(2n+1) {
+//                background-color: #f8f8fd;
+//            }
+//            &:nth-of-type(2n) {
+//                background-color: #e5eaed;
+//            }
+//        }
+//    }
+//    td {
+//        padding: 2px 10px;
+//    }
+//}
