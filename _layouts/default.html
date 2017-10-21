@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="dark">
 
   {% include head.html %}
 
@@ -23,6 +23,10 @@
 
     <script type="text/javascript">
         $('iframe[src*="youtu"]').parent().fitVids();
+//        $('iframe[src*="drive.google"]').parent().fitVids();
+//        $("#vid").fitVids();
+        $("#vid").fitVids({ customSelector: "iframe[src^='https://drive.google.com']"});
+
     </script>
     
     <script type="text/javascript">
