@@ -25,9 +25,9 @@ Cheers!
 
 * GitHub: [ufo2mstar](https://github.com/{{ site.github_username }})
 * Gmail: [narensst@gmail.com](mailto:narensst@gmail.com?Subject=Hello%20from%20blog)
-* [Facebook](https://www.facebook.com/{{ site.facebook_username }})
+ <!-- * [Facebook](https://www.facebook.com/{{ site.facebook_username }}) -->
 * [Twitter](https://twitter.com/{{ site.twitter_username }})
-* [About.me](https://about.me/{{ site.aboutme_username }})https://about.me/
+* [About.me](https://about.me/{{ site.aboutme_username }})
 
 
 ## Some Badges
