@@ -62,7 +62,7 @@ mermaid:
 #  src: 'js/mermaid.js'
   src: 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.js'
 
-paginate: 6
+paginate: 10
 
 # for dark theme
 sass:
