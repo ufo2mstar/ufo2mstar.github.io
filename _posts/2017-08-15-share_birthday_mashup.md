@@ -31,8 +31,8 @@ Enjoy!
 
 # Credits:
 - Producer, Co-Director, Design Artist: 
-`Swetha`  
+`Swae`  
 - Director, Editor, Cinematographer: 
-`Naren`  
+[`Naren`]({{ site.base_url }}/resume.html)  
 - Cast (in-order-of-appearence):
 `quite a big list, to be filled in later` :smile:

@@ -23,6 +23,7 @@
             crossorigin="anonymous"></script>
     
     <!--<link rel="stylesheet" href='{{ "/css/bootstrap.css" | prepend: site.baseurl }}'>-->
+    <!--<link rel="stylesheet" href='{{ "/css/connect-bootstrap.css" | prepend: site.baseurl }}'>-->
     
     <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.css">-->
     <!--<link rel="stylesheet" type="text/css" href="css/index.css">-->
@@ -59,13 +60,37 @@
             }
         }
     );
-
-
+    
     
     </script>
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
     {% endif %}
-
+    
+    {% if page.mermaid %}
+    <script type="text/x-mathjax-config">
+    
+    </script>
+    
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.js">
+    </script>
+            <!--src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.js">-->
+    
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.dark.min.css">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.forest.min.css">
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.css">-->
+    
+    <style>
+        .mermaid {
+            margin: auto;
+            width: 60%;
+            border: 3px solid;
+            /*border: 3px solid #73AD21;*/
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+    {% endif %}
 </head>
