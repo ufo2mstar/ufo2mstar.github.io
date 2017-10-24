@@ -55,8 +55,9 @@ plugins:
   - jekyll-paginate
   - jemoji # for github flavored emojis :) :+1:
   - jekyll-relative-links # so that I dont have to do absolute pathing
-#  - jekyll-feed
   - jekyll-mermaid
+#gems:
+#  - jekyll-feed
 
 mermaid:
 #  src: 'js/mermaid.js'
