@@ -56,6 +56,7 @@ plugins:
   - jemoji # for github flavored emojis :) :+1:
   - jekyll-relative-links # so that I dont have to do absolute pathing
   - jekyll-mermaid
+  - jekyll-seo-tag
 #gems:
 #  - jekyll-feed
 
@@ -69,7 +70,9 @@ paginate: 10
 sass:
   style: compressed
 
-#
+repository: ufo2mstar/ufo2mstar.github.io
+
+
 #title: Your awesome title
 #email: your-email@example.com
 #description: >- # this means to ignore newlines until "baseurl:"

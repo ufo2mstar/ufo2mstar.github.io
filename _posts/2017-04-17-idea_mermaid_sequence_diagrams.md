@@ -29,7 +29,7 @@ Class01 : int chimp
 Class01 : int gorilla
 Class08 <--> C2: Cool label
 {% endmermaid %}
-{% endcomment %}
+
 
 {% mermaid %}
 sequenceDiagram
@@ -187,3 +187,4 @@ NSQ-->>A: PE=Y and NPE=Y Yes
 NSQ->>-NSQ: PE Consumption & Set Argmt Status = In Process
 end
 {% endmermaid %}
+{% endcomment %}
