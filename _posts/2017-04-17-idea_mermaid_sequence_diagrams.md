@@ -12,7 +12,7 @@ mermaid: true
 * content
 {:toc}
 
-{% comment %}
+
 {% mermaid %}
 classDiagram
 Class01 <|-- AveryLongClass : Cool
@@ -187,4 +187,3 @@ NSQ-->>A: PE=Y and NPE=Y Yes
 NSQ->>-NSQ: PE Consumption & Set Argmt Status = In Process
 end
 {% endmermaid %}
-{% endcomment %}
