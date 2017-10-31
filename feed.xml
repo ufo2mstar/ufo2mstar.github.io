@@ -5,9 +5,25 @@
     <description>setting up a simple blog</description>
     <link>https://ufo2mstar.github.io/</link>
     <atom:link href="https://ufo2mstar.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 31 Oct 2017 00:01:19 -0400</pubDate>
-    <lastBuildDate>Tue, 31 Oct 2017 00:01:19 -0400</lastBuildDate>
+    <pubDate>Tue, 31 Oct 2017 01:16:10 -0400</pubDate>
+    <lastBuildDate>Tue, 31 Oct 2017 01:16:10 -0400</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
+    
+      <item>
+        <title>Perils of terribly misplaced metaphors (in debates)</title>
+        <description>or better put, a footnote on how I consume and digest fables!</description>
+        <pubDate>Mon, 30 Oct 2017 00:00:00 -0400</pubDate>
+        <link>https://ufo2mstar.github.io/blog/2017/10/30/thoughts_analogies/</link>
+        <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2017/10/30/thoughts_analogies/</guid>
+        
+        <category>Fables</category>
+        
+        <category>Debate</category>
+        
+        
+        <category>Thoughts</category>
+        
+      </item>
     
       <item>
         <title>Tips: Merging two separate Git Repos</title>
@@ -182,24 +198,6 @@
         
         
         <category>Testing</category>
-        
-      </item>
-    
-      <item>
-        <title>Idea: Logging mechanish for semi-manual testing</title>
-        <description>Hmm, recently tackling an interesting problem of trying to keep track of some manual test cases.. Here is am idea for logging tool to guide anybody through the process.</description>
-        <pubDate>Fri, 22 Apr 2016 00:00:00 -0400</pubDate>
-        <link>https://ufo2mstar.github.io/blog/2016/04/22/idea_semi_manual_testing/</link>
-        <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2016/04/22/idea_semi_manual_testing/</guid>
-        
-        <category>Ruby</category>
-        
-        <category>Tool</category>
-        
-        <category>OOP</category>
-        
-        
-        <category>Tutorials</category>
         
       </item>
     
