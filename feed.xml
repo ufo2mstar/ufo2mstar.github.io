@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Un Ltd.</title>
+    <description>setting up a simple blog</description>
+    <link>https://ufo2mstar.github.io/</link>
+    <atom:link href="https://ufo2mstar.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Mon, 30 Oct 2017 23:13:44 -0400</pubDate>
+    <lastBuildDate>Mon, 30 Oct 2017 23:13:44 -0400</lastBuildDate>
+    <generator>Jekyll v3.6.2</generator>
+    
+      <item>
+        <title>Tips: Merging two separate Git Repos</title>
+        <description>Had a fun problem to merge two of my projects in separate git repos. Here's how I did it.</description>
+        <pubDate>Mon, 16 Oct 2017 00:00:00 -0400</pubDate>
+        <link>https://ufo2mstar.github.io/blog/2017/10/16/tips_git_merge_two_repos/</link>
+        <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2017/10/16/tips_git_merge_two_repos/</guid>
+        
+        <category>Tips</category>
+        
+        <category>Git</category>
+        
+        <category>Tool</category>
+        
+        <category>SVN</category>
+        
+        
+        <category>VCS</category>
+        
+      </item>
+    
+      <item>
+        <title>Primer: Gitting Started!</title>
+        <description>The one tool, that I believe, I will be getting a lot of return-on-investment in my coding career.</description>
+        <pubDate>Sat, 19 Aug 2017 00:00:00 -0400</pubDate>
+        <link>https://ufo2mstar.github.io/blog/2017/08/19/primer_git/</link>
+        <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2017/08/19/primer_git/</guid>
+        
+        <category>Tips</category>
+        
+        <category>Git</category>
+        
+        <category>Tool</category>
+        
+        
+        <category>VCS</category>
+        
+        <category>Guide</category>
+        
+      </item>
+    
+      <item>
+        <title>Adhu 1.0</title>
+        <description>Dedicated to my very dear Shyam, Lavs and their bundle of joy, Adhu!&lt;br&gt; Those who feel like they have missed his first year, fear not: we've got you covered :)</description>
+        <pubDate>Tue, 15 Aug 2017 00:00:00 -0400</pubDate>
+        <link>https://ufo2mstar.github.io/blog/2017/08/15/share_birthday_mashup/</link>
+        <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2017/08/15/share_birthday_mashup/</guid>
+        
+        <category>Birthday</category>
+        
+        <category>Montage</category>
+        
+        <category>Production</category>
+        
+        
+        <category>Share</category>
+        
+      </item>
+    
+      <item>
+        <title>Reco: MindMap tools for Notes</title>
+        <description>How did I ever not realize this simple and efficient solution to my notes taking problem from back in school, all the way through my post-graduation. You gotta try this out! No need to thank me for all the benefits you are going to see, in information organization</description>
+        <pubDate>Sun, 16 Jul 2017 00:00:00 -0400</pubDate>
+        <link>https://ufo2mstar.github.io/blog/2017/07/16/reco_mindmap/</link>
+        <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2017/07/16/reco_mindmap/</guid>
+        
+        <category>Graph</category>
+        
+        <category>MindMap</category>
+        
+        <category>Tool</category>
+        
+        
+        <category>Recommendation</category>
+        
+      </item>
+    
+      <item>
+        <title>Tutorials: Graph Algorithms and implementation</title>
+        <description>Not the simplest of subjects, but once you get your head around this, very hard to not see these patterns everywhere! :)</description>
+        <pubDate>Fri, 30 Jun 2017 00:00:00 -0400</pubDate>
+        <link>https://ufo2mstar.github.io/blog/2017/06/30/tut_graph_algos/</link>
+        <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2017/06/30/tut_graph_algos/</guid>
+        
+        <category>Graph</category>
+        
+        <category>Algorithm</category>
+        
+        <category>Tutorial</category>
+        
+        <category>DataStructures</category>
+        
+        
+        <category>Tutorial</category>
+        
+      </item>
+    
+      <item>
+        <title>Primer: Up and running with VBA Macros on Excel</title>
+        <description>I had a sudden use-case for a way to manipulate vast sums of data on Excel and run some computation on that. Little did I know that I was going to embark on this journey of playing the programming game on *Hard-mode*, but it was a very satisfying experience!</description>
+        <pubDate>Tue, 23 May 2017 00:00:00 -0400</pubDate>
+        <link>https://ufo2mstar.github.io/blog/2017/05/23/tut_excel_macro_vba/</link>
+        <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2017/05/23/tut_excel_macro_vba/</guid>
+        
+        <category>Programming</category>
+        
+        <category>Excel</category>
+        
+        <category>Macros</category>
+        
+        <category>OOP</category>
+        
+        
+        <category>Excel</category>
+        
+      </item>
+    
+      <item>
+        <title>Idea: Mermaid, for sequence diagrams</title>
+        <description>an awesome tool for quickly JS-ing sequence diagram (among other graphs)</description>
+        <pubDate>Mon, 17 Apr 2017 00:00:00 -0400</pubDate>
+        <link>https://ufo2mstar.github.io/blog/2017/04/17/idea_mermaid_sequence_diagrams/</link>
+        <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2017/04/17/idea_mermaid_sequence_diagrams/</guid>
+        
+        <category>Tips</category>
+        
+        <category>Tool</category>
+        
+        <category>Mermaid</category>
+        
+        <category>Javascript</category>
+        
+        
+        <category>Idea</category>
+        
+      </item>
+    
+      <item>
+        <title>Guide: Getting up to speed on Ruby</title>
+        <description>some helpful pointers for people getting started with the Ruby programming language..</description>
+        <pubDate>Sun, 21 Aug 2016 00:00:00 -0400</pubDate>
+        <link>https://ufo2mstar.github.io/blog/2016/08/21/ref_ruby/</link>
+        <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2016/08/21/ref_ruby/</guid>
+        
+        <category>Ruby</category>
+        
+        <category>OOP</category>
+        
+        
+        <category>Guide</category>
+        
+      </item>
+    
+      <item>
+        <title>Quick guide on where-to-start: Testing edition!</title>
+        <description>Want to get started with Automated testing? Here is a quick overview on the topics to be familiar with.</description>
+        <pubDate>Mon, 23 May 2016 11:14:54 -0400</pubDate>
+        <link>https://ufo2mstar.github.io/blog/2016/05/23/tut_testing_topics/</link>
+        <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2016/05/23/tut_testing_topics/</guid>
+        
+        <category>Testing</category>
+        
+        <category>Java</category>
+        
+        <category>Ruby</category>
+        
+        <category>Selenium</category>
+        
+        <category>OOP</category>
+        
+        <category>Tips</category>
+        
+        
+        <category>Testing</category>
+        
+      </item>
+    
+      <item>
+        <title>Idea: Logging mechanish for semi-manual testing</title>
+        <description>Hmm, recently tackling an interesting problem of trying to keep track of some manual test cases.. Here is am idea for logging tool to guide anybody through the process.</description>
+        <pubDate>Fri, 22 Apr 2016 00:00:00 -0400</pubDate>
+        <link>https://ufo2mstar.github.io/blog/2016/04/22/idea_semi_manual_testing/</link>
+        <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2016/04/22/idea_semi_manual_testing/</guid>
+        
+        <category>Ruby</category>
+        
+        <category>Tool</category>
+        
+        <category>OOP</category>
+        
+        
+        <category>Tutorials</category>
+        
+      </item>
+    
+  </channel>
+</rss>

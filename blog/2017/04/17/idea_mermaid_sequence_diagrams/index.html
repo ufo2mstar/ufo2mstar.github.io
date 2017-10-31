@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html class="dark">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Idea: Mermaid, for sequence diagrams</title>
+    <meta name="description"
+          content="an awesome tool for quickly JS-ing sequence diagram (among other graphs)">
+    
+    <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--<link rel="stylesheet" href="https://at.alicdn.com/t/font_8v3czwksspqlg14i.css">-->
+    <link rel="stylesheet" href='/css/main.css'>
+    <link rel="canonical" href="https://ufo2mstar.github.io/blog/2017/04/17/idea_mermaid_sequence_diagrams/">
+    <link rel="alternate" type="application/rss+xml" title="Un Ltd."
+          href="https://ufo2mstar.github.io/feed.xml">
+    
+    <!-- CDNing jquery for now..-->
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    
+    <!--<link rel="stylesheet" href='/css/bootstrap.css'>-->
+    <!--<link rel="stylesheet" href='/css/connect-bootstrap.css'>-->
+    
+    <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.css">-->
+    <!--<link rel="stylesheet" type="text/css" href="css/index.css">-->
+    <!--<script type="text/javascript" src="js/jquery-1.11.1.js"></script>-->
+    <!--<script type="text/javascript" src="js/bootstrap.min.js"></script>-->
+    
+    
+    <script>
+        // google analytics
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-26595428-2', 'auto');
+        ga('send', 'pageview');
+    
+    </script>
+    
+    
+    
+    
+    
+    <script type="text/javascript">
+    
+    </script>
+    
+    <!--<script type="text/javascript"-->
+    <!--src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.js">-->
+    <!--</script>-->
+    <!--src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.js">-->
+    
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.dark.min.css">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.forest.min.css">
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.css">-->
+    
+    <style>
+        .mermaid {
+            margin: auto;
+            overflow: auto;
+            width: 100%;
+            /*width: 200%;*/
+            /*height: 500px;*/
+            /*width: 500px;*/
+            overflow-x: visible;
+            border: 3px solid;
+            /*border: 3px solid #73AD21;*/
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+    
+    
+    <style>
+        div {
+            text-align: justify;
+            text-justify: inter-word;
+        }
+    </style>
+</head>
+
+
+  <body>
+
+    <header id="top">
+    <div class="wrapper">
+        <style>
+            .fa-infinite:before {
+                content: "∞";
+                color: whitesmoke;
+                font-family: Verdana;
+                /*font-weight: bold;*/
+                font-size: 30px;
+                /*font-size: 64px;*/
+                /*top: 4px;*/
+                position: relative;
+            }
+        </style>
+        <a href="/" class="brand">
+            <!--<img src="/inf.ico" class="">Logo</img>-->
+            <i class="fa fa-infinite"></i>
+            Un Ltd.
+        </a>
+        <small>
+            web logs from
+            <a href="/resume" class="brand">this guy!</a>
+        </small>
+        <button id="headerMenu" class="menu"><i class="fa fa-bars"></i></button>
+        <nav id="headerNav">
+            <ul>
+                <li>
+                    
+                        <a href="/">
+                            
+                            <i class="fa fa-home"></i>Bloggings
+                        </a>
+                </li>
+
+                
+                
+                <li>
+                    
+                        <a href="/archive/">
+                            
+                            <i class="fa fa-archive"></i>Archives (by date)
+                        </a>
+                </li>
+                
+                
+                
+                <li>
+                    
+                        <a href="/category/">
+                            
+                            <i class="fa fa-th-list"></i>Categories (by topic)
+                        </a>
+                </li>
+                
+                
+                
+                <li>
+                    
+                        <a href="/tag/">
+                            
+                            <i class="fa fa-tags"></i>Tags (by content)
+                        </a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <li>
+                    
+                        <a href="/about/">
+                            
+                            <i class="fa fa-id-card"></i>About Me
+                        </a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+        <div class="page clearfix" post>
+    <div class="left">
+        <h1>Idea: Mermaid, for sequence diagrams</h1>
+        <div class="label">
+
+            <div class="label-card">
+                <i class="fa fa-calendar"></i>2017-04-17
+            </div>
+            <!--<br>-->
+            <div class="label-card">
+                
+            </div>
+            <div class="label-card">
+                
+            </div>
+            <div class="label-card">
+                
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Idea" title="Category: Idea" rel="category">Idea</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+            </div>
+            <br>
+            <div class="label-card">
+                
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <!--a href="/tag/#Tips" title="Tag: Tips" rel="tag">Tips</a-->
+        <a href="/tag/#Tips" title="Tag: Tips" rel="tag">Tips</a>&nbsp;
+    
+        <!--a href="/tag/#Tool" title="Tag: Tool" rel="tag">Tool</a-->
+        <a href="/tag/#Tool" title="Tag: Tool" rel="tag">Tool</a>&nbsp;
+    
+        <!--a href="/tag/#Mermaid" title="Tag: Mermaid" rel="tag">Mermaid</a-->
+        <a href="/tag/#Mermaid" title="Tag: Mermaid" rel="tag">Mermaid</a>&nbsp;
+    
+        <!--a href="/tag/#Javascript" title="Tag: Javascript" rel="tag">Javascript</a-->
+        <a href="/tag/#Javascript" title="Tag: Javascript" rel="tag">Javascript</a>
+    
+  
+
+</span>
+
+            </div>
+            <br>
+        </div>
+        <hr>
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.js"></script>
+<div class="mermaid">
+classDiagram
+Class01 &lt;|-- AveryLongClass : Cool
+Class03 *-- Class04
+Class05 o-- Class06
+Class07 .. Class08
+Class09 --&gt; C2 : Where am i?
+Class09 --* C3
+Class09 --|&gt; Class07
+Class07 : equals()
+Class07 : Object[] elementData
+Class01 : size()
+Class01 : int chimp
+Class01 : int gorilla
+Class08 &lt;--&gt; C2: Cool label
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.js"></script>
+<div class="mermaid">
+sequenceDiagram
+Participant A
+Participant B
+Participant C
+
+% Not Started Queue
+Participant NSQ
+%PE Consumption 
+Participant PEC
+% Availability Calc
+Participant AC
+% Collecting Pledged Assets 
+Participant CPA
+% Purpose Queue Process
+Participant PQP
+
+loop Pre-processing
+opt PreProc Arrangements
+Note over A,C: Outgoing pledges
+A--&gt;&gt;A: Out Pldgs = 1
+B--&gt;&gt;B: Out Pldgs = 0
+C--&gt;&gt;C: Out Pldgs = 1
+
+Note over A,C: Incoming pledges
+A--&gt;A: In Pldgs = 0
+B--&gt;B: In Pldgs = 2
+C--&gt;C: In Pldgs = 0
+
+Note over A,C: Purpose Exposure
+A-&gt;&gt;A: PE flag = Y, Status = Not Started
+B-&gt;&gt;B: PE flag = Y, Status = Not Started
+
+Note over A,C: Non-Purpose Expo
+A--&gt;A: NPE flag = Y, Status = Not Started
+C--&gt;C: NPE flag = Y, Status = Not Started
+end
+
+loop PreProc Collaterals
+Note over A,C: Collateral asset position available to review?
+A--&gt;&gt;+A: Yes
+B--XB: No
+C--&gt;&gt;+C: Yes
+Note left of A: Update the asset position with final haircut % on the position
+Note over A,C: Collateral asset position available to review?
+A--&gt;&gt;A: Yes
+C--X-C: No
+Note left of A: Update the asset position with final haircut % on the position
+Note over A,C: Collateral asset position available to review?
+A--x-A: No
+end
+
+opt Sequence
+Note left of A: Queue=NotStarted
+
+Note over A,C: a. Process arrangements with no incoming or outgoing pledges.. b. Process arrangements with PE = Y c. Process arrangements with children = 0 (for which depth =0) and then.. d. Process arrangements with depth = 1,2…etc and parent = Y in ascending order to the maximum depth
+Note over B: 1
+Note over A: 2
+Note over C: 3
+end
+end
+
+loop Starting NOT STARTED Queue processing
+B--&gt;+B: Seq 1
+B-&gt;&gt;NSQ: Start NSQ process
+NSQ--xB: PE=N and NPE=N
+NSQ--&gt;&gt;B: PE=Y and NPE=N
+NSQ-&gt;&gt;NSQ: PE Consumption &amp; Set Argmt Status = Processing
+
+NSQ-&gt;&gt;+PEC: Start PE consumption
+PEC--&gt;&gt;B: P.E Status = Not Started
+Note over B: List of all assets "Owned" by the arrangement
+Note over B: List of all assets from Whole Pledges
+
+Note over B: Combination of all unconsumed assets as one basket of assets available for arrangement
+PEC--&gt;&gt;B: Unconsumed assets remaining? = No
+
+
+PEC-&gt;&gt;-AC: Start Availability Calc
+
+AC--&gt;+AC: Arrangement has Purpose exposure Yes
+AC--&gt;AC: Purpose Exposure Remaining to be Covered &lt; 0 Yes
+AC--&gt;&gt;B:P. Brrw. Avail=0
+AC--&gt;&gt;B:NP. Brrw. Avail=0
+AC--&gt;&gt;B:PLV. Deficit=PERC
+AC--&gt;AC:Arrangement has Non-Purpose exposure ? No
+AC--&gt;&gt;B:NP. Deficit=0
+AC--&gt;AC:Arrangement has unprocessed pledges ? Yes
+AC--&gt;&gt;B:P. Brrw. Avail (Pldg) = NA
+AC--&gt;&gt;B:NP. Brrw. Avail (Pldg) = NA
+
+AC-&gt;&gt;-NSQ: Resume NSQ Process - Purpose Only Arrangement
+NSQ--&gt;NSQ:Incoming Pledges Exist ? Yes
+NSQ-&gt;&gt;PQP: Start Purpose Queue Process 
+PQP-&gt;&gt;PEC: Hold Purpose Queue Process 
+PEC--&gt;&gt;B: P.E Status = Not Started No
+PEC--&gt;&gt;B: Unprocessed/ Skipped pledges? Yes
+Note over PEC: Reset the Pledge processed flag for all the pledges 
+Note over B: List all assets from eligible pledges (limited/unl) 
+
+PEC-&gt;&gt;CPA: Start Collecting Pledged Assets = Unlimited Pledge
+Note over CPA: Unlimited Pledges
+CPA--&gt;CPA: Unlimited Pledge(s) Received ? Yes
+CPA--&gt;CPA: All Unlimited Pledge issuers processed ? No
+CPA--&gt;+A: Choose an un-processed unlimited pledge: Client A
+CPA--&gt;CPA: Parent (issuer) has PE ? Yes
+CPA--&gt;&gt;A: Set Purpose Pledge = Y
+CPA--&gt;CPA: Issuer’s PE Status = “comp” ? No
+CPA--&gt;-A: done with A
+Note over CPA: Skip the pledge as “ineligible” for consumption at the moment AND mark the pledge as “skipped” 
+CPA--&gt;CPA: All Unlimited Pledge issuers processed ? No
+CPA--&gt;+C: Choose an un-processed unlimited pledge Client C
+CPA--&gt;CPA: Parent (issuer) has PE ? No
+CPA--&gt;CPA: Argmt has PE? No
+CPA--&gt;CPA: Parent (issuer) has NPE ? Yes
+CPA--&gt;CPA: Parent (issuer) NP Expo Sttaus = Not Started Yes
+CPA--&gt;-C: done with C
+Note over CPA: Skip the pledge as “ineligible” for consumption at the moment AND mark the pledge as “skipped”
+CPA--&gt;CPA: All Unlimited Pledge issuers processed ? Yes
+
+Note over CPA:?? Limited-Pledge Prioritization
+Note over CPA: Limited Pledges
+CPA--&gt;CPA: limited Pledge(s) Received ? No
+
+CPA-&gt;&gt;PEC:Resume PE Consumption
+PEC--&gt;PEC: Eligible pledges has margin stock? No
+PEC--&gt;PEC: PERC &lt; 0 Yes
+Note over B: List all assets “Owned” by the arrangement
+
+PEC-&gt;&gt;+AC: Start Availability Calc
+AC--&gt;AC: Arrangement has Purpose exposure Yes
+AC--&gt;AC: Purpose Exposure Remaining to be Covered &lt; 0 Yes
+AC--&gt;&gt;B:P. Brrw. Avail=0
+AC--&gt;&gt;B:NP. Brrw. Avail=0
+AC--&gt;&gt;B:PLV. Deficit= PERC
+AC--&gt;AC:Arrangement has Non-Purpose exposure ? Yes
+AC--&gt;&gt;B:NP. Deficit= NPREC
+AC--&gt;AC:Arrangement has unprocessed pledges ? Yes
+AC--&gt;&gt;B:P. Brrw. Avail (Pldg) = NA
+AC--&gt;&gt;B:NP. Brrw. Avail (Pldg) = NA
+
+AC-&gt;&gt;-PQP: Resume Purpose Queue Process
+PQP--&gt;PQP: Pledges Skipped?	Yes
+PQP-&gt;&gt;-B: Purpose Queue	: Hold
+end % NSQ B
+
+loop Start NSQ Process - Purpose &amp; Non- Purpose Arrangement
+A--&gt;+A: Seq 2
+A-&gt;&gt;NSQ: Start NSQ process
+NSQ--xA: PE=N and NPE=N	No
+NSQ--xA: PE=Y and NPE=N	No
+NSQ--xA: PE=N and NPE=Y	No
+NSQ--&gt;&gt;A: PE=Y and NPE=Y Yes
+NSQ-&gt;&gt;-NSQ: PE Consumption &amp; Set Argmt Status = In Process
+end
+</div>
+
+        </article>
+        <hr>
+
+        
+        
+            
+            
+                
+                    
+                        
+                        <h2 id="similar_posts">Similar Posts</h2>
+                        <ul>
+                        
+                        <li class="relatedPost">
+                            <a href="/blog/2017/10/16/tips_git_merge_two_repos/">Tips: Merging two separate Git Repos
+                            
+                            </a>
+                        </li>
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                        
+                        <li class="relatedPost">
+                            <a href="/blog/2017/08/19/primer_git/">Primer: Gitting Started!
+                            
+                            </a>
+                        </li>
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                        
+                        <li class="relatedPost">
+                            <a href="/blog/2017/07/16/reco_mindmap/">Reco: MindMap tools for Notes
+                            
+                            </a>
+                        </li>
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                        
+                        <li class="relatedPost">
+                            <a href="/blog/2016/05/23/tut_testing_topics/">Quick guide on where-to-start: Testing edition!
+                            
+                            </a>
+                        </li>
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                        
+                        <li class="relatedPost">
+                            <a href="/blog/2016/04/22/idea_semi_manual_testing/">Idea: Logging mechanish for semi-manual testing
+                            
+                            </a>
+                        </li>
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+        
+        
+            </ul>
+        
+
+        <div class="post-recent">
+    <hr>
+    <div class="pre">
+        
+        <p><strong>Prev Post</strong> <a href="/blog/2016/08/21/ref_ruby/">Guide: Getting up to speed on Ruby</a></p>
+        
+    </div>
+    <div class="nex">
+
+        
+        <p><strong>Next Post</strong> <a href="/blog/2017/05/23/tut_excel_macro_vba/">Primer: Up and running with VBA Macros on Excel</a></p>
+        
+    </div>
+</div>
+
+
+        <h2 id="comments">Comments</h2>
+        
+
+<div id="disqus_thread"></div>
+<script>
+    /**
+     * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+
+    var disqus_config = function() {
+        this.page.url = 'https://ufo2mstar.github.io/blog/2017/04/17/idea_mermaid_sequence_diagrams/'; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'https://ufo2mstar.github.io/blog/2017/04/17/idea_mermaid_sequence_diagrams/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document,
+            s = d.createElement('script');
+
+        s.src = 'https://ufo2mstar-github-io.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+    </div>
+    <button class="anchor"><i class="fa
+    <!--fa-list-alt-->
+    fa-indent
+"></i></button>
+    <div class="right">
+        <div class="wrap">
+
+            <!-- Content -->
+            <div class="side content">
+                <div>
+                    Content
+                </div>
+                <ul id="content-side" class="content-ul">
+                    
+                    <li><a href="#similar_posts">Similar Posts</a></li>
+                    
+                    <li><a href="#comments">Comments</a></li>
+                </ul>
+            </div>
+            <!-- The other div boxes are placed here -->
+            <!-- <div class="side">bbbb</div> -->
+        </div>
+    </div>
+</div>
+<script>
+/**
+ * target _blank
+ */
+(function() {
+    var aTags = document.querySelectorAll('article a:not([id])')
+    for (var i = 0; i < aTags.length; i++) {
+        aTags[i].setAttribute('target', '_blank')
+    }
+}());
+</script>
+<script src='https://ufo2mstar.github.io/js/pageContent.js' charset="utf-8"></script>
+
+
+    <footer class="site-footer">
+
+
+    <div class="wrapper">
+
+        <p class="description">
+            
+
+            my other online exploits
+
+            
+        </p>
+        <p class="contact">
+            
+            <a href="https://github.com/ufo2mstar" title="GitHub"><i class="fa fa-github"
+                                                                                    aria-hidden="true"></i></a>
+            
+
+            
+            <a href="mailto:narensst@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
+            
+
+            
+
+            
+            <a href="https://twitter.com/ufo2m" title="Twitter"><i class="fa fa-twitter"
+                                                                                       aria-hidden="true"></i></a>
+            
+
+            
+
+            
+            <a href="https://www.linkedin.com/in/narenss" title="LinkedIn"><i class="fa fa-linkedin"
+                                                                                                 aria-hidden="true"></i></a>
+            
+
+            
+        </p>
+        <!--<p>-->
+        <!--The total number of visitors-->
+        <!--<span id="busuanzi_value_site_pv"> </span>-->
+        <!--<span id="busuanzi_value_site_uv"> </span>, total reading-->
+        <!--<span id="busuanzi_value_page_pv"> </span> times-->
+        <!--</p>-->
+        <p class="power">
+            <span>
+                Thank's to <a href="https://jekyllrb.com/">Jekyll</a> & <a
+                    href="https://pages.github.com/">Github Pages</a>.
+            </span>
+            <!--<span>-->
+            <!--Theme designed by <a href="https://github.com/Gaohaoyang">HyG</a>.-->
+            <!--</span>-->
+        </p>
+    </div>
+</footer>
+
+<!--note: investigate the below-->
+<!--<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>-->
+
+    <div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <!--<script src=' /js/jquery-1.11.1.js ' charset="utf-8"></script>-->
+    <!--<script src=' /js/bootstrap.min.js ' charset="utf-8"></script>-->
+
+    <script src='https://ufo2mstar.github.io/js/main.js' charset="utf-8"></script>
+    <script src='https://ufo2mstar.github.io/js/smooth-scroll.min.js' charset="utf-8"></script>
+    
+    <!-- fellow developers are the best! -->
+    <script src='https://ufo2mstar.github.io/js/jquery.fitvids.js' charset="utf-8"></script>
+
+    <script type="text/javascript">
+        $('iframe[src*="youtu"]').parent().fitVids();
+//        $('iframe[src*="drive.google"]').parent().fitVids();
+//        $("#vid").fitVids();
+        $("#vid").fitVids({ customSelector: "iframe[src^='https://drive.google.com']"});
+
+    </script>
+    
+    <script type="text/javascript">
+      smoothScroll.init({
+        speed: 500, // Integer. How fast to complete the scroll in milliseconds
+        easing: 'easeInOutCubic', // Easing pattern to use
+        offset: 20, // Integer. How far to offset the scrolling anchor location in pixels
+      });
+    </script>
+    <!-- <script src=" /js/scroll.min.js " charset="utf-8"></script> -->
+  </body>
+
+</html>
