@@ -22,10 +22,12 @@ dimension and possibly the start in the making of me.
 A dear friend of mine has been fixated on a book he came across 
 [Natural Enmity: Reflections on the Niti and Rasa of the Pancatantra](https://www.amazon.com/Natural-Enmity-Reflections-Pancatantra-Commentary/dp/1537751832) 
 
+as I was penning down my thoughts and read some panchathantra for my research, i realized where we are talking across each other.. what you are calling moral (in terms of natural enmity, which in retrospect is apparent from your lion-deer example) is what i call survival strategy.. the objective morals i am talking about is the set of rules that if all the lions follow
 
 I recently got lobbed juicy full toss with a terribly misplaced metaphor (thus demonstrating how tenuous reasoning by analogy can be). 
 
 a priori (ie: making conclusions through theoretical inferences rather than empirical evidence)
+
 It's almost a game to point out where the analogy breaks down, but with due consideration to this fact, certain comparisons are at best wrongheaded and at worst, deliberately malicious and using intending to use rhetoric to win the argument
 
 To dissect your example:
