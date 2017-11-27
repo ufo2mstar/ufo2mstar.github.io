@@ -8,6 +8,10 @@ video {
     width: 100%;
 }
 
+.emoji{
+    width: Auto;
+}
+
 blockquote,
 twitterwidget {
     /*data-width: "100%";*/

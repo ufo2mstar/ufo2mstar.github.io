@@ -49,3 +49,23 @@ There are things that are different in character in the above example.
 While it is always endearing to our inner-child to see anthropomorphic characters engaged in a battle of wits, the unfortunate
 tantalizing
 tenuous
+
+
+# Struggle for Existance
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/AAPVmY8FLlM" frameborder="0" allowfullscreen></iframe>
+
+Philosophy is like Rainman: a slow elder brother, who rocks, lives in the dark and can't help you out directly, but without whom you wouldn't be here today.
+
+http://www.pbs.org/wgbh/nova/blogs/physics/2015/04/physics-needs-philosophy/
+
+## Feynman's approach to tackling philosophy
+1. Hear the view point
+2. take the exact opposite of it and see how the world would be different if it were true than what it is now
+3. if not, then it just as well be either
+
+# Need for co-operation
+<iframe width="560" height="315" src="https://www.youtube.com/embed/t_pkurcA_nw" frameborder="0" allowfullscreen></iframe>
+
+Tit for tat may lose battles, but wins wars..
+
