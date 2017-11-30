@@ -55,3 +55,15 @@
 (function() {
   var demoItems = document.querySelectorAll('.grid-item')
 }());
+
+
+
+// Twitter customize params
+// twttr.widgets.createTweet(
+//     "20",
+//     document.getElementById("tweet-container"),
+//     {
+//         linkColor: "#55acee",
+//         align: "center"
+//     }
+// );

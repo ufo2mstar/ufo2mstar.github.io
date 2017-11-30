@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--<link rel="stylesheet" href="https://at.alicdn.com/t/font_8v3czwksspqlg14i.css">-->
     <link rel="stylesheet" href='/css/main.css'>
+    <link rel="stylesheet" href='/css/custom.css'>
     <link rel="canonical" href="https://ufo2mstar.github.io/blog/2017/04/17/idea_mermaid_sequence_diagrams/">
     <link rel="alternate" type="application/rss+xml" title="Un Ltd."
           href="https://ufo2mstar.github.io/feed.xml">
@@ -89,8 +90,8 @@
     
     <style>
         div {
-            text-align: justify;
-            text-justify: inter-word;
+            /*text-align: justify;*/
+            /*text-justify: inter-word;*/
         }
     </style>
 </head>
@@ -189,16 +190,6 @@
                 
                 
                 
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
             </ul>
         </nav>
     </div>
@@ -268,186 +259,100 @@
         <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
         
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.js"></script>
-<div class="mermaid">
-classDiagram
-Class01 &lt;|-- AveryLongClass : Cool
-Class03 *-- Class04
-Class05 o-- Class06
-Class07 .. Class08
-Class09 --&gt; C2 : Where am i?
-Class09 --* C3
-Class09 --|&gt; Class07
-Class07 : equals()
-Class07 : Object[] elementData
-Class01 : size()
-Class01 : int chimp
-Class01 : int gorilla
-Class08 &lt;--&gt; C2: Cool label
-</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.js"></script>
-<div class="mermaid">
-sequenceDiagram
-Participant A
-Participant B
-Participant C
-
-% Not Started Queue
-Participant NSQ
-%PE Consumption 
-Participant PEC
-% Availability Calc
-Participant AC
-% Collecting Pledged Assets 
-Participant CPA
-% Purpose Queue Process
-Participant PQP
-
-loop Pre-processing
-opt PreProc Arrangements
-Note over A,C: Outgoing pledges
-A--&gt;&gt;A: Out Pldgs = 1
-B--&gt;&gt;B: Out Pldgs = 0
-C--&gt;&gt;C: Out Pldgs = 1
-
-Note over A,C: Incoming pledges
-A--&gt;A: In Pldgs = 0
-B--&gt;B: In Pldgs = 2
-C--&gt;C: In Pldgs = 0
-
-Note over A,C: Purpose Exposure
-A-&gt;&gt;A: PE flag = Y, Status = Not Started
-B-&gt;&gt;B: PE flag = Y, Status = Not Started
-
-Note over A,C: Non-Purpose Expo
-A--&gt;A: NPE flag = Y, Status = Not Started
-C--&gt;C: NPE flag = Y, Status = Not Started
-end
-
-loop PreProc Collaterals
-Note over A,C: Collateral asset position available to review?
-A--&gt;&gt;+A: Yes
-B--XB: No
-C--&gt;&gt;+C: Yes
-Note left of A: Update the asset position with final haircut % on the position
-Note over A,C: Collateral asset position available to review?
-A--&gt;&gt;A: Yes
-C--X-C: No
-Note left of A: Update the asset position with final haircut % on the position
-Note over A,C: Collateral asset position available to review?
-A--x-A: No
-end
-
-opt Sequence
-Note left of A: Queue=NotStarted
-
-Note over A,C: a. Process arrangements with no incoming or outgoing pledges.. b. Process arrangements with PE = Y c. Process arrangements with children = 0 (for which depth =0) and then.. d. Process arrangements with depth = 1,2…etc and parent = Y in ascending order to the maximum depth
-Note over B: 1
-Note over A: 2
-Note over C: 3
-end
-end
-
-loop Starting NOT STARTED Queue processing
-B--&gt;+B: Seq 1
-B-&gt;&gt;NSQ: Start NSQ process
-NSQ--xB: PE=N and NPE=N
-NSQ--&gt;&gt;B: PE=Y and NPE=N
-NSQ-&gt;&gt;NSQ: PE Consumption &amp; Set Argmt Status = Processing
-
-NSQ-&gt;&gt;+PEC: Start PE consumption
-PEC--&gt;&gt;B: P.E Status = Not Started
-Note over B: List of all assets "Owned" by the arrangement
-Note over B: List of all assets from Whole Pledges
-
-Note over B: Combination of all unconsumed assets as one basket of assets available for arrangement
-PEC--&gt;&gt;B: Unconsumed assets remaining? = No
-
-
-PEC-&gt;&gt;-AC: Start Availability Calc
-
-AC--&gt;+AC: Arrangement has Purpose exposure Yes
-AC--&gt;AC: Purpose Exposure Remaining to be Covered &lt; 0 Yes
-AC--&gt;&gt;B:P. Brrw. Avail=0
-AC--&gt;&gt;B:NP. Brrw. Avail=0
-AC--&gt;&gt;B:PLV. Deficit=PERC
-AC--&gt;AC:Arrangement has Non-Purpose exposure ? No
-AC--&gt;&gt;B:NP. Deficit=0
-AC--&gt;AC:Arrangement has unprocessed pledges ? Yes
-AC--&gt;&gt;B:P. Brrw. Avail (Pldg) = NA
-AC--&gt;&gt;B:NP. Brrw. Avail (Pldg) = NA
-
-AC-&gt;&gt;-NSQ: Resume NSQ Process - Purpose Only Arrangement
-NSQ--&gt;NSQ:Incoming Pledges Exist ? Yes
-NSQ-&gt;&gt;PQP: Start Purpose Queue Process 
-PQP-&gt;&gt;PEC: Hold Purpose Queue Process 
-PEC--&gt;&gt;B: P.E Status = Not Started No
-PEC--&gt;&gt;B: Unprocessed/ Skipped pledges? Yes
-Note over PEC: Reset the Pledge processed flag for all the pledges 
-Note over B: List all assets from eligible pledges (limited/unl) 
-
-PEC-&gt;&gt;CPA: Start Collecting Pledged Assets = Unlimited Pledge
-Note over CPA: Unlimited Pledges
-CPA--&gt;CPA: Unlimited Pledge(s) Received ? Yes
-CPA--&gt;CPA: All Unlimited Pledge issuers processed ? No
-CPA--&gt;+A: Choose an un-processed unlimited pledge: Client A
-CPA--&gt;CPA: Parent (issuer) has PE ? Yes
-CPA--&gt;&gt;A: Set Purpose Pledge = Y
-CPA--&gt;CPA: Issuer’s PE Status = “comp” ? No
-CPA--&gt;-A: done with A
-Note over CPA: Skip the pledge as “ineligible” for consumption at the moment AND mark the pledge as “skipped” 
-CPA--&gt;CPA: All Unlimited Pledge issuers processed ? No
-CPA--&gt;+C: Choose an un-processed unlimited pledge Client C
-CPA--&gt;CPA: Parent (issuer) has PE ? No
-CPA--&gt;CPA: Argmt has PE? No
-CPA--&gt;CPA: Parent (issuer) has NPE ? Yes
-CPA--&gt;CPA: Parent (issuer) NP Expo Sttaus = Not Started Yes
-CPA--&gt;-C: done with C
-Note over CPA: Skip the pledge as “ineligible” for consumption at the moment AND mark the pledge as “skipped”
-CPA--&gt;CPA: All Unlimited Pledge issuers processed ? Yes
-
-Note over CPA:?? Limited-Pledge Prioritization
-Note over CPA: Limited Pledges
-CPA--&gt;CPA: limited Pledge(s) Received ? No
-
-CPA-&gt;&gt;PEC:Resume PE Consumption
-PEC--&gt;PEC: Eligible pledges has margin stock? No
-PEC--&gt;PEC: PERC &lt; 0 Yes
-Note over B: List all assets “Owned” by the arrangement
-
-PEC-&gt;&gt;+AC: Start Availability Calc
-AC--&gt;AC: Arrangement has Purpose exposure Yes
-AC--&gt;AC: Purpose Exposure Remaining to be Covered &lt; 0 Yes
-AC--&gt;&gt;B:P. Brrw. Avail=0
-AC--&gt;&gt;B:NP. Brrw. Avail=0
-AC--&gt;&gt;B:PLV. Deficit= PERC
-AC--&gt;AC:Arrangement has Non-Purpose exposure ? Yes
-AC--&gt;&gt;B:NP. Deficit= NPREC
-AC--&gt;AC:Arrangement has unprocessed pledges ? Yes
-AC--&gt;&gt;B:P. Brrw. Avail (Pldg) = NA
-AC--&gt;&gt;B:NP. Brrw. Avail (Pldg) = NA
-
-AC-&gt;&gt;-PQP: Resume Purpose Queue Process
-PQP--&gt;PQP: Pledges Skipped?	Yes
-PQP-&gt;&gt;-B: Purpose Queue	: Hold
-end % NSQ B
-
-loop Start NSQ Process - Purpose &amp; Non- Purpose Arrangement
-A--&gt;+A: Seq 2
-A-&gt;&gt;NSQ: Start NSQ process
-NSQ--xA: PE=N and NPE=N	No
-NSQ--xA: PE=Y and NPE=N	No
-NSQ--xA: PE=N and NPE=Y	No
-NSQ--&gt;&gt;A: PE=Y and NPE=Y Yes
-NSQ-&gt;&gt;-NSQ: PE Consumption &amp; Set Argmt Status = In Process
-end
-</div>
 
         </article>
         <hr>
 
         
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
         
             
             
@@ -730,143 +635,6 @@ end
                 
             
         
-            
-            
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                        
-                        <li class="relatedPost">
-                            <a href="/blog/2016/05/23/tut_testing_topics/">Quick guide on where-to-start: Testing edition!
-                            
-                            </a>
-                        </li>
-                        
-                        
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                        
-                        <li class="relatedPost">
-                            <a href="/blog/2016/04/22/idea_semi_manual_testing/">Idea: Logging mechanish for semi-manual testing
-                            
-                            </a>
-                        </li>
-                        
-                        
-                    
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-            
-        
         
             </ul>
         
@@ -1036,7 +804,9 @@ end
         $('iframe[src*="youtu"]').parent().fitVids();
 //        $('iframe[src*="drive.google"]').parent().fitVids();
 //        $("#vid").fitVids();
-        $("#vid").fitVids({ customSelector: "iframe[src^='https://drive.google.com']"});
+//        $("#vid").fitVids({ customSelector: "iframe[src^='https://drive.google.com']"});
+        $("*").fitVids({ customSelector: "iframe[src^='https://drive.google.com']"});
+//        $("*").fitVids({ customSelector: "img[src^='https://lh3.googleusercontent.com']"});
 
     </script>
     
