@@ -11,8 +11,6 @@ mathjax: true
 * content
 {:toc}
 
-# Friendship: limit extends to Dunbar
-
 
 ## Kinship and Friendship
 As my quest to pin down morality continues, one important concept that I want to put down is my current take on the facts around friendship and kinship.
@@ -22,15 +20,16 @@ One of the strong contentions I hear from my friend (an ardent supporter of all-
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 Two things jump out
 
-1. I can't help but see Hinduism as a melting pot of a plethora of philosophies and ideologies to begin with. So the above statement to me reads like "The Ideology capital comprises of people" it just reduces to a tautology. I feel the classification and grouping-by-attributes that applies so well to abrahamic faiths does not map back to oriental belief-systems.
+1. I can't help but see Hinduism as a melting pot of a plethora of philosophies and ideologies to begin with. So the above statement to me reads like "The Ideology capital comprises of groups of people (and ironically, is not ideology based)": and just reduces to a tautology. 
+I feel the classification and grouping-by-attributes that applies so well to Abrahamic faiths does not map back to Oriental belief-systems.
 
 
-2. To me, ideological bonds, formed out of necessity, rather than mere presence remain more meaningful and stand the test time. Though I do agree that 
-kinship bonds have a simpler identity marker for the limbic system to recognize, other than for the closest of relations, I am not sure how much this holds sway.
+2. I do agree that kinship bonds have a simpler identity marker for the limbic system to recognize, other than for the closest of relations, I am not sure how much this holds sway. To me, ideological bonds, formed out of necessity, rather than static factors (like birth and bonds) remain more meaningful and stand the test time. 
 
 
 A pertinent screengrab from [The Late Show with Stephen Colbert](https://www.youtube.com/channel/UCMtFAi84ehTSYSE9XoHefig) on [CBS](http://www.cbs.com/shows/the-late-show-with-stephen-colbert/)
 ironically depicts the possible attitudes of a self-centered culture of kins, who in a zero sum game, can play the field: as, in that case, greed is rewarded. 
+
 <a href='https://photos.google.com/share/AF1QipOE6vjK76tsZ3KEBFt-19vu5Wec2BmcvuBoRMFuwhjcFCktYU_NXen4R8HW8R-Xng?key=NnBlZ0hPdlRzSE5DaFpVNHFMcEVXUjRGR1FJUkFR&source=ctrlq.org'><img src='https://lh3.googleusercontent.com/FsMwLMNTXEOO8SPNq1-4r_8jvacXXpSCo_PT-s8fimSW_61qIZvFp09BjGlaKXUYDJfmkCwMKSR8iWW9PIZSKDb-_hvejcbcFSG3gu2ag70-S2Tip_-3hMipfIFL33Gzc3nnikqcJAo' /></a>
 
 ## the selfish-gene (reciprocal altruism)
@@ -80,6 +79,6 @@ $$Friendship\;quotient = \lim_{x\to (Dunbar Number)} \frac{ f\left(\overbrace{ap
 I feel this voluntary support bartering that shines through, over any fatalistic pre-determinacy that may light our path in the true battle to come: surviving the inevitability of Darwinian nature taking it's course as the geological and archeological history suggests.
 
 
-#After Hours References:
+# After Hours References:
 For
 <iframe width="560" height="315" src="https://www.youtube.com/embed/_osKgFwKoDQ" frameborder="0" allowfullscreen></iframe> 

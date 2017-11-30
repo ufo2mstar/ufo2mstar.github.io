@@ -12,14 +12,15 @@ mathjax: true
 {:toc}
 
 # PreScript:
-Insights serve well cataloged online, as not only you, but the whole world can better understand your position..
+Insights serve well cataloged online, as not only you, but the whole world can better understand your position.. said every blogger ever :bowtie:
 
 ## an approach..
 Let's starting by giving them the benefit of doubt: 
-> People are making the best decision possible with all the information that they have access to.
+> People make the best decision possible with all the information that they have access to.
 
-If solving Math problems in school is any indication, it is not too hard to see that as people, we can be ***Absolutely wrong!***  
+If solving Math problems in school is any indication, it is not too hard to see that as people, on many things we can easily be ***Absolutely wrong!***  
 It only serves us better if we can accept these errors and try to make better decisions in the future as a direct consequence.
+
 ## a point of view..
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">open-minded people are curious why people do not agree with them. close-minded people are frustrated that people do not agree with them.</p>&mdash; Auren Hoffman (@auren) <a href="https://twitter.com/auren/status/934549509941497856?ref_src=twsrc%5Etfw">November 25, 2017</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -59,7 +60,8 @@ One of the earliest successful solutions to the [knowledge acquisition](https://
 Transposing the insight from the above exercise into a workable life lesson, we have 
 
 ## How-to
-Opinions are objects you carry with you in a box and should be easily replaceable, swaping it out for a better opinion if they turn out to be no good anymore..The trick is to keep your identity separate from your opinions..
+Opinions are objects you carry with you in a box and should be easily replaceable: swaping it out for a better opinion if they turn out to be no good anymore..
+>The trick is to keep your identity separate from your opinions.
 
 
 If you attribute your opinions to your identity, i.e: what's in the box is who your are, then you will cling to them despite any evidence to the contrary!
@@ -72,18 +74,18 @@ On the three possible degrees of improper information, being:
 - Under-informed and 
 - Utterly Misinformed
 
-the only way to be properly informed is to put new information through the evaluation filter (no matter how clean or cluttered it is) and honing this information (particulars) processing procedure in practice so that prejudiced propaganda can be pried of for purity.  
+the only way to be properly informed is to put new information through the evaluation filter (no matter how clean or cluttered it is) and honing this information (particulars) processing procedure in practice so that prejudiced propaganda can be purged for purity.  
 Simple probability shows us how we are more likely to be wrong than right about things we have little to no knowledge in: by the sheer fact that there are many more ways to be wrong than not!
 The significance of this feedback loop for self-correction should not be understated, because that is exactly what we call **learning!**  
 
 
-# In defence of staying-put! uncompromisingness inflexibility 
+# In defence of inflexibility! 
 Could there be any merits to narrow/close mindedness?  
 A funny quote I remember seeing somewhere:
 > The problem with narrow-minded people is that **their mouths is always open!** :stuck_out_tongue_closed_eyes:  
 
-## quick side-note
-The extent to which I have trouble understanding people is simply illustrative in that some of my dear friends who I love and respect are proud to tag themselves as a [Conservative](http://www.thesaurus.com/browse/conservative), and I find it interesting how the thesauras generously adorn the word with such epithets as :smiley: :
+## quick side-note (or side-swipe :wink:)
+The extent to which I have trouble understanding people is illustrative in that some of my dear friends, who I love and respect, are proud to brand themselves as [Conservatives](http://www.thesaurus.com/browse/conservative), and I find it amusing how the thesauras generously adorn the word with such epithets as :smiley: :
 - illiberal
 - inflexible
 - unimaginative
@@ -101,15 +103,6 @@ The extent to which I have trouble understanding people is simply illustrative i
 ## Jokes aside, 
 Although I feel that **healthy skepticism is always a benefit**, the sustenance and prevalence of this trait through the evolutionary timeline can only be ascribed to be 
 > **a good survival strategy**, as it is _more favorable to fall or flourish as a **flock**!_ 
-
-## In action
-> "I was **only following orders!**"
-
-Close-minded adherence to leadership at times of crisis 
-- at it's best leads to **Revolutions**  
-like the **French** or **American Revolutions**, laying the groundwork for these thriving economic centers of today
-- at it's worst leads to **World Wars**  
-from the **Nuremberg defense** to **Manhattan Project**.. _both sides, both sides_ :smirk: (oh 2017 presidential references, how long will you be remembered?) 
 
 ## Circumstances
 Some major prerequisite to open-minded exploration are: 
@@ -130,14 +123,25 @@ Among the many concerns with this approach is
 1. the uncertainity in establishing the credibility of the leader
 2. the possibility of selecting charlatans and rhetoricians and salesmen (if the political climate of late is anything to go by)
 
+## And In action
+Historically Close-minded adherence to leadership at times of crisis
+> "I was **only following orders!**"
+ 
+- at it's best leads to **Revolutions**  
+like the **French** or **American Revolutions**, laying the groundwork for these thriving economic centers of today
+- at it's worst leads to **World Wars**  
+from the **Nuremberg defense** to **Manhattan Project**.. _both sides, both sides_ :smirk: (oh! 2017 presidential references, how long will you be remembered?) 
+
+It is very hard to prescribe a generic course of action, in simple terms, for the multivariate complex problems we solve everyday and the decisions we are faced with. But IMHO, I feel a certain degree of self-consciousness (of your mental station) along with factoring into your formulation historical and evident scientific facts, goes a long way in trying to keep bias at bay. 
+
 # On Neutral-minded, non-opinionated, nonviolent stoicism..
 Alright, this post has inflated enough already!.. watch out for the next installment of, reasoning from disparate subject fields :grin:
 
 # Bottomline
-But with time to revel on any topic (casual or contentious), and intellectual prowess to pry into its depths, I myself opt for the former, as I believe 
+But for any topic (casual or contentious), if I have time to revel on it, and intellectual prowess to pry into its depths, I myself opt for the former, as I believe 
 > open minds opens doors!
 
-and for those who feel I am being too idealistic, **remember** (to vaguely misquote something I have heard before) 
+and for those who feel I am being too idealistic, **remember** (to vaguely (_mis_)quote something I have heard before) 
 > No pessimist has ever won a war..
 
 
