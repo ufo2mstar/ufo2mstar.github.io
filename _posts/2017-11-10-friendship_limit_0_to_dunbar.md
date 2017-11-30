@@ -38,7 +38,8 @@ Thinking about how the moral landscape is not subject to feelings of kin-favorit
 One of the many understated points here is that people should not necessarily take their cues from nature, as that would not be a congenial society to co-exist and thrive, for, after all, we have spent millennia making civilization possible by understanding that life on this beautiful planet is a non-zero sum game, and in game-theory terms, we sure are in an essentially infinite game with nature. 
 [Dawkins speech]
 <iframe width="560" height="315" src="https://www.youtube.com/embed/6gE_IPTXznM" frameborder="0" allowfullscreen></iframe>
-
+  and
+  
 <iframe width="560" height="315" src="https://www.youtube.com/embed/WGL4HPuFKZA" frameborder="0" allowfullscreen></iframe>
 
 ## game-theory solutions 
@@ -47,7 +48,7 @@ One of the many understated points here is that people should not necessarily ta
 If you are not familiar with the prisoner's dilemma, I encourage you to check these out before continuing..
 [this place vids]
 <iframe width="560" height="315" src="https://www.youtube.com/embed/t9Lo2fgxWHw" frameborder="0" allowfullscreen></iframe>
-
+  in conjunction with
 <iframe width="560" height="315" src="https://www.youtube.com/embed/BOvAbjfJ0x0" frameborder="0" allowfullscreen></iframe>
 
 
@@ -55,7 +56,8 @@ If you are not familiar with the prisoner's dilemma, I encourage you to check th
 The point to emphasize here is that the whole point of choosing ideology is to go against nature (as we do with so many other things and actions that we readily associate with comfort and development today; albeit we haven't been as self-aware of the consequences of some of our attempts at betterment).
 [Zogg]
 <iframe width="560" height="315" src="https://www.youtube.com/embed/zkS6WpbLUFw" frameborder="0" allowfullscreen></iframe>
-
+  and
+  
 <iframe width="560" height="315" src="https://www.youtube.com/embed/oj__w87vkow" frameborder="0" allowfullscreen></iframe>
 
 It is a perfectly good strategy for days when exploration of allies far across known borders was limited, and collective-action was better than self/kin-loathing. The difference is parameter here, with globalization, to parochial equates to being non-sustainable. As can be noted that there are no winners if you want to beat members of your own team!
