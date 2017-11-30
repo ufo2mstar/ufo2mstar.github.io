@@ -44,10 +44,10 @@ Calling out people as close-minded just because they are more prone to standing 
 
 
 # Expert Systems
-There is an extremely important but acutely undervalued virtue today.. 
+There is an extremely important but acutely undervalued virtue today: 
 > the importance of being able to **change your mind!**..
 
-Let's quickly go through the advent of our attempt to crack AI by developing systems that display aspects of intelligent behaviour for a moment. One of the earliest successful solutions to the [knowledge acquisition](https://en.wikipedia.org/wiki/Knowledge_acquisition) problem was by modeling decision-making of highly skilled experts in certain fields (say doctors) by means of a set of **if-then** rules. Although these [Expert Systems](http://www.umsl.edu/~joshik/msis480/chapt11.htm) proved to be very reliable, [in many fields (even financial risk management, etc)](https://hbr.org/1988/03/putting-expert-systems-to-work), some of the issues observed were
+Let's quickly go through the advent of our attempt to crack AI by developing systems that display aspects of intelligent behavior for a moment. One of the earliest successful solutions to the [knowledge acquisition](https://en.wikipedia.org/wiki/Knowledge_acquisition) problem was by modeling decision-making of highly skilled experts in certain fields (say doctors) by means of a set of **if-then** rules. Although these [Expert Systems](http://www.umsl.edu/~joshik/msis480/chapt11.htm) proved to be very reliable, [in many fields (even financial risk management, etc)](https://hbr.org/1988/03/putting-expert-systems-to-work), some of the issues observed were
  1. It was difficult to simplify many questions to simple paired rules
  2. Even if done in intricate detail, exceptions throw off predefined rules
  3. Performance drops exponentially ($2^n\,rules$ even for simple systems) as domain knowledge grows
@@ -88,7 +88,9 @@ Though widely regarded as a nuisance, this quote (that I remember seeing somewhe
 :sob: :weary: :loudspeaker: :rage3:
 
 Once you take the time to learn more about where they stand and you imagine them more complexly, you begin to see why their perspective may not be as absurd as you initially thought.
-Sometimes it is just that they struggle to communicate their internal thoughts and emotions clearly, or sometimes they just don't care to. 
+- Sometimes it is just that they struggle to communicate their internal thoughts and emotions clearly
+- Sometimes they just don't care, as they falsely assume everybody else is as closed-off to listening to reason as they are
+- Sometimes it may be that they don't have the courage of their convictions and are honestly afraid that their crutch, which is their belief system, may crumble if they truly test out the tenets of their system
 
 ## quick side-note (more like a side-swipe!)
 The extent to which I wonder if people really believe in what they say is illustrative in that some of my dear friends, who I love and respect, are proud to brand themselves as [Conservatives](http://www.thesaurus.com/browse/conservative), and I find it amusing how the thesaurus generously adorns this characteristic with such pleasing epithets as :smiley: :
@@ -146,8 +148,8 @@ from the **Nuremberg defense** to **Manhattan Project**.. _**both sides, both si
 It is very hard to prescribe a generic course of action, in simple terms, for the multivariate complex problems we solve every day and the decisions we are faced with. But IMHO, I feel a certain degree of self-consciousness (of your mental station) along with factoring into your formulation historical and evident scientific facts, goes a long way in trying to keep bias at bay. 
 
 # On neutral, non-opinionated, nonviolent stoicism
-K, this post has inflated enough already! :sweat_smile: and we have covered both the edge cases  
-Check out the analysis of the dispassionate neutral-mind on the next installment of `reasoning by making connections from disparate subject fields!`
+Okay... this post has inflated enough already! :sweat_smile: and we have covered both the edge cases (close- and open-mindedness)  
+Check out the analysis of the dispassionate neutral-mind on the next installment of `reasoning by making connections from non-intuitive disparate subject fields!`
 
 # Bottomline
 But for any topic (casual or contentious), if I have time to revel on it, and intellectual prowess to pry into its depths, I myself opt for the former, as I believe in this cheesy one-liner:
