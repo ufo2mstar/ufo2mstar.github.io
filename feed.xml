@@ -2,12 +2,64 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Un Ltd.</title>
-    <description>setting up a simple blog</description>
+    <description></description>
     <link>https://ufo2mstar.github.io/</link>
     <atom:link href="https://ufo2mstar.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 31 Oct 2017 01:16:10 -0400</pubDate>
-    <lastBuildDate>Tue, 31 Oct 2017 01:16:10 -0400</lastBuildDate>
+    <pubDate>Thu, 30 Nov 2017 03:47:54 -0500</pubDate>
+    <lastBuildDate>Thu, 30 Nov 2017 03:47:54 -0500</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
+    
+      <item>
+        <title>For those who want to be a rock</title>
+        <description>what are the possible outcomes from our actions?</description>
+        <pubDate>Wed, 29 Nov 2017 00:00:00 -0500</pubDate>
+        <link>https://ufo2mstar.github.io/blog/2017/11/29/being_a_rock/</link>
+        <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2017/11/29/being_a_rock/</guid>
+        
+        <category>Debate</category>
+        
+        <category>Morality</category>
+        
+        <category>Habits</category>
+        
+        
+        <category>Thoughts</category>
+        
+      </item>
+    
+      <item>
+        <title>Opinions and The Self</title>
+        <description>an analysis and rationalization of different states of the mind</description>
+        <pubDate>Mon, 27 Nov 2017 00:00:00 -0500</pubDate>
+        <link>https://ufo2mstar.github.io/blog/2017/11/27/mind_inputs_and_opinions/</link>
+        <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2017/11/27/mind_inputs_and_opinions/</guid>
+        
+        <category>Debate</category>
+        
+        <category>Morality</category>
+        
+        <category>Habits</category>
+        
+        
+        <category>Thoughts</category>
+        
+      </item>
+    
+      <item>
+        <title>Friendship: limit x tends to Dunbar</title>
+        <description>Yes, nature does direct the course of space-time, and here's how nature gives us power over it: by endowing us the ability to understand it!</description>
+        <pubDate>Fri, 10 Nov 2017 00:00:00 -0500</pubDate>
+        <link>https://ufo2mstar.github.io/blog/2017/11/10/friendship_limit_0_to_dunbar/</link>
+        <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2017/11/10/friendship_limit_0_to_dunbar/</guid>
+        
+        <category>Debate</category>
+        
+        <category>Morality</category>
+        
+        
+        <category>Thoughts</category>
+        
+      </item>
     
       <item>
         <title>Perils of terribly misplaced metaphors (in debates)</title>
@@ -138,66 +190,6 @@
         
         
         <category>Excel</category>
-        
-      </item>
-    
-      <item>
-        <title>Idea: Mermaid, for sequence diagrams</title>
-        <description>an awesome tool for quickly JS-ing sequence diagram (among other graphs)</description>
-        <pubDate>Mon, 17 Apr 2017 00:00:00 -0400</pubDate>
-        <link>https://ufo2mstar.github.io/blog/2017/04/17/idea_mermaid_sequence_diagrams/</link>
-        <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2017/04/17/idea_mermaid_sequence_diagrams/</guid>
-        
-        <category>Tips</category>
-        
-        <category>Tool</category>
-        
-        <category>Mermaid</category>
-        
-        <category>Javascript</category>
-        
-        
-        <category>Idea</category>
-        
-      </item>
-    
-      <item>
-        <title>Guide: Getting up to speed on Ruby</title>
-        <description>some helpful pointers for people getting started with the Ruby programming language..</description>
-        <pubDate>Sun, 21 Aug 2016 00:00:00 -0400</pubDate>
-        <link>https://ufo2mstar.github.io/blog/2016/08/21/ref_ruby/</link>
-        <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2016/08/21/ref_ruby/</guid>
-        
-        <category>Ruby</category>
-        
-        <category>OOP</category>
-        
-        
-        <category>Guide</category>
-        
-      </item>
-    
-      <item>
-        <title>Quick guide on where-to-start: Testing edition!</title>
-        <description>Want to get started with Automated testing? Here is a quick overview on the topics to be familiar with.</description>
-        <pubDate>Mon, 23 May 2016 11:14:54 -0400</pubDate>
-        <link>https://ufo2mstar.github.io/blog/2016/05/23/tut_testing_topics/</link>
-        <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2016/05/23/tut_testing_topics/</guid>
-        
-        <category>Testing</category>
-        
-        <category>Java</category>
-        
-        <category>Ruby</category>
-        
-        <category>Selenium</category>
-        
-        <category>OOP</category>
-        
-        <category>Tips</category>
-        
-        
-        <category>Testing</category>
         
       </item>
     
