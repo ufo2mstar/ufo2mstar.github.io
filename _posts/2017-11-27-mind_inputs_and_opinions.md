@@ -12,7 +12,7 @@ mathjax: true
 {:toc}
 
 # PreScript:
-Insights serve well cataloged online, as not only you, but the whole world can better understand your position.. said every blogger ever :bowtie:
+Insights serve well cataloged online, as not only you, but the whole world can better understand your position.. said every blogger ever :v: :grin:
 
 ## an approach..
 Let us start by giving them the benefit of doubt: 
@@ -87,7 +87,7 @@ A quote I remember seeing somewhere that underlines the main problem with :
 > The problem with close-minded people is that **their mouth is always open!** 
 :sob: :weary: :loudspeaker: :rage3: 
 
-## quick side-note (more like a side-swipe :wink:)
+## quick side-note (more like a side-swipe!)
 The extent to which I wonder if people really believe in what they say is illustrative in that some of my dear friends, who I love and respect, are proud to brand themselves as [Conservatives](http://www.thesaurus.com/browse/conservative), and I find it amusing how the thesaurus generously adorns this characteristic with such pleasing epithets as :smiley: :
 - illiberal
 - inflexible
@@ -142,9 +142,9 @@ from the **Nuremberg defense** to **Manhattan Project**.. _**both sides, both si
 
 It is very hard to prescribe a generic course of action, in simple terms, for the multivariate complex problems we solve every day and the decisions we are faced with. But IMHO, I feel a certain degree of self-consciousness (of your mental station) along with factoring into your formulation historical and evident scientific facts, goes a long way in trying to keep bias at bay. 
 
-# On Neutral-minded, non-opinionated, nonviolent stoicism..
-K, this post has inflated enough already! :sweat_smile:  
-if interested check out the next installment of `reasoning from disparate subject fields`
+# On neutral, non-opinionated, nonviolent stoicism
+K, this post has inflated enough already! :sweat_smile: and we have covered both the edge cases  
+Check out the analysis of the dispassionate neutral-mind on the next installment of `reasoning by making connections from disparate subject fields!`
 
 # Bottomline
 But for any topic (casual or contentious), if I have time to revel on it, and intellectual prowess to pry into its depths, I myself opt for the former, as I believe in this cheesy one-liner
