@@ -130,6 +130,8 @@ Among the many concerns with this approach is
 1. the uncertainity in establishing the credibility of the leader
 2. the possibility of selecting charlatans and rhetoricians and salesmen (if the political climate of late is anything to go by)
 
+# On Neutral-minded, non-opinionated, nonviolent stoicism..
+Alright, this post has inflated enough already!.. watch out for the next installment of, reasoning from disparate subject fields :grin:
 
 # Bottomline
 But with time to revel on any topic (casual or contentious), and intellectual prowess to pry into its depths, I myself opt for the former, as I believe 
