@@ -69,3 +69,8 @@ http://www.pbs.org/wgbh/nova/blogs/physics/2015/04/physics-needs-philosophy/
 
 Tit for tat may lose battles, but wins wars..
 
+# Human Differences
+https://www.skeptic.com/reading_room/defending-the-bell-curve-the-importance-of-human-differences/
+
+# Notes on Neural lacing and surpassing the neo-cortex
+https://waitbutwhy.com/2017/04/neuralink.html
