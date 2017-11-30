@@ -5,27 +5,9 @@
     <description></description>
     <link>https://ufo2mstar.github.io/</link>
     <atom:link href="https://ufo2mstar.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 30 Nov 2017 03:47:54 -0500</pubDate>
-    <lastBuildDate>Thu, 30 Nov 2017 03:47:54 -0500</lastBuildDate>
+    <pubDate>Thu, 30 Nov 2017 03:56:39 -0500</pubDate>
+    <lastBuildDate>Thu, 30 Nov 2017 03:56:39 -0500</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
-    
-      <item>
-        <title>For those who want to be a rock</title>
-        <description>what are the possible outcomes from our actions?</description>
-        <pubDate>Wed, 29 Nov 2017 00:00:00 -0500</pubDate>
-        <link>https://ufo2mstar.github.io/blog/2017/11/29/being_a_rock/</link>
-        <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2017/11/29/being_a_rock/</guid>
-        
-        <category>Debate</category>
-        
-        <category>Morality</category>
-        
-        <category>Habits</category>
-        
-        
-        <category>Thoughts</category>
-        
-      </item>
     
       <item>
         <title>Opinions and The Self</title>
@@ -190,6 +172,26 @@
         
         
         <category>Excel</category>
+        
+      </item>
+    
+      <item>
+        <title>Idea: Mermaid, for sequence diagrams</title>
+        <description>an awesome tool for quickly JS-ing sequence diagram (among other graphs)</description>
+        <pubDate>Mon, 17 Apr 2017 00:00:00 -0400</pubDate>
+        <link>https://ufo2mstar.github.io/blog/2017/04/17/idea_mermaid_sequence_diagrams/</link>
+        <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2017/04/17/idea_mermaid_sequence_diagrams/</guid>
+        
+        <category>Tips</category>
+        
+        <category>Tool</category>
+        
+        <category>Mermaid</category>
+        
+        <category>Javascript</category>
+        
+        
+        <category>Idea</category>
         
       </item>
     
