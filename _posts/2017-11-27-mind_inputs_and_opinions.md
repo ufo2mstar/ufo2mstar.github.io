@@ -71,21 +71,24 @@ If you attribute your opinions to your identity, _i.e: what's in the box is who 
 ## Because
 > If you want to always be right, you have got to be ready to change your mind!!
 
-On the three possible degrees of improper information, being:
+From the three possible degrees of improper information, being:
 - Uninformed, 
 - Under-informed and 
 - Utterly Misinformed
 
-the only way to be properly informed is to put new information through the evaluation filter (no matter how clean or cluttered it is) and honing this information (particulars) processing procedure in practice so that prejudiced propaganda can be purged for purity. ([the unfolding of which beautifully simplified and visualized here in this link](http://ncase.me/neurons/)) 
+the only way to be properly informed is to put new information through the `evaluation filter` (no matter how clean or cluttered it is now, you can better it with effort) and honing this information (particulars) processing procedure in practice so that prejudiced propaganda can be purged for purity. ([the unfolding of which beautifully simplified and visualized here in this link](http://ncase.me/neurons/)) 
 Simple probability shows us how we are more likely to be wrong than right about things we have little knowledge or experience in: by the sheer fact that there are many more ways to be wrong than not!
 The significance of this feedback loop for self-correction should not be understated, because isn't this exactly what we call **learning!** :blush: 
 
 
 # In defense of inflexibility! 
 Could there be any merits to narrow/close-mindedness?  
-A quote I remember seeing somewhere that underlines the main problem with :
+Though widely regarded as a nuisance, this quote (that I remember seeing somewhere) underlines the primary pain point with these wonderful folks:
 > The problem with close-minded people is that **their mouth is always open!** 
-:sob: :weary: :loudspeaker: :rage3: 
+:sob: :weary: :loudspeaker: :rage3:
+
+Once you take the time to learn more about where they stand and you imagine them more complexly, you begin to see why their perspective may not be as absurd as you initially thought.
+Sometimes it is just that they struggle to communicate their internal thoughts and emotions clearly, or sometimes they just don't care to. 
 
 ## quick side-note (more like a side-swipe!)
 The extent to which I wonder if people really believe in what they say is illustrative in that some of my dear friends, who I love and respect, are proud to brand themselves as [Conservatives](http://www.thesaurus.com/browse/conservative), and I find it amusing how the thesaurus generously adorns this characteristic with such pleasing epithets as :smiley: :
@@ -147,8 +150,8 @@ K, this post has inflated enough already! :sweat_smile: and we have covered both
 Check out the analysis of the dispassionate neutral-mind on the next installment of `reasoning by making connections from disparate subject fields!`
 
 # Bottomline
-But for any topic (casual or contentious), if I have time to revel on it, and intellectual prowess to pry into its depths, I myself opt for the former, as I believe in this cheesy one-liner
-> an open mind surely opens doors!
+But for any topic (casual or contentious), if I have time to revel on it, and intellectual prowess to pry into its depths, I myself opt for the former, as I believe in this cheesy one-liner:
+> An open mind surely opens doors!
 
 and for those who feel I am being too idealistic, **remember** (to vaguely (_mis_)quote something I have heard before) 
 > No pessimist has ever won a war...
