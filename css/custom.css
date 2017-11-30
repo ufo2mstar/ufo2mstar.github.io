@@ -12,8 +12,8 @@ video {
     width: Auto;
 }
 
-blockquote,
-twitterwidget {
-    /*data-width: "100%";*/
-    align-content: center;
+
+/*center align tweets*/
+.twitter-tweet {
+    margin: auto;
 }
