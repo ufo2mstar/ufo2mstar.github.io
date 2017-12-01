@@ -18,8 +18,8 @@ Insights serve well cataloged online, as not only you, but the whole world can b
 Let us start by giving them the benefit of doubt: 
 > People make the best decision possible with all the information that they have access to.
 
-If solving Math problems in school is any indication, it is not too hard to see that as people, on many things we can easily be ***Absolutely wrong!***  
-It only serves us better if we can accept these errors and try to make better decisions in the future as a direct consequence.
+If solving Math problems in school is any indication, it is not too hard to see how you can easily be ***absolutely wrong!***  
+It only serves you better if you can accept these errors and try to make better decisions in the future...
 
 ## a point of view..
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">open-minded people are curious why people do not agree with them. close-minded people are frustrated that people do not agree with them.</p>&mdash; Auren Hoffman (@auren) <a href="https://twitter.com/auren/status/934549509941497856?ref_src=twsrc%5Etfw">November 25, 2017</a></blockquote>
@@ -27,7 +27,7 @@ It only serves us better if we can accept these errors and try to make better de
 
 ## an opinion..
 At a glance, this intelligent quote makes you nod in agreement :smile: 
-Seeming to indicate that everybody tends to disagree with others, doggedly stand their ground and wonder why the 'other side' does not agree with them more.
+Seeming to indicate that everybody tends to disagree with others, doggedly stand their ground, and wonder why the 'other side' does not agree with them more.
 
 But reading into it, you notice the mischaracterization of the two sides.
 
@@ -39,32 +39,32 @@ or
 3. they are too `stubborn` to try and learn anything new! :stuck_out_tongue:
 
 > Disclaimer:  
-As always, I am not a big fan of broad biased bucketing of people into such broad categories. These are different states of mind that everybody is subject to and capable of displaying, depending on the situation.   
-Calling out people as close-minded just because they are more prone to standing their ground or open-minded because they claim they are just isn't fair :expressionless:
+As always, I am not a big fan of bucketing of people into such broad categories. Depending on the situation, these are just different states of mind that everybody is subject to and capable of displaying.   
+Calling out people as **close-minded** just because they are _more prone to standing their ground_ or **open-minded** because _they claim that they are_ just isn't fair :expressionless:
 
 
 # Expert Systems
 There is an extremely important but acutely undervalued virtue today: 
 > the importance of being able to **change your mind!**..
 
-Let's quickly go through the advent of our attempt to crack AI by developing systems that display aspects of intelligent behavior for a moment. One of the earliest successful solutions to the [knowledge acquisition](https://en.wikipedia.org/wiki/Knowledge_acquisition) problem was by modeling decision-making of highly skilled experts in certain fields (say doctors) by means of a set of **if-then** rules. Although these [Expert Systems](http://www.umsl.edu/~joshik/msis480/chapt11.htm) proved to be very reliable, [in many fields (even financial risk management, etc)](https://hbr.org/1988/03/putting-expert-systems-to-work), some of the issues observed were
- 1. It was difficult to simplify many questions to simple paired rules
- 2. Even if done in intricate detail, exceptions throw off predefined rules
+Let's quickly go through the advent of our attempt to crack AI, developing systems that display aspects of intelligent behavior. One of the earliest successful solutions to the [knowledge acquisition](https://en.wikipedia.org/wiki/Knowledge_acquisition) problem was modeling decision-making of highly skilled experts in certain fields (say doctors) by means of a set of **if-then-else** rules. Although these [Expert Systems](http://www.umsl.edu/~joshik/msis480/chapt11.htm) proved to be reasonably reliable [in many fields (even financial risk management, etc)](https://hbr.org/1988/03/putting-expert-systems-to-work), some of the issues observed were:
+ 1. It was difficult to simplify many questions to simple limited sets of rules
+ 2. Even if done in intricate detail, exceptions can throw off the predefined rules
  3. Performance drops exponentially ($2^n\,rules$ even for simple systems) as domain knowledge grows
+ 4. Adaptability to change can be very tedious depending on which level the change lies  
  
- Apart from more experiment design issues such as 
- 4. Getting the time and resources of the real Experts to contribute knowledge in the face of actually doing their tasks
- 5. Encoding more complex rules in subject domains with many pathways becomes difficult without data model changes
- 6. Available technology can be a problem, but [Moores law usually kicks in to save the day](http://www.economist.com/technology-quarterly/2016-03-12/after-moores-law)
+Apart from more experiment-design issues such as: 
+ 5. Getting the time and resources of the real Experts to contribute knowledge in the face of actually doing their tasks
+ 6. Encoding more complex rules in subject domains with many pathways becomes difficult without data model changes
+ 7. Available technology can be a problem, but [Moores law usually kicks in to save the day](http://www.economist.com/technology-quarterly/2016-03-12/after-moores-law)
  
- Long story short, these kinds of problems needed a more versatile and probabilistic model that adapts its internal state (more **fuzzy** than **binary**) to _figure_ out the answer, hence giving rise to a more amenable evolution of this system in the form of `Neural Networks` than a simple rule-based approach.  
+ Long story short, knowledge transference problems needed a more versatile and probabilistic model that adapts its internal state (more **fuzzy** than **binary**) to _figure out_ the answer. Hence the necessity of something more than a simple rule-based approach gave rise to a more amenable evolution of this system: in the form of [`Neural Networks`](http://ncase.me/neurons/).
  
-Transposing the insight from the above exercise into a workable life lesson, we have 
+Transposing the insight from the above exercise into a workable life lesson, we have: 
 
 ## How-to
 Opinions are like objects you carry with you in a box and should be easily replaceable: _swaping it out for a better opinion if they turn out to be no good anymore.._
 >The trick is to keep your identity separate from your opinions.
-
 
 If you attribute your opinions to your identity, _i.e: what's in the box is who you are_, then you will cling to them despite any evidence to the contrary!
 
@@ -76,23 +76,24 @@ From the three possible degrees of improper information, being:
 - Under-informed and 
 - Utterly Misinformed
 
-the only way to be properly informed is to put new information through the `evaluation filter` (no matter how clean or cluttered it is now, you can better it with effort) and honing this information (particulars) processing procedure in practice so that prejudiced propaganda can be purged for purity. ([the unfolding of which beautifully simplified and visualized here in this link](http://ncase.me/neurons/)) 
+the only way to be properly informed is to put new information through the `evaluation filter`. No matter how clean or cluttered your information pathway is now, you can better it with effort. Honing this data-processing-knowledge-acquisition procedure, in practice, can help you process prejudiced propaganda and purge it for purity!  
+Watch the unfolding of this natural process in our brains [beautifully simplified and visualized (by Nicky Case) in this link](http://ncase.me/neurons/))  
 Simple probability shows us how we are more likely to be wrong than right about things we have little knowledge or experience in: by the sheer fact that there are many more ways to be wrong than not!
 The significance of this feedback loop for self-correction should not be understated, because isn't this exactly what we call **learning!** :blush: 
 
 
 # In defense of inflexibility! 
 Could there be any merits to narrow/close-mindedness?  
-Though widely regarded as a nuisance, this quote (that I remember seeing somewhere) underlines the primary pain point with these wonderful folks:
+Though we regard people displaying this trait as a nuisance, this quote (that I remember seeing somewhere) underlines the primary pain point about these weird and wonderful folks:
 > The problem with close-minded people is that **their mouth is always open!** 
 :sob: :weary: :loudspeaker: :rage3:
 
-Once you take the time to learn more about where they stand and you imagine them more complexly, you begin to see why their perspective may not be as absurd as you initially thought.
-- Sometimes it is just that they struggle to communicate their internal thoughts and emotions clearly
-- Sometimes they just don't care, as they falsely assume everybody else is as closed-off to listening to reason as they are
-- Sometimes it may be that they don't have the courage of their convictions and are honestly afraid that their crutch, which is their belief system, may crumble if they truly test out the tenets of their system
+Once you take the time to learn more about where they stand, and you imagine them more complexly, you begin to see why their perspective may not be as absurd as you initially thought.
+- Sometimes it is just that they **struggle to communicate** their internal thoughts and emotions clearly
+- Sometimes they just don't care, as they **falsely assume** everybody else is as **closed-off to listening to reason** as they are :confused:
+- Sometimes it may be that they **don't have the courage of their convictions** and are honestly afraid that their crutch, which is _their belief system_, may crumble if they truly test out the tenets of their system
 
-## quick side-note (more like a side-swipe!)
+## quick side-note (or a side-swipe!)
 The extent to which I wonder if people really believe in what they say is illustrative in that some of my dear friends, who I love and respect, are proud to brand themselves as [Conservatives](http://www.thesaurus.com/browse/conservative), and I find it amusing how the thesaurus generously adorns this characteristic with such pleasing epithets as :smiley: :
 - illiberal
 - inflexible
