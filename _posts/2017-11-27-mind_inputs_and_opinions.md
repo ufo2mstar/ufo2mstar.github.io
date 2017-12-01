@@ -18,8 +18,10 @@ Insights serve well cataloged online, as not only you, but the whole world can b
 Let us start by giving them the benefit of doubt: 
 > People make the best decision possible with all the information that they have access to.
 
-If solving Math problems in school is any indication, it is not too hard to see how you can easily be ***absolutely wrong!***  
-It only serves you better if you can accept these errors and try to make better decisions in the future...
+If solving Math problems in school is any indication, you know how easy it is to be **_absolutely wrong!_**  
+And the worst part is, you may not even know it unless the right answer is pointed out and explained.  
+
+If correct answers is what you are after, it only serves you better if you can accept these errors, learn the best approach and make better decisions in the future...
 
 ## a point of view..
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">open-minded people are curious why people do not agree with them. close-minded people are frustrated that people do not agree with them.</p>&mdash; Auren Hoffman (@auren) <a href="https://twitter.com/auren/status/934549509941497856?ref_src=twsrc%5Etfw">November 25, 2017</a></blockquote>
