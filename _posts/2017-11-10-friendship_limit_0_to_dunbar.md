@@ -5,7 +5,7 @@ title: "Friendship: limit x tends to Dunbar"
 date: 2017-11-10
 categories: [Thoughts]
 tags: [Debate, Morality]
-excerpt: "Yes, nature does direct the course of space-time, and here's how nature gives us power over it: by endowing us the ability to understand it!"
+excerpt: "Nature directs the course of space-time, but how does she gives us power over her? by endowing us the ability to understand her!"
 mathjax: true
 ---
 * content
@@ -32,7 +32,7 @@ ironically depicts the possible attitudes of a self-centered culture of kins, wh
 
 <a href='https://photos.google.com/share/AF1QipOE6vjK76tsZ3KEBFt-19vu5Wec2BmcvuBoRMFuwhjcFCktYU_NXen4R8HW8R-Xng?key=NnBlZ0hPdlRzSE5DaFpVNHFMcEVXUjRGR1FJUkFR&source=ctrlq.org'><img src='https://lh3.googleusercontent.com/FsMwLMNTXEOO8SPNq1-4r_8jvacXXpSCo_PT-s8fimSW_61qIZvFp09BjGlaKXUYDJfmkCwMKSR8iWW9PIZSKDb-_hvejcbcFSG3gu2ag70-S2Tip_-3hMipfIFL33Gzc3nnikqcJAo' /></a>
 
-## The selfish-gene (reciprocal altruism)
+## Reciprocal altruism
 Thinking about how the moral landscape is not subject to feelings of kin-favoritism (as I believe the term nepotism doesn't exactly work in this context) led me thinking about the selfish gene. Granted that kins are closer in the gene-network than others, there is a fundamental difference between the two: one is natural and the other is not. 
 One of the many understated points here is that people should not necessarily take their cues from nature, as that would not be a congenial society to co-exist and thrive, for, after all, we have spent millennia making civilization possible by understanding that life on this beautiful planet is a non-zero-sum game, and in game-theory terms, we sure are in an essentially infinite game with nature. 
 
@@ -41,7 +41,7 @@ One of the many understated points here is that people should not necessarily ta
   
 <iframe width="560" height="315" src="https://www.youtube.com/embed/WGL4HPuFKZA" frameborder="0" allowfullscreen></iframe>
 
-## game-theory solutions 
+## Game-theory solutions 
 [game theory]
 
 If you are not familiar with the prisoner's dilemma, I encourage you to check these out before continuing..
@@ -51,10 +51,11 @@ If you are not familiar with the prisoner's dilemma, I encourage you to check th
 <iframe width="560" height="315" src="https://www.youtube.com/embed/BOvAbjfJ0x0" frameborder="0" allowfullscreen></iframe>
 
 
-## karma chameleon
+## [Karma Chameleon](https://www.youtube.com/watch?v=JmcA9LIIXWw)
 The point to emphasize here is that the whole point of choosing ideology is to go against nature (as we do with so many other things and actions that we readily associate with comfort and development today; albeit we haven't been as self-aware of the consequences of some of our attempts at betterment).
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/zkS6WpbLUFw" frameborder="0" allowfullscreen></iframe>
+
   and
   
 <iframe width="560" height="315" src="https://www.youtube.com/embed/oj__w87vkow" frameborder="0" allowfullscreen></iframe>
@@ -62,7 +63,7 @@ The point to emphasize here is that the whole point of choosing ideology is to g
 It is a perfectly good strategy for days when exploration of allies far across known borders was limited, and collective-action was better than self/kin-loathing. The difference is parameter here, with globalization, to parochial equates to being non-sustainable. As can be noted that there are no winners if you want to beat members of your own team!
 
 Friends (relationships, whether or not with benefits) are the support structures around each lattice of the tetrahedron. Inter-dependence is woven into this tapestry wherein following the golden-rule (do unto other's thing: colloquially translates to "Don't be a Jerk!") maximizes the benefits of the local-group, irrespective of whether it is fact-based or family-centric. And to the point of this post, there is a natural stabilization point in this quantified by the Dunbar number: which spells the upper bound for the type of relationship vs depth of connection equation. 
-
+  
 <iframe width="560" height="315" src="https://www.youtube.com/embed/O2qjRG6iV8M" frameborder="0" allowfullscreen></iframe>
 
 # The friendship-limit equation

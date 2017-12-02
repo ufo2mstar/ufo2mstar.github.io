@@ -6,7 +6,7 @@ layout: default
     <div class="left">
         <h1>{{page.title}}</h1>
         <div class="label">
-
+            
             <div class="label-card">
                 <i class="fa fa-calendar"></i>{{ page.date | date: "%F" }}
             </div>
@@ -21,6 +21,7 @@ layout: default
                 <br>
                 {% endif %}
             </div>
+            
             <div class="label-card">
                 {% include category.html %}
             </div>
@@ -30,12 +31,15 @@ layout: default
             </div>
             <br>
         </div>
-        <hr>
+        
+        
+        <!--<hr>-->
         <article itemscope itemtype="http://schema.org/BlogPosting">
-        {{content}}
+            {{content}}
         </article>
+        
         <hr>
-
+        
         {% assign hasSimilar = '' %}
         {% for post in site.related_posts %}
             {% assign postHasSimilar = false %}
@@ -64,11 +68,15 @@ layout: default
         {% endif %}
 
         {% include previousAndNext.html %}
-
+        
+        <div>
+            {% include shareBar.html %}
+        </div>
+        
         <h2 id="comments">Comments</h2>
         {% include comments.html %}
-
-
+    
+    
     </div>
     <button class="anchor"><i class="fa
     <!--fa-list-alt-->
@@ -76,7 +84,7 @@ layout: default
 "></i></button>
     <div class="right">
         <div class="wrap">
-
+            
             <!-- Content -->
             <div class="side content">
                 <div>
