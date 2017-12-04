@@ -1,0 +1,310 @@
+.addthis_div {
+    text-align: center;
+    margin: 10px 0 5px;
+}
+
+.socialbutton-wrapper {
+    height: 80px;
+    text-align: center;
+}
+
+.socialbutton-wrapper a {
+    text-decoration: none;
+}
+
+.share-button-container {
+    text-align: center;
+    margin: 20px 0;
+    padding: 10px 0;
+    border-top: solid 1px #e4e4e4;
+    border-bottom: solid 1px #e4e4e4;
+}
+
+.share-button-container p {
+    /*height: 80px;*/
+    text-align: center;
+}
+
+.socialbutton {
+    width: 80px;
+    height: 55px;
+    margin-bottom: 0;
+    display: inline-block;
+
+    transition: all 500ms;
+    -webkit-transition: all 500ms;
+
+}
+
+.socialbutton:hover {
+    height: 80px;
+    margin-bottom: 0;
+
+}
+
+.socialbutton .shares, .txt {
+    opacity: 0;
+    transition: opacity 500ms;
+    -webkit-transition: opacity 500ms;
+    color: #fff;
+    text-align: center;
+    margin-top: 7px;
+    font-family: Merriweather, serif;
+}
+
+.socialbutton:hover .shares, .txt {
+    opacity: 1;
+}
+
+.socialbutton p {
+    margin: 0;
+    padding: 0;
+}
+
+.socialbutton p.icon {
+    text-align: center;
+    padding-top: 13px;
+}
+
+.share-button-container i {
+    text-align: center;
+    font-size: 30px;
+    color: white;
+}
+
+.socialbutton.twitter {
+    background-color: #5BC2F0;
+}
+
+.socialbutton.reddit {
+    background-color: #333333;
+}
+
+.socialbutton.facebook {
+    background-color: #435D96;
+}
+
+.socialbutton.facebook:hover {
+    background-color: #556fbb;
+}
+
+.socialbutton.facebook {
+    background-color: #4A66B7;
+}
+
+.socialbutton.facebook:hover {
+    background-color: #556fbb;
+}
+
+.socialbutton.twitter {
+    background-color: #1B95E0;
+}
+
+.socialbutton.twitter:hover {
+    background-color: #269ce5;
+}
+
+.socialbutton.pinterest {
+    background-color: #c92228;
+}
+
+.socialbutton.pinterest:hover {
+    background-color: #cf4146;
+}
+
+.socialbutton.linkedin {
+    background-color: #0077B5;
+}
+
+.socialbutton.linkedin:hover {
+    background-color: #1e84b9;
+}
+
+.socialbutton.reddit {
+    background-color: #5f99cf;
+}
+
+.socialbutton.reddit:hover {
+    background-color: #75a6d4;
+}
+
+.socialbutton.tumblr {
+    background-color: #35465c;
+}
+
+.socialbutton.tumblr:hover {
+    background-color: #455166;
+}
+
+.socialbutton.hacker-news {
+    background-color: #ff6600;
+}
+
+.socialbutton.hacker-news:hover {
+    background-color: #ff7515;
+}
+
+.socialbutton.designer-news {
+    background-color: #2d72d9;
+}
+
+.socialbutton.designer-news:hover {
+    background-color: #3d82e9;
+}
+
+.socialbutton.whatsapp {
+    background-color: #25D366;
+}
+
+.socialbutton.designer-news:hover {
+    background-color: #25e26b;
+}
+
+.socialbutton.google-plus {
+    /*background-color: #fefefe;*/
+    background-color: #DB4437;
+    color: #333;
+}
+
+.socialbutton.google-plus:hover {
+    /*background-color: #f6f6f6;*/
+    background-color: #f0493c;
+    color: #333;
+}
+
+.socialbutton.google-plus svg {
+    fill: #DB4437;
+}
+
+/*---------------------------------------*/
+
+.share-button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 10px 2px 8px;
+    margin: 10px;
+    color: #fff;
+    background-color: #333;
+    border-radius: 2px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
+    text-decoration: none;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.share-button {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 0;
+    display: inline-block;
+    transition: all 500ms;
+    -webkit-transition: all 500ms;
+}
+
+/*.share-button:hover {*/
+/*color: #fff;*/
+/*background-color: #4f4f4f;*/
+/*}*/
+
+.share-button:active {
+    top: 1px;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
+}
+
+.share-button svg {
+    fill: #ffffff;
+    width: 19px;
+    height: 19px;
+    margin-right: 5px;
+}
+
+.share-button-container a i {
+    text-align: center;
+    font-size: 30px;
+    color: white;
+}
+
+.page[post] a:hover {
+    background-color: transparent;
+    opacity: 1;
+}
+
+.share-button.facebook {
+    background-color: #4A66B7;
+}
+
+.share-button.facebook:hover {
+    background-color: #556fbb;
+}
+
+.share-button.twitter {
+    background-color: #1B95E0;
+}
+
+.share-button.twitter:hover {
+    background-color: #269ce5;
+}
+
+.share-button.pinterest {
+    background-color: #c92228;
+}
+
+.share-button.pinterest:hover {
+    background-color: #cf4146;
+}
+
+.share-button.linkedin {
+    background-color: #0077B5;
+}
+
+.share-button.linkedin:hover {
+    background-color: #1e84b9;
+}
+
+.share-button.reddit {
+    background-color: #5f99cf;
+}
+
+.share-button.reddit:hover {
+    background-color: #75a6d4;
+}
+
+.share-button.tumblr {
+    background-color: #35465c;
+}
+
+.share-button.tumblr:hover {
+    background-color: #455166;
+}
+
+.share-button.hacker-news {
+    background-color: #ff6600;
+}
+
+.share-button.hacker-news:hover {
+    background-color: #ff7515;
+}
+
+.share-button.designer-news {
+    background-color: #2d72d9;
+}
+
+.share-button.designer-news:hover {
+    background-color: #3d82e9;
+}
+
+.share-button.google-plus {
+    background-color: #fefefe;
+    color: #333;
+}
+
+.share-button.google-plus:hover {
+    background-color: #f6f6f6;
+    color: #333;
+}
+
+.share-button.google-plus svg {
+    fill: #DB4437;
+}
