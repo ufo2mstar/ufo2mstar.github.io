@@ -33,6 +33,10 @@ baseurl: "" # the subpath of your site, e.g. /blog
 
 permalink: blog/:year/:month/:day/:title/
 
+share_facebook:
+share_twitter:
+share_reddit:
+
 # other links
 twitter_username: ufo2m
 #facebook_username: ufo2mstar
@@ -74,6 +78,7 @@ plugins:
   - jekyll-relative-links # so that I dont have to do absolute pathing
   - jekyll-mermaid
   - jekyll-seo-tag
+#  - jekyll-redirect-from # for vanity urls like domain/link, etc
 #gems:
 #  - jekyll-feed
 
