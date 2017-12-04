@@ -43,3 +43,22 @@ var StaticShareButtons = {
 };
 
 StaticShareButtons.init();
+
+
+
+
+// ----------------------------------------------------------------------------
+
+
+var buttons = document.getElementsByClassName("share-button");
+
+for (var i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener("click", function handleOutboundLinkClicks(event) {
+        ga("send", "event", {
+            eventCategory: "Outbound Link",
+            eventAction: "click",
+            eventLabel: event.target.href,
+            transport: "beacon"
+        });
+    });
+}
