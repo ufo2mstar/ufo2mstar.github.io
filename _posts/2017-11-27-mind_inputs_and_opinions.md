@@ -113,8 +113,8 @@ The extent to which I wonder if people really believe in what they say is illust
 {% endcomment %}
 
 ## Jokes aside, 
-Although I feel that **healthy skepticism is always a benefit**, the sustenance and prevalence of the trait of **narrow-minded support of an in-group** through evolutionary history can only be ascribed to being 
-> **a good survival strategy**, as it is _more favorable to flourish or fall as a **flock**!_ 
+Although I feel that **healthy skepticism is always a benefit**, the sustenance and prevalence of the trait of **narrow-minded support of an in-group** through evolutionary history can only be ascribed to it being useful. 
+> **Tribalism** is _a good **survival strategy**_, as it is _more favorable to flourish or fall as a **flock**!_ 
 
 ## Circumstances
 Some major prerequisite to broad-minded explorations are: 

@@ -3,6 +3,10 @@
     margin: 10px 0 5px;
 }
 
+span.st-count {
+    display: none;
+}
+
 .socialbutton-wrapper {
     height: 80px;
     text-align: center;
