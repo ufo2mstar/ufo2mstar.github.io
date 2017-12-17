@@ -5,8 +5,8 @@ title:  "Adhu 1.0"
 date: 2017-08-15
 categories: [Share]
 tags: [Birthday, Montage, Production]
-excerpt: "Dedicated to my very dear Shyam, Lavs and their bundle of joy, Adhu!<br>
-         Those who feel like they have missed his first year, fear not: we've got you covered :)"
+excerpt: "Dedicated to my very dear couple and their bundle of joy!<br>
+         Those who feel like they have missed his first year: we've got you covered :)"
          
 mathjax: false
 ---
@@ -15,7 +15,7 @@ mathjax: false
 
 
 # Dedication:
-Dedicated to my very dear Shyam, Lavs and their bundle of joy, Adhu!
+To my very dear _Shyam, Lavs_ and their {{bundle of joy!}}
 those who feel like they have missed his first year, fear not: we've got you covered :)
 
 Enjoy!
@@ -33,6 +33,6 @@ Enjoy!
 - Producer, Co-Director, Design Artist: 
 `Swae`  
 - Director, Editor, Cinematographer: 
-[`Naren`]({{ site.base_url }}/resume.html)  
+[`C'est moi, Naren`]({{ site.base_url }}/resume.html)  
 - Cast (in-order-of-appearence):
 `quite a big list, to be filled in later` :smile:
