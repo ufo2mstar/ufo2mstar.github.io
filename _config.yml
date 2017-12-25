@@ -56,6 +56,7 @@ disqus_shortname: ufo2mstar-github-io
 
 # statistic analysis
 google_analytics_id: UA-26595428-2 # google analysis tracking id
+google_adsense_id: ca-pub-4526166921072328
 
 kramdown:
   input: GFM
