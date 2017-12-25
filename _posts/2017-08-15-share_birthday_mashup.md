@@ -33,6 +33,9 @@ Enjoy!
 - Producer, Co-Director, Design Artist: 
 `Swae`  
 - Director, Editor, Cinematographer: 
-[`C'est moi, Naren`]({{ site.base_url }}/resume.html)  
+[`C'est moi,p
+ 
+ 
+ Naren`]({{ site.base_url }}/resume.html)  
 - Cast (in-order-of-appearence):
 `quite a big list, to be filled in later` :smile:
