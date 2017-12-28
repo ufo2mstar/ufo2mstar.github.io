@@ -15,7 +15,7 @@ mathjax: false
 
 
 # Dedication:
-To my very dear _Shyam, Lavs_ and their {{bundle of joy!}}
+To my very dear _Shyam, Lavs_ and their `bundle of joy!`
 those who feel like they have missed his first year, fear not: we've got you covered :)
 
 Enjoy!
@@ -30,12 +30,9 @@ Enjoy!
 
 
 # Credits:
-- Producer, Co-Director, Design Artist: 
+- Producer, Co-Director, Design and Concept Artist: 
 `Swae`  
 - Director, Editor, Cinematographer: 
-[`C'est moi,p
- 
- 
- Naren`]({{ site.base_url }}/resume.html)  
+[`Naren`]({{ site.base_url }}/resume.html)  
 - Cast (in-order-of-appearence):
 `quite a big list, to be filled in later` :smile:
