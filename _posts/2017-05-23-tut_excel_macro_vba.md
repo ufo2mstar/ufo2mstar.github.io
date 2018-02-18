@@ -13,8 +13,9 @@ mathjax: false
 * content
 {:toc}
 
-# Primary Title
-subject
+# Reason
+> Life is too short to run proprietary software!
+ -Brian Kernighan
 
 ## Secondary title
 more subject  
