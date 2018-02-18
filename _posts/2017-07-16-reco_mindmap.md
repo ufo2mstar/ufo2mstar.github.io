@@ -14,7 +14,20 @@ mathjax: false
 # Primary Title
 subject
 
-## Secondary title
-more subject  
-And other MD goodness
+
+## quick intro
+<iframe width="560" height="315" src="https://www.youtube.com/embed/brTMbPyhZY0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+
+## a more detailed rundown
+<iframe width="560" height="315" src="https://www.youtube.com/embed/NvDcP-ZrJhQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+https://www.onlinetrainingforentrepreneurs.com/courses/mindmap
+
+# Mastering what you learn
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5MgBikgcWnY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/MlJdMr3O5J4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
