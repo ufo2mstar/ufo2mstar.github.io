@@ -4,7 +4,7 @@ comments: true
 title: "Wonders of the Internet"
 date: 2017-11-27
 categories: [Thoughts, Technical, Network]
-excerpt: "an analysis and rationalization of different states of the mind"
+excerpt: "the value of the Global Consciousness: the Internet"
 mathjax: true
 ---
 * content
