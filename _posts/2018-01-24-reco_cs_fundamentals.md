@@ -1,10 +1,10 @@
 ---
 layout: post
 comments: true
-title: "Wonders of the Internet"
+title: "CS Fundamentals"
 date: 2018-01-24
 categories: [Guide]
-excerpt: "an analysis and rationalization of different states of the mind"
+excerpt: "some good links I have gone through in my journey!.."
 mathjax: false
 ---
 * content

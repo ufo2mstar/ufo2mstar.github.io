@@ -3,3 +3,6 @@ _site/
 .jekyll-metadata
 .idea
 Gemfile.lock
+assets/img_encoding/*
+assets/archive/decom/jd
+assets/archive/download.png
