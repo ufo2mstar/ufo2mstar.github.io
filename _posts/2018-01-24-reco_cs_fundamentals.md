@@ -13,8 +13,8 @@ mathjax: false
 # Pre Script
 
 One revelation that I seem to have forgotten from college was that
-> Programming is like chess. Most of the problems I am trying to solve have been solved by someone already!
-It is upto me to recognize patterns, identify the sub-problems solutions and piece things to gether, block by block..
+> Programming is like the game of Chess. Most of the problems you are trying to solve have probably been solved by someone already!
+It is upto me to recognize patterns, identify the sub-problems solutions and piece things together, block by block..
 
 In order to do that, you need to:
 1. learn about as many solutions existing out there as possible 

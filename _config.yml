@@ -25,7 +25,7 @@ exclude:
 # Site settings
 title: Un Ltd.
 brief-intro: web logs from
-blog-title: Greetings Earthling!
+blog-title: Hello Fellow Earthling!
 
 url: "https://ufo2mstar.github.io" # protocol and the base hostname for your site
 baseurl: "" # the subpath of your site, e.g. /blog
