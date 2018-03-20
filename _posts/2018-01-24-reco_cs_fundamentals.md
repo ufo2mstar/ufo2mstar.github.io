@@ -13,15 +13,15 @@ mathjax: false
 # Pre Script
 
 One revelation that I seem to have forgotten from college was that
-> Programming is like the game of Chess. Most of the problems you are trying to solve have probably been solved by someone already!
-It is upto me to recognize patterns, identify the sub-problems solutions and piece things together, block by block..
+> Programming is like the game of Chess: Most of the problems have probably already been solved by someone!
+You will benefit a great deal, if you can recognize patterns and piece things together, block by block..
 
 In order to do that, you need to:
 1. learn about as many solutions existing out there as possible 
 2. internalize the origins of the problem
 3. practice them enough to be able to callup the rough outline of the solution to reshape it to the answer you are looking for
 
-In this journey you may embark on: `from an journeyman to craftsman` you may pickup on side goodness such as
+In this journey you may embark on: `from journeyman to craftsman` you may pickup on some xside goodness such as:
 1. best test practices
 2. templates and macros
 3. IDEs: pros and cons of the millions out there, and so on...
