@@ -14,7 +14,7 @@ mathjax: true
 
 ## Kinship and Friendship
 As my quest to pin down morality continues, one important concept that I want to put down is my current take on the facts around friendship and kinship.
-One of the strong contentions I hear from my friend (an ardent supporter of all-things-Indic) is echoing the sentiments of his recent guru Ashay Naik 
+A recent quote I heard about from my friend (an ardent supporter of all-things-Indic) is echoing the sentiments of his recent guru Ashay Naik:  
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Hinduism is kinship based not ideology based. Easy to enter in ideological group not so in a kinship network. <a href="https://t.co/xpjJAgb6N9">https://t.co/xpjJAgb6N9</a></p>&mdash; Damanaka (@AshayNaik1) <a href="https://twitter.com/AshayNaik1/status/926966427797434368?ref_src=twsrc%5Etfw">November 5, 2017</a></blockquote>
 
@@ -22,11 +22,10 @@ One of the strong contentions I hear from my friend (an ardent supporter of all-
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 Two things jump out
 
-1. I can't help but see Hinduism as a melting pot of a plethora of philosophies and ideologies, to begin with. So the above statement to me reads like "The Ideology capital comprises of groups of people (and ironically, is not ideology based)": and just reduces to a tautology. 
+1. To begin with, I can't help but see Hinduism as a melting pot of a plethora of philosophies and ideologies. So the above statement to me reads like "The Ideology capital comprises of groups of people (and ironically, is not ideology based)": and just reduces to a tautology.   
 I feel the classification and grouping-by-attributes that apply so well to Abrahamic faiths do not map back to Oriental belief-systems.
 
-
-2. I do agree that kinship bonds have a simpler identity marker for the limbic system to recognize, other than for the closest of relations, I am not sure how much this holds sway. To me, ideological bonds, formed out of necessity, rather than static factors (like birth and bonds) remain more meaningful and stand the test time. 
+2. I do agree that kinship bonds have a simpler identity marker for the limbic system to recognize. But other than for the closest of relations, I am not sure how much this holds sway. To me, ideological bonds, formed out of necessity, rather than static factors (like birth and happenstance) remain more meaningful and stand the test time. 
 
 
 A pertinent screengrab from [The Late Show with Stephen Colbert](https://www.youtube.com/channel/UCMtFAi84ehTSYSE9XoHefig) on [CBS](http://www.cbs.com/shows/the-late-show-with-stephen-colbert/)
@@ -44,7 +43,6 @@ One of the many understated points here is that people should not necessarily ta
 <iframe width="560" height="315" src="https://www.youtube.com/embed/WGL4HPuFKZA" frameborder="0" allowfullscreen></iframe>
 
 ## Game-theory solutions 
-
 If you are not familiar with the prisoner's dilemma, I encourage you to check these out before continuing..
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/t9Lo2fgxWHw" frameborder="0" allowfullscreen></iframe>
