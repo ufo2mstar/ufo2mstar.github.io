@@ -17,6 +17,8 @@ As my quest to pin down morality continues, one important concept that I want to
 One of the strong contentions I hear from my friend (an ardent supporter of all-things-Indic) is echoing the sentiments of his recent guru Ashay Naik 
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Hinduism is kinship based not ideology based. Easy to enter in ideological group not so in a kinship network. <a href="https://t.co/xpjJAgb6N9">https://t.co/xpjJAgb6N9</a></p>&mdash; Damanaka (@AshayNaik1) <a href="https://twitter.com/AshayNaik1/status/926966427797434368?ref_src=twsrc%5Etfw">November 5, 2017</a></blockquote>
+
+
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 Two things jump out
 
@@ -42,7 +44,6 @@ One of the many understated points here is that people should not necessarily ta
 <iframe width="560" height="315" src="https://www.youtube.com/embed/WGL4HPuFKZA" frameborder="0" allowfullscreen></iframe>
 
 ## Game-theory solutions 
-[game theory]
 
 If you are not familiar with the prisoner's dilemma, I encourage you to check these out before continuing..
 
