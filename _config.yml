@@ -83,6 +83,10 @@ plugins:
 #gems:
 #  - jekyll-feed
 
+relative_links:
+  enabled:     true
+  collections: false
+
 mermaid:
 #  src: 'js/mermaid.js'
   src: 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.js'
