@@ -1,0 +1,29 @@
+Fitnesse Rundown
+Naren Siva Subramani posted on Mar 02, 2018
+Had a good run going through different ways to setup Business-readable Acceptance Test Scenarios using FitNesse.
+Here is my repo with those (feel free to request access if you want to play around with the cases)
+ 
+Here are some helpful links for your reference if you want to get started for your project:
+Get Started
+What?
+http://www.fitnesse.org/FitNesse.FullReferenceGuide.UserGuide.OneMinuteDescription
+Why Fitnesse?
+good info to start on: http://www.fitnesse.org/FitNesse.UserGuide
+system architecture overview: http://www.fitnesse.org/FitNesse.FullReferenceGuide.UserGuide.WritingAcceptanceTests.TestSystems
+Some Examples
+Simple - http://www.fitnesse.org/FitNesse.UserGuide.TwoMinuteExample
+A more realistic one - http://www.fitnesse.org/FitNesse.UserGuide.WritingAcceptanceTests.FixtureCode
+Writing cases
+Fit - http://www.fitnesse.org/FitNesse.FullReferenceGuide.UserGuide.WritingAcceptanceTests.FitFramework
+SliM - http://www.fitnesse.org/FitNesse.FullReferenceGuide.UserGuide.WritingAcceptanceTests.SliM
+Writing Reference
+Basic things to know
+Example 
+Setup and other special pages: http://fitnesse.org/FitNesse.FullReferenceGuide.UserGuide.WritingAcceptanceTests.SpecialPages
+Example Test Suites:
+SliM Suite structure: http://fitnesse.org/FitNesse.SuiteAcceptanceTests.SuiteSlimTests
+Their Full Reference Guide: http://fitnesse.org/FitNesse.FullReferenceGuide
+Cheat Sheet
+http://www.fitnesse.org/FitNesse.UserGuide.QuickReferenceGuide
+and their hidden home page: http://fitnesse.org/FitNesse
+ 
