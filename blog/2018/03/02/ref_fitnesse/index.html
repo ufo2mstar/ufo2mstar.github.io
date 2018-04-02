@@ -1,29 +1,795 @@
-<p>Fitnesse Rundown
-Naren Siva Subramani posted on Mar 02, 2018
-Had a good run going through different ways to setup Business-readable Acceptance Test Scenarios using FitNesse.
-Here is my repo with those (feel free to request access if you want to play around with the cases)</p>
+<!DOCTYPE html>
+<html class="dark">
 
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>FitNesse Rundown</title>
+    <meta name="description"
+          content="FitNesse seems like a good tool to acceptance-test rules engines. Here are some useful links to get started..">
+    
+    <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--<link rel="stylesheet" href="https://at.alicdn.com/t/font_8v3czwksspqlg14i.css">-->
+    <link rel="stylesheet" href='/css/main.css'>
+    <link rel="stylesheet" href='/css/custom.css'>
+    <link rel="canonical" href="https://ufo2mstar.github.io/blog/2018/03/02/ref_fitnesse/">
+    <link rel="alternate" type="application/rss+xml" title="Un Ltd."
+          href="https://ufo2mstar.github.io/feed.xml">
+    
+    
+    <link rel="stylesheet" type="text/css" href='/css/static-social-buttons.css'>
+ 
+    <!-- ShareThis button -->
+    <script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5a2815b9bbccc80012838ae9&product=sticky-share-buttons' async='async'></script>
+
+
+    <!--<link rel="stylesheet" href='/css/bootstrap.css'>-->
+    <!--<link rel="stylesheet" href='/css/connect-bootstrap.css'>-->
+    
+    <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.css">-->
+    <!--<link rel="stylesheet" type="text/css" href="css/index.css">-->
+    <!--<script type="text/javascript" src="js/jquery-1.11.1.js"></script>-->
+    <!--<script type="text/javascript" src="js/bootstrap.min.js"></script>-->
+    
+    
+    <script>
+        // google analytics
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-26595428-2', 'auto');
+        ga('send', 'pageview');
+    
+    </script>
+    
+    
+    
+    
+    
+    
+    
+    
+    <style>
+        div {
+            /*text-align: justify;*/
+            /*text-justify: inter-word;*/
+        }
+    </style>
+</head>
+
+
+  <body>
+
+    <header id="top">
+    <div class="wrapper">
+        <style>
+            .fa-infinite:before {
+                content: "∞";
+                color: whitesmoke;
+                font-family: Verdana;
+                /*font-weight: bold;*/
+                font-size: 30px;
+                /*font-size: 64px;*/
+                /*top: 4px;*/
+                position: relative;
+            }
+        </style>
+        <a href="/" class="brand">
+            <!--<img src="/inf.ico" class="">Logo</img>-->
+            <i class="fa fa-infinite"></i>
+            Un Ltd.
+        </a>
+        <small>
+            web logs from
+            <a href="/resume" class="brand">this guy!</a>
+        </small>
+        <button id="headerMenu" class="menu"><i class="fa fa-bars"></i></button>
+        <nav id="headerNav">
+            <ul>
+                <li>
+                    
+                        <a href="/">
+                            
+                            <i class="fa fa-home"></i>Bloggings
+                        </a>
+                </li>
+
+                
+                
+                <li>
+                    
+                        <a href="/archive/">
+                            
+                            <i class="fa fa-archive"></i>Archives (by date)
+                        </a>
+                </li>
+                
+                
+                
+                <li>
+                    
+                        <a href="/category/">
+                            
+                            <i class="fa fa-th-list"></i>Categories (by topic)
+                        </a>
+                </li>
+                
+                
+                
+                <li>
+                    
+                        <a href="/tag/">
+                            
+                            <i class="fa fa-tags"></i>Tags (by content)
+                        </a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <li>
+                    
+                        <a href="/about/">
+                            
+                            <i class="fa fa-id-card"></i>About Me
+                        </a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+        <div class="page clearfix" post>
+    <div class="left">
+        <h1>FitNesse Rundown</h1>
+        <div class="label">
+            
+            <div class="label-card">
+                <i class="fa fa-calendar"></i>2018-03-02
+            </div>
+            <!--<br>-->
+            <div class="label-card">
+                
+            </div>
+            <div class="label-card">
+                
+            </div>
+            
+            <div class="label-card">
+                
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Guide" title="Category: Guide" rel="category">Guide</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+            </div>
+            <br>
+            <div class="label-card">
+                
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+  
+
+</span>
+
+            </div>
+            <br>
+        </div>
+    
+        <div>
+            <!--<meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'>-->
+<!--<link rel="stylesheet" type="text/css" href="static-social-buttons.css">-->
+
+
+<!--E-mail-->
+<!--Copy permalink-->
+<!--Tweet-->
+<!--Facebook-->
+<!--Linkedin-->
+<!--Pin it-->
+<!--Stumble upon-->
+<!--Digg-->
+<!--Hackernews-->
+<!--WhatsApp-->
+
+
+
+<div class="share_div">
+    <!-- /.addthis_div -->
+    <div class="addthis_inline_share_toolbox"></div>
+    
+    <div class="sharethis-inline-reaction-buttons"></div>
+</div>
+
+<!--<div class="share-button-container">-->
+<!--<div class="addthis_inline_share_toolbox"></div>-->
+<!--</div>-->
+
+
+<!--<div class="share-button-container">-->
+<!--&lt;!&ndash;<p>Like it? Share it!</p>&ndash;&gt;-->
+<!---->
+<!--<div class="socialbutton-wrapper">-->
+<!--<a href="https://twitter.com/share?url=https://ufo2mstar.github.io/&via=Xafke">-->
+<!--<div class="socialbutton twitter" data-share-url="https://ufo2mstar.github.io/">-->
+<!--<p class="icon">-->
+<!--&lt;!&ndash;<img src='https://ufo2mstar.github.io'">&ndash;&gt;-->
+<!--<i class="fa fa-twitter" aria-hidden="true"></i>-->
+<!--</p>-->
+<!---->
+<!--&lt;!&ndash;<p class="txt">Tweet!</p>&ndash;&gt;-->
+<!--<p class="shares">Tweet!</p>-->
+<!--</div>-->
+<!--</a>-->
+<!---->
+<!--<a class="socialbutton facebook" href="https%3A%2F%2Fufo2mstar.github.io%2Fblog%2F2018%2F03%2F02%2Fref_fitnesse%2F" target="_blank">-->
+<!--<i class="fa fa-facebook" aria-hidden="true"> </i>-->
+<!--</a>-->
+<!---->
+<!---->
+<!--<a href="https://www.facebook.com/sharer/sharer.php?u=https://ufo2mstar.github.io/">-->
+<!--<div class="socialbutton facebook" data-share-url="https://ufo2mstar.github.io/">-->
+<!--<p class="icon">-->
+<!--<i class="fa fa-facebook" aria-hidden="true"></i>-->
+<!--</p>-->
+<!--<p class="shares">F-Share</p>-->
+<!--</div>-->
+<!--</a>-->
+<!---->
+<!---->
+<!--<a href="http://www.reddit.com/submit?url=https://ufo2mstar.github.io/">-->
+<!--<div class="socialbutton reddit">-->
+<!--<p class="icon">-->
+<!--<i class="fa fa-reddit" aria-hidden="true"></i>-->
+<!--</p>-->
+<!--<p class="shares">0</p>-->
+<!--</div>-->
+<!--</a>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash;<script type="text/javascript" src="static-social-buttons.js"></script>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;E-mail&ndash;&gt;-->
+<!--&lt;!&ndash;Copy permalink&ndash;&gt;-->
+<!--&lt;!&ndash;Tweet&ndash;&gt;-->
+<!--&lt;!&ndash;Facebook&ndash;&gt;-->
+<!--&lt;!&ndash;Linkedin&ndash;&gt;-->
+<!--&lt;!&ndash;Pin it&ndash;&gt;-->
+<!--&lt;!&ndash;Stumble upon&ndash;&gt;-->
+<!--&lt;!&ndash;Digg&ndash;&gt;-->
+<!--&lt;!&ndash;Hackernews&ndash;&gt;-->
+<!--&lt;!&ndash;WhatsApp&ndash;&gt;-->
+
+
+<!--<div class="share-button-container">-->
+<!--<a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fexample.com%2F"-->
+<!--class="share-button facebook"-->
+<!--target="_blank">Share on Facebook</a>-->
+<!---->
+<!---->
+<!--<a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fexample.com%2F"-->
+<!--class="share-button facebook"-->
+<!--target="_blank">-->
+<!--<svg fill="#000000"-->
+<!--height="24"-->
+<!--viewBox="0 0 24 24"-->
+<!--width="24"-->
+<!--xmlns="http://www.w3.org/2000/svg">-->
+<!--<path d="M19,4V7H17A1,1 0 0,0 16,8V10H19V13H16V20H13V13H11V10H13V7.5C13,5.56 14.57,4 16.5,4M20,2H4A2,2 0 0,0 2,4V20A2,2 0 0,0 4,22H20A2,2 0 0,0 22,20V4C22,2.89 21.1,2 20,2Z"/>-->
+<!--</svg>-->
+<!--Share on Facebook</a>-->
+<!---->
+<!---->
+<!--<a class="share-button facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fufo2mstar.github.io%2Fblog%2F2018%2F03%2F02%2Fref_fitnesse%2F" target="_blank"> </a>-->
+<!---->
+<!---->
+<!--<a class="share-button socialbutton facebook" href="https%3A%2F%2Fufo2mstar.github.io%2Fblog%2F2018%2F03%2F02%2Fref_fitnesse%2F" target="_blank">-->
+<!--<i class="fa fa-facebook" aria-hidden="true"> </i>-->
+<!--</a>-->
+
+<!--</div>-->
+        </div>
+        
+        <!--<hr>-->
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+            <ul id="markdown-toc">
+  <li><a href="#pre-script" id="markdown-toc-pre-script">Pre Script</a></li>
+  <li><a href="#fitnesse-rundown" id="markdown-toc-fitnesse-rundown">Fitnesse Rundown</a></li>
+  <li><a href="#the-journey" id="markdown-toc-the-journey">The Journey</a></li>
+</ul>
+
+<h1 id="pre-script">Pre Script</h1>
+
+<h1 id="fitnesse-rundown">Fitnesse Rundown</h1>
+
+<p>After spending time going through different ways to setup and run <strong>Business-readable <em>(and writeable)</em> Acceptance Test Scenarios</strong> and <strong>FitNesse</strong> seems like a really good candidate for a solution to this problem..</p>
+
+<h1 id="the-journey">The Journey</h1>
 <p>Here are some helpful links for your reference if you want to get started for your project:
-Get Started
-What?
-http://www.fitnesse.org/FitNesse.FullReferenceGuide.UserGuide.OneMinuteDescription
-Why Fitnesse?
-good info to start on: http://www.fitnesse.org/FitNesse.UserGuide
-system architecture overview: http://www.fitnesse.org/FitNesse.FullReferenceGuide.UserGuide.WritingAcceptanceTests.TestSystems
-Some Examples
-Simple - http://www.fitnesse.org/FitNesse.UserGuide.TwoMinuteExample
-A more realistic one - http://www.fitnesse.org/FitNesse.UserGuide.WritingAcceptanceTests.FixtureCode
-Writing cases
-Fit - http://www.fitnesse.org/FitNesse.FullReferenceGuide.UserGuide.WritingAcceptanceTests.FitFramework
-SliM - http://www.fitnesse.org/FitNesse.FullReferenceGuide.UserGuide.WritingAcceptanceTests.SliM
-Writing Reference
-Basic things to know
-Example 
-Setup and other special pages: http://fitnesse.org/FitNesse.FullReferenceGuide.UserGuide.WritingAcceptanceTests.SpecialPages
-Example Test Suites:
-SliM Suite structure: http://fitnesse.org/FitNesse.SuiteAcceptanceTests.SuiteSlimTests
-Their Full Reference Guide: http://fitnesse.org/FitNesse.FullReferenceGuide
-Cheat Sheet
+##Get Started</p>
+<ul>
+  <li>What is FitNesse?
+http://www.fitnesse.org/FitNesse.FullReferenceGuide.UserGuide.OneMinuteDescription</li>
+  <li>Why whould I look at FitNesse?
+    <ul>
+      <li>good info to start on: http://www.fitnesse.org/FitNesse.UserGuide</li>
+      <li>system architecture overview: http://www.fitnesse.org/FitNesse.FullReferenceGuide.UserGuide.WritingAcceptanceTests.TestSystems</li>
+    </ul>
+  </li>
+  <li>Some Examples
+    <ul>
+      <li>Simple - http://www.fitnesse.org/FitNesse.UserGuide.TwoMinuteExample</li>
+      <li>A more realistic one - http://www.fitnesse.org/FitNesse.UserGuide.WritingAcceptanceTests.FixtureCode</li>
+    </ul>
+  </li>
+  <li>Writing cases
+    <ul>
+      <li>Fit - http://www.fitnesse.org/FitNesse.FullReferenceGuide.UserGuide.WritingAcceptanceTests.FitFramework</li>
+      <li>SliM - http://www.fitnesse.org/FitNesse.FullReferenceGuide.UserGuide.WritingAcceptanceTests.SliM</li>
+    </ul>
+  </li>
+</ul>
+
+<p>##Writing Reference</p>
+<ul>
+  <li>Basic things to know:
+    <ul>
+      <li>Setup and other special pages: http://fitnesse.org/FitNesse.FullReferenceGuide.UserGuide.WritingAcceptanceTests.SpecialPages</li>
+      <li>Example Test Suites:</li>
+    </ul>
+  </li>
+  <li>SliM Suite structure: http://fitnesse.org/FitNesse.SuiteAcceptanceTests.SuiteSlimTests
+    <ul>
+      <li>Their Full Reference Guide: http://fitnesse.org/FitNesse.FullReferenceGuide</li>
+    </ul>
+  </li>
+</ul>
+
+<p>##Cheat Sheet
 http://www.fitnesse.org/FitNesse.UserGuide.QuickReferenceGuide
 and their hidden home page: http://fitnesse.org/FitNesse</p>
 
+
+        </article>
+        
+        <hr>
+        
+        
+        
+            
+            
+        
+            
+            
+        
+            
+            
+                
+            
+                
+            
+                
+            
+        
+            
+            
+                
+            
+                
+            
+        
+            
+            
+                
+            
+                
+            
+        
+            
+            
+                
+            
+                
+            
+                
+            
+                
+            
+        
+            
+            
+                
+            
+                
+            
+                
+            
+        
+            
+            
+                
+            
+                
+            
+                
+            
+        
+            
+            
+                
+            
+                
+            
+                
+            
+        
+            
+            
+                
+            
+                
+            
+                
+            
+                
+            
+        
+        
+
+        <div class="post-recent">
+    <hr>
+    <div class="pre">
+        
+        <p><strong>Prev Post</strong> <a href="/blog/2018/01/24/reco_cs_fundamentals/">CS Fundamentals</a></p>
+        
+    </div>
+    <div class="nex">
+
+        
+    </div>
+</div>
+
+        
+        <div>
+            <!--<meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'>-->
+<!--<link rel="stylesheet" type="text/css" href="static-social-buttons.css">-->
+
+
+<!--E-mail-->
+<!--Copy permalink-->
+<!--Tweet-->
+<!--Facebook-->
+<!--Linkedin-->
+<!--Pin it-->
+<!--Stumble upon-->
+<!--Digg-->
+<!--Hackernews-->
+<!--WhatsApp-->
+
+
+
+<div class="share_div">
+    <!-- /.addthis_div -->
+    <div class="addthis_inline_share_toolbox"></div>
+    
+    <div class="sharethis-inline-reaction-buttons"></div>
+</div>
+
+<!--<div class="share-button-container">-->
+<!--<div class="addthis_inline_share_toolbox"></div>-->
+<!--</div>-->
+
+
+<!--<div class="share-button-container">-->
+<!--&lt;!&ndash;<p>Like it? Share it!</p>&ndash;&gt;-->
+<!---->
+<!--<div class="socialbutton-wrapper">-->
+<!--<a href="https://twitter.com/share?url=https://ufo2mstar.github.io/&via=Xafke">-->
+<!--<div class="socialbutton twitter" data-share-url="https://ufo2mstar.github.io/">-->
+<!--<p class="icon">-->
+<!--&lt;!&ndash;<img src='https://ufo2mstar.github.io'">&ndash;&gt;-->
+<!--<i class="fa fa-twitter" aria-hidden="true"></i>-->
+<!--</p>-->
+<!---->
+<!--&lt;!&ndash;<p class="txt">Tweet!</p>&ndash;&gt;-->
+<!--<p class="shares">Tweet!</p>-->
+<!--</div>-->
+<!--</a>-->
+<!---->
+<!--<a class="socialbutton facebook" href="https%3A%2F%2Fufo2mstar.github.io%2Fblog%2F2018%2F03%2F02%2Fref_fitnesse%2F" target="_blank">-->
+<!--<i class="fa fa-facebook" aria-hidden="true"> </i>-->
+<!--</a>-->
+<!---->
+<!---->
+<!--<a href="https://www.facebook.com/sharer/sharer.php?u=https://ufo2mstar.github.io/">-->
+<!--<div class="socialbutton facebook" data-share-url="https://ufo2mstar.github.io/">-->
+<!--<p class="icon">-->
+<!--<i class="fa fa-facebook" aria-hidden="true"></i>-->
+<!--</p>-->
+<!--<p class="shares">F-Share</p>-->
+<!--</div>-->
+<!--</a>-->
+<!---->
+<!---->
+<!--<a href="http://www.reddit.com/submit?url=https://ufo2mstar.github.io/">-->
+<!--<div class="socialbutton reddit">-->
+<!--<p class="icon">-->
+<!--<i class="fa fa-reddit" aria-hidden="true"></i>-->
+<!--</p>-->
+<!--<p class="shares">0</p>-->
+<!--</div>-->
+<!--</a>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash;<script type="text/javascript" src="static-social-buttons.js"></script>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;E-mail&ndash;&gt;-->
+<!--&lt;!&ndash;Copy permalink&ndash;&gt;-->
+<!--&lt;!&ndash;Tweet&ndash;&gt;-->
+<!--&lt;!&ndash;Facebook&ndash;&gt;-->
+<!--&lt;!&ndash;Linkedin&ndash;&gt;-->
+<!--&lt;!&ndash;Pin it&ndash;&gt;-->
+<!--&lt;!&ndash;Stumble upon&ndash;&gt;-->
+<!--&lt;!&ndash;Digg&ndash;&gt;-->
+<!--&lt;!&ndash;Hackernews&ndash;&gt;-->
+<!--&lt;!&ndash;WhatsApp&ndash;&gt;-->
+
+
+<!--<div class="share-button-container">-->
+<!--<a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fexample.com%2F"-->
+<!--class="share-button facebook"-->
+<!--target="_blank">Share on Facebook</a>-->
+<!---->
+<!---->
+<!--<a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fexample.com%2F"-->
+<!--class="share-button facebook"-->
+<!--target="_blank">-->
+<!--<svg fill="#000000"-->
+<!--height="24"-->
+<!--viewBox="0 0 24 24"-->
+<!--width="24"-->
+<!--xmlns="http://www.w3.org/2000/svg">-->
+<!--<path d="M19,4V7H17A1,1 0 0,0 16,8V10H19V13H16V20H13V13H11V10H13V7.5C13,5.56 14.57,4 16.5,4M20,2H4A2,2 0 0,0 2,4V20A2,2 0 0,0 4,22H20A2,2 0 0,0 22,20V4C22,2.89 21.1,2 20,2Z"/>-->
+<!--</svg>-->
+<!--Share on Facebook</a>-->
+<!---->
+<!---->
+<!--<a class="share-button facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fufo2mstar.github.io%2Fblog%2F2018%2F03%2F02%2Fref_fitnesse%2F" target="_blank"> </a>-->
+<!---->
+<!---->
+<!--<a class="share-button socialbutton facebook" href="https%3A%2F%2Fufo2mstar.github.io%2Fblog%2F2018%2F03%2F02%2Fref_fitnesse%2F" target="_blank">-->
+<!--<i class="fa fa-facebook" aria-hidden="true"> </i>-->
+<!--</a>-->
+
+<!--</div>-->
+        </div>
+        
+        <h2 id="comments">Comments</h2>
+        
+
+<div id="disqus_thread"></div>
+<script>
+    /**
+     * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+
+    var disqus_config = function() {
+        this.page.url = 'https://ufo2mstar.github.io/blog/2018/03/02/ref_fitnesse/'; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'https://ufo2mstar.github.io/blog/2018/03/02/ref_fitnesse/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document,
+            s = d.createElement('script');
+
+        s.src = 'https://ufo2mstar-github-io.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+
+    
+    
+    </div>
+    <button class="anchor"><i class="fa
+    <!--fa-list-alt-->
+    fa-indent
+"></i></button>
+    <div class="right">
+        <div class="wrap">
+            
+            <!-- Content -->
+            <div class="side content">
+                <div>
+                    Content
+                </div>
+                <ul id="content-side" class="content-ul">
+                    
+                    <li><a href="#comments">Comments</a></li>
+                </ul>
+            </div>
+            <!-- The other div boxes are placed here -->
+            <!-- <div class="side">bbbb</div> -->
+        </div>
+    </div>
+</div>
+<script>
+/**
+ * target _blank
+ */
+(function() {
+    var aTags = document.querySelectorAll('article a:not([id])')
+    for (var i = 0; i < aTags.length; i++) {
+        aTags[i].setAttribute('target', '_blank')
+    }
+}());
+</script>
+<script src='https://ufo2mstar.github.io/js/pageContent.js' charset="utf-8"></script>
+
+    
+    <footer class="site-footer">
+
+
+    <div class="wrapper">
+
+        <p class="description">
+            
+
+            my other online exploits
+
+            
+        </p>
+        <p class="contact">
+            
+            <a href="https://github.com/ufo2mstar" title="GitHub"><i class="fa fa-github"
+                                                                                    aria-hidden="true"></i></a>
+            
+
+            
+            <a href="mailto:narensst@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
+            
+
+            
+
+            
+            <a href="https://twitter.com/ufo2m" title="Twitter"><i class="fa fa-twitter"
+                                                                                       aria-hidden="true"></i></a>
+            
+
+            
+
+            
+            <a href="https://www.linkedin.com/in/narenss" title="LinkedIn"><i class="fa fa-linkedin"
+                                                                                                 aria-hidden="true"></i></a>
+            
+
+            
+        </p>
+        <!--<p>-->
+        <!--The total number of visitors-->
+        <!--<span id="busuanzi_value_site_pv"> </span>-->
+        <!--<span id="busuanzi_value_site_uv"> </span>, total reading-->
+        <!--<span id="busuanzi_value_page_pv"> </span> times-->
+        <!--</p>-->
+        <p class="power">
+            <span>
+                Thanks to <a href="https://jekyllrb.com/">Jekyll</a> & <a
+                    href="https://pages.github.com/">Github Pages</a>.
+            </span>
+            <!--<span>-->
+            <!--Theme designed by <a href="https://github.com/Gaohaoyang">HyG</a>.-->
+            <!--</span>-->
+        </p>
+    </div>
+</footer>
+
+<!--note: investigate the below-->
+<!--<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>-->
+
+    <div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <!--<script src=' /js/jquery-1.11.1.js ' charset="utf-8"></script>-->
+    <!--<script src=' /js/bootstrap.min.js ' charset="utf-8"></script>-->
+
+    <!-- CDNing jquery for now..-->
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+
+    <!--<script type="text/javascript" src='https://ufo2mstar.github.io/js/static-social-buttons.js'></script>-->
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <!--<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5a25a5911f896ba0"></script>-->
+
+    <!--&lt;!&ndash; Go to www.addthis.com/dashboard to customize your tools &ndash;&gt;-->
+    <!--<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5a25a5911f896ba0"></script>-->
+
+     <!--Go to www.addthis.com/dashboard to customize your tools -->
+    <!--<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5a25ae5353e9a3dc"></script>-->
+
+
+    <script src='https://ufo2mstar.github.io/js/main.js' charset="utf-8"></script>
+    <script src='https://ufo2mstar.github.io/js/smooth-scroll.min.js' charset="utf-8"></script>
+    
+    <!-- fellow developers are the best! -->
+    <script src='https://ufo2mstar.github.io/js/jquery.fitvids.js' charset="utf-8"></script>
+
+    <script type="text/javascript">
+        $('iframe[src*="youtu"]').parent().fitVids();
+//        $('iframe[src*="drive.google"]').parent().fitVids();
+//        $("#vid").fitVids();
+//        $("#vid").fitVids({ customSelector: "iframe[src^='https://drive.google.com']"});
+        $("*").fitVids({ customSelector: "iframe[src^='https://drive.google.com']"});
+//        $("*").fitVids({ customSelector: "img[src^='https://lh3.googleusercontent.com']"});
+
+    </script>
+    
+    <script type="text/javascript">
+      smoothScroll.init({
+        speed: 500, // Integer. How fast to complete the scroll in milliseconds
+        easing: 'easeInOutCubic', // Easing pattern to use
+        offset: 20, // Integer. How far to offset the scrolling anchor location in pixels
+      });
+    </script>
+    <!-- <script src=" /js/scroll.min.js " charset="utf-8"></script> -->
+  </body>
+
+</html>
