@@ -195,7 +195,15 @@
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#Guide" title="Category: Guide" rel="category">Guide</a>
+        <a href="/category/#Guide" title="Category: Guide" rel="category">Guide</a>&nbsp;
+    
+        <a href="/category/#Java" title="Category: Java" rel="category">Java</a>&nbsp;
+    
+        <a href="/category/#Test" title="Category: Test" rel="category">Test</a>&nbsp;
+    
+        <a href="/category/#Wiki" title="Category: Wiki" rel="category">Wiki</a>&nbsp;
+    
+        <a href="/category/#Reco" title="Category: Reco" rel="category">Reco</a>
     
   
 
@@ -242,7 +250,8 @@
     <!-- /.addthis_div -->
     <div class="addthis_inline_share_toolbox"></div>
     
-    <div class="sharethis-inline-reaction-buttons"></div>
+    <!-- reaction icons -->
+    <!--<div class="sharethis-inline-reaction-buttons"></div>-->
 </div>
 
 <!--<div class="share-button-container">-->
@@ -334,66 +343,88 @@
 <!--</a>-->
 
 <!--</div>-->
+
         </div>
         
         <!--<hr>-->
         <article itemscope itemtype="http://schema.org/BlogPosting">
             <ul id="markdown-toc">
   <li><a href="#pre-script" id="markdown-toc-pre-script">Pre Script</a></li>
-  <li><a href="#fitnesse-rundown" id="markdown-toc-fitnesse-rundown">Fitnesse Rundown</a></li>
-  <li><a href="#the-journey" id="markdown-toc-the-journey">The Journey</a></li>
+  <li><a href="#guide-to-your-fitnesse-journey" id="markdown-toc-guide-to-your-fitnesse-journey">Guide to your FitNesse Journey</a>    <ul>
+      <li><a href="#get-started" id="markdown-toc-get-started">Get Started</a></li>
+      <li><a href="#writing-reference" id="markdown-toc-writing-reference">Writing Reference</a></li>
+      <li><a href="#cheat-sheet" id="markdown-toc-cheat-sheet">Cheat Sheet</a></li>
+    </ul>
+  </li>
 </ul>
 
 <h1 id="pre-script">Pre Script</h1>
 
-<h1 id="fitnesse-rundown">Fitnesse Rundown</h1>
-
 <p>After spending time going through different ways to setup and run <strong>Business-readable <em>(and writeable)</em> Acceptance Test Scenarios</strong> and <strong>FitNesse</strong> seems like a really good candidate for a solution to this problem..</p>
 
-<h1 id="the-journey">The Journey</h1>
-<p>Here are some helpful links for your reference if you want to get started for your project:
-##Get Started</p>
+<h1 id="guide-to-your-fitnesse-journey">Guide to your FitNesse Journey</h1>
+<p>Here are some helpful links for your reference if you want to get started for your project:</p>
+<h2 id="get-started">Get Started</h2>
 <ul>
   <li>What is FitNesse?
-http://www.fitnesse.org/FitNesse.FullReferenceGuide.UserGuide.OneMinuteDescription</li>
-  <li>Why whould I look at FitNesse?
+    <blockquote>
+      <p>Great software requires collaboration and communication.<br />
+and <a href="http://docs.fitnesse.org/FrontPage">FitNesse</a> is a cool, <a href="https://github.com/unclebob/fitnesse">open-source</a> software development collaboration tool!</p>
+    </blockquote>
+
+    <p>Here’s a quick <a href="http://www.fitnesse.org/FitNesse.FullReferenceGuide.UserGuide.OneMinuteDescription">OneMinuteDescription</a> to it</p>
+  </li>
+  <li>Why should I look at FitNesse?
     <ul>
-      <li>good info to start on: http://www.fitnesse.org/FitNesse.UserGuide</li>
-      <li>system architecture overview: http://www.fitnesse.org/FitNesse.FullReferenceGuide.UserGuide.WritingAcceptanceTests.TestSystems</li>
+      <li>the <a href="http://www.fitnesse.org/FitNesse.UserGuide">FitNesse.UserGuide</a> is good info to start on.</li>
+      <li>if you like a <a href="http://www.fitnesse.org/FitNesse.FullReferenceGuide.UserGuide.WritingAcceptanceTests.TestSystems">High-level System Architecture Overview</a></li>
     </ul>
   </li>
-  <li>Some Examples
+  <li>Some more Examples:
     <ul>
-      <li>Simple - http://www.fitnesse.org/FitNesse.UserGuide.TwoMinuteExample</li>
-      <li>A more realistic one - http://www.fitnesse.org/FitNesse.UserGuide.WritingAcceptanceTests.FixtureCode</li>
-    </ul>
-  </li>
-  <li>Writing cases
-    <ul>
-      <li>Fit - http://www.fitnesse.org/FitNesse.FullReferenceGuide.UserGuide.WritingAcceptanceTests.FitFramework</li>
-      <li>SliM - http://www.fitnesse.org/FitNesse.FullReferenceGuide.UserGuide.WritingAcceptanceTests.SliM</li>
+      <li>Here’s a <a href="http://www.fitnesse.org/FitNesse.UserGuide.TwoMinuteExample">simple Two-Minute example</a></li>
+      <li>and here’s a <a href="http://www.fitnesse.org/FitNesse.UserGuide.WritingAcceptanceTests.FixtureCode">more realistic one</a></li>
     </ul>
   </li>
 </ul>
 
-<p>##Writing Reference</p>
+<h2 id="writing-reference">Writing Reference</h2>
 <ul>
   <li>Basic things to know:
     <ul>
-      <li>Setup and other special pages: http://fitnesse.org/FitNesse.FullReferenceGuide.UserGuide.WritingAcceptanceTests.SpecialPages</li>
-      <li>Example Test Suites:</li>
+      <li>Setup and <a href="http://fitnesse.org/FitNesse.FullReferenceGuide.UserGuide.WritingAcceptanceTests.SpecialPages">other special pages</a></li>
     </ul>
   </li>
-  <li>SliM Suite structure: http://fitnesse.org/FitNesse.SuiteAcceptanceTests.SuiteSlimTests
+  <li>Two flavors of writing code for the test cases:
     <ul>
-      <li>Their Full Reference Guide: http://fitnesse.org/FitNesse.FullReferenceGuide</li>
+      <li>
+        <dl>
+          <dt><a href="http://www.fitnesse.org/FitNesse.FullReferenceGuide.UserGuide.WritingAcceptanceTests.FitFramework">Fit model</a></dt>
+          <dd>Framework for Integrated Test</dd>
+        </dl>
+      </li>
+      <li>
+        <dl>
+          <dt><a href="http://www.fitnesse.org/FitNesse.FullReferenceGuide.UserGuide.WritingAcceptanceTests.SliM">SliM model</a></dt>
+          <dd>Simple List Invocation Method</dd>
+        </dl>
+      </li>
     </ul>
   </li>
+  <li>Example Test Suites:
+    <ul>
+      <li><a href="http://fitnesse.org/FitNesse.SuiteAcceptanceTests.SuiteSlimTests">SliM Suite structure</a></li>
+    </ul>
+  </li>
+  <li>and their <a href="http://fitnesse.org/FitNesse.FullReferenceGuide">Full Reference Guide</a></li>
 </ul>
 
-<p>##Cheat Sheet
-http://www.fitnesse.org/FitNesse.UserGuide.QuickReferenceGuide
-and their hidden home page: http://fitnesse.org/FitNesse</p>
+<h2 id="cheat-sheet">Cheat Sheet</h2>
+<ul>
+  <li>Once you get a little more familiar with the above, this page can help you get up-to-speed with actually working with the Wiki and tool:<br />
+<a href="http://www.fitnesse.org/FitNesse.UserGuide.QuickReferenceGuide">QuickReferenceGuide</a></li>
+  <li>and their hidden home page of tests that cover their documentation itself: <a href="http://fitnesse.org/FitNesse">http://fitnesse.org/FitNesse</a></li>
+</ul>
 
 
         </article>
@@ -518,7 +549,8 @@ and their hidden home page: http://fitnesse.org/FitNesse</p>
     <!-- /.addthis_div -->
     <div class="addthis_inline_share_toolbox"></div>
     
-    <div class="sharethis-inline-reaction-buttons"></div>
+    <!-- reaction icons -->
+    <!--<div class="sharethis-inline-reaction-buttons"></div>-->
 </div>
 
 <!--<div class="share-button-container">-->
@@ -610,6 +642,7 @@ and their hidden home page: http://fitnesse.org/FitNesse</p>
 <!--</a>-->
 
 <!--</div>-->
+
         </div>
         
         <h2 id="comments">Comments</h2>
