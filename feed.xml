@@ -5,8 +5,8 @@
     <description></description>
     <link>https://ufo2mstar.github.io/</link>
     <atom:link href="https://ufo2mstar.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 02 Apr 2018 11:31:28 -0400</pubDate>
-    <lastBuildDate>Mon, 02 Apr 2018 11:31:28 -0400</lastBuildDate>
+    <pubDate>Mon, 02 Apr 2018 11:55:07 -0400</pubDate>
+    <lastBuildDate>Mon, 02 Apr 2018 11:55:07 -0400</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
       <item>
@@ -27,6 +27,8 @@
         
         <category>Guide</category>
         
+        <category>Reco</category>
+        
       </item>
     
       <item>
@@ -42,6 +44,8 @@
         
         
         <category>Guide</category>
+        
+        <category>Reco</category>
         
       </item>
     
@@ -133,7 +137,7 @@
         <category>SVN</category>
         
         
-        <category>Tips</category>
+        <category>Tutorial</category>
         
       </item>
     
@@ -172,6 +176,8 @@
         
         
         <category>Share</category>
+        
+        <category>Reco</category>
         
       </item>
     
