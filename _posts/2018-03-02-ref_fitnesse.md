@@ -3,7 +3,8 @@ layout: post
 comments: true
 title: "FitNesse Rundown"
 date: 2018-03-02
-categories: [Guide, Java, Test, Wiki, Reco]
+categories: [Guide]
+tags: [Java, Test, Wiki, Reco]
 excerpt: "FitNesse seems like a good tool to acceptance-test rules engines. Here are some useful links to get started.."
 mathjax: false
 ---

@@ -4,7 +4,7 @@ comments: true
 title: "Friendship: limit x tends to Dunbar"
 date: 2017-11-10
 categories: [Thoughts]
-tags: [Debate, Morality]
+tags: [Debate, Morality, Friendship]
 excerpt: "Nature directs the course of space-time, but how does she gives us power over her? by endowing us the ability to understand her!"
 mathjax: true
 ---

@@ -3,7 +3,8 @@ layout: post
 comments: true
 title: "CS Fundamentals"
 date: 2018-01-24
-categories: [Guide, CS]
+categories: [Guide]
+tags: [CS, Algo]
 excerpt: "some good links I have gone through in my journey!.."
 mathjax: false
 ---

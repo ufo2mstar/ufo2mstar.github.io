@@ -3,7 +3,8 @@ layout: post
 comments: true
 title: "Wonders of the Internet"
 date: 2017-12-21
-categories: [Thoughts, Technical, Network]
+categories: [Thoughts]
+tags: [Technical, Network, CS]
 excerpt: "the value of the Global Consciousness: the Internet"
 mathjax: true
 ---

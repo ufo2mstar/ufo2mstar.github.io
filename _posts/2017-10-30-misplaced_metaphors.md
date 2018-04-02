@@ -4,7 +4,7 @@ comments: true
 title:  "Perils of terribly misplaced metaphors (in debates)"
 date: 2017-10-30
 categories: [Thoughts]
-tags: [Fables, Debate]
+tags: [Fables, Debate, Morality]
 excerpt: or better put, a footnote on how I consume and digest fables!
 
 ---
