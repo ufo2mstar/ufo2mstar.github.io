@@ -5,9 +5,48 @@
     <description></description>
     <link>https://ufo2mstar.github.io/</link>
     <atom:link href="https://ufo2mstar.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 22 Mar 2018 12:43:13 -0400</pubDate>
-    <lastBuildDate>Thu, 22 Mar 2018 12:43:13 -0400</lastBuildDate>
+    <pubDate>Mon, 02 Apr 2018 00:12:03 -0400</pubDate>
+    <lastBuildDate>Mon, 02 Apr 2018 00:12:03 -0400</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
+    
+      <item>
+        <title>Ref_fitnesse</title>
+        <description>Fitnesse Rundown
+Naren Siva Subramani posted on Mar 02, 2018
+Had a good run going through different ways to setup Business-readable Acceptance Test Scenarios using FitNesse.
+Here is my repo with those (feel free to request access if you want to play around with the cases)
+
+Here are some helpful links for your reference if you want to get started for your project:
+Get Started
+What?
+http://www.fitnesse.org/FitNesse.FullReferenceGuide.UserGuide.OneMinuteDescription
+Why Fitnesse?
+good info to start on: http://www.fitnesse.org/FitNesse.UserGuide
+system architecture overview: http://www.fitnesse.org/FitNesse.FullReferenceGuide.UserGuide.WritingAcceptanceTests.TestSystems
+Some Examples
+Simple - http://www.fitnesse.org/FitNesse.UserGuide.TwoMinuteExample
+A more realistic one - http://www.fitnesse.org/FitNesse.UserGuide.WritingAcceptanceTests.FixtureCode
+Writing cases
+Fit - http://www.fitnesse.org/FitNesse.FullReferenceGuide.UserGuide.WritingAcceptanceTests.FitFramework
+SliM - http://www.fitnesse.org/FitNesse.FullReferenceGuide.UserGuide.WritingAcceptanceTests.SliM
+Writing Reference
+Basic things to know
+Example 
+Setup and other special pages: http://fitnesse.org/FitNesse.FullReferenceGuide.UserGuide.WritingAcceptanceTests.SpecialPages
+Example Test Suites:
+SliM Suite structure: http://fitnesse.org/FitNesse.SuiteAcceptanceTests.SuiteSlimTests
+Their Full Reference Guide: http://fitnesse.org/FitNesse.FullReferenceGuide
+Cheat Sheet
+http://www.fitnesse.org/FitNesse.UserGuide.QuickReferenceGuide
+and their hidden home page: http://fitnesse.org/FitNesse
+
+</description>
+        <pubDate>Fri, 02 Mar 2018 00:00:00 -0500</pubDate>
+        <link>https://ufo2mstar.github.io/blog/2018/03/02/ref_fitnesse/</link>
+        <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2018/03/02/ref_fitnesse/</guid>
+        
+        
+      </item>
     
       <item>
         <title>CS Fundamentals</title>
@@ -160,26 +199,6 @@
         
         
         <category>Recommendation</category>
-        
-      </item>
-    
-      <item>
-        <title>Tutorials: Graph Algorithms and implementation</title>
-        <description>Not the simplest of subjects, but once you get your head around this, very hard to not see these patterns everywhere! :)</description>
-        <pubDate>Fri, 30 Jun 2017 00:00:00 -0400</pubDate>
-        <link>https://ufo2mstar.github.io/blog/2017/06/30/tut_graph_algos/</link>
-        <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2017/06/30/tut_graph_algos/</guid>
-        
-        <category>Graph</category>
-        
-        <category>Algorithm</category>
-        
-        <category>Tutorial</category>
-        
-        <category>DataStructures</category>
-        
-        
-        <category>Tutorial</category>
         
       </item>
     
