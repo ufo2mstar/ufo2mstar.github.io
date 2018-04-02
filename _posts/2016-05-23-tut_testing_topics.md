@@ -3,7 +3,7 @@ layout: post
 title:  "Quick guide on where-to-start: Testing edition!"
 date:   2016-05-23 15:14:54
 comments: true
-categories: Testing
+categories: Guide
 tags: [Testing, Java, Ruby, Selenium, OOP, Tips]
 excerpt: Want to get started with Automated testing? Here is a quick overview on the topics to be familiar with.
 mathjax: true

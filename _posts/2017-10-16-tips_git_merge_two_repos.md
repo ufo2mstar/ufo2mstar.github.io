@@ -3,8 +3,8 @@ layout: post
 comments: true
 title:  "Tips: Merging two separate Git Repos"
 date: 2017-10-16
-categories: [VCS]
-tags: [Tips, Git, Tool, SVN]
+categories: [Tips]
+tags: [VCS, Git, Tool, SVN]
 excerpt: Had a fun problem to merge two of my projects in separate git repos. Here's how I did it.
 mathjax: false
 ---
