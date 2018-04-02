@@ -1,1 +1,1 @@
-bundle exec jekyll serve -d ..\site\ --incremental --trace
+bundle exec jekyll serve -d ..\site\ --trace #--incremental
