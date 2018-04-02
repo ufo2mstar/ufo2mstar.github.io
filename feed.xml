@@ -3,18 +3,18 @@
   <channel>
     <title>Un Ltd.</title>
     <description></description>
-    <link>https://ufo2mstar.github.io/</link>
-    <atom:link href="https://ufo2mstar.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 02 Apr 2018 01:10:20 -0400</pubDate>
-    <lastBuildDate>Mon, 02 Apr 2018 01:10:20 -0400</lastBuildDate>
+    <link>http://localhost:80/</link>
+    <atom:link href="http://localhost:80/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Mon, 02 Apr 2018 01:14:37 -0400</pubDate>
+    <lastBuildDate>Mon, 02 Apr 2018 01:14:37 -0400</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
       <item>
         <title>FitNesse Rundown</title>
         <description>FitNesse seems like a good tool to acceptance-test rules engines. Here are some useful links to get started..</description>
         <pubDate>Fri, 02 Mar 2018 00:00:00 -0500</pubDate>
-        <link>https://ufo2mstar.github.io/blog/2018/03/02/ref_fitnesse/</link>
-        <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2018/03/02/ref_fitnesse/</guid>
+        <link>http://localhost:80/blog/2018/03/02/ref_fitnesse/</link>
+        <guid isPermaLink="true">http://localhost:80/blog/2018/03/02/ref_fitnesse/</guid>
         
         
         <category>Guide</category>
@@ -33,8 +33,8 @@
         <title>CS Fundamentals</title>
         <description>some good links I have gone through in my journey!..</description>
         <pubDate>Wed, 24 Jan 2018 00:00:00 -0500</pubDate>
-        <link>https://ufo2mstar.github.io/blog/2018/01/24/reco_cs_fundamentals/</link>
-        <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2018/01/24/reco_cs_fundamentals/</guid>
+        <link>http://localhost:80/blog/2018/01/24/reco_cs_fundamentals/</link>
+        <guid isPermaLink="true">http://localhost:80/blog/2018/01/24/reco_cs_fundamentals/</guid>
         
         
         <category>Guide</category>
@@ -47,8 +47,8 @@
         <title>Wonders of the Internet</title>
         <description>the value of the Global Consciousness: the Internet</description>
         <pubDate>Thu, 21 Dec 2017 00:00:00 -0500</pubDate>
-        <link>https://ufo2mstar.github.io/blog/2017/12/21/wonders_of_the_internet/</link>
-        <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2017/12/21/wonders_of_the_internet/</guid>
+        <link>http://localhost:80/blog/2017/12/21/wonders_of_the_internet/</link>
+        <guid isPermaLink="true">http://localhost:80/blog/2017/12/21/wonders_of_the_internet/</guid>
         
         
         <category>Thoughts</category>
@@ -63,8 +63,8 @@
         <title>Opinions and The Self</title>
         <description>an analysis and rationalization of different states of the mind</description>
         <pubDate>Mon, 27 Nov 2017 00:00:00 -0500</pubDate>
-        <link>https://ufo2mstar.github.io/blog/2017/11/27/mind_inputs_and_opinions/</link>
-        <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2017/11/27/mind_inputs_and_opinions/</guid>
+        <link>http://localhost:80/blog/2017/11/27/mind_inputs_and_opinions/</link>
+        <guid isPermaLink="true">http://localhost:80/blog/2017/11/27/mind_inputs_and_opinions/</guid>
         
         <category>Debate</category>
         
@@ -81,8 +81,8 @@
         <title>Friendship: limit x tends to Dunbar</title>
         <description>Nature directs the course of space-time, but how does she gives us power over her? by endowing us the ability to understand her!</description>
         <pubDate>Fri, 10 Nov 2017 00:00:00 -0500</pubDate>
-        <link>https://ufo2mstar.github.io/blog/2017/11/10/friendship_limit_0_to_dunbar/</link>
-        <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2017/11/10/friendship_limit_0_to_dunbar/</guid>
+        <link>http://localhost:80/blog/2017/11/10/friendship_limit_0_to_dunbar/</link>
+        <guid isPermaLink="true">http://localhost:80/blog/2017/11/10/friendship_limit_0_to_dunbar/</guid>
         
         <category>Debate</category>
         
@@ -97,8 +97,8 @@
         <title>Perils of terribly misplaced metaphors (in debates)</title>
         <description>or better put, a footnote on how I consume and digest fables!</description>
         <pubDate>Mon, 30 Oct 2017 00:00:00 -0400</pubDate>
-        <link>https://ufo2mstar.github.io/blog/2017/10/30/misplaced_metaphors/</link>
-        <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2017/10/30/misplaced_metaphors/</guid>
+        <link>http://localhost:80/blog/2017/10/30/misplaced_metaphors/</link>
+        <guid isPermaLink="true">http://localhost:80/blog/2017/10/30/misplaced_metaphors/</guid>
         
         <category>Fables</category>
         
@@ -113,8 +113,8 @@
         <title>Tips: Merging two separate Git Repos</title>
         <description>Had a fun problem to merge two of my projects in separate git repos. Here's how I did it.</description>
         <pubDate>Mon, 16 Oct 2017 00:00:00 -0400</pubDate>
-        <link>https://ufo2mstar.github.io/blog/2017/10/16/tips_git_merge_two_repos/</link>
-        <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2017/10/16/tips_git_merge_two_repos/</guid>
+        <link>http://localhost:80/blog/2017/10/16/tips_git_merge_two_repos/</link>
+        <guid isPermaLink="true">http://localhost:80/blog/2017/10/16/tips_git_merge_two_repos/</guid>
         
         <category>Tips</category>
         
@@ -133,8 +133,8 @@
         <title>Primer: Gitting Started!</title>
         <description>The one tool, that I believe, I will be getting a lot of return-on-investment in my coding career.</description>
         <pubDate>Sat, 19 Aug 2017 00:00:00 -0400</pubDate>
-        <link>https://ufo2mstar.github.io/blog/2017/08/19/primer_git/</link>
-        <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2017/08/19/primer_git/</guid>
+        <link>http://localhost:80/blog/2017/08/19/primer_git/</link>
+        <guid isPermaLink="true">http://localhost:80/blog/2017/08/19/primer_git/</guid>
         
         <category>Tips</category>
         
@@ -153,8 +153,8 @@
         <title>Adhu 1.0</title>
         <description>Dedicated to my very dear couple and their bundle of joy!&lt;br&gt; Those who feel like they have missed his first year: we've got you covered :)</description>
         <pubDate>Tue, 15 Aug 2017 00:00:00 -0400</pubDate>
-        <link>https://ufo2mstar.github.io/blog/2017/08/15/share_birthday_mashup/</link>
-        <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2017/08/15/share_birthday_mashup/</guid>
+        <link>http://localhost:80/blog/2017/08/15/share_birthday_mashup/</link>
+        <guid isPermaLink="true">http://localhost:80/blog/2017/08/15/share_birthday_mashup/</guid>
         
         <category>Birthday</category>
         
@@ -171,8 +171,8 @@
         <title>Reco: MindMap tools for Notes</title>
         <description>How did I ever not realize this simple and efficient solution to my notes taking problem from back in school, all the way through my post-graduation. You gotta try this out! No need to thank me for all the benefits you are going to see, in information organization</description>
         <pubDate>Sun, 16 Jul 2017 00:00:00 -0400</pubDate>
-        <link>https://ufo2mstar.github.io/blog/2017/07/16/reco_mindmap/</link>
-        <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2017/07/16/reco_mindmap/</guid>
+        <link>http://localhost:80/blog/2017/07/16/reco_mindmap/</link>
+        <guid isPermaLink="true">http://localhost:80/blog/2017/07/16/reco_mindmap/</guid>
         
         <category>Graph</category>
         
