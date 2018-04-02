@@ -5,8 +5,8 @@
     <description></description>
     <link>https://ufo2mstar.github.io/</link>
     <atom:link href="https://ufo2mstar.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 02 Apr 2018 11:24:08 -0400</pubDate>
-    <lastBuildDate>Mon, 02 Apr 2018 11:24:08 -0400</lastBuildDate>
+    <pubDate>Mon, 02 Apr 2018 11:31:28 -0400</pubDate>
+    <lastBuildDate>Mon, 02 Apr 2018 11:31:28 -0400</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
       <item>
@@ -16,9 +16,6 @@
         <link>https://ufo2mstar.github.io/blog/2018/03/02/ref_fitnesse/</link>
         <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2018/03/02/ref_fitnesse/</guid>
         
-        
-        <category>Guide</category>
-        
         <category>Java</category>
         
         <category>Test</category>
@@ -26,6 +23,9 @@
         <category>Wiki</category>
         
         <category>Reco</category>
+        
+        
+        <category>Guide</category>
         
       </item>
     
@@ -36,10 +36,12 @@
         <link>https://ufo2mstar.github.io/blog/2018/01/24/reco_cs_fundamentals/</link>
         <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2018/01/24/reco_cs_fundamentals/</guid>
         
+        <category>CS</category>
+        
+        <category>Algo</category>
+        
         
         <category>Guide</category>
-        
-        <category>CS</category>
         
       </item>
     
@@ -50,12 +52,14 @@
         <link>https://ufo2mstar.github.io/blog/2017/12/21/wonders_of_the_internet/</link>
         <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2017/12/21/wonders_of_the_internet/</guid>
         
-        
-        <category>Thoughts</category>
-        
         <category>Technical</category>
         
         <category>Network</category>
+        
+        <category>CS</category>
+        
+        
+        <category>Thoughts</category>
         
       </item>
     
@@ -88,6 +92,8 @@
         
         <category>Morality</category>
         
+        <category>Friendship</category>
+        
         
         <category>Thoughts</category>
         
@@ -104,6 +110,8 @@
         
         <category>Debate</category>
         
+        <category>Morality</category>
+        
         
         <category>Thoughts</category>
         
@@ -116,7 +124,7 @@
         <link>https://ufo2mstar.github.io/blog/2017/10/16/tips_git_merge_two_repos/</link>
         <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2017/10/16/tips_git_merge_two_repos/</guid>
         
-        <category>Tips</category>
+        <category>VCS</category>
         
         <category>Git</category>
         
@@ -125,7 +133,7 @@
         <category>SVN</category>
         
         
-        <category>VCS</category>
+        <category>Tips</category>
         
       </item>
     
@@ -142,8 +150,8 @@
         
         <category>Tool</category>
         
-        
         <category>VCS</category>
+        
         
         <category>Guide</category>
         
@@ -181,7 +189,7 @@
         <category>Tool</category>
         
         
-        <category>Recommendation</category>
+        <category>Reco</category>
         
       </item>
     
