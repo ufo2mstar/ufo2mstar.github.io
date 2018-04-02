@@ -3,7 +3,7 @@ layout: post
 comments: true
 title:  "Adhu 1.0"
 date: 2017-08-15
-categories: [Share]
+categories: [Share, Reco]
 tags: [Birthday, Montage, Production]
 excerpt: "Dedicated to my very dear couple and their bundle of joy!<br>
          Those who feel like they have missed his first year: we've got you covered :)"
