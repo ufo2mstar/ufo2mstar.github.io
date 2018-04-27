@@ -5,9 +5,27 @@
     <description></description>
     <link>https://ufo2mstar.github.io/</link>
     <atom:link href="https://ufo2mstar.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 02 Apr 2018 11:55:07 -0400</pubDate>
-    <lastBuildDate>Mon, 02 Apr 2018 11:55:07 -0400</lastBuildDate>
+    <pubDate>Fri, 27 Apr 2018 01:44:09 -0400</pubDate>
+    <lastBuildDate>Fri, 27 Apr 2018 01:44:09 -0400</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
+    
+      <item>
+        <title>Art and Human Ingenuity</title>
+        <description>the objective beauty of art...</description>
+        <pubDate>Sat, 14 Apr 2018 00:00:00 -0400</pubDate>
+        <link>https://ufo2mstar.github.io/blog/2018/04/14/review_lala_land_and_art/</link>
+        <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2018/04/14/review_lala_land_and_art/</guid>
+        
+        <category>Reco</category>
+        
+        <category>Movie</category>
+        
+        
+        <category>Review</category>
+        
+        <category>Thoughts</category>
+        
+      </item>
     
       <item>
         <title>FitNesse Rundown</title>
@@ -176,24 +194,6 @@
         
         
         <category>Share</category>
-        
-        <category>Reco</category>
-        
-      </item>
-    
-      <item>
-        <title>Reco: MindMap tools for Notes</title>
-        <description>How did I ever not realize this simple and efficient solution to my notes taking problem from back in school, all the way through my post-graduation. You gotta try this out! No need to thank me for all the benefits you are going to see, in information organization</description>
-        <pubDate>Sun, 16 Jul 2017 00:00:00 -0400</pubDate>
-        <link>https://ufo2mstar.github.io/blog/2017/07/16/reco_mindmap/</link>
-        <guid isPermaLink="true">https://ufo2mstar.github.io/blog/2017/07/16/reco_mindmap/</guid>
-        
-        <category>Graph</category>
-        
-        <category>MindMap</category>
-        
-        <category>Tool</category>
-        
         
         <category>Reco</category>
         
