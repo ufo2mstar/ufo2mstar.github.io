@@ -14,5 +14,6 @@ mathjax: false
 # Pre Script
 
 
-
 Prescriptive thoughts
+As I have come to realize that there is more to life than Morality, 
+I am trying to document my current understanding and interests in this space.
