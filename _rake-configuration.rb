@@ -4,7 +4,8 @@
 $compass = false
 
 # default extension for posts
-$post_ext = ".textile"
+# $post_ext = ".textile"
+$post_ext = ".md"
 
 # default location for posts
 $post_dir = "_posts/"
