@@ -32,7 +32,7 @@ git commit -m "INIT: the Final destination repo"
 ## Step 2: Add the old remote (legacy) and pull the content
 ```bash
 git remote add RemoteRepo <LegacyRemoteURL>
-git pull RemoteRepo
+git pull RemoteRepo master
 ```
 ## Step 3: Merge with the Third repo
 ```bash
