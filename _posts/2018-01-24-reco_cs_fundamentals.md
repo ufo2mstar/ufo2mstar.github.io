@@ -54,8 +54,6 @@ It is only valuable based on how many people use it!
 
 # References
 
-1. <iframe width="560" height="315" src="https://www.youtube.com/embed/p0ZVztROpls" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
-2. https://medium.com/@samerbuna/the-mistakes-i-made-as-a-beginner-programmer-ac8b3e54c312
+1. [Samer Buna's _"The Mistakes I Made As a Beginner Programmer"_](https://medium.com/@samerbuna/the-mistakes-i-made-as-a-beginner-programmer-ac8b3e54c312)
 
 

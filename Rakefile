@@ -139,19 +139,20 @@ task :deploy_github => :build do |t, args|
   args.with_defaults(:deployment_configuration => 'deploy')
   config_file = "_config_#{args[:deployment_configuration]}.yml"
 
-  if git_requires_attention("gh_pages") then
+  # if git_requires_attention("gh_pages") then
+  if git_requires_attention("master") then
     puts "\n\nWarning! It seems that the local repository is not in sync with the remote.\n"
     puts "This could be ok if the local version is more recent than the remote repository.\n"
     puts "Deploying before committing might cause a regression of the website (at this or the next deploy).\n\n"
     puts "Are you sure you want to continue? [Y|n]"
 
     ans = STDIN.gets.chomp
-    exit if ans != 'Y'
+    exit if ans.downcase != 'Y'
   end
 
-  %x{git add -A && git commit -m "autopush by Rakefile at #{time}" && git push origin gh_pages} if $git_autopush
-
   time = Time.new
+  %x{cd ../_site && git add -A && git commit -m "Rakefile autopush at #{time}" && git push origin master} if $git_autopush
+
   File.open("_last_deploy.txt", 'w') {|f| f.write(time)}
 end
 
