@@ -47,7 +47,7 @@ task :default => :preview
 # ... or load them from the configuration file, e.g.:
 # 
 load '_rake-configuration.rb' if File.exist?('_rake-configuration.rb')
-load '_rake_configuration.rb' if File.exist?('_rake_configuration.rb')
+# load '_rake_configuration.rb' if File.exist?('_rake_configuration.rb')
 
 # ... we are a bit redundant and allow two different file names
 
@@ -74,16 +74,19 @@ end
 
 
 desc 'Preview on local machine (server with --auto)'
-task :preview => :clean do
+# task :preview => :clean do #uncomment if you want to clean install
+task :preview do
   compass('compile') # so that we are sure sass has been compiled before we run the server
   compass('watch &')
-  jekyll('serve --watch')
+  # jekyll('serve --watch')
+  jekyll('serve --watch --incremental')
 end
 task :serve => :preview
 
 
 desc 'Build for deployment (but do not deploy)'
-task :build, [:deployment_configuration] => :clean do |t, args|
+# task :build, [:deployment_configuration] => :clean do |t, args|
+task :build, [:deployment_configuration] do |t, args|
   args.with_defaults(:deployment_configuration => 'deploy')
   config_file = "_config_#{args[:deployment_configuration]}.yml"
 
