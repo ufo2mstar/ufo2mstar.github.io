@@ -382,7 +382,7 @@ Thus came the need for doing a git merge with a third merger repo <img class="em
 <h2 id="step-1-init-the-third-repo-locally">Step 1: Init the Third repo locally</h2>
 <p>You may need to commit some file first to the <strong>Third merger <em>git repo</em></strong> the repo started: I recommend the {.gitignore} file from your new repo.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git init ThirdRepo
-cp UpgradedLocalRepo/.gitignore ThirdRepo/
+<span class="nb">cp </span>UpgradedLocalRepo/.gitignore ThirdRepo/
 <span class="nb">cd </span>ThirdRepo
 git add <span class="nb">.</span>
 git commit <span class="nt">-m</span> <span class="s2">"INIT: the Final destination repo"</span>
@@ -397,7 +397,7 @@ git commit <span class="nt">-m</span> <span class="s2">"OLD_MERGE: successfully 
 </code></pre></div></div>
 <h2 id="step-4-handle-the-old-code-and-commit-the-changes">Step 4: <em>Handle</em> the old code and commit the changes</h2>
 <p>You may either get rid of unnecessary files or back them up in a different directory</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git rm &lt;all files you dont want&gt;
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git <span class="nb">rm</span> &lt;all files you dont want&gt;
 git commit <span class="nt">-m</span> <span class="s2">"HANDLED_STATE: taken care of the legacy code"</span>
 </code></pre></div></div>
 <h2 id="step-5-now-add-the-new-local-repo-upgrade-and-pull-the-content-like-step-2">Step 5: Now add the new local repo (upgrade) and pull the content (like Step 2)</h2>
