@@ -35,6 +35,22 @@ Here is my compendium of books, courses and other material that may guide you th
 
 
 ## Books
+### Interview
+Cracking the Coding Interview (CTCI)
+Programming Interviews Exposed
+
+### Tech Specific
+Head First Design Patterns
+Head First Java
+CRLS Algo ref guide
+
+### Make yourself a good DEV!
+Pragmatic programmer
+Clean coder
+How Google tests software
+
+
+
 
 
 ## Courses
