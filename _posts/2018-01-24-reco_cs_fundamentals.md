@@ -42,11 +42,12 @@ Programming Interviews Exposed
 ### Tech Specific
 Head First Design Patterns
 Head First Java
-CRLS Algo ref guide
+CLRS Algo ref guide
 
 ### Make yourself a good DEV!
 Pragmatic programmer
 Clean coder
+Understanding Computation
 How Google tests software
 
 
