@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ .Title }} | {{ .Site.Title }}</title>
+</head>
+<body style="font-family: system-ui, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6;">
+  <header>
+    <a href="{{ .Site.BaseURL }}" style="text-decoration: none;"><strong>{{ .Site.Title }}</strong></a>
+    &middot;
+    <a href="/about/">about</a>
+  </header>
+  <hr>
+  <main>
+    {{ block "main" . }}{{ end }}
+  </main>
+  <hr>
+  <footer style="font-size: 0.85rem; color: #666;">
+    bare-bones layout (pre-theme)
+  </footer>
+</body>
+</html>
