@@ -1,13 +1,44 @@
 baseURL = 'https://ufo2mstar.github.io/'
 languageCode = 'en-us'
+defaultContentLanguage = 'en'
 title = 'ufo2mstar'
 
-# Site-wide params - referenced from layouts as .Site.Params.<key>.
-# Themes (when added) often define their own params here too.
+theme = 'blowfish'
+
+# Hugo build settings
+enableRobotsTXT = true
+enableEmoji = true
+summaryLength = 0
+buildDrafts = false
+buildFuture = false
+
+# Blowfish expects these taxonomies. We use 'tags' and 'categories'; the
+# others are defined for theme compatibility but unused for now.
+[taxonomies]
+  tag = 'tags'
+  category = 'categories'
+  author = 'authors'
+  series = 'series'
+
+# Blowfish needs JSON output on the home page for its search index.
+[outputs]
+  home = ['HTML', 'RSS', 'JSON']
+
+[pagination]
+  pagerSize = 10
+
+[sitemap]
+  changefreq = 'daily'
+  filename = 'sitemap.xml'
+  priority = 0.5
+
+# ---- Site-wide params -----------------------------------------------------
+# Custom params used by our own templates (and consumed by Blowfish where
+# the param names match Blowfish's conventions).
 [params]
   # Date format used everywhere via {{ .Format .Site.Params.dateFormat }}.
   # Hugo uses Go's reference date: Mon Jan 2 15:04:05 MST 2006
   # "2006-01-02"          -> 2026-04-20
   # "2006-01-02 15:04"    -> 2026-04-20 17:08
   # "January 2, 2006"     -> April 20, 2026
-  dateFormat = "2006-01-02"
+  dateFormat = '2006-01-02'
