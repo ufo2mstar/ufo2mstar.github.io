@@ -1,3 +1,13 @@
-baseURL = 'https://example.org/'
-locale = 'en-us'
-title = 'My New Hugo Project'
+baseURL = 'https://ufo2mstar.github.io/'
+languageCode = 'en-us'
+title = 'ufo2mstar'
+
+# Site-wide params - referenced from layouts as .Site.Params.<key>.
+# Themes (when added) often define their own params here too.
+[params]
+  # Date format used everywhere via {{ .Format .Site.Params.dateFormat }}.
+  # Hugo uses Go's reference date: Mon Jan 2 15:04:05 MST 2006
+  # "2006-01-02"          -> 2026-04-20
+  # "2006-01-02 15:04"    -> 2026-04-20 17:08
+  # "January 2, 2006"     -> April 20, 2026
+  dateFormat = "2006-01-02"
