@@ -1,6 +1,3 @@
 +++
-date = '2026-04-20'
-title = 'ufo2mstar'
+title = "Hello Fellow Earthling!"
 +++
-
-Hello. This is the new home page, built with Hugo.
