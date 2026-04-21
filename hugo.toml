@@ -40,14 +40,20 @@ buildFuture = false
     name = 'About'
     pageRef = '/about'
     weight = 20
+  # Names and Resume are static pages with no nav back to the site;
+  # open them in a new tab so the main site stays put.
   [[menu.main]]
     name = 'Names'
     url = '/names/'
     weight = 30
+    [menu.main.params]
+      newTab = true
   [[menu.main]]
     name = 'Resume'
     url = '/resume/'
     weight = 40
+    [menu.main.params]
+      newTab = true
 
 [pagination]
   pagerSize = 10
