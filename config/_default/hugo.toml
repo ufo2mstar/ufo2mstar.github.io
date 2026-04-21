@@ -37,3 +37,9 @@ buildFuture = false
   changefreq = 'daily'
   filename = 'sitemap.xml'
   priority = 0.5
+
+# Hugo's built-in service block. Blowfish's partials/analytics/main.html
+# reads site.Config.Services.GoogleAnalytics.ID and renders the gtag.js
+# snippet automatically. No theme override needed.
+[services.googleAnalytics]
+  ID = 'G-XJ9YEKJC1J'
