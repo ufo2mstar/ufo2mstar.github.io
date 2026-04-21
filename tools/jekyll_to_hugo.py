@@ -196,7 +196,8 @@ def main() -> int:
     written = skipped = 0
     for path in posts:
         _, slug, date = slug_from_filename(path)
-        target = out_root / slug / "index.md"
+        year = date.split("-")[0]
+        target = out_root / year / slug / "index.md"
         try:
             converted = convert(read_legacy_post(args.ref, path), slug, date)
         except Exception as e:
