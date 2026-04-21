@@ -69,6 +69,19 @@ peek-post: ## View a Jekyll post from master. Usage: make peek-post POST=2018-01
 list-legacy-posts: ## List all Jekyll posts on master
 	@git ls-tree -r --name-only master -- _posts | sort
 
+# Bulk-convert Jekyll posts (origin/source:_posts) to Hugo page bundles.
+# Usage:
+#   make migrate-dry                       # print everything to stdout, write nothing
+#   make migrate-dry ONLY=primer_git       # dry-run a single post (substring match)
+#   make migrate ONLY=2018                 # convert all 2018 posts
+#   make migrate FORCE=1                   # overwrite existing index.md files
+#   make migrate                           # convert all (skips files that already exist)
+migrate-dry: ## Dry-run converter; prints to stdout. Vars: ONLY=substr
+	@python3 tools/jekyll_to_hugo.py --dry-run $(if $(ONLY),--only $(ONLY))
+
+migrate: ## Convert Jekyll posts to Hugo bundles. Vars: ONLY=substr FORCE=1
+	@python3 tools/jekyll_to_hugo.py $(if $(ONLY),--only $(ONLY)) $(if $(FORCE),--force)
+
 ##@ Reference (do not run; documents one-time setup commands)
 
 # These targets are NOT meant to be invoked - they're inert documentation
