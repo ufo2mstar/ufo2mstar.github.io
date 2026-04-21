@@ -1,0 +1,12 @@
+# URL structure for content sections.
+# Hugo ref: https://gohugo.io/configuration/permalinks/
+#
+# Note: this file is named permalinks.toml because Hugo auto-scopes
+# files in config/_default/ whose basename matches a top-level config
+# key. Strip the `permalinks.` prefix from any examples you copy from
+# Hugo docs.
+#
+# Carried from the legacy Jekyll _config.yml so blog post URLs stay
+# stable across the migration. Old: /blog/2017/08/19/primer_git/
+
+blog = '/blog/:year/:month/:day/:slug/'

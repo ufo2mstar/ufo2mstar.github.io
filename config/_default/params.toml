@@ -1,0 +1,94 @@
+# Blowfish theme params - the bulk of the site's look-and-feel config.
+# Full reference: https://blowfish.page/docs/configuration/
+#
+# Note: this file is named params.toml because Hugo auto-scopes files in
+# config/_default/ whose basename matches a top-level config key. So
+# every `key = value` here is implicitly under `[params]`, and `[author]`
+# is `[params.author]`. Strip the `params.` prefix from any examples you
+# copy from Blowfish docs.
+#
+# `hugo config` (or `make config-dump`) prints the fully-merged config.
+
+# Visual theme. Full set lives in themes/blowfish/assets/css/schemes/:
+# autumn, avocado, bloody, blowfish, congo, fire, forest, github,
+# marvel, neon, noir, ocean, one-light, princess, slate, terminal.
+# Dark-friendly picks: noir, slate, terminal.
+colorScheme = 'slate'
+defaultAppearance = 'auto'           # auto | light | dark
+autoSwitchAppearance = true
+enableSearch = true
+enableCodeCopy = true
+
+# Date format used by both our templates and Blowfish.
+# Hugo uses Go's reference date: Mon Jan 2 15:04:05 MST 2006
+# "2006-01-02"          -> 2026-04-20
+# "2006-01-02 15:04"    -> 2026-04-20 17:08
+# "January 2, 2006"     -> April 20, 2026
+dateFormat = '2006-01-02'
+
+# Header / footer copy
+description = 'web logs by this guy'
+showAppearanceSwitcher = true
+showScrollToTop = true
+
+[header]
+  layout = 'basic'                   # basic | hamburger | hybrid | fixed | fixed-fill | fixed-fill-blur
+
+[footer]
+  showCopyright = true
+  showThemeAttribution = false       # we'll add 'powered by Hugo + Blowfish' once everything else is dialed in
+  showAppearanceSwitcher = false
+  showScrollToTop = true
+
+# Home page = Blowfish 'profile' layout (avatar + bio + recent posts).
+# The avatar is loaded from assets/avatar.png (Hugo will optimize it).
+[homepage]
+  layout = 'profile'
+  showRecent = true
+  showRecentItems = 5
+  showMoreLink = true
+  showMoreLinkDest = '/blog'
+  cardView = false
+
+# Author block shown on the profile homepage and post bylines.
+[author]
+  name = 'Naren'
+  image = 'avatar.png'
+  headline = 'web logs by this guy'
+  bio = 'Personal blog. Engineering, ideas, occasional rants.'
+  links = [
+    { github = 'https://github.com/ufo2mstar' },
+    { twitter = 'https://twitter.com/ufo2m' },
+    { linkedin = 'https://www.linkedin.com/in/narenss' },
+    { email = 'mailto:narensst@gmail.com' },
+    { rss = '/index.xml' },
+  ]
+
+# Article defaults - shown on every blog post unless front matter overrides.
+[article]
+  showDate = true
+  showDateUpdated = false
+  showAuthor = true
+  showBreadcrumbs = true
+  showDraftLabel = true
+  showEdit = false
+  showHeadingAnchors = true
+  showPagination = true
+  showReadingTime = true
+  showTableOfContents = true
+  showTaxonomies = true
+  showWordCount = false
+  sharingLinks = ['twitter', 'linkedin', 'reddit', 'email']
+
+# List pages (e.g. /blog/, /tags/foo/)
+[list]
+  showHero = false
+  showBreadcrumbs = true
+  showSummary = true
+  showTableOfContents = false
+  showTaxonomies = true
+  paginationWidth = 1
+
+# Single taxonomy term pages
+[taxonomy]
+  showTermCount = true

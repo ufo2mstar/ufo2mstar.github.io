@@ -1,0 +1,13 @@
+# Markdown rendering settings (Goldmark).
+# Hugo ref: https://gohugo.io/configuration/markup/
+#
+# Note: this file is named markup.toml because Hugo auto-scopes files in
+# config/_default/ whose basename matches a top-level config key. So
+# `[goldmark.renderer]` here is interpreted as `[markup.goldmark.renderer]`.
+# Strip the `markup.` prefix from any examples you copy from Hugo docs.
+
+# Allow raw HTML inside markdown (legacy posts have <iframe> embeds for
+# YouTube, etc). Personal blog with a single author, so the security
+# tradeoff of `unsafe = true` is acceptable.
+[goldmark.renderer]
+  unsafe = true
