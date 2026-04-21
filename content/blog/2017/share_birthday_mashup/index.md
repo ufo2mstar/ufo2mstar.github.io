@@ -28,6 +28,6 @@ Enjoy!
 - Producer, Co-Director, Design and Concept Artist:
 `Swae`
 - Director, Editor, Cinematographer:
-[`Naren`](/resume.html)
+[`Naren`](/resume/)
 - Cast (in-order-of-appearence):
 `quite a big list, to be filled in later` :smile:

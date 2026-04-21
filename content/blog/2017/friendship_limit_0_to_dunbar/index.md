@@ -29,7 +29,7 @@ I feel the classification and grouping-by-attributes that apply so well to Abrah
 A pertinent screengrab from [The Late Show with Stephen Colbert](https://www.youtube.com/channel/UCMtFAi84ehTSYSE9XoHefig) on [CBS](http://www.cbs.com/shows/the-late-show-with-stephen-colbert/)
 ironically depicts the possible attitudes of a self-centered culture of kins, who in a zero-sum game, can play the field: as, in that case, greed is rewarded.
 
-<a href='https://photos.google.com/share/AF1QipOE6vjK76tsZ3KEBFt-19vu5Wec2BmcvuBoRMFuwhjcFCktYU_NXen4R8HW8R-Xng?key=NnBlZ0hPdlRzSE5DaFpVNHFMcEVXUjRGR1FJUkFR&source=ctrlq.org'><img src='https://lh3.googleusercontent.com/FsMwLMNTXEOO8SPNq1-4r_8jvacXXpSCo_PT-s8fimSW_61qIZvFp09BjGlaKXUYDJfmkCwMKSR8iWW9PIZSKDb-_hvejcbcFSG3gu2ag70-S2Tip_-3hMipfIFL33Gzc3nnikqcJAo' /></a>
+![alt](image.png)
 
 ## Reciprocal altruism
 Thinking about how the moral landscape is not subject to feelings of kin-favoritism (as I believe the term nepotism doesn't exactly work in this context) led me thinking about the selfish gene. Granted that kins are closer in the gene-network than others, there is a fundamental difference between the two: one is natural and the other is not.
