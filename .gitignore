@@ -12,7 +12,9 @@ resources/
 
 # Editor / IDE / AI tooling
 .idea/
-.vscode/
+# .vscode/ is tracked - it's a single-dev repo, so shared editor config is
+# a feature not a bug. If anything machine-specific surfaces (absolute paths,
+# tokens, history/ folders), ignore that specific path, not the whole dir.
 .cursor/
 .specstory/
 

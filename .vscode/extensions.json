@@ -1,0 +1,8 @@
+{
+  "//": "Recommended VS Code extensions for editing this Hugo site. VS Code prompts to install these the first time you open the workspace.",
+  "recommendations": [
+    "tamasfe.even-better-toml",
+    "budparr.language-hugo-vscode",
+    "davidanson.vscode-markdownlint"
+  ]
+}
