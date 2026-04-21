@@ -154,6 +154,24 @@ Blowfish is a git submodule. Anyone cloning needs `--recurse-submodules` or them
 - **Legacy site:** `master` branch (still serving prod) + `legacy-jekyll` tag (permanent marker).
 - **Legacy post source:** `origin/source:_posts/` (not on `master` either).
 
+## Why Python for `tools/`
+
+Hugo is Go, but the repo's actual working language is markdown + TOML. Tools under `tools/` (`check_frontmatter.py`, `check_links.py`, `jekyll_to_hugo.py`) are stdlib-only Python because:
+
+- Short scripts: each is <300 lines, no need for compile/build steps
+- Zero install footprint: Python 3 ships on macOS and on the Ubuntu CI runners
+- ~Half the LOC of equivalent Go for the same behavior (no `go.mod`, no error-return ceremony, no struct definitions for one-shot data)
+
+Trigger to swap to Go (or to off-the-shelf binaries like `lychee`, `htmltest`): a script grows past ~300 lines, needs concurrency at scale, or needs to ship as a redistributable binary. None of the current tools are close to that line.
+
+## Migration patterns worth remembering
+
+Three lessons from the Hugo migration that generalize:
+
+- **Atomic cutover with frozen rollback.** Master branch + `legacy-jekyll` tag = a 60s revert path via Settings -> Pages -> Source. Cheap insurance, made the whole cutover feel safe enough to actually do. Pattern: when migrating any live system, freeze the old version on a tag/branch you can re-promote in seconds before touching the new one.
+- **Test harness as a forcing function.** Built `make check` (frontmatter + strict build + internal links). First run found a real bug (`/resume.html` -> `/resume/` in `share_birthday_mashup`). Pattern: on any accumulated codebase, the harness pays for itself day one - don't wait until "after content is in" to add validation.
+- **Don't pre-engineer for hypothetical flexibility.** Picked direct GA4 over GTM because the GA4 -> GTM migration is ~10 lines of partial override if it ever matters. Pattern: when migration cost between two options is small, ship the simpler one and migrate when there's a real second use case, not before.
+
 ## Working with Ellie on this repo
 
 > This section is a placeholder for the workflow we want to build. Update as it crystallizes.

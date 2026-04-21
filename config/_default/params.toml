@@ -78,7 +78,10 @@ showScrollToTop = true
   showTableOfContents = true
   showTaxonomies = true
   showWordCount = false
-  sharingLinks = ['twitter', 'linkedin', 'reddit', 'email']
+  # Hidden for now - socials aren't curated yet. Re-enable once the
+  # online-presence story is figured out.
+  # sharingLinks = ['twitter', 'linkedin', 'reddit', 'email']
+  sharingLinks = []
 
 # List pages (e.g. /blog/, /tags/foo/)
 [list]
