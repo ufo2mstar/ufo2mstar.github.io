@@ -1,0 +1,41 @@
++++
+title = "Guide: Getting up to speed on Ruby"
+date = 2016-08-21
+slug = "ref_ruby"
+categories = ["Guide"]
+tags = ["Ruby", "OOP"]
+summary = "some helpful pointers for people getting started with the Ruby programming language.."
+# Legacy Jekyll post had `comments: true`; re-enable in N6 once Giscus partial is wired up.
++++
+
+# For non-programmers
+There are tons of cool places you can start learning ruby from,
+but here are some that I personally felt were good:
+
+1. [A very good interactive tutorial - by codecademy](https://www.codecademy.com/learn/ruby)
+
+2. [tryruby.org](http://tryruby.org/levels/1/challenges/0): A funky but good tutorial.
+
+3. A good friend said that [she liked learning Ruby at `tutorialspoint`](http://www.tutorialspoint.com/ruby/)
+
+4. Here is a [quick and dirty tutorial](http://www.troubleshooters.com/codecorn/ruby/basictutorial.htm) by [Steve Litt](http://www.troubleshooters.com/email_steve_litt.htm), but covers all the bases
+
+# If you are comfortable with programming
+1. Ruby's [own website has some good tips](https://www.ruby-lang.org/en/documentation/quickstart/) on where to get started.
+2. Take a look at [my primer and try it out on your machine](/blog/2015/01/09/primer_ruby/))
+3. And here is [another blog post of mine, to get started with testing](/blog/2016/05/23/tut_testing_topics/)
+
+# For Pros
+If you are getting cozy with Ruby, I recommend the following resources:
+
+1. [Beginning Ruby](https://books.google.com/books/about/Beginning_Ruby.html?id=MiGpDAAAQBAJ&printsec=frontcover&source=kp_read_button#v=onepage&q&f=false) is a pretty cool book that I started it all with, if you have a good programming background..
+2. The [Ruby Cookbook](https://doc.lagout.org/programmation/Ruby/Ruby%20Cookbook_%20Recipes%20for%20Object-Oriented%20Scripting%20%282nd%20ed.%29%20%5BCarlson%20%26%20Richardson%202015-03-25%5D.pdf) offers quite a good list of recipes if you are looking for ad-hoc code that can come in handy for your project..
+3. This brilliantly done ruby-guide [RobyMonk](http://rubymonk.com/learning/books) covers all levels: from apprentice all the way to Ruby-Ninja!
+4. For more hardcore CS applications on Compiler and [Finite-state Automaton](https://en.wikipedia.org/wiki/Finite-state_machine) design, try [Tom Stuart](http://codon.com/about)'s fascinating book: [Understanding Computation](http://computationbook.com/)
+5. I felt [Eloquent-Ruby](https://www.amazon.com/Eloquent-Ruby-Addison-Wesley-Professional/dp/0321584104) gave me some good insights, tips and best-practices..
+
+## Note
+With a few minutes looking them up online, you can find most of the `pdfs` of these books!
+But if you are really keen on learning Ruby well, try and start with one of these books from your local library!
+Or if possible, **please go ahead and buy** them:
+> Why not support the author and also `invest in yourself`?
