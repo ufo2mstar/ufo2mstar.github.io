@@ -37,6 +37,35 @@ clean: ## Remove generated artifacts
 config-dump: ## Print the fully-merged Hugo config (defaults + theme + ours)
 	@hugo config
 
+##@ Check (run before push)
+
+# `make check` is the pre-push gate: build cleanly, validate front matter,
+# verify internal links resolve. External links are NOT checked by default
+# (slow + flaky). Run `make check-links-external` separately if you want.
+
+check: check-frontmatter check-build check-links ## Run all checks (frontmatter + strict build + internal links)
+	@echo "\nAll checks passed."
+
+check-frontmatter: ## Validate every post's front matter (no build needed)
+	@python3 tools/check_frontmatter.py
+
+# Strict build: fail on any ERROR, surface real WARN lines, but filter out
+# Blowfish theme noise (unused shortcodes we don't reference). If hugo prints
+# a warning that survives the filter, you should investigate it.
+check-build: ## Hugo build with strict flags; fails on errors, surfaces real warnings
+	@$(MAKE) clean >/dev/null
+	@hugo --minify --printPathWarnings 2>&1 | tee /tmp/hugo-build.log | \
+	  grep -vE 'Template /(_shortcodes/(forgejo|gallery|gist|gitea|github|gitlab|huggingface|icon|keyword|keywordlist|lead|list|ltr|mdimporter|mermaid|rtl|screenshot|swatches|tab|tabs|timeline|timelineitem|typeit|video|youtubelite)|llms\.txt|simple|terms)\.html is unused' || true
+	@! grep -E '^(ERROR|FATAL)' /tmp/hugo-build.log >/dev/null
+
+check-links: ## Verify internal links/images resolve in built site (requires public/)
+	@test -d public || (echo "no public/ - run 'make check-build' first" && exit 1)
+	@python3 tools/check_links.py
+
+check-links-external: ## Also check external (http/https) links - slow and flaky
+	@test -d public || (echo "no public/ - run 'make check-build' first" && exit 1)
+	@python3 tools/check_links.py --external
+
 ##@ Author
 
 new: ## Create a new post bundle. Usage: make new POST=my-thought (lands in content/blog/<current-year>/)
