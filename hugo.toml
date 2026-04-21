@@ -55,6 +55,12 @@ buildFuture = false
     [menu.main.params]
       newTab = true
 
+# Allow raw HTML inside markdown content (legacy posts have <iframe> embeds
+# for YouTube, etc). Personal blog with a single author, so the security
+# tradeoff of `unsafe = true` is acceptable.
+[markup.goldmark.renderer]
+  unsafe = true
+
 [pagination]
   pagerSize = 10
 
