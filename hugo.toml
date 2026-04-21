@@ -72,8 +72,11 @@ buildFuture = false
 # ---- Blowfish theme params ------------------------------------------------
 # Full reference: https://blowfish.page/docs/configuration/
 [params]
-  # Visual theme - try 'ocean', 'slate', 'forest', 'fire', 'avocado', 'princess'
-  colorScheme = 'ocean'
+  # Visual theme. Full set lives in themes/blowfish/assets/css/schemes/:
+  # autumn, avocado, bloody, blowfish, congo, fire, forest, github, marvel,
+  # neon, noir, ocean, one-light, princess, slate, terminal.
+  # Slate = muted gray-blue, dark-friendly. Other dark-friendly picks: noir, terminal.
+  colorScheme = 'slate'
   defaultAppearance = 'auto'           # auto | light | dark
   autoSwitchAppearance = true
   enableSearch = true
