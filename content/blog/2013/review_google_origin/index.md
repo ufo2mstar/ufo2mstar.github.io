@@ -1,6 +1,6 @@
 +++
 title = "Quick review: Google origins"
-date = 2014-05-21
+date = 2013-09-12
 slug = "review_google_origin"
 categories = ["Research", "Review"]
 tags = ["Maths", "LinearAlgebra", "Google", "Opinion"]

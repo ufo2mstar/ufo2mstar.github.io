@@ -10,8 +10,10 @@ Front matter (Jekyll YAML -> Hugo TOML):
     layout         -> drop
     comments       -> drop; insert TOML TODO marker comment instead
     title          -> title = "..."
-    date           -> sourced from the Jekyll filename (YYYY-MM-DD), not the YAML `date`
-                      field (some old posts have freeform dates like 'Apr 22, 2016')
+    date           -> YAML `date` first (Jekyll's source of truth for the URL date), normalized to
+                      ISO YYYY-MM-DD via stdlib strptime against a small set of known formats
+                      ('Apr 22, 2016', 'January 9, 2015, 7:08 PM', etc). Falls back to the
+                      filename date only if the YAML date is missing or unparseable.
     categories     -> categories = ["..."]
     tags           -> tags = ["..."]
     excerpt        -> summary = "..."
@@ -34,6 +36,7 @@ import argparse
 import re
 import subprocess
 import sys
+from datetime import datetime
 from pathlib import Path
 
 POST_FNAME_RE = re.compile(r"^(\d{4})-(\d{2})-(\d{2})-(.+)\.md$")
@@ -139,6 +142,37 @@ def needs_katex(fm: dict[str, str]) -> bool:
     return fm.get("mathjax", "").strip().lower() == "true"
 
 
+# Date formats observed in legacy posts. ISO first, then freeform.
+_DATE_FORMATS = (
+    "%Y-%m-%d",
+    "%Y-%m-%d %H:%M:%S",
+    "%b %d, %Y",
+    "%B %d, %Y",
+    "%B %d, %Y, %I:%M %p",
+)
+
+
+def normalize_yaml_date(raw: str) -> str | None:
+    """Normalize a freeform YAML date string to ISO YYYY-MM-DD, or None if unparseable."""
+    s = raw.strip().strip('"').strip("'")
+    if not s:
+        return None
+    for fmt in _DATE_FORMATS:
+        try:
+            return datetime.strptime(s, fmt).strftime("%Y-%m-%d")
+        except ValueError:
+            continue
+    return None
+
+
+def resolve_date(fm: dict[str, str], filename_date: str) -> str:
+    """Jekyll prefers the YAML date over the filename date when both are present
+    and parseable. Fall back to the filename date only if YAML is missing or
+    in an unrecognized format."""
+    yaml_iso = normalize_yaml_date(fm.get("date", ""))
+    return yaml_iso or filename_date
+
+
 def transform_body(body: str) -> str:
     body = COMMENT_BLOCK_RE.sub("", body)
     body = TOC_MARKER_RE.sub("", body)
@@ -148,12 +182,15 @@ def transform_body(body: str) -> str:
     return body.lstrip("\n")
 
 
-def convert(text: str, slug: str, date: str) -> str:
+def convert(text: str, slug: str, filename_date: str) -> tuple[str, str]:
+    """Returns (rendered_post_text, resolved_iso_date). The resolved date is
+    returned so the caller can pick the right `<year>/` output folder."""
     fm, body = split_frontmatter(text)
+    date = resolve_date(fm, filename_date)
     body = transform_body(body)
     if needs_katex(fm):
         body = "{{< katex >}}\n\n" + body
-    return build_frontmatter(fm, slug, date) + "\n" + body
+    return build_frontmatter(fm, slug, date) + "\n" + body, date
 
 
 def slug_from_filename(fname: str) -> tuple[str, str, str]:
@@ -195,14 +232,17 @@ def main() -> int:
 
     written = skipped = 0
     for path in posts:
-        _, slug, date = slug_from_filename(path)
-        year = date.split("-")[0]
-        target = out_root / year / slug / "index.md"
+        _, slug, filename_date = slug_from_filename(path)
         try:
-            converted = convert(read_legacy_post(args.ref, path), slug, date)
+            converted, resolved_date = convert(
+                read_legacy_post(args.ref, path), slug, filename_date
+            )
         except Exception as e:
             print(f"FAIL {path}: {e}", file=sys.stderr)
             continue
+
+        year = resolved_date.split("-")[0]
+        target = out_root / year / slug / "index.md"
 
         if args.dry_run:
             print(f"\n===== {path} -> {target} =====")
