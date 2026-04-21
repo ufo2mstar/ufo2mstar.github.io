@@ -11,3 +11,15 @@
 # tradeoff of `unsafe = true` is acceptable.
 [goldmark.renderer]
   unsafe = true
+
+# Pass math expressions through to KaTeX untouched. Without this,
+# Goldmark treats backslash-punctuation as a CommonMark escape (e.g.
+# `\,` -> `,`, `\;` -> `;`), eating LaTeX spacing commands before KaTeX
+# can render them. KaTeX itself is enabled per-post via the Blowfish
+# `{{< katex >}}` shortcode (the converter does this automatically for
+# any post that had `mathjax: true` in its Jekyll front matter).
+[goldmark.extensions.passthrough]
+  enable = true
+  [goldmark.extensions.passthrough.delimiters]
+    block = [['\[', '\]'], ['$$', '$$']]
+    inline = [['\(', '\)']]
