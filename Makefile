@@ -34,6 +34,9 @@ build-prod: ## Build for production with minification
 clean: ## Remove generated artifacts
 	rm -rf public resources .hugo_build.lock
 
+config-dump: ## Print the fully-merged Hugo config (defaults + theme + ours)
+	@hugo config
+
 ##@ Author
 
 new: ## Create a new post bundle. Usage: make new POST=my-thought
@@ -67,7 +70,7 @@ peek-post: ## View a Jekyll post from master. Usage: make peek-post POST=2018-01
 	@git show master:_posts/$(POST).md
 
 list-legacy-posts: ## List all Jekyll posts on master
-	@git ls-tree -r --name-only master -- _posts | sort
+	@git ls-tree -r --name-only origin/source -- _posts | sort
 
 # Bulk-convert Jekyll posts (origin/source:_posts) to Hugo page bundles.
 # Usage:
