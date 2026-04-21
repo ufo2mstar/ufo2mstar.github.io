@@ -10,7 +10,8 @@ Front matter (Jekyll YAML -> Hugo TOML):
     layout         -> drop
     comments       -> drop; insert TOML TODO marker comment instead
     title          -> title = "..."
-    date           -> date = YYYY-MM-DD (unquoted ISO; time portion preserved if present)
+    date           -> sourced from the Jekyll filename (YYYY-MM-DD), not the YAML `date`
+                      field (some old posts have freeform dates like 'Apr 22, 2016')
     categories     -> categories = ["..."]
     tags           -> tags = ["..."]
     excerpt        -> summary = "..."
@@ -98,7 +99,7 @@ def toml_string_list(items: list[str]) -> str:
     return "[" + ", ".join(toml_string(i) for i in items) + "]"
 
 
-def build_frontmatter(fm: dict[str, str], slug: str) -> str:
+def build_frontmatter(fm: dict[str, str], slug: str, date: str) -> str:
     out: list[str] = ["+++"]
 
     title = fm.get("title", "").strip()
@@ -108,7 +109,6 @@ def build_frontmatter(fm: dict[str, str], slug: str) -> str:
         title = title[1:-1]
     out.append(f"title = {toml_string(title)}")
 
-    date = fm.get("date", "").strip().strip('"').strip("'")
     out.append(f"date = {date}")
 
     out.append(f"slug = {toml_string(slug)}")
@@ -144,22 +144,27 @@ def transform_body(body: str) -> str:
     body = TOC_MARKER_RE.sub("", body)
     body = LIQUID_ABOUT_RE.sub("/about", body)
     body = SITE_BASEURL_RE.sub("", body)
+    body = "\n".join(line.rstrip() for line in body.splitlines()) + "\n"
     return body.lstrip("\n")
 
 
-def convert(text: str, slug: str) -> str:
+def convert(text: str, slug: str, date: str) -> str:
     fm, body = split_frontmatter(text)
     body = transform_body(body)
     if needs_katex(fm):
         body = "{{< katex >}}\n\n" + body
-    return build_frontmatter(fm, slug) + "\n" + body
+    return build_frontmatter(fm, slug, date) + "\n" + body
 
 
-def slug_from_filename(fname: str) -> tuple[str, str]:
+def slug_from_filename(fname: str) -> tuple[str, str, str]:
+    """Return (full_match, slug, iso_date). Filename date is canonical because
+    Jekyll's permalinks are derived from it; the YAML `date` field may be
+    freeform (e.g. 'Apr 22, 2016') which TOML can't parse."""
     m = POST_FNAME_RE.match(Path(fname).name)
     if not m:
         raise ValueError(f"unexpected post filename: {fname!r}")
-    return m.group(0), m.group(4)
+    iso_date = f"{m.group(1)}-{m.group(2)}-{m.group(3)}"
+    return m.group(0), m.group(4), iso_date
 
 
 def main() -> int:
@@ -190,10 +195,10 @@ def main() -> int:
 
     written = skipped = 0
     for path in posts:
-        _, slug = slug_from_filename(path)
+        _, slug, date = slug_from_filename(path)
         target = out_root / slug / "index.md"
         try:
-            converted = convert(read_legacy_post(args.ref, path), slug)
+            converted = convert(read_legacy_post(args.ref, path), slug, date)
         except Exception as e:
             print(f"FAIL {path}: {e}", file=sys.stderr)
             continue
