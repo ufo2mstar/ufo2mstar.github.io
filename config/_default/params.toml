@@ -13,7 +13,7 @@
 # autumn, avocado, bloody, blowfish, congo, fire, forest, github,
 # marvel, neon, noir, ocean, one-light, princess, slate, terminal.
 # Dark-friendly picks: noir, slate, terminal.
-colorScheme = 'slate'
+colorScheme = 'noir'
 defaultAppearance = 'auto'           # auto | light | dark
 autoSwitchAppearance = true
 enableSearch = true
