@@ -1,0 +1,39 @@
+# Core site identity + Hugo build engine settings.
+# Hugo reference: https://gohugo.io/configuration/all/
+#
+# Anything specific to URL structure, navigation, markdown rendering,
+# or the Blowfish theme lives in sibling files in this directory:
+#   urls.toml    - permalinks + taxonomies
+#   menus.toml   - top nav
+#   markup.toml  - Goldmark + math passthrough
+#   params.toml  - all [params.*] (Blowfish theme config)
+#
+# Hugo merges every *.toml in config/_default/ into one config object at
+# build time. File names are conventional, not enforced - split however
+# helps you navigate.
+
+baseURL = 'https://ufo2mstar.github.io/'
+languageCode = 'en-us'
+defaultContentLanguage = 'en'
+title = 'Un Ltd.'
+
+theme = 'blowfish'
+
+# Build behavior
+enableRobotsTXT = true
+enableEmoji = true
+summaryLength = 0
+buildDrafts = false
+buildFuture = false
+
+# Blowfish needs JSON output on the home page for its search index.
+[outputs]
+  home = ['HTML', 'RSS', 'JSON']
+
+[pagination]
+  pagerSize = 10
+
+[sitemap]
+  changefreq = 'daily'
+  filename = 'sitemap.xml'
+  priority = 0.5
