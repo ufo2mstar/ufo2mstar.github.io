@@ -39,10 +39,10 @@ config-dump: ## Print the fully-merged Hugo config (defaults + theme + ours)
 
 ##@ Author
 
-new: ## Create a new post bundle. Usage: make new POST=my-thought
+new: ## Create a new post bundle. Usage: make new POST=my-thought (lands in content/blog/<current-year>/)
 	@test -n "$(POST)" || (echo "ERROR: pass POST=slug, e.g. make new POST=hello-world" && exit 1)
-	hugo new content/blog/$(POST)/index.md
-	@echo "Created: content/blog/$(POST)/index.md"
+	hugo new content/blog/$$(date +%Y)/$(POST)/index.md
+	@echo "Created: content/blog/$$(date +%Y)/$(POST)/index.md"
 
 new-page: ## Create a top-level page. Usage: make new-page PAGE=resume
 	@test -n "$(PAGE)" || (echo "ERROR: pass PAGE=name, e.g. make new-page PAGE=resume" && exit 1)
