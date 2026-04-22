@@ -25,6 +25,31 @@ help: ## Show this help (default target)
 serve: ## Run dev server with hot reload, including drafts (localhost:1313)
 	hugo server -D --navigateToChanged
 
+# Preview the legacy Jekyll site locally for visual diffing against the new
+# Hugo build. Master branch holds pre-built HTML (Jekyll output committed
+# directly), so we just materialize it as a git worktree at _legacy/ and
+# serve with python -m http.server. No Ruby/Bundler needed.
+#
+# Stop the server with Ctrl+C. Refresh master with `make refresh-legacy`.
+# Tear down with `make clean-legacy`.
+serve-legacy: _legacy ## Serve legacy Jekyll site (master branch) on localhost:4000
+	@echo "Legacy site (master) at http://localhost:4000/  (Ctrl+C to stop)"
+	@cd _legacy && python3 -m http.server 4000
+
+_legacy:
+	@echo "Setting up _legacy/ worktree from origin/master..."
+	@git fetch origin master
+	@git worktree add _legacy origin/master
+
+refresh-legacy: ## Pull latest master into _legacy/ worktree
+	@test -d _legacy || (echo "no _legacy worktree - run 'make serve-legacy' first" && exit 1)
+	@git fetch origin master
+	@git -C _legacy reset --hard origin/master
+
+clean-legacy: ## Remove the _legacy/ worktree
+	@git worktree remove --force _legacy 2>/dev/null || /bin/rm -rf _legacy
+	@git worktree prune
+
 build: ## Build static site to ./public/ (no minify, fast)
 	hugo
 

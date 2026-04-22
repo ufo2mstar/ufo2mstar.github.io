@@ -10,6 +10,9 @@ public/
 resources/
 .hugo_build.lock
 
+# Legacy preview worktree (master branch checked out by `make serve-legacy`)
+_legacy/
+
 # Editor / IDE / AI tooling
 .idea/
 # .vscode/ is tracked - it's a single-dev repo, so shared editor config is
