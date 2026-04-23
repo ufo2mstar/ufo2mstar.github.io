@@ -13,7 +13,7 @@ draft = true
 
 I've been chewing on this clip ever since. Not just for the cricket - though as a fan that moment is its own reward :D - but because Smith was, in a few _short_ deliveries, effectively demonstrated an entire model of how to handle confrontation. And I started seeing the pattern even outside of cricket.
 
->> If you don't follow cricket: a fast bowler hurls a hard ball at the batter from 22 yards at 150 km/h. The batter has about half a second to decide what to do. Rest of the post will make sense.
+>> If you are unfamiliar with cricket: just know that a __fast__ *bowler* hurls a hard and heavy leather ball at the *batter* from 22 yards. The batter has about half a second to decide what to do. Rest of the post will make sense.
 
 ## "Bowl fast when nothing is going on, champION!"
 
@@ -36,6 +36,30 @@ Here's the frame: any conversation, any engagement, any time another person's wo
 What you do get to pick is **how you respond**. 
 
 As a rock hurled at your face so fast is an imminent threat, I am using this as a metaphor for a difficult conversation. Here are three options I see:
+
+{{< mermaid >}}
+flowchart TD
+    Start(["A ball comes at you"])
+    Start --> O1["~ Option 1: Duck &amp; evade<br/>Safe but telegraphs avoidance"]
+    Start --> O3["✓ Option 3: Decide to play<br/>Commit to a shot"]
+    Start --> O2["✗ Option 2: Cop it on the chin<br/>Hit. Recovery uncertain"]
+
+    O3 --> A2["✗ 3b. Edge or glove<br/>Caught. Bounded loss"]
+    O3 --> A1["✓ 3a. Connect<br/>Hook for six. Take the over"]
+    O3 --> A3["~ 3c. Drift to fine leg<br/>Scrambled single. Bank it"]
+
+    classDef start fill:#e5e7eb,stroke:#6b7280,color:#1f2937,stroke-width:2px
+    classDef good  fill:#a7f3d0,stroke:#059669,color:#064e3b,stroke-width:2px
+    classDef bad   fill:#fecaca,stroke:#dc2626,color:#7f1d1d,stroke-width:2px
+    classDef meh   fill:#fde68a,stroke:#d97706,color:#78350f,stroke-width:2px
+
+    class Start start
+    class O1,A3 meh
+    class O2,A2 bad
+    class O3,A1 good
+{{< /mermaid >}}
+
+Legend: **✓** favorable / **✗** unfavorable / **~** neutral. Option 3 is the recommended posture even though its outcomes vary.
 
 ## Option 1: Duck and evade
 
