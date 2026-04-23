@@ -112,16 +112,21 @@ publish: ## Stage all, commit with MSG, push to origin/main. Usage: make publish
 	@test -n "$(MSG)" || (echo "ERROR: pass MSG=\"...\"" && exit 1)
 	git add -A
 	git commit -m "$(MSG)"
-	git push origin main
-	@echo "Pushed. Waiting for GitHub Actions..."
-	@gh run watch --exit-status || (echo "\nDeploy FAILED. Check: gh run list" && exit 1)
-	@echo "Live at https://ufo2mstar.github.io/"
+	@$(MAKE) --no-print-directory _push-and-watch
 
 push: check ## Validate locally, push, and watch GitHub Actions until green
-	git push origin main
-	@echo "Pushed. Waiting for GitHub Actions..."
-	@gh run watch --exit-status || (echo "\nDeploy FAILED. Check: gh run list" && exit 1)
-	@echo "Live at https://ufo2mstar.github.io/"
+	@$(MAKE) --no-print-directory _push-and-watch
+
+_push-and-watch:
+	@output=$$(git push origin main 2>&1); echo "$$output"; \
+	if echo "$$output" | grep -q 'Everything up-to-date'; then \
+	  echo "Nothing to push. Site is already current."; \
+	else \
+	  echo "Pushed. Waiting for GitHub Actions to start..."; \
+	  sleep 5; \
+	  gh run watch --exit-status || (echo "\nDeploy FAILED. Check: gh run list" && exit 1); \
+	  echo "Live at https://ufo2mstar.github.io/"; \
+	fi
 
 ##@ Migration (one-time, removable after content is in)
 
