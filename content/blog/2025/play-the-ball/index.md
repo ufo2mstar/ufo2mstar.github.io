@@ -5,7 +5,6 @@ slug = 'play-the-ball'
 categories = ['Thoughts']
 tags = ['Cricket', 'Communication', 'LifeAdvice', 'Confrontation']
 summary = 'Every conversation is a ball being bowled at you. You can duck, you can cop it, or you can decide to play. A working rubric for engagement, courtesy of Steve Smith and Jofra Archer.'
-draft = true
 +++
 
 # Steve Smith and Jofra Archer at the Gabba
