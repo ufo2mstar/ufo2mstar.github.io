@@ -1,7 +1,7 @@
 +++
 date = '2026-02-20'
 title = 'Introducing Ellie: A new agent for DeepWorker'
-slug = 'new-personal-aissistant'
+slug = 'personal-aissistant'
 categories = ['DeepWorker']
 tags = ['AI', 'Agents', 'DeepWorker']
 summary = 'A concept sketch for a personal AI assistant built around review cadences - daily, weekly, monthly, quarterly - rather than one-off chats.'
