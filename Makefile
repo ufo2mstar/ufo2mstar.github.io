@@ -113,7 +113,15 @@ publish: ## Stage all, commit with MSG, push to origin/main. Usage: make publish
 	git add -A
 	git commit -m "$(MSG)"
 	git push origin main
-	@echo "Pushed. Live at https://ufo2mstar.github.io/ in ~45s (after Phase 3 cutover)."
+	@echo "Pushed. Waiting for GitHub Actions..."
+	@gh run watch --exit-status || (echo "\nDeploy FAILED. Check: gh run list" && exit 1)
+	@echo "Live at https://ufo2mstar.github.io/"
+
+push: check ## Validate locally, push, and watch GitHub Actions until green
+	git push origin main
+	@echo "Pushed. Waiting for GitHub Actions..."
+	@gh run watch --exit-status || (echo "\nDeploy FAILED. Check: gh run list" && exit 1)
+	@echo "Live at https://ufo2mstar.github.io/"
 
 ##@ Migration (one-time, removable after content is in)
 
