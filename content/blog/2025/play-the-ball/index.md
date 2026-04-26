@@ -1,10 +1,10 @@
 +++
 date = '2025-12-26'
-title = 'Play the Ball: Rules of Engagement, Cricket-Style'
+title = 'Play the Ball: Rules of Engagement for tough convos'
 slug = 'play-the-ball'
 categories = ['Thoughts']
 tags = ['Cricket', 'Communication', 'LifeAdvice', 'Confrontation']
-summary = 'Every conversation is a ball being bowled at you. You can duck, you can cop it, or you can decide to play. A working rubric for engagement, courtesy of Steve Smith and Jofra Archer.'
+summary = 'Every conversation is a ball bowled at you. You can duck, you can cop it, or you can decide to play! A working rubric for engagement, courtesy of Steve Smith and Jofra Archer.'
 +++
 
 # Steve Smith and Jofra Archer at the Gabba
@@ -79,25 +79,25 @@ The get-bullied-and-stew move. Recovery depends on factors mostly outside your c
 
 Same downstream pattern as ducking, just inverted: the bowler figures out you'll wear it, and the bouncers keep coming.
 
-## Option 3: Decide to play
+## Option 3: Take it on! go for it..
 
-You take guard, watch the line, and when the ball comes you commit to a shot. Smith on Day 4.
+You take guard, watch the line, and when the ball comes you commit to a shot - like Smith did.
 
-More interesting because the outcomes branch. Roughly:
+And more pertinent to our discussion, the outcomes branch roughly like this:
 
-### 3a. Connect
+### 3a. Connect and send it sailing!
 
 You time it sweetly, ball flies to the boundary or sails into the stands. Smith hooking Archer for four, then six, in real time. You don't just survive the over - you take the contest **over**. The bowler retreats. The crowd sees it. You walk off having said something true and useful in a moment that mattered.
 
 Dream outcome. Rare. But the ones who connect tend to be the ones who chose to play.
 
-### 3b. Edge or glove
+### 3b. Edge or glove it up in the air
 
 You go for the shot, don't quite middle it. Edge to slip, caught. Or it deflects off the glove for a leg-bye. You played, you missed, cost was real.
 
 The price of trying. But **the cost of edging out is bounded** - you lose this contest, not the next one. Repeated ducking has no such guarantee.
 
-### 3c. Drift it down to fine leg
+### 3c. Work it down to fine leg
 
 You don't middle it, but you don't get caught either. The ball spoons off the bat in a direction the fielders aren't, and you scramble a single. It wasn't elegant. It wasn't the textbook shot. But you put bat on ball, you got off strike, and the over moved on.
 
