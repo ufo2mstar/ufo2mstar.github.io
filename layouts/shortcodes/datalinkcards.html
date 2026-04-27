@@ -1,0 +1,12 @@
+{{- $dataKey := .Get 0 -}}
+{{- $items := index site.Data $dataKey -}}
+{{- if $items -}}
+<div class="mt-8 space-y-6">
+{{- range $items }}
+  <a href="{{ .url }}"{{ if .newtab }} target="_blank"{{ end }} class="group block no-underline rounded-lg border border-neutral-200 dark:border-neutral-700 p-6 hover:border-primary-500 dark:hover:border-primary-400 hover:shadow-lg transition-all">
+    <h2 class="mt-0 text-xl font-semibold text-neutral-800 dark:text-neutral-100 group-hover:text-primary-500 dark:group-hover:text-primary-400 transition-colors">{{ .title }}</h2>
+    <p class="mt-2 mb-0 text-neutral-500 dark:text-neutral-400 text-sm leading-relaxed">{{ .description }}</p>
+  </a>
+{{- end }}
+</div>
+{{- end -}}

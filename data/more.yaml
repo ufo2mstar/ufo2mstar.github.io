@@ -1,0 +1,14 @@
+- title: Names
+  url: /names/
+  description: >-
+    A growing collection of Indian names - pronunciations, meanings, and the
+    stories behind them. Handy for anyone who works with people from the
+    subcontinent and wants to get it right.
+  newtab: true
+
+- title: Resume
+  url: /resume/
+  description: >-
+    The formal version - work history, skills, the usual. Opens separately
+    since it's its own thing.
+  newtab: true
