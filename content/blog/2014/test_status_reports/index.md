@@ -57,49 +57,55 @@ The other thing I notice rewatching this: the architecture is laughably modest (
 
 YouTube's auto-generated transcript doesn't tag speakers, so I've broken it into logical speaker blocks based on the conversation flow.
 
-**[00:00:02] Cameraman / Room:**
-okay action
+**[00:00:02] Cameraman:**
+Okay, action.
 
-**[00:00:09] Speaker 1 (Introduction):**
-Yesterday's FedEx Day went very well.
-I got the opportunity of seeing the facets of actually managing a project you know i think i did a fair job of:
-1. assembling a great team of talented developers 
-2. and all the other things that good manager will do like you know:
-3. sporting a tensed look while meeting the one day deadline and 
-4. you know having 1 on 1s, 
-5. and approving clarity time-sheets!
+**[00:00:09] Naren - Introduction:**
+Yesterday's FedEx Day went very well. I got the opportunity to see the facets of actually managing a project, and I think I did a fair job of:
 
-Okay so about this project, I had the wonderful opportunity (or terrible misfortune - depending on whom you asked for) of working on the testing status request recently, and realized that this can be done a little bit - especially since we are doing automation anyway!
-So hence this project and my awesome team will talk about it!! :)
+1. Assembling a great team of talented developers
+2. Sporting a tensed look while meeting the one-day deadline
+3. Having 1-on-1s
+4. Approving Clarity timesheets (haha, audience interests piqued)
 
-**[00:00:55] Speaker 2 (The Problem):**
-so uh you can see here this is um how we're currently doing our testing status reports we have this spreadsheet and this is kind of like a relic of when we exported i mean we kept our scripts in qc and exported everything into here it was a great process back then because everything was in qc you just click a button and there you go but today with our automation frameworks this is kind of a a hassle to do and it's oftentimes it can be really inaccurate and um a little bit slow as well and it requires somebody to compile an email and send it out every day so it can easily add up to a lot of time spent on it also the tables you know they're not the greatest to interpret but um so our solution will let ren talk about it
+About this project: I had the wonderful opportunity (or terrible misfortune, depending on whom you ask) of working on the testing status report recently, and realized this could be done better - especially since we're doing automation anyway. Hence this project. My awesome team will talk about it.
 
-**[00:01:48] Speaker 3 ("Ren" - the solution concept):**
-so basically like um i kind of felt that like in the reports like it doesn't exactly like correlate with what we are like doing in automation so basically like i just wanted to like start pumping data into like one sort of central db and like maybe one day lego scoping that we like put all those together and we actually like generate reports and like basically this is a proof of concept and yeah so
+**[00:00:55] Ryan - The problem:**
+You can see here how we're currently doing our testing status reports. We have this spreadsheet - it's a relic of when we kept our scripts in QC and exported everything into here. It was a great process back then because everything was in QC; you just clicked a button and there you go. But today, with our automation frameworks, this is a hassle. It's often inaccurate, a little slow, and it requires somebody to compile an email and send it out every day, which adds up to a lot of time. The tables aren't the greatest to interpret either. So, our solution - I'll let Ren talk about it.
 
-**[00:02:09] Speaker 4 (live demo & architecture):**
-so uh let's take a look at the actual tool now so you get whereas the old way you kind of received an excel spreadsheet it was pushed out to you may or may not be interested in it this way you can go to this dashboard here we've set up and kind of generate your own daily report in whatever way you want to look at so this is real data coming from the renter's team by state this is a number of tests executed past and failed uh just from yesterday we can break it down by state we can break it down by environment we can go back farther so maybe i want to you know be kind of a long-term trend i can go back 30 days and you know the trends really start to jump out so now something's going on in kentucky i can break it down i can say okay this it or st what's going on and sort of generate data on the fly like that right now this is just kind of a single report um my state this may or may not be interesting to everyone obviously in the future we could do you know you could easily imagine having a work request number by team by app any sort of way to slice it and basically it'd be pretty simple to build up this dashboard like that. right so if we go back um that kind of architecture diagram in the previous slide i'll move back to here so all the testers when they're running their automation we we put in this is just on the renter's team right now would very easily be extended they there's it's just it compiles the results of that scenario that test sends it out to a database which is sitting actually on a computer over in plaza 2 um and then this sort of test dashboard right here is actually an app sitting on my computer so they're talking back and forth we're talking to maya just talking to the database and getting the data back
+**[00:01:48] Naren - The solution concept:**
+I felt the reports didn't really correlate with what we were doing in automation. So I wanted to start pumping data into one central DB, and eventually scope it so we put all of that together and actually generate reports off it. This is a proof of concept.
 
-**[00:03:55] Audience member:**
-so do you guys manually update that database
+**[00:02:09] Mark - Live demo and architecture:**
+Let's take a look at the actual tool. The old way, you received an Excel spreadsheet pushed out to you - you may or may not have been interested in it. This way, you go to the dashboard we've set up and generate your own daily report however you want to look at it.
 
-**[00:03:59] Speaker 3 ("Ren"):**
-automation already so yeah um
+This is real data coming from the renter's team, by state - number of tests executed, passed and failed, just from yesterday. We can break it down by state, by environment. We can go back farther: maybe I want a long-term trend, so I go back 30 days, and the trends start to jump out. Something's going on in Kentucky - I can drill in and ask what's happening. Generate data on the fly like that.
 
-**[00:04:01] Speaker 4 (live demo continued):**
-and actually if you if you look at this results right here this was we ran our ipex progression last night so these are all the results from our ipad comparison and you can see i can't really point to it starting at connecticut to maryland it appears that the service went down and we had a lot of fails so you can really get a good overview just in the past day you know we know we did this let's look at it and get a real quick snapshot of potentially what happened
+Right now this is a single report, by state. That may or may not be interesting to everyone. In the future you could easily imagine slicing by work request number, by team, by app - any way you want. It'd be pretty simple to build up.
 
-**[00:04:30] Speaker 3 ("Ren"):**
-actually what you're seeing here is just a minute fraction about what we actually have in the database we collect like pretty much like all the information
+Going back to the architecture diagram: when testers run their automation (just the renter's team right now, but easily extended), it compiles the results of each scenario and sends them to a database sitting on a machine in Plaza 2. The dashboard is an app on my computer talking to that DB and pulling the data back.
 
-**[00:04:40] Speaker 4 (live demo wrap-up):**
-so yeah hopefully that gives the idea kind of snapshot of the health of your applications and like i said we could extend this to work request number to story card number any any way you want to look at it basically dynamic so talk about the next steps
+**[00:03:55] Audience member - Qtn:**
+So do you guys manually update that database?
 
-**[00:04:48] Speaker 5 (next steps):**
-yeah our next steps i mean like they were saying you can put pretty much anything up there uh right now is just what we were able to get accomplished yesterday but you could really start looking at stuff you know compare work requests you don't necessarily even have to do pass fail you can say for each one of those cards in the word request these these were accomplished these many scenarios were read for this um story card release you can even look at hopefully what we're going to do is put you can just look at certain tags like look at regression or look at continuous improvement and and then you can also you have more options for viewing the data is what we want to implement which would be like pie charts line graphs tables comparison charts uh whatever you can build with the data
+**[00:03:59] Naren and Team - Ans:**
+No, it's automated already.
 
-**[00:05:35] Speaker 6 (conclusion & call for feedback):**
-yeah also and what would you like to see hopefully when we get this out to more teams we'll be able to see a lot more innovation coming from it we'd also like to get some feedback from the business you know what kind of stats would you like to see but yes as you have seen this delicious application can be used in so many different ways amongst the end of our presentation any questions or suggestions
+**[00:04:01] Ryan - Live demo continued:**
+If you look at the results here - we ran our iPad regression last night, so these are all the results from that. You can see, starting at Connecticut through Maryland, it appears the service went down and we had a lot of fails. You can get a good overview of the past day - we know we did this, let's look at it, get a quick snapshot of what likely happened.
 
-*The remainder of the recording is an open Q&A about drill-down capabilities, front-end stack, pointing the suite at production, and exporting filtered views to Excel, with the team members answering interchangeably.*
+**[00:04:30] Naren - Add:**
+What you're seeing here is just a tiny fraction of what we actually have in the database. We collect pretty much all the information.
+
+**[00:04:40] Mark - Live demo wrap-up:**
+Hopefully that gives the idea - a snapshot of the health of your applications. As I said, we can extend this to work request numbers, story card numbers, any way you want to look at it. Basically dynamic. Now, next steps.
+
+**[00:04:48] Blake - Next steps:**
+Right now this is just what we got done yesterday, but you could really start looking at more. Compare work requests - you don't even have to do pass/fail. You could say, for each card in the work request, these scenarios were accomplished, this many were ready for the story card release. You could look at certain tags - regression, or continuous improvement.
+
+We also want more options for viewing the data: pie charts, line graphs, tables, comparison charts. Whatever you can build with the data.
+
+**[00:05:35] Team - Conclusion and call for feedback:**
+When we get this out to more teams, we'll see a lot more innovation coming from it. We'd also like feedback from the business - what kinds of stats would you like to see? This dashboard can be used in many different ways. That's the end of our presentation. Any questions or suggestions?
+
+*The remainder of the recording is an open Q&A about drill-down capabilities, front-end stack, pointing the suite at production, and exporting filtered views to Excel, with team members answering interchangeably.*

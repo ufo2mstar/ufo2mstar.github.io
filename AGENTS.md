@@ -14,9 +14,12 @@ Content goal: turn years of accumulated thoughts into published articles - an on
 content/blog/<year>/<slug>/index.md   Posts as page bundles. URL: /blog/YYYY/MM/DD/<slug>/
 content/{about,_index}.md             Top-level pages
 config/_default/*.toml                Hugo config, split by concern (see "Config" below)
+data/                                 YAML data files consumed by shortcodes (e.g. more.yaml → link cards)
+layouts/shortcodes/                   Custom shortcodes (datalinkcards, etc.)
 layouts/partials/                     Custom Blowfish theme overrides (re-diff if upstream theme updates)
 themes/blowfish/                      Theme as git submodule - DO NOT edit in-place
-static/                               Files served verbatim at site root (robots.txt, favicons, etc.)
+static/                               Files served verbatim at site root (robots.txt, favicons, standalone HTML apps)
+docs/authoring-reference.md           Shortcode examples, emoji, YouTube, KaTeX - everything you can do in a post
 tools/jekyll_to_hugo.py               One-shot converter, removable after migration
 Makefile                              All workflows. Run `make` (no args) to list.
 .cursor/plans/                        Active plans. Migration plan is the source of truth for what's next.
@@ -119,6 +122,7 @@ Hugo auto-scopes `config/_default/<basename>.toml` under the top-level key match
 - `goldmark.passthrough` - preserves `\,` and `\;` LaTeX spacing commands. Required for KaTeX posts.
 - KaTeX-using posts must include `{{< katex >}}` shortcode in the body (NOT a front matter param).
 - Emoji shortcodes (`:rocket:`) work via `enableEmoji = true`.
+- Full shortcode catalog with copy-paste examples: `docs/authoring-reference.md`.
 
 ### Commit conventions
 
