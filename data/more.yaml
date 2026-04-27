@@ -12,3 +12,9 @@
     The formal version - work history, skills, the usual. Opens separately
     since it's its own thing.
   newtab: true
+
+- title: QuickScripts Prototype
+  url: /qs/
+  description: >-
+    A prototype of a tool I'm building to help me generate UI for APIs and other tools on demand.
+  newtab: true

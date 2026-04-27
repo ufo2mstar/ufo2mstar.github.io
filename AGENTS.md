@@ -68,13 +68,14 @@ Or do it manually with `git add` + `git commit` + `git push` if you want to stag
 
 ### Pre-push checks (`make check`)
 
-Three layers, fail-fast in order:
+Four layers, fail-fast in order:
 
 1. `check-frontmatter` - every post has required keys (`title`, `date`, `slug`, `categories`, `tags`, `summary`), `slug` matches folder name, `date` is ISO and matches the year folder. Drafts are flagged but not failed (use `python3 tools/check_frontmatter.py --strict-drafts` to fail on them).
-2. `check-build` - clean `hugo --minify --printPathWarnings`. Fails on `ERROR`/`FATAL`. Filters known-noise unused-template warnings from the Blowfish theme; if a warning survives the filter, investigate it.
-3. `check-links` - parses every built `*.html` under `public/`, resolves all internal `<a href>` and `<img src>`. Fails on any unresolved internal ref. External links skipped (run `make check-links-external` for that - slow + flaky).
+2. `check-build` - clean `hugo --minify --printPathWarnings`. Fails on `ERROR`/`FATAL`. Filters known-noise unused-template warnings from the Blowfish theme; if a warning survives the filter, investigate it. Note: shortcodes like `datalinkcards` use Hugo's `errorf` to fail the build if their backing data files are missing or empty.
+3. `check-content` - smoke-tests rendered HTML pages for expected content. Auto-discovers every `datalinkcards` shortcode usage, reads the backing YAML, and verifies each entry's title appears in the rendered page. Catches silent rendering failures where a shortcode produces empty output without erroring.
+4. `check-links` - parses every built `*.html` under `public/`, resolves all internal `<a href>` and `<img src>`. Fails on any unresolved internal ref. External links skipped (run `make check-links-external` for that - slow + flaky).
 
-Implementation: `tools/check_frontmatter.py` and `tools/check_links.py`, both stdlib-only Python. Add new checks here as patterns emerge.
+Implementation: `tools/check_frontmatter.py`, `tools/check_content.py`, and `tools/check_links.py`, all stdlib-only Python. Add new checks here as patterns emerge.
 
 ### Migrating a legacy post (until N2 is done)
 

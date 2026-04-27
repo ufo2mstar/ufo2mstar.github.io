@@ -1,6 +1,8 @@
 {{- $dataKey := .Get 0 -}}
 {{- $items := index site.Data $dataKey -}}
-{{- if $items -}}
+{{- if not $items -}}
+  {{- errorf "datalinkcards: data/%s.yaml not found or empty — build cannot continue" $dataKey -}}
+{{- end -}}
 <div class="mt-8 space-y-6">
 {{- range $items }}
   <a href="{{ .url }}"{{ if .newtab }} target="_blank"{{ end }} class="group block no-underline rounded-lg border border-neutral-200 dark:border-neutral-700 p-6 hover:border-primary-500 dark:hover:border-primary-400 hover:shadow-lg transition-all">
@@ -9,4 +11,3 @@
   </a>
 {{- end }}
 </div>
-{{- end -}}
