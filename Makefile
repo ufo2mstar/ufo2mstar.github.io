@@ -68,8 +68,11 @@ config-dump: ## Print the fully-merged Hugo config (defaults + theme + ours)
 # verify internal links resolve. External links are NOT checked by default
 # (slow + flaky). Run `make check-links-external` separately if you want.
 
-check: check-frontmatter check-build check-content check-links ## Run all checks (frontmatter + build + content + links)
+check: check-imports check-frontmatter check-build check-content check-links ## Run all checks (imports + frontmatter + build + content + links)
 	@echo "\nAll checks passed."
+
+check-imports: ## Flag unused imports in tools/ (catches accidental third-party deps)
+	@python3 tools/check_imports.py
 
 check-frontmatter: ## Validate every post's front matter (no build needed)
 	@python3 tools/check_frontmatter.py

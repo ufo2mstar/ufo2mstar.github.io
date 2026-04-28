@@ -21,8 +21,6 @@ import pathlib
 import re
 import sys
 
-import yaml  # PyYAML not needed — we do minimal parsing below
-
 REPO_ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 
