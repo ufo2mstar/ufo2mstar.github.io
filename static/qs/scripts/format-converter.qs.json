@@ -1,0 +1,40 @@
+{
+  "$schema": "qs/v1",
+  "id": "format-converter",
+  "title": "Format Converter",
+  "description": "Encode, decode, and prettify text between common formats.",
+  "trigger": "live",
+  "controls": [
+    {
+      "type": "select",
+      "id": "op",
+      "label": "Operation",
+      "default": "base64-decode",
+      "options": [
+        { "value": "base64-encode", "label": "Base64 - encode" },
+        { "value": "base64-decode", "label": "Base64 - decode" },
+        { "value": "url-encode",    "label": "URL - encode" },
+        { "value": "url-decode",    "label": "URL - decode" },
+        { "value": "json-prettify", "label": "JSON - prettify" },
+        { "value": "json-minify",   "label": "JSON - minify" }
+      ]
+    },
+    {
+      "type": "textarea",
+      "id": "input",
+      "label": "Input",
+      "rows": 4,
+      "copyable": true,
+      "placeholder": "Paste here..."
+    },
+    {
+      "type": "textarea",
+      "id": "output",
+      "label": "Output",
+      "rows": 10,
+      "copyable": true,
+      "readonly": true
+    }
+  ],
+  "logic": "function transform(s) {\n  const input = s.input || '';\n  try {\n    switch (s.op) {\n      case 'base64-encode': return { output: btoa(unescape(encodeURIComponent(input))) };\n      case 'base64-decode': return { output: decodeURIComponent(escape(atob(input))) };\n      case 'url-encode':    return { output: encodeURIComponent(input) };\n      case 'url-decode':    return { output: decodeURIComponent(input) };\n      case 'json-prettify': return { output: JSON.stringify(JSON.parse(input), null, 2) };\n      case 'json-minify':   return { output: JSON.stringify(JSON.parse(input)) };\n      default: return { output: '' };\n    }\n  } catch (e) {\n    return { output: 'Error: ' + e.message };\n  }\n}"
+}
