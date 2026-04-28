@@ -1,18 +1,16 @@
 import { mountRuntime } from './runtime.js';
-import { download, loadFromFile, loadFromUrl, saveLast, loadLast } from './storage.js';
-import { createEditor } from './editor.js';
+import { download, loadFromFile, loadFromUrl, loadFromSource, saveLastSource, loadLastSource } from './storage.js';
 import { renderTests, runTests } from './tests.js';
 import { toast } from './toast.js';
 
-const SEED_URL = 'scripts/format-converter.qs.json';
+const SEED_URL = 'scripts/format-converter.qs.js';
 
 const els = {
   previewMount:   document.getElementById('qs-preview-mount'),
   testsMount:     document.getElementById('qs-tests-mount'),
   testsBadge:     document.getElementById('qs-tests-badge'),
   runTests:       document.getElementById('qs-run-tests'),
-  schemaHost:     document.getElementById('qs-editor-schema'),
-  logicHost:      document.getElementById('qs-editor-logic'),
+  sourceEditor:   document.getElementById('qs-source-editor'),
   codeError:      document.getElementById('qs-code-error'),
   tabPreview:     document.getElementById('qs-tab-preview'),
   tabCode:        document.getElementById('qs-tab-code'),
@@ -35,21 +33,10 @@ const els = {
 };
 
 let descriptor = null;
+let source = '';
 let runtime = null;
 let activeTab = 'preview';
-
-const schemaEditor = createEditor({
-  parent: els.schemaHost,
-  value: '',
-  language: 'json',
-  onChange: () => onCodeEdit(),
-});
-const logicEditor = createEditor({
-  parent: els.logicHost,
-  value: '',
-  language: 'javascript',
-  onChange: () => onCodeEdit(),
-});
+let updatingFromCode = false;
 
 function mountPreview() {
   if (runtime?.destroy) runtime.destroy();
@@ -71,23 +58,17 @@ function refreshTestsBadge() {
   els.testsBadge.className = `text-xs px-1.5 py-0.5 rounded-full font-mono leading-none ${failed === 0 ? 'bg-emerald-900/40 text-emerald-300' : 'bg-rose-900/40 text-rose-300'}`;
 }
 
-let updatingFromCode = false;
-
-function refreshCodeView() {
-  if (!descriptor) return;
-  updatingFromCode = true;
-  const { logic, ...schema } = descriptor;
-  schemaEditor.setValue(JSON.stringify(schema, null, 2));
-  logicEditor.setValue(logic || '');
-  els.codeError.textContent = '';
-  updatingFromCode = false;
-}
-
-function setActive(d, opts = {}) {
-  const { announce = true } = opts;
+function setActive({ descriptor: d, source: src }, opts = {}) {
+  const { announce = true, syncEditor = true } = opts;
   descriptor = d;
-  saveLast(d);
-  refreshCodeView();
+  source = src;
+  saveLastSource(src);
+  if (syncEditor) {
+    updatingFromCode = true;
+    els.sourceEditor.value = src;
+    updatingFromCode = false;
+  }
+  els.codeError.textContent = '';
   els.scriptTitle.textContent = d.title || d.id || 'Untitled';
   document.title = `QuickScript - ${d.title || d.id || 'Untitled'}`;
   mountPreview();
@@ -112,28 +93,20 @@ els.tabTests.addEventListener('click',   () => activateTab('tests'));
 els.runTests.addEventListener('click',   () => { if (descriptor) { activateTab('tests'); refreshTestsBadge(); }});
 
 let codeTimer;
-function onCodeEdit() {
+els.sourceEditor.addEventListener('input', () => {
   if (updatingFromCode) return;
   clearTimeout(codeTimer);
-  codeTimer = setTimeout(() => {
+  const next = els.sourceEditor.value;
+  codeTimer = setTimeout(async () => {
     try {
-      const schema = JSON.parse(schemaEditor.getValue());
-      const logic = logicEditor.getValue();
-      const fn = new Function('return (' + logic + ')')();
-      if (typeof fn !== 'function') throw new Error('Logic must be a function expression');
-      const next = { ...schema, logic };
+      const result = await loadFromSource(next);
       els.codeError.textContent = '';
-      descriptor = next;
-      saveLast(descriptor);
-      els.scriptTitle.textContent = next.title || next.id || 'Untitled';
-      mountPreview();
-      refreshTestsBadge();
-      if (activeTab === 'tests') renderTests(descriptor, els.testsMount);
+      setActive(result, { announce: false, syncEditor: false });
     } catch (e) {
       els.codeError.textContent = e.message;
     }
   }, 300);
-}
+});
 
 const SB_KEY = 'qs:sidebar-collapsed';
 function setSidebar(collapsed) {
@@ -172,8 +145,9 @@ els.openFile.addEventListener('click', async () => {
 });
 els.saveFile.addEventListener('click', () => {
   if (!descriptor) return;
-  download(descriptor);
-  toast('Saved ' + (descriptor.id || 'script') + '.qs.json', { type: 'success' });
+  const filename = (descriptor.id || 'script') + '.qs.js';
+  download(filename, source);
+  toast('Saved ' + filename, { type: 'success' });
 });
 els.generateBtn.addEventListener('click', () => {
   toast('Generation arrives in v2. Edit code or load a demo for now.', { type: 'info' });
@@ -181,8 +155,11 @@ els.generateBtn.addEventListener('click', () => {
 els.avatarBtn.addEventListener('click', () => setModal(true));
 
 (async function boot() {
-  const last = loadLast();
-  if (last) { setActive(last, { announce: false }); return; }
+  const last = loadLastSource();
+  if (last) {
+    try { setActive(await loadFromSource(last), { announce: false }); return; }
+    catch (e) { console.warn('stored source failed to load, falling back to seed', e); }
+  }
   try { setActive(await loadFromUrl(SEED_URL), { announce: false }); }
   catch (e) {
     console.error('Failed to load default script', e);

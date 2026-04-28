@@ -9,10 +9,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/theme/material-darker.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/javascript/javascript.min.js"></script>
   <link rel="stylesheet" href="css/app.css">
 </head>
 <body class="bg-slate-950 text-slate-100 h-screen flex flex-col overflow-hidden">
@@ -79,7 +75,7 @@
             <i data-lucide="repeat" class="w-4 h-4 text-slate-400"></i>
             <span class="text-left">Format Converter</span>
           </button>
-          <p class="text-xs text-slate-600 mt-2 px-1">More demos coming. Open a saved <code>.qs.json</code> file to load yours.</p>
+          <p class="text-xs text-slate-600 mt-2 px-1">More demos coming. Open a saved <code>.qs.js</code> file to load yours.</p>
         </div>
       </div>
 
@@ -109,21 +105,15 @@
         <div id="qs-preview-mount"></div>
       </div>
 
-      <div id="qs-pane-code" class="flex-1 p-4 overflow-hidden flex-col gap-3" style="display:none">
-        <div class="flex flex-col flex-1 min-h-0">
-          <label class="text-xs uppercase tracking-wider text-slate-500 font-semibold mb-1.5 flex items-center gap-2">
-            <i data-lucide="braces" class="w-3.5 h-3.5"></i>
-            <span>Schema (JSON)</span>
-          </label>
-          <div id="qs-editor-schema" class="flex-1 min-h-0 border border-slate-800 rounded-md overflow-hidden bg-slate-950"></div>
-        </div>
-        <div class="flex flex-col flex-1 min-h-0">
-          <label class="text-xs uppercase tracking-wider text-slate-500 font-semibold mb-1.5 flex items-center gap-2">
-            <i data-lucide="code-2" class="w-3.5 h-3.5"></i>
-            <span>Logic (JavaScript)</span>
-          </label>
-          <div id="qs-editor-logic" class="flex-1 min-h-0 border border-slate-800 rounded-md overflow-hidden bg-slate-950"></div>
-        </div>
+      <div id="qs-pane-code" class="flex-1 p-4 overflow-hidden flex-col gap-2" style="display:none">
+        <label class="text-xs uppercase tracking-wider text-slate-500 font-semibold flex items-center gap-2">
+          <i data-lucide="file-code-2" class="w-3.5 h-3.5"></i>
+          <span>Source (.qs.js)</span>
+        </label>
+        <textarea id="qs-source-editor"
+          spellcheck="false"
+          class="flex-1 min-h-0 w-full bg-slate-950 border border-slate-800 rounded-md p-3 font-mono text-xs text-slate-100 resize-none focus:outline-none focus:border-blue-500"
+        ></textarea>
         <div id="qs-code-error" class="text-xs text-rose-400 min-h-[1rem] font-mono"></div>
       </div>
 

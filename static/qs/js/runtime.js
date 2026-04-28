@@ -1,11 +1,8 @@
-import { createEditor } from './editor.js';
-
 const DEBOUNCE_MS = 120;
 
 export function mountRuntime(descriptor, mountEl) {
   const state = initState(descriptor);
   const els = {};
-  const editors = {};
 
   const container = document.createElement('div');
   container.className = 'space-y-5 max-w-3xl mx-auto';
@@ -24,7 +21,7 @@ export function mountRuntime(descriptor, mountEl) {
   }
 
   for (const ctrl of (descriptor.controls || [])) {
-    container.appendChild(buildControl(ctrl, state, els, editors, scheduleRun));
+    container.appendChild(buildControl(ctrl, state, els, scheduleRun));
   }
 
   const errorBar = document.createElement('div');
@@ -33,14 +30,9 @@ export function mountRuntime(descriptor, mountEl) {
 
   mountEl.replaceChildren(container);
 
-  let transform = null;
-  try {
-    transform = new Function('return (' + (descriptor.logic || 'function(s){return {};}') + ')')();
-    if (typeof transform !== 'function') throw new Error('logic did not produce a function');
-  } catch (e) {
-    errorBar.textContent = 'Logic compile error: ' + e.message;
-    return { state, destroy: () => {} };
-  }
+  const transform = typeof descriptor.transform === 'function'
+    ? descriptor.transform
+    : (() => ({}));
 
   let timer = null;
   function scheduleRun() {
@@ -56,16 +48,9 @@ export function mountRuntime(descriptor, mountEl) {
       if (!result || typeof result !== 'object') return;
 
       for (const [k, v] of Object.entries(result)) {
-        if (k.endsWith('Language')) {
-          const fieldId = k.slice(0, -'Language'.length);
-          const ed = editors[fieldId];
-          if (ed) ed.setLanguage(v);
-          continue;
-        }
+        if (k.endsWith('Language')) continue;
         if (k.startsWith('_')) continue;
         state[k] = v;
-        const ed = editors[k];
-        if (ed) { ed.setValue(v ?? ''); continue; }
         const el = els[k];
         if (!el) continue;
         const next = String(v ?? '');
@@ -78,10 +63,7 @@ export function mountRuntime(descriptor, mountEl) {
 
   runLogic();
 
-  return { state, destroy: () => {
-    clearTimeout(timer);
-    for (const ed of Object.values(editors)) ed.destroy();
-  }};
+  return { state, destroy: () => { clearTimeout(timer); } };
 }
 
 function initState(d) {
@@ -122,7 +104,7 @@ function copyButton(getText) {
   return btn;
 }
 
-function buildControl(ctrl, state, els, editors, onChange) {
+function buildControl(ctrl, state, els, onChange) {
   const wrap = document.createElement('div');
   wrap.className = 'space-y-1.5';
 
@@ -151,20 +133,16 @@ function buildControl(ctrl, state, els, editors, onChange) {
       break;
     }
     case 'code': {
-      const host = document.createElement('div');
-      host.className = 'border border-slate-700 rounded-md overflow-hidden bg-slate-950';
-      host.style.height = `${(ctrl.rows || 8) * 20}px`;
-      wrap.appendChild(host);
-      const ed = createEditor({
-        parent: host,
-        value: state[ctrl.id] ?? '',
-        language: ctrl.language || 'text',
-        readOnly: !!ctrl.readonly,
-        onChange: ctrl.readonly ? null : (v) => { state[ctrl.id] = v; onChange(); },
-      });
-      editors[ctrl.id] = ed;
-      getText = () => ed.getValue();
-      el = host;
+      el = document.createElement('textarea');
+      el.rows = ctrl.rows || 8;
+      el.spellcheck = false;
+      el.className = 'w-full bg-slate-950 border border-slate-700 rounded-md p-3 text-sm font-mono text-slate-100 placeholder:text-slate-600 focus:outline-none focus:border-blue-500 resize-y';
+      if (ctrl.placeholder) el.placeholder = ctrl.placeholder;
+      if (ctrl.readonly) el.readOnly = true;
+      el.value = state[ctrl.id] ?? '';
+      el.addEventListener('input', () => { state[ctrl.id] = el.value; onChange(); });
+      els[ctrl.id] = el;
+      wrap.appendChild(el);
       break;
     }
     case 'input': {
