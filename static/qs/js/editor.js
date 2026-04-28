@@ -4,23 +4,38 @@ import { EditorState, Compartment, Annotation } from '@codemirror/state';
 import { javascript } from '@codemirror/lang-javascript';
 import { json } from '@codemirror/lang-json';
 import { oneDark } from '@codemirror/theme-one-dark';
+import {
+  dracula, cobalt, coolGlow,
+  tomorrow, solarizedLight, rosePineDawn, ayuLight,
+  // Uncomment to enable; also add to THEMES below.
+  // amy, barf, bespin, birdsOfParadise, boysAndGirls,
+  // clouds, espresso, noctisLilac, smoothy,
+} from 'thememirror';
 
 const SET_VALUE = Annotation.define();
 const THEME_KEY = 'qs:cm-theme';
 
-const lightTheme = EditorView.theme({
-  '&': { backgroundColor: '#f8fafc', color: '#0f172a' },
-  '.cm-gutters': { backgroundColor: '#f1f5f9', color: '#64748b', border: 'none' },
-  '.cm-cursor': { borderLeftColor: '#0f172a' },
-  '.cm-activeLine': { backgroundColor: '#e2e8f0' },
-  '.cm-activeLineGutter': { backgroundColor: '#e2e8f0' },
-  '.cm-selectionBackground, ::selection': { backgroundColor: '#bfdbfe !important' },
-  '.cm-line': { caretColor: '#0f172a' },
-});
-
 export const THEMES = {
-  'one-dark':  { label: 'One Dark',  ext: oneDark },
-  'light':     { label: 'Light',     ext: lightTheme },
+  // Dark
+  'one-dark':       { label: 'One Dark',        ext: oneDark,       variant: 'dark'  },
+  'dracula':        { label: 'Dracula',         ext: dracula,       variant: 'dark'  },
+  'cobalt':         { label: 'Cobalt',          ext: cobalt,        variant: 'dark'  },
+  'cool-glow':      { label: 'Cool Glow',       ext: coolGlow,      variant: 'dark'  },
+  // Light
+  'tomorrow':       { label: 'Tomorrow',        ext: tomorrow,      variant: 'light' },
+  'solarized-light':{ label: 'Solarized Light', ext: solarizedLight,variant: 'light' },
+  'rose-pine-dawn': { label: 'Rose Pine Dawn',  ext: rosePineDawn,  variant: 'light' },
+  'ayu-light':      { label: 'Ayu Light',       ext: ayuLight,      variant: 'light' },
+  // Add more by uncommenting the imports above and an entry here:
+  // 'amy':              { label: 'Amy',              ext: amy,             variant: 'dark'  },
+  // 'barf':             { label: 'Barf',             ext: barf,            variant: 'dark'  },
+  // 'bespin':           { label: 'Bespin',           ext: bespin,          variant: 'dark'  },
+  // 'birds-of-paradise':{ label: 'Birds of Paradise',ext: birdsOfParadise, variant: 'dark'  },
+  // 'boys-and-girls':   { label: 'Boys and Girls',   ext: boysAndGirls,    variant: 'dark'  },
+  // 'clouds':           { label: 'Clouds',           ext: clouds,          variant: 'light' },
+  // 'espresso':         { label: 'Espresso',         ext: espresso,        variant: 'light' },
+  // 'noctis-lilac':     { label: 'Noctis Lilac',     ext: noctisLilac,     variant: 'light' },
+  // 'smoothy':          { label: 'Smoothy',          ext: smoothy,         variant: 'light' },
 };
 export const DEFAULT_THEME = 'one-dark';
 

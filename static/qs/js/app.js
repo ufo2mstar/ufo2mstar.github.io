@@ -121,11 +121,24 @@ els.runTests.addEventListener('click', () => {
   else toast(`Tests: ${passed}/${total} passed (${total - passed} failed)`, { type: 'error' });
 });
 
-for (const [key, def] of Object.entries(THEMES)) {
-  const opt = document.createElement('option');
-  opt.value = key;
-  opt.textContent = def.label;
-  els.settingsTheme.appendChild(opt);
+{
+  const groups = { dark: [], light: [], other: [] };
+  for (const [key, def] of Object.entries(THEMES)) {
+    (groups[def.variant] || groups.other).push([key, def]);
+  }
+  const labels = { dark: 'Dark', light: 'Light', other: 'Other' };
+  for (const variant of ['dark', 'light', 'other']) {
+    if (!groups[variant].length) continue;
+    const og = document.createElement('optgroup');
+    og.label = labels[variant];
+    for (const [key, def] of groups[variant]) {
+      const opt = document.createElement('option');
+      opt.value = key;
+      opt.textContent = def.label;
+      og.appendChild(opt);
+    }
+    els.settingsTheme.appendChild(og);
+  }
 }
 els.settingsTheme.value = getActiveTheme();
 els.settingsTheme.addEventListener('change', () => {
