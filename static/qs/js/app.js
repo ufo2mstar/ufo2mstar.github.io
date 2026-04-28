@@ -1,6 +1,7 @@
 import { mountRuntime } from './runtime.js';
 import { download, loadFromFile, loadFromUrl, loadFromSource, saveLastSource, loadLastSource } from './storage.js';
 import { renderTests, runTests } from './tests.js';
+import { createEditor } from './editor.js';
 import { toast } from './toast.js';
 
 const SEED_URL = 'scripts/format-converter.qs.js';
@@ -10,7 +11,7 @@ const els = {
   testsMount:     document.getElementById('qs-tests-mount'),
   testsBadge:     document.getElementById('qs-tests-badge'),
   runTests:       document.getElementById('qs-run-tests'),
-  sourceEditor:   document.getElementById('qs-source-editor'),
+  sourceHost:     document.getElementById('qs-source-editor'),
   codeError:      document.getElementById('qs-code-error'),
   tabPreview:     document.getElementById('qs-tab-preview'),
   tabCode:        document.getElementById('qs-tab-code'),
@@ -36,7 +37,26 @@ let descriptor = null;
 let source = '';
 let runtime = null;
 let activeTab = 'preview';
-let updatingFromCode = false;
+
+let codeTimer;
+const sourceEditor = createEditor({
+  parent: els.sourceHost,
+  value: '',
+  language: 'javascript',
+  fillHeight: true,
+  onChange: (next) => {
+    clearTimeout(codeTimer);
+    codeTimer = setTimeout(async () => {
+      try {
+        const result = await loadFromSource(next);
+        els.codeError.textContent = '';
+        setActive(result, { announce: false, syncEditor: false });
+      } catch (e) {
+        els.codeError.textContent = e.message;
+      }
+    }, 300);
+  },
+});
 
 function mountPreview() {
   if (runtime?.destroy) runtime.destroy();
@@ -63,11 +83,7 @@ function setActive({ descriptor: d, source: src }, opts = {}) {
   descriptor = d;
   source = src;
   saveLastSource(src);
-  if (syncEditor) {
-    updatingFromCode = true;
-    els.sourceEditor.value = src;
-    updatingFromCode = false;
-  }
+  if (syncEditor) sourceEditor.setValue(src);
   els.codeError.textContent = '';
   els.scriptTitle.textContent = d.title || d.id || 'Untitled';
   document.title = `QuickScript - ${d.title || d.id || 'Untitled'}`;
@@ -91,22 +107,6 @@ els.tabPreview.addEventListener('click', () => activateTab('preview'));
 els.tabCode.addEventListener('click',    () => activateTab('code'));
 els.tabTests.addEventListener('click',   () => activateTab('tests'));
 els.runTests.addEventListener('click',   () => { if (descriptor) { activateTab('tests'); refreshTestsBadge(); }});
-
-let codeTimer;
-els.sourceEditor.addEventListener('input', () => {
-  if (updatingFromCode) return;
-  clearTimeout(codeTimer);
-  const next = els.sourceEditor.value;
-  codeTimer = setTimeout(async () => {
-    try {
-      const result = await loadFromSource(next);
-      els.codeError.textContent = '';
-      setActive(result, { announce: false, syncEditor: false });
-    } catch (e) {
-      els.codeError.textContent = e.message;
-    }
-  }, 300);
-});
 
 const SB_KEY = 'qs:sidebar-collapsed';
 function setSidebar(collapsed) {
