@@ -10,6 +10,28 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <link rel="stylesheet" href="css/app.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "@codemirror/state":           "https://esm.sh/@codemirror/state@6.4.1",
+      "@codemirror/view":            "https://esm.sh/@codemirror/view@6.26.3?external=@codemirror/state",
+      "@codemirror/language":        "https://esm.sh/@codemirror/language@6.10.1?external=@codemirror/state,@codemirror/view,@lezer/common,@lezer/highlight,@lezer/lr",
+      "@codemirror/commands":        "https://esm.sh/@codemirror/commands@6.5.0?external=@codemirror/state,@codemirror/view,@codemirror/language,@lezer/common",
+      "@codemirror/search":          "https://esm.sh/@codemirror/search@6.5.6?external=@codemirror/state,@codemirror/view",
+      "@codemirror/autocomplete":    "https://esm.sh/@codemirror/autocomplete@6.16.0?external=@codemirror/state,@codemirror/view,@codemirror/language",
+      "@codemirror/lint":            "https://esm.sh/@codemirror/lint@6.7.1?external=@codemirror/state,@codemirror/view",
+      "@lezer/common":               "https://esm.sh/@lezer/common@1.2.1",
+      "@lezer/highlight":            "https://esm.sh/@lezer/highlight@1.2.0?external=@lezer/common",
+      "@lezer/lr":                   "https://esm.sh/@lezer/lr@1.4.0?external=@lezer/common",
+      "@lezer/javascript":           "https://esm.sh/@lezer/javascript@1.4.16?external=@lezer/common,@lezer/highlight,@lezer/lr",
+      "@lezer/json":                 "https://esm.sh/@lezer/json@1.0.2?external=@lezer/common,@lezer/highlight,@lezer/lr",
+      "codemirror":                  "https://esm.sh/codemirror@6.0.1?external=@codemirror/state,@codemirror/view,@codemirror/language,@codemirror/commands,@codemirror/search,@codemirror/autocomplete,@codemirror/lint",
+      "@codemirror/lang-javascript": "https://esm.sh/@codemirror/lang-javascript@6.2.2?external=@codemirror/state,@codemirror/view,@codemirror/language,@codemirror/autocomplete,@lezer/common,@lezer/javascript",
+      "@codemirror/lang-json":       "https://esm.sh/@codemirror/lang-json@6.0.1?external=@codemirror/state,@codemirror/view,@codemirror/language,@codemirror/autocomplete,@lezer/json",
+      "@codemirror/theme-one-dark":  "https://esm.sh/@codemirror/theme-one-dark@6.1.2?external=@codemirror/state,@codemirror/view,@codemirror/language,@lezer/highlight"
+    }
+  }
+  </script>
 </head>
 <body class="bg-slate-950 text-slate-100 h-screen flex flex-col overflow-hidden">
 
@@ -110,10 +132,9 @@
           <i data-lucide="file-code-2" class="w-3.5 h-3.5"></i>
           <span>Source (.qs.js)</span>
         </label>
-        <textarea id="qs-source-editor"
-          spellcheck="false"
-          class="flex-1 min-h-0 w-full bg-slate-950 border border-slate-800 rounded-md p-3 font-mono text-xs text-slate-100 resize-none focus:outline-none focus:border-blue-500"
-        ></textarea>
+        <div id="qs-source-editor"
+          class="flex-1 min-h-0 w-full bg-slate-950 border border-slate-800 rounded-md overflow-hidden"
+        ></div>
         <div id="qs-code-error" class="text-xs text-rose-400 min-h-[1rem] font-mono"></div>
       </div>
 

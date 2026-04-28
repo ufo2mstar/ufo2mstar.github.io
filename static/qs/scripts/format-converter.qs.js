@@ -12,7 +12,7 @@ export default {
         { value: 'url-encode',    label: 'URL - encode' },
         { value: 'url-decode',    label: 'URL - decode' },
         { value: 'json-prettify', label: 'JSON - prettify' },
-        { value: 'json-minify',   label: 'JSON - minify' },
+        { value: 'json-deflate',  label: 'JSON - deflate' },
       ]
     },
     { type: 'textarea', id: 'input',  label: 'Input',  rows: 4,  copyable: true, placeholder: 'Paste here...' },
@@ -21,7 +21,7 @@ export default {
 
   transform(s) {
     const input = s.input || '';
-    const jsonOps = new Set(['json-prettify', 'json-minify']);
+    const jsonOps = new Set(['json-prettify', 'json-deflate']);
     try {
       let output;
       switch (s.op) {
@@ -30,7 +30,7 @@ export default {
         case 'url-encode':    output = encodeURIComponent(input); break;
         case 'url-decode':    output = decodeURIComponent(input); break;
         case 'json-prettify': output = JSON.stringify(JSON.parse(input), null, 2); break;
-        case 'json-minify':   output = JSON.stringify(JSON.parse(input)); break;
+        case 'json-deflate':  output = JSON.stringify(JSON.parse(input)); break;
         default: output = '';
       }
       return { output, outputLanguage: jsonOps.has(s.op) ? 'json' : 'text' };
@@ -45,6 +45,6 @@ export default {
     { name: 'url-encode escapes spaces',    state: { op: 'url-encode', input: 'hello world & friends' }, expect: { output: 'hello%20world%20%26%20friends' } },
     { name: 'url-decode round-trips',       state: { op: 'url-decode', input: 'hello%20world%20%26%20friends' }, expect: { output: 'hello world & friends' } },
     { name: 'json-prettify',                state: { op: 'json-prettify', input: '{"a":1,"b":[2,3]}' },  expect: { output: '{\n  "a": 1,\n  "b": [\n    2,\n    3\n  ]\n}' } },
-    { name: 'json-minify',                  state: { op: 'json-minify',   input: '{\n  "a": 1,\n  "b": [2, 3]\n}' }, expect: { output: '{"a":1,"b":[2,3]}' } },
+    { name: 'json-deflate',                 state: { op: 'json-deflate',  input: '{\n  "a": 1,\n  "b": [2, 3]\n}' }, expect: { output: '{"a":1,"b":[2,3]}' } },
   ],
 };
