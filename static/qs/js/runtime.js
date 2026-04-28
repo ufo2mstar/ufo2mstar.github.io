@@ -1,4 +1,5 @@
 import { createEditor } from './editor.js';
+import { qsFetch } from './fetch.js';
 
 const DEBOUNCE_MS = 120;
 
@@ -26,9 +27,9 @@ export function mountRuntime(descriptor, mountEl) {
     container.appendChild(buildControl(ctrl, state, adapters, scheduleRun));
   }
 
-  const errorBar = document.createElement('div');
-  errorBar.className = 'text-xs text-rose-400 min-h-[1rem] font-mono';
-  container.appendChild(errorBar);
+  const statusBar = document.createElement('div');
+  statusBar.className = 'text-xs min-h-[1rem] font-mono text-rose-400';
+  container.appendChild(statusBar);
 
   mountEl.replaceChildren(container);
 
@@ -36,40 +37,66 @@ export function mountRuntime(descriptor, mountEl) {
     ? descriptor.transform
     : (() => ({}));
 
-  let timer = null;
-  function scheduleRun() {
-    if (descriptor.trigger === 'manual') return;
-    clearTimeout(timer);
-    timer = setTimeout(runLogic, DEBOUNCE_MS);
+  const isAsync = transform.constructor && transform.constructor.name === 'AsyncFunction';
+  const trigger = descriptor.trigger || (isAsync ? 'manual' : 'live');
+  if (isAsync && trigger === 'live') {
+    console.warn(`[QuickScript] "${descriptor.id || 'unknown'}" uses live trigger with an async transform - every keystroke fires a request. Consider trigger: 'manual'.`);
   }
 
-  function runLogic() {
-    try {
-      const result = transform({ ...state });
-      errorBar.textContent = '';
-      if (!result || typeof result !== 'object') return;
+  let timer = null;
+  let runToken = 0;
 
-      for (const [k, v] of Object.entries(result)) {
-        if (k.startsWith('_')) continue;
-        if (k.endsWith('Language')) {
-          const id = k.slice(0, -'Language'.length);
-          adapters[id]?.setLanguage?.(v);
-          continue;
-        }
-        state[k] = v;
-        adapters[k]?.setValue(v);
+  function setStatus(kind, msg) {
+    const colors = { idle: 'text-slate-500', running: 'text-amber-400', error: 'text-rose-400' };
+    statusBar.className = `text-xs min-h-[1rem] font-mono ${colors[kind] || colors.idle}`;
+    statusBar.textContent = msg || '';
+  }
+
+  function applyResult(result) {
+    if (!result || typeof result !== 'object') return;
+    for (const [k, v] of Object.entries(result)) {
+      if (k.startsWith('_')) continue;
+      if (k.endsWith('Language')) {
+        const id = k.slice(0, -'Language'.length);
+        adapters[id]?.setLanguage?.(v);
+        continue;
       }
-    } catch (e) {
-      errorBar.textContent = 'Runtime error: ' + e.message;
+      state[k] = v;
+      adapters[k]?.setValue(v);
     }
   }
 
-  runLogic();
+  function scheduleRun(opts) {
+    const force = opts && opts.force;
+    if (trigger === 'manual' && !force) return;
+    clearTimeout(timer);
+    if (force) runLogic();
+    else timer = setTimeout(runLogic, DEBOUNCE_MS);
+  }
+
+  async function runLogic() {
+    const myToken = ++runToken;
+    try {
+      const maybe = transform({ ...state }, { fetch: qsFetch });
+      const isPromise = maybe && typeof maybe.then === 'function';
+      if (isPromise) setStatus('running', 'Running...');
+      const result = isPromise ? await maybe : maybe;
+      if (myToken !== runToken) return;
+      setStatus('idle', '');
+      applyResult(result);
+    } catch (e) {
+      if (myToken !== runToken) return;
+      setStatus('error', 'Runtime error: ' + e.message);
+    }
+  }
+
+  if (trigger !== 'manual') runLogic();
 
   return {
     state,
     destroy: () => {
       clearTimeout(timer);
+      runToken++;
       for (const a of Object.values(adapters)) a.destroy?.();
     },
   };
@@ -253,7 +280,7 @@ function mkButtonAdapter(ctrl, onChange) {
   el.type = 'button';
   el.className = 'inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-medium py-2 px-4 rounded-md text-sm transition';
   el.textContent = ctrl.label || 'Run';
-  const handler = () => onChange();
+  const handler = () => onChange({ force: true });
   el.addEventListener('click', handler);
   return {
     host: el,

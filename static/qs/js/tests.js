@@ -9,7 +9,31 @@ function deepEqual(a, b) {
   return false;
 }
 
-export function runTests(descriptor) {
+function evalCheck(actual, expected) {
+  if (expected instanceof RegExp) {
+    return { pass: typeof actual === 'string' && expected.test(actual), kind: 'regex' };
+  }
+  if (expected && typeof expected === 'object' && !Array.isArray(expected)) {
+    if ('regex' in expected) {
+      const re = expected.regex instanceof RegExp ? expected.regex : new RegExp(expected.regex);
+      return { pass: typeof actual === 'string' && re.test(actual), kind: 'regex' };
+    }
+    if ('contains' in expected) {
+      return { pass: typeof actual === 'string' && actual.includes(expected.contains), kind: 'contains' };
+    }
+  }
+  return { pass: deepEqual(actual, expected), kind: 'equals' };
+}
+
+function wrapMockFetch(mock) {
+  if (typeof mock !== 'function') return null;
+  return async (url, opts) => {
+    const v = mock(url, opts);
+    return v && typeof v.then === 'function' ? await v : v;
+  };
+}
+
+export async function runTests(descriptor) {
   const tests = descriptor.tests || [];
   const transform = descriptor.transform;
   if (typeof transform !== 'function') {
@@ -19,33 +43,34 @@ export function runTests(descriptor) {
   const defaults = {};
   for (const c of (descriptor.controls || [])) defaults[c.id] = c.default ?? '';
 
-  const results = tests.map(t => {
+  const results = [];
+  for (const t of tests) {
     try {
       const input = { ...defaults, ...(t.state || {}) };
-      const out = transform(input) || {};
+      const fetchImpl = wrapMockFetch(t.mockFetch) || (() => { throw new Error('test attempted real fetch - provide mockFetch'); });
+      const raw = transform(input, { fetch: fetchImpl });
+      const out = (raw && typeof raw.then === 'function' ? await raw : raw) || {};
       const cleanOut = {};
       for (const [k, v] of Object.entries(out)) {
         if (k.endsWith('Language') || k.startsWith('_')) continue;
         cleanOut[k] = v;
       }
       const expected = t.expect || {};
-      const checks = Object.entries(expected).map(([k, v]) => ({
-        field: k,
-        expected: v,
-        actual: cleanOut[k],
-        pass: deepEqual(cleanOut[k], v),
-      }));
-      return { name: t.name || '(unnamed)', input, output: cleanOut, checks, pass: checks.every(c => c.pass), error: null };
+      const checks = Object.entries(expected).map(([k, v]) => {
+        const r = evalCheck(cleanOut[k], v);
+        return { field: k, expected: v, actual: cleanOut[k], pass: r.pass, kind: r.kind };
+      });
+      results.push({ name: t.name || '(unnamed)', input, output: cleanOut, checks, pass: checks.every(c => c.pass), error: null });
     } catch (e) {
-      return { name: t.name || '(unnamed)', input: t.state || {}, error: e.message, checks: [], pass: false };
+      results.push({ name: t.name || '(unnamed)', input: t.state || {}, error: e.message, checks: [], pass: false });
     }
-  });
+  }
 
   return { results, compileError: null };
 }
 
-export function renderTests(descriptor, mountEl) {
-  const { results, compileError } = runTests(descriptor);
+export async function renderTests(descriptor, mountEl) {
+  const { results, compileError } = await runTests(descriptor);
   mountEl.innerHTML = '';
 
   const wrap = document.createElement('div');
@@ -137,7 +162,8 @@ function checkRow(c) {
 
   const field = document.createElement('div');
   field.className = 'text-slate-400 mb-0.5';
-  field.innerHTML = `<span class="text-slate-500">field</span> ${escapeHtml(c.field)}`;
+  const kindLabel = c.kind && c.kind !== 'equals' ? ` <span class="text-slate-600">(${c.kind})</span>` : '';
+  field.innerHTML = `<span class="text-slate-500">field</span> ${escapeHtml(c.field)}${kindLabel}`;
   row.appendChild(field);
 
   row.appendChild(valueLine('expected', c.expected));
@@ -145,11 +171,19 @@ function checkRow(c) {
   return row;
 }
 
+function stringifyValue(v) {
+  if (v instanceof RegExp) return v.toString();
+  if (v && typeof v === 'object' && v.regex) return (v.regex instanceof RegExp ? v.regex : new RegExp(v.regex)).toString();
+  if (v && typeof v === 'object' && 'contains' in v) return `contains(${JSON.stringify(v.contains)})`;
+  return JSON.stringify(v);
+}
+
 function valueLine(label, value) {
   const line = document.createElement('div');
   line.className = 'flex items-start gap-1.5';
-  line.innerHTML = `<span class="text-slate-500">${label}</span><span class="flex-1 break-all">${escapeHtml(JSON.stringify(value))}</span>`;
-  line.appendChild(miniCopy(() => typeof value === 'string' ? value : JSON.stringify(value)));
+  const display = stringifyValue(value);
+  line.innerHTML = `<span class="text-slate-500">${label}</span><span class="flex-1 break-all">${escapeHtml(display)}</span>`;
+  line.appendChild(miniCopy(() => typeof value === 'string' ? value : display));
   return line;
 }
 
