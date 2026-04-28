@@ -125,15 +125,7 @@ push: check ## Validate locally, push, and watch GitHub Actions until green
 	@$(MAKE) --no-print-directory _push-and-watch
 
 _push-and-watch:
-	@output=$$(git push origin main 2>&1); echo "$$output"; \
-	if echo "$$output" | grep -q 'Everything up-to-date'; then \
-	  echo "Nothing to push. Site is already current."; \
-	else \
-	  echo "Pushed. Waiting for GitHub Actions to start..."; \
-	  sleep 5; \
-	  gh run watch --exit-status || (echo "\nDeploy FAILED. Check: gh run list" && exit 1); \
-	  echo "Live at https://ufo2mstar.github.io/"; \
-	fi
+	@./tools/push-and-watch.sh
 
 ##@ Migration (one-time, removable after content is in)
 
