@@ -169,6 +169,21 @@ Hugo is Go, but the repo's actual working language is markdown + TOML. Tools und
 
 Trigger to swap to Go (or to off-the-shelf binaries like `lychee`, `htmltest`): a script grows past ~300 lines, needs concurrency at scale, or needs to ship as a redistributable binary. None of the current tools are close to that line.
 
+## Makefile recipes vs `tools/` scripts
+
+Decision rule, no need to re-debate:
+
+- **Inline in the Makefile**: 1-3 line recipes, single command + maybe a guard. The Makefile is intentionally thin (muscle memory + discoverability).
+- **Extract to `tools/<name>.sh` (or `.py`)**: anything with a loop, conditional branching, multi-step logic, or non-trivial error handling. Makefile target becomes a one-line `@./tools/<name>.sh` wrapper.
+
+Why not a separate `scripts/` dir: `tools/` already houses helper scripts; mixing `.sh` and `.py` there is fine until there's enough shell to feel cluttered (rough threshold: ~5 files). Migration when that happens is `git mv` + Makefile path updates.
+
+Why not Go for shell-replacement scripts: same reasoning as the Python section above. Bash for orchestration, Python for parsing/validation, Go only if it grows past those niches.
+
+Examples following this rule:
+- `tools/push-and-watch.sh` - extracted from `_push-and-watch` because it polls GitHub Actions with a retry loop
+- `tools/check_*.py` - all extracted because they parse files / validate structure
+
 ## Migration patterns worth remembering
 
 Three lessons from the Hugo migration that generalize:
