@@ -68,3 +68,47 @@ code, pre, .font-mono, textarea.font-mono { font-family: 'JetBrains Mono', ui-mo
 
 [data-collapsed="true"] .qs-when-expanded { display: none !important; }
 [data-collapsed="false"] .qs-when-collapsed { display: none !important; }
+
+.qs-segmented {
+  display: flex; flex-wrap: wrap; gap: 4px;
+  padding: 4px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgb(51, 65, 85);
+  border-radius: 8px;
+}
+.qs-seg-btn {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 6px 12px;
+  font-size: 13px;
+  text-align: center;
+  color: rgb(148, 163, 184);
+  border-radius: 6px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.qs-seg-btn:hover { background: rgba(255, 255, 255, 0.05); color: rgb(226, 232, 240); }
+.qs-seg-btn[data-active="true"] {
+  background: rgb(37, 99, 235);
+  color: white;
+}
+.qs-seg-btn[data-active="true"]:hover { background: rgb(29, 78, 216); color: white; }
+
+.qs-copy-mini {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 22px; height: 22px;
+  border-radius: 4px;
+  color: rgb(100, 116, 139);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease;
+  flex-shrink: 0;
+}
+.qs-copy-mini:hover { background: rgba(255, 255, 255, 0.06); color: rgb(226, 232, 240); }
+.qs-copy-mini[data-copied="true"] { color: rgb(52, 211, 153); }

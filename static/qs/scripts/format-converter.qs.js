@@ -7,8 +7,8 @@ export default {
   controls: [
     { type: 'select',   id: 'op',     label: 'Operation', default: 'base64-decode',
       options: [
-        { value: 'base64-encode', label: 'Base64 - encode' },
-        { value: 'base64-decode', label: 'Base64 - decode' },
+        { value: 'base64-encode', label: 'B64 - encode' },
+        { value: 'base64-decode', label: 'B64 - decode' },
         { value: 'url-encode',    label: 'URL - encode' },
         { value: 'url-decode',    label: 'URL - decode' },
         { value: 'json-prettify', label: 'JSON - prettify' },

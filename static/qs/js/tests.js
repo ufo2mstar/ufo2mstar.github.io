@@ -109,14 +109,7 @@ export function renderTests(descriptor, mountEl) {
       body.appendChild(e);
     } else {
       for (const c of r.checks) {
-        const row = document.createElement('div');
-        row.className = `text-xs font-mono ${c.pass ? 'text-emerald-300' : 'text-rose-300'}`;
-        row.innerHTML = `
-          <div class="text-slate-400 mb-0.5"><span class="text-slate-500">field</span> ${escapeHtml(c.field)}</div>
-          <div><span class="text-slate-500">expected</span> ${escapeHtml(JSON.stringify(c.expected))}</div>
-          <div><span class="text-slate-500">actual  </span> ${escapeHtml(JSON.stringify(c.actual))}</div>
-        `;
-        body.appendChild(row);
+        body.appendChild(checkRow(c));
       }
     }
 
@@ -136,6 +129,51 @@ export function renderTests(descriptor, mountEl) {
   mountEl.appendChild(wrap);
   if (window.lucide) window.lucide.createIcons();
   return { passed, failed: total - passed, total };
+}
+
+function checkRow(c) {
+  const row = document.createElement('div');
+  row.className = `text-xs font-mono ${c.pass ? 'text-emerald-300' : 'text-rose-300'}`;
+
+  const field = document.createElement('div');
+  field.className = 'text-slate-400 mb-0.5';
+  field.innerHTML = `<span class="text-slate-500">field</span> ${escapeHtml(c.field)}`;
+  row.appendChild(field);
+
+  row.appendChild(valueLine('expected', c.expected));
+  row.appendChild(valueLine('actual  ', c.actual));
+  return row;
+}
+
+function valueLine(label, value) {
+  const line = document.createElement('div');
+  line.className = 'flex items-start gap-1.5';
+  line.innerHTML = `<span class="text-slate-500">${label}</span><span class="flex-1 break-all">${escapeHtml(JSON.stringify(value))}</span>`;
+  line.appendChild(miniCopy(() => typeof value === 'string' ? value : JSON.stringify(value)));
+  return line;
+}
+
+function miniCopy(getText) {
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'qs-copy-mini';
+  btn.title = 'Copy raw value';
+  btn.innerHTML = '<i data-lucide="copy" class="w-3 h-3"></i>';
+  btn.addEventListener('click', async (e) => {
+    e.stopPropagation();
+    try {
+      await navigator.clipboard.writeText(getText());
+      btn.dataset.copied = 'true';
+      btn.querySelector('i')?.setAttribute('data-lucide', 'check');
+      if (window.lucide) window.lucide.createIcons();
+      setTimeout(() => {
+        btn.dataset.copied = 'false';
+        btn.querySelector('i')?.setAttribute('data-lucide', 'copy');
+        if (window.lucide) window.lucide.createIcons();
+      }, 900);
+    } catch {}
+  });
+  return btn;
 }
 
 function escapeHtml(s) {

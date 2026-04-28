@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QuickScript</title>
+  <title>QuickScripts</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -80,12 +80,12 @@
           <h2 class="text-xs uppercase tracking-wider text-slate-500 font-semibold mb-2">Describe your interface</h2>
           <p class="text-xs text-slate-500 mb-2">LLM-driven generation arrives in v2. For now, edit code or load a saved script.</p>
 
-          <button id="qs-generate-btn" class="mt-2 w-full inline-flex items-center justify-center gap-2 bg-blue-700/40 text-blue-200 font-medium py-2 rounded-md text-sm cursor-not-allowed border border-blue-800/40" disabled title="Coming in v2">
+          <button id="qs-generate-btn" class="mt-3 mb-3 w-full inline-flex items-center justify-center gap-2 bg-blue-700/40 text-blue-200 font-medium py-2.5 rounded-md text-sm cursor-not-allowed border border-blue-800/40" disabled title="Coming in v2">
             <i data-lucide="sparkles" class="w-4 h-4"></i>
             <span>Generate (v2)</span>
           </button>
           <textarea
-            class="w-full h-28 bg-slate-950 text-slate-300 p-3 rounded-md border border-slate-800 text-sm resize-none opacity-50 cursor-not-allowed"
+            class="w-full h-44 bg-slate-950 text-slate-300 p-3 rounded-md border border-slate-800 text-sm resize-none opacity-50 cursor-not-allowed leading-relaxed"
             placeholder="e.g., Build a UI with a text input for a city name. When I click search, call the OpenWeather API and display the temperature..."
             disabled
           ></textarea>
@@ -155,8 +155,13 @@
       </div>
       <div class="space-y-4">
         <div>
+          <label class="block text-xs uppercase tracking-wider text-slate-500 font-semibold mb-1.5">Editor theme</label>
+          <select id="qs-settings-theme" class="w-full bg-slate-950 border border-slate-700 rounded-md p-2 text-sm"></select>
+          <p class="text-xs text-slate-500 mt-1">Applies to all CodeMirror editors. Persists across sessions.</p>
+        </div>
+        <div class="border-t border-slate-800 pt-4">
           <label class="block text-xs uppercase tracking-wider text-slate-500 font-semibold mb-1.5">Provider</label>
-          <select class="w-full bg-slate-950 border border-slate-700 rounded-md p-2 text-sm">
+          <select class="w-full bg-slate-950 border border-slate-700 rounded-md p-2 text-sm opacity-60 cursor-not-allowed" disabled>
             <option>OpenAI</option>
             <option>Anthropic</option>
             <option>Local</option>
@@ -164,9 +169,9 @@
         </div>
         <div>
           <label class="block text-xs uppercase tracking-wider text-slate-500 font-semibold mb-1.5">API Key</label>
-          <input type="password" placeholder="sk-..." class="w-full bg-slate-950 border border-slate-700 rounded-md p-2 text-sm font-mono">
+          <input type="password" placeholder="sk-..." class="w-full bg-slate-950 border border-slate-700 rounded-md p-2 text-sm font-mono opacity-60 cursor-not-allowed" disabled>
         </div>
-        <p class="text-xs text-slate-500">Mock UI for now. v2 will wire this to live LLM calls and store the key in localStorage.</p>
+        <p class="text-xs text-slate-500">Provider + API key are mock UI for now. v2 will wire these to live LLM calls.</p>
       </div>
     </div>
   </div>
