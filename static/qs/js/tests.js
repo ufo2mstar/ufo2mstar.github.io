@@ -9,17 +9,12 @@ function deepEqual(a, b) {
   return false;
 }
 
-function compileLogic(src) {
-  const fn = new Function('return (' + (src || 'function(){return {};}') + ')')();
-  if (typeof fn !== 'function') throw new Error('logic must be a function');
-  return fn;
-}
-
 export function runTests(descriptor) {
   const tests = descriptor.tests || [];
-  let transform;
-  try { transform = compileLogic(descriptor.logic); }
-  catch (e) { return { compileError: e.message, results: [] }; }
+  const transform = descriptor.transform;
+  if (typeof transform !== 'function') {
+    return { compileError: 'descriptor.transform is not a function', results: [] };
+  }
 
   const defaults = {};
   for (const c of (descriptor.controls || [])) defaults[c.id] = c.default ?? '';
