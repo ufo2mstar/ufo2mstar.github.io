@@ -94,19 +94,12 @@
 
         <div class="border-t border-slate-800 pt-4">
           <h2 class="text-xs uppercase tracking-wider text-slate-500 font-semibold mb-2">Library</h2>
-          <button id="qs-load-demo" class="w-full inline-flex items-center gap-2 px-3 py-2 rounded-md text-sm text-slate-200 hover:bg-white/5 transition border border-transparent hover:border-slate-700">
-            <i data-lucide="repeat" class="w-4 h-4 text-slate-400"></i>
-            <span class="text-left">Format Converter</span>
-          </button>
-          <p class="text-xs text-slate-600 mt-2 px-1">More demos coming. Open a saved <code>.qs.js</code> file to load yours.</p>
+          <div id="qs-library-list" class="flex flex-col gap-1"></div>
+          <p class="text-xs text-slate-600 mt-2 px-1">Open a saved <code>.qs.js</code> file to load your own.</p>
         </div>
       </div>
 
-      <div class="qs-when-collapsed flex-1 flex flex-col items-center py-3 gap-1">
-        <button class="qs-rail-btn" id="qs-rail-load-demo" title="Format Converter demo">
-          <i data-lucide="repeat" class="w-5 h-5"></i>
-        </button>
-      </div>
+      <div class="qs-when-collapsed flex-1 flex flex-col items-center py-3 gap-1" id="qs-library-rail"></div>
     </aside>
 
     <section class="flex-1 bg-slate-950 flex flex-col min-w-0">
