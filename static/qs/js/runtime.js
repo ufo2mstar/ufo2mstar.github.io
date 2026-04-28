@@ -1,32 +1,34 @@
+import { createEditor } from './editor.js';
+
 const DEBOUNCE_MS = 120;
 
 export function mountRuntime(descriptor, mountEl) {
   const state = initState(descriptor);
   const els = {};
-  const errors = [];
+  const editors = {};
 
   const container = document.createElement('div');
-  container.className = 'space-y-4 max-w-2xl mx-auto';
+  container.className = 'space-y-5 max-w-3xl mx-auto';
 
   if (descriptor.title) {
     const h = document.createElement('h2');
-    h.className = 'text-xl font-semibold text-gray-100';
+    h.className = 'text-xl font-semibold text-slate-100';
     h.textContent = descriptor.title;
     container.appendChild(h);
   }
   if (descriptor.description) {
     const p = document.createElement('p');
-    p.className = 'text-sm text-gray-400';
+    p.className = 'text-sm text-slate-400 -mt-3';
     p.textContent = descriptor.description;
     container.appendChild(p);
   }
 
-  for (const ctrl of descriptor.controls || []) {
-    container.appendChild(buildControl(ctrl, state, els, scheduleRun));
+  for (const ctrl of (descriptor.controls || [])) {
+    container.appendChild(buildControl(ctrl, state, els, editors, scheduleRun));
   }
 
   const errorBar = document.createElement('div');
-  errorBar.className = 'text-xs text-red-400 min-h-[1rem]';
+  errorBar.className = 'text-xs text-rose-400 min-h-[1rem] font-mono';
   container.appendChild(errorBar);
 
   mountEl.replaceChildren(container);
@@ -51,15 +53,23 @@ export function mountRuntime(descriptor, mountEl) {
     try {
       const result = transform({ ...state });
       errorBar.textContent = '';
-      if (result && typeof result === 'object') {
-        for (const [k, v] of Object.entries(result)) {
-          state[k] = v;
-          const el = els[k];
-          if (!el) continue;
-          if (el.tagName === 'TEXTAREA' || el.tagName === 'INPUT' || el.tagName === 'SELECT') {
-            if (el.value !== String(v ?? '')) el.value = v ?? '';
-          }
+      if (!result || typeof result !== 'object') return;
+
+      for (const [k, v] of Object.entries(result)) {
+        if (k.endsWith('Language')) {
+          const fieldId = k.slice(0, -'Language'.length);
+          const ed = editors[fieldId];
+          if (ed) ed.setLanguage(v);
+          continue;
         }
+        if (k.startsWith('_')) continue;
+        state[k] = v;
+        const ed = editors[k];
+        if (ed) { ed.setValue(v ?? ''); continue; }
+        const el = els[k];
+        if (!el) continue;
+        const next = String(v ?? '');
+        if (el.value !== next) el.value = next;
       }
     } catch (e) {
       errorBar.textContent = 'Runtime error: ' + e.message;
@@ -68,55 +78,110 @@ export function mountRuntime(descriptor, mountEl) {
 
   runLogic();
 
-  return { state, destroy: () => clearTimeout(timer) };
+  return { state, destroy: () => {
+    clearTimeout(timer);
+    for (const ed of Object.values(editors)) ed.destroy();
+  }};
 }
 
 function initState(d) {
   const s = {};
-  for (const c of (d.controls || [])) {
-    s[c.id] = c.default ?? '';
-  }
+  for (const c of (d.controls || [])) s[c.id] = c.default ?? '';
   return s;
 }
 
-function buildControl(ctrl, state, els, onChange) {
+function controlLabel(ctrl) {
+  if (!ctrl.label || ctrl.type === 'button') return null;
+  const lbl = document.createElement('label');
+  lbl.className = 'block text-xs uppercase tracking-wider font-medium text-slate-400 mb-1.5';
+  lbl.textContent = ctrl.label;
+  return lbl;
+}
+
+function copyButton(getText) {
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'flex items-center gap-1 text-xs text-slate-400 hover:text-slate-100 transition px-2 py-1 rounded hover:bg-white/5';
+  btn.innerHTML = '<i data-lucide="copy" class="w-3.5 h-3.5"></i><span>copy</span>';
+  btn.title = 'Copy to clipboard';
+  btn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(getText());
+      btn.querySelector('span').textContent = 'copied';
+      btn.querySelector('i')?.setAttribute('data-lucide', 'check');
+      if (window.lucide) window.lucide.createIcons();
+      setTimeout(() => {
+        btn.querySelector('span').textContent = 'copy';
+        btn.querySelector('i')?.setAttribute('data-lucide', 'copy');
+        if (window.lucide) window.lucide.createIcons();
+      }, 900);
+    } catch {
+      btn.querySelector('span').textContent = 'failed';
+    }
+  });
+  return btn;
+}
+
+function buildControl(ctrl, state, els, editors, onChange) {
   const wrap = document.createElement('div');
-  wrap.className = 'space-y-1';
+  wrap.className = 'space-y-1.5';
 
-  if (ctrl.label && ctrl.type !== 'button') {
-    const lbl = document.createElement('label');
-    lbl.className = 'block text-sm font-medium text-gray-300';
-    lbl.textContent = ctrl.label;
-    wrap.appendChild(lbl);
-  }
+  const headerRow = document.createElement('div');
+  headerRow.className = 'flex items-center justify-between';
+  const lbl = controlLabel(ctrl);
+  if (lbl) headerRow.appendChild(lbl); else headerRow.appendChild(document.createElement('div'));
 
-  const inner = document.createElement('div');
-  inner.className = 'relative';
+  let getText = () => state[ctrl.id] ?? '';
+  if (ctrl.copyable) headerRow.appendChild(copyButton(() => getText()));
+  if (lbl || ctrl.copyable) wrap.appendChild(headerRow);
 
   let el;
   switch (ctrl.type) {
-    case 'textarea':
+    case 'textarea': {
       el = document.createElement('textarea');
       el.rows = ctrl.rows || 4;
       el.spellcheck = false;
-      el.className = 'w-full bg-gray-950 border border-gray-700 rounded p-3 text-sm font-mono text-gray-100 focus:outline-none focus:border-blue-500 resize-y';
+      el.className = 'w-full bg-slate-950 border border-slate-700 rounded-md p-3 text-sm font-mono text-slate-100 placeholder:text-slate-600 focus:outline-none focus:border-blue-500 resize-y';
       if (ctrl.placeholder) el.placeholder = ctrl.placeholder;
       if (ctrl.readonly) el.readOnly = true;
       el.value = state[ctrl.id] ?? '';
       el.addEventListener('input', () => { state[ctrl.id] = el.value; onChange(); });
+      els[ctrl.id] = el;
+      wrap.appendChild(el);
       break;
-    case 'input':
+    }
+    case 'code': {
+      const host = document.createElement('div');
+      host.className = 'border border-slate-700 rounded-md overflow-hidden bg-slate-950';
+      host.style.height = `${(ctrl.rows || 8) * 20}px`;
+      wrap.appendChild(host);
+      const ed = createEditor({
+        parent: host,
+        value: state[ctrl.id] ?? '',
+        language: ctrl.language || 'text',
+        readOnly: !!ctrl.readonly,
+        onChange: ctrl.readonly ? null : (v) => { state[ctrl.id] = v; onChange(); },
+      });
+      editors[ctrl.id] = ed;
+      getText = () => ed.getValue();
+      el = host;
+      break;
+    }
+    case 'input': {
       el = document.createElement('input');
       el.type = ctrl.inputType || 'text';
-      el.className = 'w-full bg-gray-950 border border-gray-700 rounded p-2 text-sm text-gray-100 focus:outline-none focus:border-blue-500';
+      el.className = 'w-full bg-slate-950 border border-slate-700 rounded-md p-2 text-sm text-slate-100 placeholder:text-slate-600 focus:outline-none focus:border-blue-500';
       if (ctrl.placeholder) el.placeholder = ctrl.placeholder;
       if (ctrl.readonly) el.readOnly = true;
       el.value = state[ctrl.id] ?? '';
       el.addEventListener('input', () => { state[ctrl.id] = el.value; onChange(); });
+      els[ctrl.id] = el;
+      wrap.appendChild(el);
       break;
-    case 'select':
+    }
+    case 'select': {
       el = document.createElement('select');
-      el.className = 'w-full bg-gray-950 border border-gray-700 rounded p-2 text-sm text-gray-100 focus:outline-none focus:border-blue-500';
+      el.className = 'w-full bg-slate-950 border border-slate-700 rounded-md p-2 text-sm text-slate-100 focus:outline-none focus:border-blue-500';
       for (const opt of (ctrl.options || [])) {
         const o = document.createElement('option');
         o.value = opt.value;
@@ -125,42 +190,28 @@ function buildControl(ctrl, state, els, onChange) {
       }
       el.value = state[ctrl.id] ?? '';
       el.addEventListener('change', () => { state[ctrl.id] = el.value; onChange(); });
+      els[ctrl.id] = el;
+      wrap.appendChild(el);
       break;
-    case 'button':
+    }
+    case 'button': {
       el = document.createElement('button');
       el.type = 'button';
-      el.className = 'bg-blue-600 hover:bg-blue-500 text-white font-medium py-2 px-4 rounded text-sm';
+      el.className = 'inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-medium py-2 px-4 rounded-md text-sm transition';
       el.textContent = ctrl.label || 'Run';
       el.addEventListener('click', () => onChange());
+      els[ctrl.id] = el;
+      wrap.appendChild(el);
       break;
-    default:
-      el = document.createElement('div');
-      el.textContent = `Unknown control type: ${ctrl.type}`;
-      el.className = 'text-red-400 text-sm';
+    }
+    default: {
+      const div = document.createElement('div');
+      div.className = 'text-sm text-rose-400 font-mono';
+      div.textContent = `Unknown control type: ${ctrl.type}`;
+      wrap.appendChild(div);
+    }
   }
 
-  els[ctrl.id] = el;
-  inner.appendChild(el);
-
-  if (ctrl.copyable && (ctrl.type === 'textarea' || ctrl.type === 'input')) {
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'absolute top-1.5 right-1.5 px-2 py-0.5 text-xs bg-gray-800 hover:bg-gray-700 rounded text-gray-300 border border-gray-700';
-    btn.textContent = 'copy';
-    btn.title = 'Copy to clipboard';
-    btn.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText(el.value);
-        btn.textContent = 'copied';
-        setTimeout(() => { btn.textContent = 'copy'; }, 900);
-      } catch (e) {
-        btn.textContent = 'failed';
-        setTimeout(() => { btn.textContent = 'copy'; }, 900);
-      }
-    });
-    inner.appendChild(btn);
-  }
-
-  wrap.appendChild(inner);
+  if (window.lucide) window.lucide.createIcons();
   return wrap;
 }
