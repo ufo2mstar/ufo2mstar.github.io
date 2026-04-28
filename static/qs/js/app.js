@@ -1,7 +1,7 @@
 import { mountRuntime } from './runtime.js';
 import { download, loadFromFile, loadFromUrl, loadFromSource, saveLastSource, loadLastSource } from './storage.js';
 import { renderTests, runTests } from './tests.js';
-import { createEditor } from './editor.js';
+import { createEditor, THEMES, getActiveTheme, setActiveTheme } from './editor.js';
 import { toast } from './toast.js';
 
 const SEED_URL = 'scripts/format-converter.qs.js';
@@ -31,6 +31,7 @@ const els = {
   generateBtn:    document.getElementById('qs-generate-btn'),
   avatarBtn:      document.getElementById('qs-avatar-btn'),
   scriptTitle:    document.getElementById('qs-script-title'),
+  settingsTheme:  document.getElementById('qs-settings-theme'),
 };
 
 let descriptor = null;
@@ -86,7 +87,7 @@ function setActive({ descriptor: d, source: src }, opts = {}) {
   if (syncEditor) sourceEditor.setValue(src);
   els.codeError.textContent = '';
   els.scriptTitle.textContent = d.title || d.id || 'Untitled';
-  document.title = `QuickScript - ${d.title || d.id || 'Untitled'}`;
+  document.title = `QuickScripts - ${d.title || d.id || 'Untitled'}`;
   mountPreview();
   refreshTestsBadge();
   if (activeTab === 'tests') renderTests(descriptor, els.testsMount);
@@ -106,7 +107,31 @@ function activateTab(name) {
 els.tabPreview.addEventListener('click', () => activateTab('preview'));
 els.tabCode.addEventListener('click',    () => activateTab('code'));
 els.tabTests.addEventListener('click',   () => activateTab('tests'));
-els.runTests.addEventListener('click',   () => { if (descriptor) { activateTab('tests'); refreshTestsBadge(); }});
+els.runTests.addEventListener('click', () => {
+  if (!descriptor) return;
+  activateTab('tests');
+  refreshTestsBadge();
+  renderTests(descriptor, els.testsMount);
+  const { results, compileError } = runTests(descriptor);
+  if (compileError) { toast('Tests: compile error', { type: 'error' }); return; }
+  const passed = results.filter(r => r.pass).length;
+  const total = results.length;
+  if (total === 0) toast('No tests defined', { type: 'info' });
+  else if (passed === total) toast(`Tests: ${passed}/${total} passed`, { type: 'success' });
+  else toast(`Tests: ${passed}/${total} passed (${total - passed} failed)`, { type: 'error' });
+});
+
+for (const [key, def] of Object.entries(THEMES)) {
+  const opt = document.createElement('option');
+  opt.value = key;
+  opt.textContent = def.label;
+  els.settingsTheme.appendChild(opt);
+}
+els.settingsTheme.value = getActiveTheme();
+els.settingsTheme.addEventListener('change', () => {
+  setActiveTheme(els.settingsTheme.value);
+  toast(`Theme: ${THEMES[els.settingsTheme.value].label}`, { type: 'info' });
+});
 
 const SB_KEY = 'qs:sidebar-collapsed';
 function setSidebar(collapsed) {

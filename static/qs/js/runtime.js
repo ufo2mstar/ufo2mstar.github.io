@@ -1,8 +1,10 @@
+import { createEditor } from './editor.js';
+
 const DEBOUNCE_MS = 120;
 
 export function mountRuntime(descriptor, mountEl) {
   const state = initState(descriptor);
-  const els = {};
+  const adapters = {};
 
   const container = document.createElement('div');
   container.className = 'space-y-5 max-w-3xl mx-auto';
@@ -21,7 +23,7 @@ export function mountRuntime(descriptor, mountEl) {
   }
 
   for (const ctrl of (descriptor.controls || [])) {
-    container.appendChild(buildControl(ctrl, state, els, scheduleRun));
+    container.appendChild(buildControl(ctrl, state, adapters, scheduleRun));
   }
 
   const errorBar = document.createElement('div');
@@ -48,13 +50,14 @@ export function mountRuntime(descriptor, mountEl) {
       if (!result || typeof result !== 'object') return;
 
       for (const [k, v] of Object.entries(result)) {
-        if (k.endsWith('Language')) continue;
         if (k.startsWith('_')) continue;
+        if (k.endsWith('Language')) {
+          const id = k.slice(0, -'Language'.length);
+          adapters[id]?.setLanguage?.(v);
+          continue;
+        }
         state[k] = v;
-        const el = els[k];
-        if (!el) continue;
-        const next = String(v ?? '');
-        if (el.value !== next) el.value = next;
+        adapters[k]?.setValue(v);
       }
     } catch (e) {
       errorBar.textContent = 'Runtime error: ' + e.message;
@@ -63,7 +66,13 @@ export function mountRuntime(descriptor, mountEl) {
 
   runLogic();
 
-  return { state, destroy: () => { clearTimeout(timer); } };
+  return {
+    state,
+    destroy: () => {
+      clearTimeout(timer);
+      for (const a of Object.values(adapters)) a.destroy?.();
+    },
+  };
 }
 
 function initState(d) {
@@ -104,7 +113,7 @@ function copyButton(getText) {
   return btn;
 }
 
-function buildControl(ctrl, state, els, onChange) {
+function buildControl(ctrl, state, adapters, onChange) {
   const wrap = document.createElement('div');
   wrap.className = 'space-y-1.5';
 
@@ -113,83 +122,150 @@ function buildControl(ctrl, state, els, onChange) {
   const lbl = controlLabel(ctrl);
   if (lbl) headerRow.appendChild(lbl); else headerRow.appendChild(document.createElement('div'));
 
-  let getText = () => state[ctrl.id] ?? '';
-  if (ctrl.copyable) headerRow.appendChild(copyButton(() => getText()));
+  const adapter = mkAdapter(ctrl, state, onChange);
+  adapters[ctrl.id] = adapter;
+
+  if (ctrl.copyable) headerRow.appendChild(copyButton(() => adapter.getValue()));
   if (lbl || ctrl.copyable) wrap.appendChild(headerRow);
 
-  let el;
-  switch (ctrl.type) {
-    case 'textarea': {
-      el = document.createElement('textarea');
-      el.rows = ctrl.rows || 4;
-      el.spellcheck = false;
-      el.className = 'w-full bg-slate-950 border border-slate-700 rounded-md p-3 text-sm font-mono text-slate-100 placeholder:text-slate-600 focus:outline-none focus:border-blue-500 resize-y';
-      if (ctrl.placeholder) el.placeholder = ctrl.placeholder;
-      if (ctrl.readonly) el.readOnly = true;
-      el.value = state[ctrl.id] ?? '';
-      el.addEventListener('input', () => { state[ctrl.id] = el.value; onChange(); });
-      els[ctrl.id] = el;
-      wrap.appendChild(el);
-      break;
-    }
-    case 'code': {
-      el = document.createElement('textarea');
-      el.rows = ctrl.rows || 8;
-      el.spellcheck = false;
-      el.className = 'w-full bg-slate-950 border border-slate-700 rounded-md p-3 text-sm font-mono text-slate-100 placeholder:text-slate-600 focus:outline-none focus:border-blue-500 resize-y';
-      if (ctrl.placeholder) el.placeholder = ctrl.placeholder;
-      if (ctrl.readonly) el.readOnly = true;
-      el.value = state[ctrl.id] ?? '';
-      el.addEventListener('input', () => { state[ctrl.id] = el.value; onChange(); });
-      els[ctrl.id] = el;
-      wrap.appendChild(el);
-      break;
-    }
-    case 'input': {
-      el = document.createElement('input');
-      el.type = ctrl.inputType || 'text';
-      el.className = 'w-full bg-slate-950 border border-slate-700 rounded-md p-2 text-sm text-slate-100 placeholder:text-slate-600 focus:outline-none focus:border-blue-500';
-      if (ctrl.placeholder) el.placeholder = ctrl.placeholder;
-      if (ctrl.readonly) el.readOnly = true;
-      el.value = state[ctrl.id] ?? '';
-      el.addEventListener('input', () => { state[ctrl.id] = el.value; onChange(); });
-      els[ctrl.id] = el;
-      wrap.appendChild(el);
-      break;
-    }
-    case 'select': {
-      el = document.createElement('select');
-      el.className = 'w-full bg-slate-950 border border-slate-700 rounded-md p-2 text-sm text-slate-100 focus:outline-none focus:border-blue-500';
-      for (const opt of (ctrl.options || [])) {
-        const o = document.createElement('option');
-        o.value = opt.value;
-        o.textContent = opt.label;
-        el.appendChild(o);
-      }
-      el.value = state[ctrl.id] ?? '';
-      el.addEventListener('change', () => { state[ctrl.id] = el.value; onChange(); });
-      els[ctrl.id] = el;
-      wrap.appendChild(el);
-      break;
-    }
-    case 'button': {
-      el = document.createElement('button');
-      el.type = 'button';
-      el.className = 'inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-medium py-2 px-4 rounded-md text-sm transition';
-      el.textContent = ctrl.label || 'Run';
-      el.addEventListener('click', () => onChange());
-      els[ctrl.id] = el;
-      wrap.appendChild(el);
-      break;
-    }
-    default: {
-      const div = document.createElement('div');
-      div.className = 'text-sm text-rose-400 font-mono';
-      div.textContent = `Unknown control type: ${ctrl.type}`;
-      wrap.appendChild(div);
-    }
-  }
+  wrap.appendChild(adapter.host);
 
   if (window.lucide) window.lucide.createIcons();
   return wrap;
+}
+
+function mkAdapter(ctrl, state, onChange) {
+  switch (ctrl.type) {
+    case 'textarea':
+    case 'code':    return mkEditorAdapter(ctrl, state, onChange);
+    case 'input':   return mkInputAdapter(ctrl, state, onChange);
+    case 'select':  return pickSelectAdapter(ctrl, state, onChange);
+    case 'button':  return mkButtonAdapter(ctrl, onChange);
+    default:        return mkErrorAdapter(ctrl);
+  }
+}
+
+function mkEditorAdapter(ctrl, state, onChange) {
+  const host = document.createElement('div');
+  host.className = 'w-full bg-slate-950 border border-slate-700 rounded-md overflow-hidden focus-within:border-blue-500';
+  const rows = ctrl.rows || (ctrl.type === 'code' ? 8 : 4);
+  const language = ctrl.type === 'code' ? (ctrl.language || 'text') : 'text';
+  const editor = createEditor({
+    parent: host,
+    value: state[ctrl.id] ?? '',
+    language,
+    readOnly: !!ctrl.readonly,
+    fillHeight: false,
+    height: (rows * 20 + 16) + 'px',
+    onChange: (next) => { state[ctrl.id] = next; onChange(); },
+  });
+  return {
+    host,
+    setValue: (v) => editor.setValue(String(v ?? '')),
+    getValue: () => editor.getValue(),
+    setLanguage: (name) => editor.setLanguage(name),
+    destroy: () => editor.destroy(),
+  };
+}
+
+function mkInputAdapter(ctrl, state, onChange) {
+  const el = document.createElement('input');
+  el.type = ctrl.inputType || 'text';
+  el.className = 'w-full bg-slate-950 border border-slate-700 rounded-md p-2 text-sm text-slate-100 placeholder:text-slate-600 focus:outline-none focus:border-blue-500';
+  if (ctrl.placeholder) el.placeholder = ctrl.placeholder;
+  if (ctrl.readonly) el.readOnly = true;
+  el.value = state[ctrl.id] ?? '';
+  const handler = () => { state[ctrl.id] = el.value; onChange(); };
+  el.addEventListener('input', handler);
+  return {
+    host: el,
+    setValue: (v) => { const next = String(v ?? ''); if (el.value !== next) el.value = next; },
+    getValue: () => el.value,
+    destroy: () => el.removeEventListener('input', handler),
+  };
+}
+
+function pickSelectAdapter(ctrl, state, onChange) {
+  const opts = ctrl.options || [];
+  const segmented = ctrl.display === 'segmented'
+    || (ctrl.display !== 'dropdown' && opts.length <= 6);
+  return segmented
+    ? mkSegmentedAdapter(ctrl, state, onChange)
+    : mkDropdownAdapter(ctrl, state, onChange);
+}
+
+function mkSegmentedAdapter(ctrl, state, onChange) {
+  const host = document.createElement('div');
+  host.className = 'qs-segmented';
+  host.setAttribute('role', 'radiogroup');
+  if (ctrl.label) host.setAttribute('aria-label', ctrl.label);
+
+  const buttons = new Map();
+  const setActive = (v) => {
+    for (const [val, btn] of buttons) btn.dataset.active = String(val === v);
+  };
+
+  for (const opt of (ctrl.options || [])) {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'qs-seg-btn';
+    b.textContent = opt.label;
+    b.dataset.active = String(state[ctrl.id] === opt.value);
+    b.addEventListener('click', () => {
+      state[ctrl.id] = opt.value;
+      setActive(opt.value);
+      onChange();
+    });
+    buttons.set(opt.value, b);
+    host.appendChild(b);
+  }
+
+  return {
+    host,
+    setValue: (v) => { state[ctrl.id] = v; setActive(v); },
+    getValue: () => state[ctrl.id] ?? '',
+    destroy: () => {},
+  };
+}
+
+function mkDropdownAdapter(ctrl, state, onChange) {
+  const el = document.createElement('select');
+  el.className = 'w-full bg-slate-950 border border-slate-700 rounded-md p-2 text-sm text-slate-100 focus:outline-none focus:border-blue-500';
+  for (const opt of (ctrl.options || [])) {
+    const o = document.createElement('option');
+    o.value = opt.value;
+    o.textContent = opt.label;
+    el.appendChild(o);
+  }
+  el.value = state[ctrl.id] ?? '';
+  const handler = () => { state[ctrl.id] = el.value; onChange(); };
+  el.addEventListener('change', handler);
+  return {
+    host: el,
+    setValue: (v) => { const next = String(v ?? ''); if (el.value !== next) el.value = next; },
+    getValue: () => el.value,
+    destroy: () => el.removeEventListener('change', handler),
+  };
+}
+
+function mkButtonAdapter(ctrl, onChange) {
+  const el = document.createElement('button');
+  el.type = 'button';
+  el.className = 'inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-medium py-2 px-4 rounded-md text-sm transition';
+  el.textContent = ctrl.label || 'Run';
+  const handler = () => onChange();
+  el.addEventListener('click', handler);
+  return {
+    host: el,
+    setValue: () => {},
+    getValue: () => '',
+    destroy: () => el.removeEventListener('click', handler),
+  };
+}
+
+function mkErrorAdapter(ctrl) {
+  const host = document.createElement('div');
+  host.className = 'text-sm text-rose-400 font-mono';
+  host.textContent = `Unknown control type: ${ctrl.type}`;
+  return { host, setValue: () => {}, getValue: () => '', destroy: () => {} };
 }
