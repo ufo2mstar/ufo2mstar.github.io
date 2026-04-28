@@ -2,7 +2,7 @@
   "$schema": "qs/v1",
   "id": "format-converter",
   "title": "Format Converter",
-  "description": "Encode, decode, and prettify text between common formats.",
+  "description": "Encode, decode, and prettify text between common formats. Output highlights as JSON when relevant.",
   "trigger": "live",
   "controls": [
     {
@@ -28,13 +28,46 @@
       "placeholder": "Paste here..."
     },
     {
-      "type": "textarea",
+      "type": "code",
       "id": "output",
       "label": "Output",
-      "rows": 10,
+      "rows": 12,
+      "language": "text",
       "copyable": true,
       "readonly": true
     }
   ],
-  "logic": "function transform(s) {\n  const input = s.input || '';\n  try {\n    switch (s.op) {\n      case 'base64-encode': return { output: btoa(unescape(encodeURIComponent(input))) };\n      case 'base64-decode': return { output: decodeURIComponent(escape(atob(input))) };\n      case 'url-encode':    return { output: encodeURIComponent(input) };\n      case 'url-decode':    return { output: decodeURIComponent(input) };\n      case 'json-prettify': return { output: JSON.stringify(JSON.parse(input), null, 2) };\n      case 'json-minify':   return { output: JSON.stringify(JSON.parse(input)) };\n      default: return { output: '' };\n    }\n  } catch (e) {\n    return { output: 'Error: ' + e.message };\n  }\n}"
+  "logic": "function transform(s) {\n  const input = s.input || '';\n  const jsonOps = new Set(['json-prettify', 'json-minify']);\n  try {\n    let output;\n    switch (s.op) {\n      case 'base64-encode': output = btoa(unescape(encodeURIComponent(input))); break;\n      case 'base64-decode': output = decodeURIComponent(escape(atob(input))); break;\n      case 'url-encode':    output = encodeURIComponent(input); break;\n      case 'url-decode':    output = decodeURIComponent(input); break;\n      case 'json-prettify': output = JSON.stringify(JSON.parse(input), null, 2); break;\n      case 'json-minify':   output = JSON.stringify(JSON.parse(input)); break;\n      default: output = '';\n    }\n    return { output, outputLanguage: jsonOps.has(s.op) ? 'json' : 'text' };\n  } catch (e) {\n    return { output: 'Error: ' + e.message, outputLanguage: 'text' };\n  }\n}",
+  "tests": [
+    {
+      "name": "base64 encode 'hello world'",
+      "state": { "op": "base64-encode", "input": "hello world" },
+      "expect": { "output": "aGVsbG8gd29ybGQ=" }
+    },
+    {
+      "name": "base64 decode 'aGVsbG8gd29ybGQ='",
+      "state": { "op": "base64-decode", "input": "aGVsbG8gd29ybGQ=" },
+      "expect": { "output": "hello world" }
+    },
+    {
+      "name": "url-encode preserves alphanumerics, escapes spaces",
+      "state": { "op": "url-encode", "input": "hello world & friends" },
+      "expect": { "output": "hello%20world%20%26%20friends" }
+    },
+    {
+      "name": "url-decode round-trips the above",
+      "state": { "op": "url-decode", "input": "hello%20world%20%26%20friends" },
+      "expect": { "output": "hello world & friends" }
+    },
+    {
+      "name": "json-prettify formats with 2-space indent",
+      "state": { "op": "json-prettify", "input": "{\"a\":1,\"b\":[2,3]}" },
+      "expect": { "output": "{\n  \"a\": 1,\n  \"b\": [\n    2,\n    3\n  ]\n}" }
+    },
+    {
+      "name": "json-minify strips whitespace",
+      "state": { "op": "json-minify", "input": "{\n  \"a\": 1,\n  \"b\": [2, 3]\n}" },
+      "expect": { "output": "{\"a\":1,\"b\":[2,3]}" }
+    }
+  ]
 }
