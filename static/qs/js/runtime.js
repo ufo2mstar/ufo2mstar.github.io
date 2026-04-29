@@ -3,9 +3,15 @@ import { qsFetch } from './fetch.js';
 
 const DEBOUNCE_MS = 120;
 
-export function mountRuntime(descriptor, mountEl) {
-  const state = initState(descriptor);
+export function mountRuntime(descriptor, mountEl, opts = {}) {
+  const state = initState(descriptor, opts.initialState);
   const adapters = {};
+  const onStateChange = typeof opts.onStateChange === 'function' ? opts.onStateChange : null;
+
+  const userOnChange = (runOpts) => {
+    if (onStateChange) onStateChange({ ...state });
+    scheduleRun(runOpts);
+  };
 
   const container = document.createElement('div');
   container.className = 'space-y-5 max-w-3xl mx-auto';
@@ -23,13 +29,22 @@ export function mountRuntime(descriptor, mountEl) {
     container.appendChild(p);
   }
 
+  let buttonWrap = null;
   for (const ctrl of (descriptor.controls || [])) {
-    container.appendChild(buildControl(ctrl, state, adapters, scheduleRun));
+    const wrap = buildControl(ctrl, state, adapters, userOnChange);
+    container.appendChild(wrap);
+    if (ctrl.type === 'button' && !buttonWrap) buttonWrap = wrap;
   }
 
   const statusBar = document.createElement('div');
-  statusBar.className = 'text-xs min-h-[1rem] font-mono text-rose-400';
-  container.appendChild(statusBar);
+  statusBar.className = 'min-h-[1.5rem]';
+  if (buttonWrap) {
+    buttonWrap.classList.remove('space-y-1.5');
+    buttonWrap.classList.add('flex', 'items-center', 'gap-3', 'flex-wrap');
+    buttonWrap.appendChild(statusBar);
+  } else {
+    container.appendChild(statusBar);
+  }
 
   mountEl.replaceChildren(container);
 
@@ -47,9 +62,24 @@ export function mountRuntime(descriptor, mountEl) {
   let runToken = 0;
 
   function setStatus(kind, msg) {
-    const colors = { idle: 'text-slate-500', running: 'text-amber-400', error: 'text-rose-400' };
-    statusBar.className = `text-xs min-h-[1rem] font-mono ${colors[kind] || colors.idle}`;
-    statusBar.textContent = msg || '';
+    if (kind === 'idle' || !msg) {
+      statusBar.replaceChildren();
+      statusBar.className = 'min-h-[1.5rem]';
+      return;
+    }
+    const styles = {
+      running: { cls: 'bg-amber-900/30 border-amber-700/60 text-amber-300',     dot: 'bg-amber-400 animate-pulse' },
+      success: { cls: 'bg-emerald-900/30 border-emerald-700/60 text-emerald-300', dot: 'bg-emerald-400' },
+      error:   { cls: 'bg-rose-900/30 border-rose-700/60 text-rose-300',         dot: 'bg-rose-400' },
+    };
+    const s = styles[kind] || styles.running;
+    statusBar.className = `min-h-[1.5rem] inline-flex items-center gap-2 px-2.5 py-1 rounded-md border text-xs font-mono ${s.cls}`;
+    const dot = document.createElement('span');
+    dot.className = `w-1.5 h-1.5 rounded-full ${s.dot}`;
+    const txt = document.createElement('span');
+    txt.className = 'break-words';
+    txt.textContent = msg;
+    statusBar.replaceChildren(dot, txt);
   }
 
   function applyResult(result) {
@@ -76,17 +106,20 @@ export function mountRuntime(descriptor, mountEl) {
 
   async function runLogic() {
     const myToken = ++runToken;
+    const startedAt = performance.now();
     try {
       const maybe = transform({ ...state }, { fetch: qsFetch });
       const isPromise = maybe && typeof maybe.then === 'function';
       if (isPromise) setStatus('running', 'Running...');
       const result = isPromise ? await maybe : maybe;
       if (myToken !== runToken) return;
-      setStatus('idle', '');
+      const ms = Math.round(performance.now() - startedAt);
+      if (trigger === 'manual') setStatus('success', `OK (${ms}ms)`);
+      else setStatus('idle', '');
       applyResult(result);
     } catch (e) {
       if (myToken !== runToken) return;
-      setStatus('error', 'Runtime error: ' + e.message);
+      setStatus('error', e.message);
     }
   }
 
@@ -102,9 +135,12 @@ export function mountRuntime(descriptor, mountEl) {
   };
 }
 
-function initState(d) {
+function initState(d, override) {
   const s = {};
   for (const c of (d.controls || [])) s[c.id] = c.default ?? '';
+  if (override && typeof override === 'object') {
+    for (const [k, v] of Object.entries(override)) s[k] = v;
+  }
   return s;
 }
 
