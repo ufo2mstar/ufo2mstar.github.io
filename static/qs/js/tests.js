@@ -87,6 +87,10 @@ export async function renderTests(descriptor, mountEl) {
 
   const passed = results.filter(r => r.pass).length;
   const total = results.length;
+  const userEditable = new Set();
+  for (const c of (descriptor.controls || [])) {
+    if (!c.readonly && c.type !== 'button') userEditable.add(c.id);
+  }
 
   const summary = document.createElement('div');
   summary.className = 'flex items-center justify-between';
@@ -127,6 +131,11 @@ export async function renderTests(descriptor, mountEl) {
     const body = document.createElement('div');
     body.className = 'hidden border-t border-white/5 bg-slate-950/40 p-3 space-y-2';
 
+    const displayInput = filterToKeys(r.input, userEditable);
+    if (Object.keys(displayInput).length > 0) {
+      body.appendChild(inputBlock(displayInput));
+    }
+
     if (r.error) {
       const e = document.createElement('div');
       e.className = 'text-xs text-rose-300 font-mono';
@@ -154,6 +163,33 @@ export async function renderTests(descriptor, mountEl) {
   mountEl.appendChild(wrap);
   if (window.lucide) window.lucide.createIcons();
   return { passed, failed: total - passed, total };
+}
+
+function filterToKeys(obj, allowed) {
+  const out = {};
+  for (const [k, v] of Object.entries(obj || {})) {
+    if (allowed.has(k)) out[k] = v;
+  }
+  return out;
+}
+
+function inputBlock(input) {
+  const wrap = document.createElement('div');
+  wrap.className = 'text-xs font-mono pb-2 mb-1 border-b border-white/5';
+
+  const header = document.createElement('div');
+  header.className = 'flex items-center justify-between mb-1';
+  header.innerHTML = `<span class="text-slate-500">input</span>`;
+  const json = JSON.stringify(input, null, 2);
+  header.appendChild(miniCopy(() => json));
+  wrap.appendChild(header);
+
+  const pre = document.createElement('pre');
+  pre.className = 'text-slate-300 whitespace-pre-wrap break-all leading-snug';
+  pre.textContent = json;
+  wrap.appendChild(pre);
+
+  return wrap;
 }
 
 function checkRow(c) {

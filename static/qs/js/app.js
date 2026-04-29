@@ -15,6 +15,7 @@ const els = {
   testsMount:     document.getElementById('qs-tests-mount'),
   testsBadge:     document.getElementById('qs-tests-badge'),
   runTests:       document.getElementById('qs-run-tests'),
+  share:          document.getElementById('qs-share'),
   sourceHost:     document.getElementById('qs-source-editor'),
   codeError:      document.getElementById('qs-code-error'),
   tabPreview:     document.getElementById('qs-tab-preview'),
@@ -42,6 +43,7 @@ let descriptor = null;
 let source = '';
 let runtime = null;
 let activeTab = 'preview';
+let pendingInitialState = null;
 
 let codeTimer;
 const sourceEditor = createEditor({
@@ -67,8 +69,71 @@ function mountPreview() {
   if (runtime?.destroy) runtime.destroy();
   els.previewMount.innerHTML = '';
   if (!descriptor) return;
-  runtime = mountRuntime(descriptor, els.previewMount);
+  const initialState = pendingInitialState;
+  pendingInitialState = null;
+  runtime = mountRuntime(descriptor, els.previewMount, {
+    initialState,
+    onStateChange: syncUrl,
+  });
 }
+
+const URL_SYNC_DEBOUNCE_MS = 250;
+const VALID_TABS = ['preview', 'code', 'tests'];
+let urlSyncTimer = null;
+
+function syncUrl() {
+  clearTimeout(urlSyncTimer);
+  urlSyncTimer = setTimeout(writeUrl, URL_SYNC_DEBOUNCE_MS);
+}
+
+function writeUrl() {
+  if (!descriptor) return;
+  const state = runtime?.state || {};
+  const url = new URL(window.location.href);
+
+  url.search = '';
+
+  const known = LIBRARY.find(e => e.id === descriptor.id);
+  if (known) url.searchParams.append('script', known.id);
+
+  if (activeTab && activeTab !== 'preview') url.searchParams.append('tab', activeTab);
+
+  const defaults = {};
+  const editable = new Set();
+  for (const c of (descriptor.controls || [])) {
+    defaults[c.id] = c.default ?? '';
+    if (!c.readonly && c.type !== 'button') editable.add(c.id);
+  }
+  const input = {};
+  for (const k of editable) {
+    const v = state[k];
+    if (v !== undefined && v !== defaults[k]) input[k] = v;
+  }
+  if (Object.keys(input).length > 0) url.searchParams.append('input', JSON.stringify(input));
+
+  const next = url.toString();
+  if (next !== window.location.href) window.history.replaceState({}, '', next);
+}
+
+function readBootParams() {
+  const p = new URLSearchParams(window.location.search);
+  const out = { scriptId: p.get('script'), tab: null, initialState: null, errors: [] };
+
+  const raw = p.get('input');
+  if (raw) {
+    try { out.initialState = JSON.parse(raw); }
+    catch (e) { out.errors.push(`Bad ?input JSON: ${e.message}\nraw input: ${raw}`); }
+  }
+
+  const tab = p.get('tab');
+  if (tab) {
+    if (VALID_TABS.includes(tab)) out.tab = tab;
+    else out.errors.push(`Unknown ?tab=${tab}\nKnown tabs: ${VALID_TABS.join(', ')}`);
+  }
+
+  return out;
+}
+
 
 async function refreshTestsBadge() {
   const { results, compileError } = await runTests(descriptor || {});
@@ -93,6 +158,8 @@ function setActive({ descriptor: d, source: src }, opts = {}) {
   els.scriptTitle.textContent = d.title || d.id || 'Untitled';
   document.title = `QuickScripts - ${d.title || d.id || 'Untitled'}`;
   mountPreview();
+  clearTimeout(urlSyncTimer);
+  writeUrl();
   refreshTestsBadge();
   if (activeTab === 'tests') renderTests(descriptor, els.testsMount);
   if (announce) toast(`Loaded "${d.title || d.id}"`, { type: 'success' });
@@ -107,10 +174,21 @@ function activateTab(name) {
   els.paneCode.style.display    = name === 'code'    ? 'flex'  : 'none';
   els.paneTests.style.display   = name === 'tests'   ? 'block' : 'none';
   if (name === 'tests' && descriptor) renderTests(descriptor, els.testsMount);
+  writeUrl();
 }
 els.tabPreview.addEventListener('click', () => activateTab('preview'));
 els.tabCode.addEventListener('click',    () => activateTab('code'));
 els.tabTests.addEventListener('click',   () => activateTab('tests'));
+els.share.addEventListener('click', async () => {
+  clearTimeout(urlSyncTimer);
+  writeUrl();
+  try {
+    await navigator.clipboard.writeText(window.location.href);
+    toast('Link copied', { type: 'success' });
+  } catch (e) {
+    toast('Copy failed: ' + e.message, { type: 'error' });
+  }
+});
 els.runTests.addEventListener('click', async () => {
   if (!descriptor) return;
   activateTab('tests');
@@ -220,16 +298,58 @@ els.generateBtn.addEventListener('click', () => {
 });
 els.avatarBtn.addEventListener('click', () => setModal(true));
 
-(async function boot() {
-  const last = loadLastSource();
-  if (last) {
-    try { setActive(await loadFromSource(last), { announce: false }); return; }
-    catch (e) { console.warn('stored source failed to load, falling back to seed', e); }
+async function tryLoadFromLibrary(scriptId) {
+  if (!scriptId) return false;
+  const entry = LIBRARY.find(e => e.id === scriptId);
+  if (!entry) {
+    const known = LIBRARY.map(e => e.id).join(', ');
+    toast(`Unknown ?script=${scriptId}\nKnown scripts: ${known}`, { type: 'error' });
+    pendingInitialState = null;
+    return false;
   }
+  try {
+    setActive(await loadFromUrl(entry.url), { announce: false });
+    return true;
+  } catch (e) {
+    toast(`Failed to load ?script=${scriptId}: ${e.message}`, { type: 'error' });
+    pendingInitialState = null;
+    return false;
+  }
+}
+
+async function tryLoadLastSource() {
+  const last = loadLastSource();
+  if (!last) return false;
+  try {
+    setActive(await loadFromSource(last), { announce: false });
+    return true;
+  } catch (e) {
+    console.warn('stored source failed to load, falling back to seed', e);
+    return false;
+  }
+}
+
+async function tryLoadDefault() {
   const seed = LIBRARY.find(e => e.id === DEFAULT_SCRIPT_ID) || LIBRARY[0];
-  try { setActive(await loadFromUrl(seed.url), { announce: false }); }
-  catch (e) {
+  try {
+    setActive(await loadFromUrl(seed.url), { announce: false });
+    return true;
+  } catch (e) {
     console.error('Failed to load default script', e);
     toast('Could not load default script', { type: 'error' });
+    return false;
   }
+}
+
+(async function boot() {
+  const params = readBootParams();
+  for (const err of params.errors) toast(err, { type: 'error' });
+  if (params.initialState) pendingInitialState = params.initialState;
+
+  const loaded =
+    await tryLoadFromLibrary(params.scriptId) ||
+    await tryLoadLastSource() ||
+    await tryLoadDefault();
+
+  if (loaded && params.tab) activateTab(params.tab);
 })();
