@@ -35,9 +35,11 @@ function wrapMockFetch(mock) {
 
 export async function runTests(descriptor) {
   const tests = descriptor.tests || [];
-  const transform = descriptor.transform;
-  if (typeof transform !== 'function') {
-    return { compileError: 'descriptor.transform is not a function', results: [] };
+  const execute = typeof descriptor.execute === 'function'
+    ? descriptor.execute
+    : descriptor.transform;
+  if (typeof execute !== 'function') {
+    return { compileError: 'descriptor must export an `execute` function', results: [] };
   }
 
   const defaults = {};
@@ -48,7 +50,7 @@ export async function runTests(descriptor) {
     try {
       const input = { ...defaults, ...(t.state || {}) };
       const fetchImpl = wrapMockFetch(t.mockFetch) || (() => { throw new Error('test attempted real fetch - provide mockFetch'); });
-      const raw = transform(input, { fetch: fetchImpl });
+      const raw = execute(input, { fetch: fetchImpl });
       const out = (raw && typeof raw.then === 'function' ? await raw : raw) || {};
       const cleanOut = {};
       for (const [k, v] of Object.entries(out)) {

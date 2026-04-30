@@ -48,14 +48,16 @@ export function mountRuntime(descriptor, mountEl, opts = {}) {
 
   mountEl.replaceChildren(container);
 
-  const transform = typeof descriptor.transform === 'function'
-    ? descriptor.transform
-    : (() => ({}));
+  const execute = typeof descriptor.execute === 'function'
+    ? descriptor.execute
+    : typeof descriptor.transform === 'function'
+      ? descriptor.transform
+      : (() => ({}));
 
-  const isAsync = transform.constructor && transform.constructor.name === 'AsyncFunction';
+  const isAsync = execute.constructor && execute.constructor.name === 'AsyncFunction';
   const trigger = descriptor.trigger || (isAsync ? 'manual' : 'live');
   if (isAsync && trigger === 'live') {
-    console.warn(`[QuickScript] "${descriptor.id || 'unknown'}" uses live trigger with an async transform - every keystroke fires a request. Consider trigger: 'manual'.`);
+    console.warn(`[QuickScript] "${descriptor.id || 'unknown'}" uses live trigger with an async execute - every keystroke fires a request. Consider trigger: 'manual'.`);
   }
 
   let timer = null;
@@ -108,7 +110,7 @@ export function mountRuntime(descriptor, mountEl, opts = {}) {
     const myToken = ++runToken;
     const startedAt = performance.now();
     try {
-      const maybe = transform({ ...state }, { fetch: qsFetch });
+      const maybe = execute({ ...state }, { fetch: qsFetch });
       const isPromise = maybe && typeof maybe.then === 'function';
       if (isPromise) setStatus('running', 'Running...');
       const result = isPromise ? await maybe : maybe;

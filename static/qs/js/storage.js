@@ -64,11 +64,12 @@ function indent(src, n) {
 
 export function descriptorToSource(d) {
   const dataPart = { ...d };
+  delete dataPart.execute;
   delete dataPart.transform;
   const dataJson = JSON.stringify(dataPart, null, 2);
-  const fnSrc = (d.transform || function (s) { return {}; }).toString();
+  const fn = d.execute || d.transform || function (s) { return {}; };
   const withoutClose = dataJson.replace(/\n\}$/, '');
-  return `export default ${withoutClose},\n  transform: ${indent(fnSrc, 2)}\n};\n`;
+  return `export default ${withoutClose},\n  execute: ${indent(fn.toString(), 2)}\n};\n`;
 }
 
 export function saveLastSource(src) { try { localStorage.setItem(KEY_SRC, src); } catch {} }
