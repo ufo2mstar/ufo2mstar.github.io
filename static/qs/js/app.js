@@ -98,16 +98,14 @@ function writeUrl() {
 
   if (activeTab && activeTab !== 'preview') url.searchParams.append('tab', activeTab);
 
-  const defaults = {};
   const editable = new Set();
   for (const c of (descriptor.controls || [])) {
-    defaults[c.id] = c.default ?? '';
     if (!c.readonly && c.type !== 'button') editable.add(c.id);
   }
   const input = {};
   for (const k of editable) {
     const v = state[k];
-    if (v !== undefined && v !== defaults[k]) input[k] = v;
+    if (v !== undefined && v !== null && v !== '') input[k] = v;
   }
   if (Object.keys(input).length > 0) url.searchParams.append('input', JSON.stringify(input));
 
