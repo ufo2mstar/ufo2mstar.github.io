@@ -1,20 +1,27 @@
+
 - title: Names
   url: /names/
+  image: more/names.jpg
+  date: 2026-04-14
   description: >-
     A growing collection of Indian names - pronunciations, meanings, and the
     stories behind them. Handy for anyone who works with people from the
     subcontinent and wants to get it right.
   newtab: true
 
+- title: QuickScripts Prototype
+  url: /qs/
+  image: more/quickscript.jpg
+  date: 2025-05-04
+  description: >-
+    A prototype of a tool I'm building to help me generate UI for APIs and other tools on demand.
+  newtab: true
+
 - title: Resume
   url: /resume/
+  image: more/resume.jpg
+  date: 2018-06-15
   description: >-
     The formal version - work history, skills, the usual. Opens separately
     since it's its own thing.
-  newtab: true
-
-- title: QuickScripts Prototype
-  url: /qs/
-  description: >-
-    A prototype of a tool I'm building to help me generate UI for APIs and other tools on demand.
   newtab: true
