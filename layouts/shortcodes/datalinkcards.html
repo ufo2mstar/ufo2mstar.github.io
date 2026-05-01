@@ -3,11 +3,48 @@
 {{- if not $items -}}
   {{- errorf "datalinkcards: data/%s.yaml not found or empty — build cannot continue" $dataKey -}}
 {{- end -}}
-<div class="mt-8 space-y-6">
-{{- range $items }}
-  <a href="{{ .url }}"{{ if .newtab }} target="_blank"{{ end }} class="group block no-underline rounded-lg border border-neutral-200 dark:border-neutral-700 p-6 hover:border-primary-500 dark:hover:border-primary-400 hover:shadow-lg transition-all">
-    <h2 class="mt-0 text-xl font-semibold text-neutral-800 dark:text-neutral-100 group-hover:text-primary-500 dark:group-hover:text-primary-400 transition-colors">{{ .title }}</h2>
-    <p class="mt-2 mb-0 text-neutral-500 dark:text-neutral-400 text-sm leading-relaxed">{{ .description }}</p>
-  </a>
+<div class="mt-8 space-y-10">
+{{- range $item := $items }}
+  {{- $featuredURL := "" -}}
+  {{- with $item.image -}}
+    {{- $img := resources.Get . -}}
+    {{- if $img -}}
+      {{- $featuredURL = ($img.Resize "600x").RelPermalink -}}
+    {{- else -}}
+      {{- warnf "datalinkcards: image %q not found in assets/" . -}}
+    {{- end -}}
+  {{- end -}}
+  <article class="article-link--simple flex flex-col md:flex-row relative">
+    {{- with $featuredURL }}
+      <div class="flex-none thumbnail-shadow md:mr-7 thumbnail relative overflow-hidden">
+        <img src="{{ . }}" role="presentation" loading="lazy" decoding="async" class="not-prose absolute inset-0 w-full h-full object-cover">
+      </div>
+    {{- end }}
+    <div class="mt-3 md:mt-0 flex-1">
+      <header class="items-center text-start text-xl font-semibold">
+        <a href="{{ .url }}"{{ if .newtab }} target="_blank" rel="external"{{ end }} class="not-prose decoration-primary-500 dark:text-neutral text-xl font-bold text-neutral-800 hover:underline hover:underline-offset-2">
+          <h2 class="mt-0">
+            {{ .title }}
+            {{- if .newtab }}
+              <span class="cursor-default align-top text-xs text-neutral-400 dark:text-neutral-500">
+                <span class="rtl:hidden">&#8599;</span>
+                <span class="ltr:hidden">&#8598;</span>
+              </span>
+            {{- end }}
+          </h2>
+        </a>
+      </header>
+      {{- with .date }}
+        <div class="text-sm text-neutral-500 dark:text-neutral-400">
+          {{ time.Format "Jan 2006" . }}
+        </div>
+      {{- end }}
+      {{- with .description }}
+        <div class="article-link__summary prose dark:prose-invert max-w-fit mt-1">
+          {{ . }}
+        </div>
+      {{- end }}
+    </div>
+  </article>
 {{- end }}
 </div>
