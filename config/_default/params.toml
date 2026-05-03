@@ -52,7 +52,7 @@ showScrollToTop = true
 
 # Author block shown on the profile homepage and post bylines.
 [author]
-  name = 'Naren'
+  name = 'Naren SS'
   image = 'avatar.png'
   headline = 'web logs by this guy'
   bio = 'Personal blog. Engineering, ideas, occasional rants.'
