@@ -1,7 +1,6 @@
 +++
 title = "Tutorial: Setting up a Ruby environment from scratch"
 date = 2016-04-06
-slug = "tut_ruby_setup"
 categories = ["Tutorial"]
 tags = ["Ruby", "IDE", "Gem"]
 summary = "Setting up and installing Ruby: the language, proxy setup, dependency managers, the whole deal!"

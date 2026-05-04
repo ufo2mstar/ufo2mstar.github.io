@@ -1,7 +1,6 @@
 +++
 title = 'Channel Your Frustration'
 date = '2018-07-06'
-slug = 'opinion-frustration'
 categories = ['Thoughts']
 tags = ['Opinion', 'Life']
 summary = ''

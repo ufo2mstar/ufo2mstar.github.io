@@ -1,7 +1,6 @@
 +++
 date = '2019-08-15'
 title = 'One Is None, At least Two Is One: Nostalgia in a Copy-Paste World'
-slug = 'one-is-none-nostalgia'
 categories = ['Thoughts']
 tags = ['Nostalgia', 'Memory', 'DistributedSystems', 'DDIA', 'Backups']
 summary = "Why nostalgia's value sits in the remembered feeling more than the keepsake, and why digital mementos deserve the same redundancy discipline we demand of production data."
@@ -10,7 +9,7 @@ draft = true
 
 # How I got here
 
-Earlier this year, in the span of one night, I lost most of my physical and digital possessions to a break-in. Laptop, guitar, car, bag, a jacket I liked from a New York trip, a fresh pair of badminton shoes, the works. The [full story](/blog/2019/06/17/the-night-quicksilver-disappeared/) is its own post. <!-- TODO: confirm the robbery post is published before this one goes live -->
+Earlier this year, in the span of one night, I lost most of my physical and digital possessions to a break-in. Laptop, guitar, car, bag, a jacket I liked from a New York trip, a fresh pair of badminton shoes, the works. The [full story](/blog/2019/06/17/the_nightmare_on_cragside_lane/) is its own post. <!-- TODO: confirm the robbery post is published before this one goes live -->
 
 What stayed with me in the weeks after wasn't the inventory of stuff. It was this: the things I missed most weren't the expensive ones. They were the ones that triggered a specific memory. The guitar wasn't a great guitar - it was the one I learned my first song on. The jacket wasn't designer - it was the one from that trip with friends. The laptop had years of photos I hadn't backed up.
 

@@ -1,7 +1,6 @@
 +++
 title = "Research: Algorithm Optimization: Meta-Heuristic search"
 date = 2013-12-17
-slug = "research_nu_algo"
 categories = ["Research", "Idea"]
 tags = ["Matlab", "PIV", "Algorithm", "Optimization", "Opinion"]
 summary = "a few algorithms in Particle-Image Velocimetry covered: Simple & Cross-Correlation, FFT, Genetic Algorithm, Meta-Heuristics"

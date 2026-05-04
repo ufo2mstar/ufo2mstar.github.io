@@ -1,7 +1,6 @@
 +++
 title = "Guide: Getting up to speed on Ruby"
 date = 2016-08-21
-slug = "ref_ruby"
 categories = ["Guide"]
 tags = ["Ruby", "OOP"]
 summary = "some helpful pointers for people getting started with the Ruby programming language.."

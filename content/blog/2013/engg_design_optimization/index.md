@@ -1,7 +1,6 @@
 +++
 title = "Engineering: Design Analysis and Optimization"
 date = 2013-09-12
-slug = "engg_design_optimization"
 categories = ["Research", "Tutorial"]
 tags = ["Optimization", "Design", "Engineering"]
 summary = "where it all began, and how an insight can change an industry.."

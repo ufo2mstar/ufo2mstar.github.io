@@ -1,7 +1,6 @@
 +++
 title = "Opinions and The Self"
 date = 2017-11-27
-slug = "mind_inputs_and_opinions"
 categories = ["Thoughts"]
 tags = ["Debate", "Morality", "Habits"]
 summary = "an analysis and rationalization of different states of the mind"

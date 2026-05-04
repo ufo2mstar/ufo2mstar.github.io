@@ -1,7 +1,6 @@
 +++
 title = "Primer: Getting started with Matlab"
 date = 2013-07-22
-slug = "primer_matlab"
 categories = ["Tutorial"]
 tags = ["Matlab", "Programming", "Scripting", "Maths"]
 summary = "how to get started and some trodden path guidelines"

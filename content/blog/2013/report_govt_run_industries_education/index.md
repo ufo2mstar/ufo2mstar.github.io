@@ -1,7 +1,6 @@
 +++
 title = "Why the Public sector has a tough time keeping up"
 date = 2013-04-17
-slug = "report_govt_run_industries_education"
 categories = ["Thoughts"]
 tags = ["Politics", "Economics", "Opinion"]
 summary = "here is a sample Government run educational website, paling in comparison to any Private sector publisher"

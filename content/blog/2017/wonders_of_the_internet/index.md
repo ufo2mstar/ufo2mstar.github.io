@@ -1,7 +1,6 @@
 +++
 title = "Wonders of the Internet"
 date = 2017-12-21
-slug = "wonders_of_the_internet"
 categories = ["Thoughts"]
 tags = ["Technical", "Network", "CS"]
 summary = "the value of the Global Consciousness: the Internet"
