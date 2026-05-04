@@ -1,7 +1,6 @@
 +++
 title = "Quick guide on where-to-start: Testing edition!"
 date = 2016-05-23
-slug = "tut_testing_topics"
 categories = ["Guide"]
 tags = ["Testing", "Java", "Ruby", "Selenium", "OOP", "Tips"]
 summary = "Want to get started with Automated testing? Here is a quick overview on the topics to be familiar with."

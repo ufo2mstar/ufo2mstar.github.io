@@ -1,7 +1,6 @@
 +++
 date = '2019-11-15'
 title = 'Faith Lost to Fear'
-slug = 'faith-lost-to-fear'
 categories = ['Life']
 tags = ['Robbery', 'Loss', 'Resilience', 'StoryTime']
 summary = 'A victim impact statement from the aftermath of a break-in, a stolen car, and being run over in my own parking lot.'

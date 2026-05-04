@@ -1,7 +1,6 @@
 +++
 title = "Primer: Getting up and running with Ruby"
 date = 2015-01-09
-slug = "primer_ruby"
 categories = ["Tutorial"]
 tags = ["Ruby", "OOP", "CS"]
 summary = "Yay! another Ruby tutorial.. Ruby is one of the more simpler and elegant programming languages to get up and running as quickly as possible!"

@@ -1,7 +1,6 @@
 +++
 title = 'My Texting Constraints and Philosophy'
 date = '2015-04-05'
-slug = 'my_texting_constraints_and_philosophy'
 categories = ['Thoughts']
 tags = ['Communication', 'Personal', 'Perfectionism']
 summary = ''

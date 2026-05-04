@@ -1,7 +1,6 @@
 +++
 title = "Perils of terribly misplaced metaphors (in debates)"
 date = 2017-10-30
-slug = "misplaced_metaphors"
 categories = ["Thoughts"]
 tags = ["Fables", "Debate", "Morality"]
 summary = "or better put, a footnote on how I consume and digest fables!"

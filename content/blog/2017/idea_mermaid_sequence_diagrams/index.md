@@ -1,7 +1,6 @@
 +++
 title = "Idea: Mermaid, for sequence diagrams"
 date = 2017-04-17
-slug = "idea_mermaid_sequence_diagrams"
 categories = ["Idea"]
 tags = ["Tips", "Tool", "Mermaid", "Javascript"]
 summary = "an awesome tool for quickly JS-ing sequence diagram (among other graphs)"

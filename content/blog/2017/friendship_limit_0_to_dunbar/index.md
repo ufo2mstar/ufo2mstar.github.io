@@ -1,7 +1,6 @@
 +++
 title = "Friendship: limit x tends to Dunbar"
 date = 2017-11-10
-slug = "friendship_limit_0_to_dunbar"
 categories = ["Thoughts"]
 tags = ["Debate", "Morality", "Friendship"]
 summary = "Nature directs the course of space-time, but how does she gives us power over her? by endowing us the ability to understand her!"

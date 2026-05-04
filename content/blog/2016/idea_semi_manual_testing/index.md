@@ -1,7 +1,6 @@
 +++
 title = "Idea: Logging mechanish for semi-manual testing"
 date = 2016-04-22
-slug = "idea_semi_manual_testing"
 categories = ["Tutorial"]
 tags = ["Ruby", "Tool", "OOP"]
 summary = "Hmm, recently tackling an interesting problem of trying to keep track of some manual test cases.. Here is am idea for logging tool to guide anybody through the process."

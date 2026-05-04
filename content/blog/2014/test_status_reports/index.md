@@ -1,7 +1,6 @@
 +++
 date = '2014-11-14'
 title = 'FedEx Day 2014: Killing the Daily Test Status Email'
-slug = 'test_status_reports'
 categories = ['Idea', 'Reco']
 tags = ['Hackathon', 'Testing', 'Automation', 'Dashboard', 'RubyOnRails', 'JavaScript']
 summary = "A 24-hour FedEx Day project from late 2014: replace the daily manual QA status email with a live dashboard backed by a central test-results database. Posting the artifact - video, project notes, and full transcript - so it doesn't only live in YouTube view counts."

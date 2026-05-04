@@ -1,7 +1,6 @@
 +++
 title = "CS Fundamentals"
 date = 2018-01-24
-slug = "reco_cs_fundamentals"
 categories = ["Guide", "Reco"]
 tags = ["CS", "Algo"]
 summary = "some good links I have gone through in my journey!.."

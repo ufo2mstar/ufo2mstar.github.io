@@ -1,7 +1,6 @@
 +++
 title = "Tips: Merging two separate Git Repos"
 date = 2017-10-16
-slug = "tips_git_merge_two_repos"
 categories = ["Tutorial"]
 tags = ["VCS", "Git", "Tool", "SVN"]
 summary = "Had a fun problem to merge two of my projects in separate git repos. Here's how I did it."

@@ -1,7 +1,6 @@
 +++
 title = 'The Indefensible Inhumanity of Industrial (Factory) Farming'
 date = '2018-09-15'
-slug = 'indefensible-inhumanity-of-industrial-farming'
 categories = ['Thoughts']
 tags = ['Ethics', 'Food', 'Systems', 'Economics']
 summary = ''

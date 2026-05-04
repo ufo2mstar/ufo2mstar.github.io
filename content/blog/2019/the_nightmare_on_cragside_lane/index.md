@@ -1,7 +1,6 @@
 +++
 date = '2019-06-17'
 title = 'The Night Quicksilver Disappeared'
-slug = 'the-night-quicksilver-disappeared'
 categories = ['Life']
 tags = ['Robbery', 'Loss', 'Resilience', 'StoryTime']
 summary = 'A Thursday evening in May 2019. Badminton, legal paperwork, an unlocked door, and a thief who took everything - including my car.'

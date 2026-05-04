@@ -1,7 +1,6 @@
 +++
 title = "Art and Human Ingenuity"
 date = 2018-04-14
-slug = "review_lala_land_and_art"
 categories = ["Review", "Thoughts"]
 tags = ["Reco", "Movie"]
 summary = "the objective beauty of art..."

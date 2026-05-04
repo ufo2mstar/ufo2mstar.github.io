@@ -1,7 +1,6 @@
 +++
 title = "Adhu 1.0"
 date = 2017-08-15
-slug = "share_birthday_mashup"
 categories = ["Share", "Reco"]
 tags = ["Birthday", "Montage", "Production"]
 summary = "Dedicated to my very dear couple and their bundle of joy!<br>"

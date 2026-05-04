@@ -3,8 +3,8 @@
 
 Checks (per content/blog/<year>/<slug>/index.md):
   - TOML front matter delimited by `+++` exists
-  - Required keys present: title, date, slug, categories, tags, summary
-  - `slug` matches the parent folder name
+  - Required keys present: title, date, categories, tags, summary
+  - `slug` (if present) matches parent folder; fails if redundant (folder IS the slug)
   - `date` parses as ISO date and matches the year folder
   - `draft` is either absent or false (warn if true; useful for catching
     accidental drafts before publish)
@@ -25,7 +25,7 @@ import sys
 
 REPO_ROOT = pathlib.Path(__file__).resolve().parents[1]
 BLOG_ROOT = REPO_ROOT / "content" / "blog"
-REQUIRED = ("title", "date", "slug", "categories", "tags", "summary")
+REQUIRED = ("title", "date", "categories", "tags", "summary")
 
 
 def parse_toml_frontmatter(text: str) -> dict | None:
@@ -77,6 +77,8 @@ def check_post(path: pathlib.Path, strict_drafts: bool) -> list[str]:
     folder = path.parent.name
     if "slug" in fm and fm["slug"] != folder:
         errs.append(f"slug={fm['slug']!r} does not match folder={folder!r}")
+    if "slug" in fm and fm["slug"] == folder:
+        errs.append(f"slug is redundant (matches folder name) - remove it")
 
     if "date" in fm:
         date_str = str(fm["date"]).strip()

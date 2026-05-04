@@ -1,7 +1,6 @@
 +++
 title = "Quick review: Google origins"
 date = 2013-09-12
-slug = "review_google_origin"
 categories = ["Research", "Review"]
 tags = ["Maths", "LinearAlgebra", "Google", "Opinion"]
 summary = "where it all began, and how an insight can change an industry.."
