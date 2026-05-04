@@ -1,5 +1,5 @@
 +++
-date = '2019-11-15'
+date = '2019-11-17'
 title = 'Faith Lost to Fear'
 categories = ['Life']
 tags = ['Robbery', 'Loss', 'Resilience', 'StoryTime']

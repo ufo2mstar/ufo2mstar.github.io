@@ -1,5 +1,5 @@
 +++
-date = '2019-08-15'
+date = '2019-08-17'
 title = 'One Is None, At least Two Is One: Nostalgia in a Copy-Paste World'
 categories = ['Thoughts']
 tags = ['Nostalgia', 'Memory', 'DistributedSystems', 'DDIA', 'Backups']

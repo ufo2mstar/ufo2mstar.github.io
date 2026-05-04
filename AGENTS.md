@@ -70,7 +70,7 @@ Or do it manually with `git add` + `git commit` + `git push` if you want to stag
 
 Four layers, fail-fast in order:
 
-1. `check-frontmatter` - every post has required keys (`title`, `date`, `slug`, `categories`, `tags`, `summary`), `slug` matches folder name, `date` is ISO and matches the year folder. Drafts are flagged but not failed (use `python3 tools/check_frontmatter.py --strict-drafts` to fail on them).
+1. `check-frontmatter` - every post has required keys (`title`, `date`, `categories`, `tags`, `summary`), `date` is ISO and matches the year folder. Flags any `slug` field as redundant (directory name controls the URL). Drafts are flagged but not failed (use `python3 tools/check_frontmatter.py --strict-drafts` to fail on them).
 2. `check-build` - clean `hugo --minify --printPathWarnings`. Fails on `ERROR`/`FATAL`. Filters known-noise unused-template warnings from the Blowfish theme; if a warning survives the filter, investigate it. Note: shortcodes like `datalinkcards` use Hugo's `errorf` to fail the build if their backing data files are missing or empty.
 3. `check-content` - smoke-tests rendered HTML pages for expected content. Auto-discovers every `datalinkcards` shortcode usage, reads the backing YAML, and verifies each entry's title appears in the rendered page. Catches silent rendering failures where a shortcode produces empty output without erroring.
 4. `check-links` - parses every built `*.html` under `public/`, resolves all internal `<a href>` and `<img src>`. Fails on any unresolved internal ref. External links skipped (run `make check-links-external` for that - slow + flaky).
@@ -97,7 +97,6 @@ After bulk migration is done, this whole `##@ Migration` section of the Makefile
 +++
 date = '2026-04-21'
 title = 'Title with Initial Caps'
-slug = 'kebab-case-matches-folder'
 categories = ['Thoughts']
 tags = ['Foo', 'Bar']
 summary = '1-2 sentence teaser shown on listing pages.'
@@ -105,13 +104,13 @@ draft = false
 +++
 ```
 
-- `slug` must match the folder name. Set it explicitly so URL stays stable even if the folder is renamed.
+- **No `slug` field.** The directory name is the slug. Hugo's `:slugorcontentbasename` permalink token reads it directly from the folder name - no front matter duplication needed. `check_frontmatter.py` will flag any `slug` field as redundant.
 - `categories` and `tags` keep original case (`Thoughts`, not `thoughts`).
 - `draft = true` shows in `make serve` (-D), excluded from `make build-prod`.
 
 ### URL structure
 
-`/blog/YYYY/MM/DD/<slug>/` - matches the legacy Jekyll permalink so old links keep working. Configured in `config/_default/permalinks.toml`. Don't change without redirects.
+`/blog/YYYY/MM/DD/<folder-name>/` - the directory name IS the slug. Hugo's `:slugorcontentbasename` reads it from the folder, no front matter field needed. Matches the legacy Jekyll permalink so old links keep working. Configured in `config/_default/permalinks.toml`. Don't change without redirects.
 
 ### Config file naming (subtle)
 

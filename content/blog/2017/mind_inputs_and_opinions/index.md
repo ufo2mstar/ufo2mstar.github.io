@@ -118,7 +118,7 @@ Some major prerequisite to broad-minded explorations are:
 - latent ability
 - the luxury of Time!
 
-Though in [game-theory terms](/blog/2017/11/10/friendship_limit_0_to_dunbar), every species is locked in an infinite game against the universe and everything else in it, the subjective experience of every specimen in it is **time-bound**.
+Though in [game-theory terms](/blog/2017/11/10/friendship_limit_0_to_dunbar/), every species is locked in an infinite game against the universe and everything else in it, the subjective experience of every specimen in it is **time-bound**.
 
 Hence **delayed decisions** are _naturally undesirable_ as it `comes at a cost` and packaged with:
 1. [logarithmically diminishing returns](http://globalprioritiesproject.org/2015/02/the-law-of-logarithmic-returns/)
