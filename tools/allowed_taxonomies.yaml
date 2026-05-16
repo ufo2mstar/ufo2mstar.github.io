@@ -3,6 +3,8 @@
 # Must stay sorted (case-insensitive) - check-taxonomies enforces this.
 
 
+
+
 categories:
   - DeepWorker
   - Guide
@@ -38,11 +40,13 @@ tags:
   - Design
   - DistributedSystems
   - Economics
+  - Education
   - Emoji
   - Engineering
   - Ethics
   - Excel
   - Fables
+  - Family
   - Fiction
   - Food
   - Friendship
@@ -55,8 +59,10 @@ tags:
   - Humor
   - IDE
   - Java
-  - JavaScript
   - Javascript
+  - JavaScript
+  - Kids
+  - Leisure
   - Life
   - LinearAlgebra
   - Loss
@@ -74,6 +80,7 @@ tags:
   - OOP
   - Opinion
   - Optimization
+  - Parenting
   - Perfectionism
   - Personal
   - PIV
@@ -90,6 +97,7 @@ tags:
   - Selenium
   - Shell
   - StoryTime
+  - Streaming
   - SVN
   - Systems
   - Technical
@@ -98,6 +106,8 @@ tags:
   - Tips
   - Tool
   - Tools
+  - Travel
+  - TV
   - VCS
   - Web
   - Wiki

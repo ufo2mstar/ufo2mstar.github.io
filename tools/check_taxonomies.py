@@ -5,13 +5,18 @@ Every category and tag in a post's front matter must appear in
 tools/allowed_taxonomies.yaml. Auto-sorts the allowlist file
 (case-insensitive) on every run so you can add terms anywhere.
 
-Exits 1 on any unknown term. Stdlib-only.
+With --fix, unknown terms that have no close match (not a typo)
+are auto-added to the allowlist. Terms with a close match still
+fail so you can decide whether it's a typo or intentionally new.
 
-Usage: python3 tools/check_taxonomies.py
+Exits 1 on any unknown term (after fix attempts). Stdlib-only.
+
+Usage: python3 tools/check_taxonomies.py [--fix]
 """
 
 from __future__ import annotations
 
+import argparse
 import pathlib
 import re
 import sys
@@ -106,8 +111,14 @@ def parse_and_sort_allowlist(path: pathlib.Path) -> dict[str, list[str]]:
 
 
 def closest_match(term: str, allowed: set[str]) -> str | None:
-    """Return the closest allowed term if edit distance <= 2, else None."""
-    best, best_dist = None, 3
+    """Return the closest allowed term if edit distance <= 2, else None.
+
+    Short terms (<= 3 chars) need an exact-case-insensitive near-miss to be
+    useful suggestions; the edit-distance-2 radius is too wide for them
+    (TV matches AI, Kids matches Tips).
+    """
+    threshold = 1 if len(term) <= 4 else 2
+    best, best_dist = None, threshold + 1
     for candidate in allowed:
         d = _edit_distance(term.lower(), candidate.lower(), best_dist)
         if d < best_dist:
@@ -134,6 +145,14 @@ def _edit_distance(a: str, b: str, cutoff: int) -> int:
 
 
 def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument(
+        "--fix",
+        action="store_true",
+        help="auto-add genuinely new terms (no close match) to the allowlist",
+    )
+    args = ap.parse_args()
+
     if not ALLOWLIST_PATH.exists():
         print(f"allowlist not found: {ALLOWLIST_PATH.relative_to(REPO_ROOT)}", file=sys.stderr)
         return 1
@@ -145,6 +164,8 @@ def main() -> int:
     failed = 0
     cat_set = set(allowed_cats)
     tag_set = set(allowed_tags)
+    auto_added_cats: set[str] = set()
+    auto_added_tags: set[str] = set()
 
     posts = sorted(BLOG_ROOT.glob("*/*/index.md"))
     if not posts:
@@ -160,18 +181,26 @@ def main() -> int:
         for cat in fm.get("categories", []):
             if cat not in cat_set:
                 hint = closest_match(cat, cat_set)
-                msg = f"unknown category: '{cat}'"
-                if hint:
-                    msg += f" (did you mean '{hint}'?)"
-                errs.append(msg)
+                if args.fix and not hint:
+                    auto_added_cats.add(cat)
+                    cat_set.add(cat)
+                else:
+                    msg = f"unknown category: '{cat}'"
+                    if hint:
+                        msg += f" (did you mean '{hint}'?)"
+                    errs.append(msg)
 
         for tag in fm.get("tags", []):
             if tag not in tag_set:
                 hint = closest_match(tag, tag_set)
-                msg = f"unknown tag: '{tag}'"
-                if hint:
-                    msg += f" (did you mean '{hint}'?)"
-                errs.append(msg)
+                if args.fix and not hint:
+                    auto_added_tags.add(tag)
+                    tag_set.add(tag)
+                else:
+                    msg = f"unknown tag: '{tag}'"
+                    if hint:
+                        msg += f" (did you mean '{hint}'?)"
+                    errs.append(msg)
 
         rel = p.relative_to(REPO_ROOT)
         if errs:
@@ -182,11 +211,60 @@ def main() -> int:
         else:
             print(f"  ok {rel}")
 
+    if auto_added_cats or auto_added_tags:
+        _write_additions(allowed, auto_added_cats, auto_added_tags)
+        all_added = sorted(auto_added_cats | auto_added_tags, key=str.lower)
+        print(f"\n  auto-added to allowlist: {', '.join(all_added)}")
+
     total = len(posts)
     print(f"\n{total - failed}/{total} posts ok ({failed} failed)")
     if failed:
         print(f"\nTo fix: add the term to {ALLOWLIST_PATH.relative_to(REPO_ROOT)} (sorted), or correct the typo")
     return 1 if failed else 0
+
+
+def _write_additions(
+    allowed: dict[str, list[str]],
+    new_cats: set[str],
+    new_tags: set[str],
+) -> None:
+    """Insert new terms into the allowlist YAML, keeping it sorted."""
+    raw = ALLOWLIST_PATH.read_text(encoding="utf-8")
+    lines = raw.splitlines()
+
+    header: list[str] = []
+    sections: list[tuple[str, list[str]]] = []
+    current_key: str | None = None
+    current_items: list[str] = []
+
+    for line in lines:
+        stripped = line.strip()
+        if current_key is None and sections == [] and (not stripped or stripped.startswith("#")):
+            header.append(line)
+            continue
+        if not line.startswith(" ") and stripped.endswith(":") and not stripped.startswith("#"):
+            if current_key is not None:
+                sections.append((current_key, current_items))
+            current_key = stripped[:-1]
+            current_items = []
+        elif current_key is not None and stripped.startswith("- "):
+            current_items.append(stripped[2:].strip())
+    if current_key is not None:
+        sections.append((current_key, current_items))
+
+    out: list[str] = header[:]
+    for key, items in sections:
+        merged = set(items)
+        if key == "categories":
+            merged |= new_cats
+        elif key == "tags":
+            merged |= new_tags
+        out.append("")
+        out.append(f"{key}:")
+        for item in sorted(merged, key=str.lower):
+            out.append(f"  - {item}")
+    out.append("")
+    ALLOWLIST_PATH.write_text("\n".join(out), encoding="utf-8")
 
 
 if __name__ == "__main__":

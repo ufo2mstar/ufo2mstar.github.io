@@ -2,7 +2,7 @@
 date = '2025-07-15'
 title = 'The Real Land of Ice and Fire and Kings'
 categories = ['Life']
-tags = ['Travel', 'Iceland', 'England', 'Family']
+tags = ['Travel', 'Family']
 summary = ''
 draft = true
 +++
