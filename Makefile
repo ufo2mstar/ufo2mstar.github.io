@@ -80,8 +80,8 @@ check-frontmatter: ## Validate every post's front matter (no build needed)
 check-slugs: ## Check for redundant slug fields and dash-separated folder names
 	@python3 tools/check_slugs.py
 
-check-taxonomies: ## Validate categories/tags against allowlist (tools/allowed_taxonomies.toml)
-	@python3 tools/check_taxonomies.py
+check-taxonomies: ## Validate categories/tags against allowlist, auto-add genuinely new terms
+	@python3 tools/check_taxonomies.py --fix
 
 # Strict build: fail on any ERROR, surface real WARN lines, but filter out
 # Blowfish theme noise (unused shortcodes we don't reference). If hugo prints
