@@ -2,7 +2,7 @@
 date = '2025-12-26'
 title = 'Play the Ball: Rules of Engagement for tough convos'
 categories = ['Thoughts']
-tags = ['Cricket', 'Communication', 'LifeAdvice', 'Confrontation']
+tags = ['Cricket', 'Communication', 'Advice', 'Confrontation']
 summary = 'Every conversation is a ball bowled at you. You can duck, you can cop it, or you can decide to play! A working rubric for engagement, courtesy of Steve Smith and Jofra Archer.'
 +++
 
