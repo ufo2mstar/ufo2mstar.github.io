@@ -14,11 +14,11 @@ Someone across the table is gleefully tipping back a davara tumbler of filter co
 
 > the one who feels less is somehow the tougher, more authentic, more disciplined human being.
 
-Now, the cheap version of this post is me arguing the scoreboard backwards. But here's the honest part I want to put on the table first: **I have also been the smug one.** I have absolutely sat there thinking _this person has wrecked their palate; mine is the one that still works._ So before I make this about *them*, let me admit it cuts both ways.
+**I have also been the smug one.** I have absolutely sat there thinking _this person has wrecked their palate; mine is the one that still works._ It cuts both ways.
 
 Because this little dinner-table standoff turns out to be a remarkably clean specimen of one of philosophy's oldest puzzles: the `problem of other minds`. And the spoiler is that *both* of us are quietly getting it wrong. :fire:
 
-# First, the two heats (because almost nobody has the facts)
+# Hot!
 Two very different things hide under the one word "hot": **capsaicin heat** (chillies) and **thermal heat** (temperature). Both trip the *same* receptor, [TRPV1](https://en.wikipedia.org/wiki/TRPV1), which is why the brain files them under the same `burning` (and why so many languages, though not all, use one word for both). But the resemblance is a con:
 
 > Capsaicin doesn't damage anything. It just *convincingly lies* to your nervous system.
@@ -33,12 +33,11 @@ Thermal heat is a whole other animal. Above ~60&deg;C it is not bluffing. It is 
 
 That kind of tolerance is, in real part, **dulled and dead nerve endings** plus mucosal scarring, the very sensors that were supposed to flag danger. And it isn't a free quirk: the WHO's [IARC](https://www.iarc.who.int/) files drinks above **65&deg;C** as a **Group 2A carcinogen** ("probably carcinogenic"), and the cultures that prize near-boiling tea and mate show the esophageal-cancer numbers to match.
 
-I am *not* laying this out to win the argument. I am laying it out because it is the one fact that reframes the whole standoff... and neither side at the table usually has it.
+One fact reframes the whole standoff... and neither side at the table usually has it:
 
-# The actual subject: other minds
-Here is where it stops being about coffee and starts being about everybody.
-
-The classic [problem of other minds](https://iep.utm.edu/other-minds/) is the quiet worry that I can never *directly* get at your experience. I only ever infer it from the outside, and I paper over the gap with imagination: I stub my toe, you wince in sympathy, we assume our inner movies roughly match.
+# Other minds
+To step back, and address the actual subject here:
+The classic [`problem of other minds`](https://iep.utm.edu/other-minds/) is the quiet worry that I can never *directly* get at your experience. I only ever infer it from the outside, and I paper over the gap with imagination: I stub my toe, you wince in sympathy, we assume our inner movies roughly match.
 
 But our heat-habituated friend is stuck with a harder version, because there is an extra layer of **sensory distortion** in the way:
 
@@ -55,8 +54,8 @@ If I find the coffee scalding, I can reason myself over to their side easily: _t
 
 So grace flows easily one direction and uphill the other. And the lesson I keep wanting to skip is that this should make me **more patient with them, not more pleased with myself.** Harder-for-them is not the same as wrong-of-them.
 
-# But the wincer is no saint either
-Here's where I have to check my own smugness, because the sensitive party (me) has a favorite line: _at least my nerves still work._ Tidy. Flattering. And also its own failure to imagine the other complexly.
+# The wincer is no saint either
+The sensitive party (me) has a favorite line: _at least my nerves still work._ Tidy. Flattering. And also its own failure to imagine the other complexly.
 
 Because wrapped inside that scalding tumbler is not *just* nerve damage. There's a grandmother's kitchen in there, a cultural rite, the genuine `benign masochism` thrill, an identity, decades of comfort and belonging. To flatten all of that down to "accumulated tissue loss" is to do to them *exactly* what they do to me: reduce a whole person to a single deficient axis.
 
@@ -78,7 +77,7 @@ The honest facts are worth knowing, on both sides of the table, not as ammunitio
 
 > perception is not reality. Two people eat the same pepper; one suffers, one delights. The pepper never changed.
 
-If there's one thing to carry out of the kitchen, it's the oldest and least original advice there is, and I keep needing to relearn it: **imagine the other one complexly.** That's the whole ballgame. :tea:
+So, the whole ballgame: like the Green brothers like to say, **imagine the other one complexly.** I keep needing to relearn to apply it. :coffee:
 
 # PS:
 As always, I'd love your POV. Two threads I haven't untangled:
