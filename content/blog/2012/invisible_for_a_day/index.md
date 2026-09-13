@@ -3,17 +3,23 @@ date = '2012-03-01'
 title = 'If I Were Invisible for a Day'
 categories = ['Life']
 tags = ['CreativeWriting', 'Fiction', 'College', 'Humor']
-summary = 'Second consecutive creative writing competition win in college. The prompt was one sentence.'
+summary = 'College creative writing, year two of two. Same competition, new prompt: if I were invisible for a day…'
 draft = true
 +++
 
-Back in 2011, in college, I won a creative writing competition for the second time in a row with this story. I wish I had my first entry too, but I don't. At least This one survived through time.
+Back in college I won the creative writing competition two years running.
 
-The prompt was one sentence: *If I were invisible for a day...*
+The year before this, the trigger was a silhouette — a sheriff on a cliff, western-postcard style, looking out over his town. I turned him into a cowboy-detective hybrid, hung some fragile allergy / matchstick-thin quirk on him, and stuck a COW where Kaushik should have been. Weird piece. It won.
+
+Next year the prompt was one sentence: *If I were invisible for a day...*
+
+There was a guy from first year — quiet, easy to miss in a corridor — who spent the next few years in the gym until people started asking who he was. That stuck with me. Meanwhile my roommate Anthony had taken to calling me watchman, because I'd collect hellos in every hostile corner of campus and somehow never do anything with the network.
+
+This is the invisibility year.
 
 ---
 
-"He,he,he" I smirked. I can remember the lines that overbearing evildoers condescendingly say to helpless minions or sometimes even protagonists 'You can run, but you can't hide!!'. Have you ever wondered why heroes don't get to say such lines to villains that often?
+"He,he,he" I smirked. I can remember the lines that overbearing evildoers condescendingly say to helpless minions or sometimes even protagonists: 'You can run, but you can't hide!!'. Have you ever wondered why heroes don't get to say such lines to villains that often?
 
 Anyway, in my case, I didn't have to hide, or even be chased for that matter. Crime is common, logic is rare. Only when you run can somebody chase you. When they can't even see you, what's the need for that? Happily making my way out of MS Bakery, without paying a penny! (where it is possible to do the same even if you are not invisible, but still), I felt 'Aah, the sweet taste of victory, in the form of Kalimark Paneer soda!… refreshing!!...'
 
