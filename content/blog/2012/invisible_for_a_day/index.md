@@ -3,7 +3,7 @@ date = '2012-03-01'
 title = 'If I Were Invisible for a Day'
 categories = ['Life']
 tags = ['CreativeWriting', 'Fiction', 'College', 'Humor']
-summary = 'College creative writing, year two of two , and why I am putting early writing out in public.'
+summary = 'College creative writing, year two of two, and why I am putting early writing out in public.'
 draft = true
 +++
 
@@ -11,9 +11,9 @@ I've always been interested in writing, but somehow never had time to pursue it 
 
 I've consumed a lot of brilliant books. I appreciate well-written work even about mundanities. When I start writing, though, the first output is rarely the best. It takes a long time to mature.
 
-One of the early pieces that saw daylight, and actual recognition , came from my last two years of college. Junior year and senior year, two short stories, both won creative writing prizes.
+One of the early pieces that saw daylight and actual recognition came from my last two years of college. Junior year and senior year, two short stories, both won creative writing prizes.
 
-Unfortunately one didn't survive time. We wrote from a picture: a cowboy silhouette on a horse on a cliff top, looking over a small western town, somewhere like Utah. I wrote *Cowshik* (cowboy + Kaushik): a Sherlock Holmesian new sheriff in town, born to an Indian couple who emigrated to the United States back in the 1800s. Plot twist involved twin giant goons who were germaphobes; he somehow partied hard and puked on them to get out. Stupid. It won anyway , mostly, I think, because the fantasy-anime energy was creative enough to award.
+Unfortunately one didn't survive time. We wrote from a picture: a cowboy silhouette on a horse on a cliff top, looking over a small western town, somewhere like Utah. I wrote *Cowshik* (cowboy + Kaushik): a Sherlock Holmesian new sheriff in town, born to an Indian couple who emigrated to the United States back in the 1800s. Plot twist involved twin giant goons who were germaphobes; he somehow partied hard and puked on them to get out. Stupid. It won anyway, mostly, I think, because the fantasy-anime energy was creative enough to award.
 
 Senior year we got one sentence: *If I were invisible for a day...*
 
