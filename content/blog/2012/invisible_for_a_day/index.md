@@ -29,7 +29,7 @@ Anyway, in my case, I didn't have to hide, or even be chased for that matter. Cr
 
 After a while of straying through the streets, playing pranks on people, it struck me, 'Hell, what am I doing with these powers? I hardly have a day to enjoy this gift. And all the petty crimes in Pizza places and Grocery stores. Cha! How darn Cheap am I…'. Realizing this, I did the only thing any caring citizen with such powers would do. 'This city is a nice enough place. Chennai is where I should be'. The plan was simple. Now that I was unseeable, I decided to do the unthinkable.
 
-I didn't have a problem navigating through the cop ridden, barricaded streets of Gopalaburam. In the corner house, resting in his easy-chair was an old man. At first I couldn't recognize him without his dark tinted glasses and thick, yellow shawl. With my fist clenched tight, I gave him a wakeup call the way someone disciplining a younger kid might knock them on the head. KNOCK! KNOCK!!...
+I didn't have a problem navigating through the cop ridden, barricaded streets. In the corner house, resting in his easy-chair was an old man. At first I couldn't recognize him without his dark tinted glasses and thick, yellow shawl. With my fist clenched tight, I gave him a wakeup call the way someone disciplining a younger kid might knock them on the head. KNOCK! KNOCK!!...
 
 In a fit of rage, he opened his eyes and tried to sit erect, as best as he could at his age. When he looked up, I could see the bewildered look in his eyes; as if he had seen a Ghost (though he literally saw nothing). 'Ha!' I thought, 'The irony'. It never occurred to me that one invisible knuckle-rap could set off that much shouting. He raised a ruckus. Guards, cops, the whole circus. "Crap!"
 
@@ -60,3 +60,5 @@ in a desperate hope that, at least here, I might get a few 'Why?'s, 'How?'s, 'He
 and if lucky, even a few 'Like's. :thumbsup:
 
 *- Kyu*
+
+*College competition piece, 2011.*
