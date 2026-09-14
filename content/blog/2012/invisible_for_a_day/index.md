@@ -17,7 +17,7 @@ Unfortunately one didn't survive time. We wrote from a picture: a cowboy silhoue
 
 Senior year we got one sentence: *If I were invisible for a day...*
 
-My close friend, quiz-team partner, and final-year roommate Anthony always quipped that I was the "watchman," because everywhere I went people said hi. He was always confused why so many people from so many corners of campus had anything to do with me. But I noticed somebody who was invisible: some of the people I spoke with didn't recognize him. He was a bit of a loner. Soft spot on my side; I did help him out with a few things. Nerdy wannabe first-ranker, okay in academics, not super mature, definitely a hard worker. That gave me the idea of how people can be perceived as invisible if they don't socialize a lot.
+My close friend, quiz-team partner, and final-year roommate always quipped that I was the "watchman," because everywhere I went people said hi. He was always confused why so many people from so many corners of campus had anything to do with me. But I noticed somebody who was invisible: some of the people I spoke with didn't recognize him. He was a bit of a loner. Soft spot on my side; I did help him out with a few things. Nerdy wannabe first-ranker, okay in academics, not super mature, definitely a hard worker. That gave me the idea of how people can be perceived as invisible if they don't socialize a lot.
 
 With that context, here is the story without any further ado. Some of it may track then-current politics back in India. Creative writing after all; I was probably absorbing the news at the time.
 
