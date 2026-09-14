@@ -3,23 +3,23 @@ date = '2012-03-01'
 title = 'If I Were Invisible for a Day'
 categories = ['Life']
 tags = ['CreativeWriting', 'Fiction', 'College', 'Humor']
-summary = 'College creative writing, year two of two — and why I am putting early writing out in public.'
+summary = 'College creative writing, year two of two , and why I am putting early writing out in public.'
 draft = true
 +++
 
-I've always been interested in writing, but somehow never had time to pursue it as a solid hobby. Transitioning to this American life made me realize writing is a way of thinking — crystallizing ideas into text.
+I've always been interested in writing, but somehow never had time to pursue it as a solid hobby. Transitioning to this American life made me realize writing is a way of thinking: crystallizing ideas into text.
 
 I've consumed a lot of brilliant books. I appreciate well-written work even about mundanities. When I start writing, though, the first output is rarely the best. It takes a long time to mature.
 
-One of the early pieces that saw daylight — and actual recognition — came from my last two years of college. Junior year and senior year, two short stories, both won creative writing prizes.
+One of the early pieces that saw daylight, and actual recognition , came from my last two years of college. Junior year and senior year, two short stories, both won creative writing prizes.
 
-Unfortunately one didn't survive time. We wrote from a picture: a cowboy silhouette on a horse on a cliff top, looking over a small western town — somewhere like Utah. I wrote *Cowshik* (cowboy + Kaushik): a Sherlock Holmesian new sheriff in town, born to an Indian couple who emigrated to the United States back in the 1800s. Plot twist involved twin giant goons who were germaphobes; he somehow partied hard and puked on them to get out. Stupid. It won anyway — mostly, I think, because the fantasy-anime energy was creative enough to award.
+Unfortunately one didn't survive time. We wrote from a picture: a cowboy silhouette on a horse on a cliff top, looking over a small western town, somewhere like Utah. I wrote *Cowshik* (cowboy + Kaushik): a Sherlock Holmesian new sheriff in town, born to an Indian couple who emigrated to the United States back in the 1800s. Plot twist involved twin giant goons who were germaphobes; he somehow partied hard and puked on them to get out. Stupid. It won anyway , mostly, I think, because the fantasy-anime energy was creative enough to award.
 
 Senior year we got one sentence: *If I were invisible for a day...*
 
-I came up with this doozy inspired by a friend from first year — a bit of a loner who got beefed up and gym-crazy over the next few years, kept to himself, soft spot on my side. His life was very much in contrast with mine. My close friend, quiz-team partner, and final-year roommate Anthony always quipped that I was the "watchman," because everywhere I went people said hi. He was always confused why so many people from so many corners of campus had anything to do with me.
+My close friend, quiz-team partner, and final-year roommate Anthony always quipped that I was the "watchman," because everywhere I went people said hi. He was always confused why so many people from so many corners of campus had anything to do with me. But I noticed somebody who was invisible: some of the people I spoke with didn't recognize him. He was a bit of a loner. Soft spot on my side; I did help him out with a few things. Nerdy wannabe first-ranker, okay in academics, not super mature, definitely a hard worker. That gave me the idea of how people can be perceived as invisible if they don't socialize a lot.
 
-But I digress. Here's the story. Some of it may track then-current politics back in India — creative writing after all; I was probably absorbing the news at the time.
+With that context, here is the story without any further ado. Some of it may track then-current politics back in India. Creative writing after all; I was probably absorbing the news at the time.
 
 ---
 
