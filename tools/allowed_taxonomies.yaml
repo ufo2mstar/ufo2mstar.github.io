@@ -69,18 +69,21 @@ tags:
   - Life
   - LinearAlgebra
   - LLM
+  - Logging
   - Loss
   - Macros
   - Maths
   - Matlab
   - Memory
   - Mermaid
+  - Metrics
   - MindMap
   - Montage
   - Morality
   - Movie
   - Network
   - Nostalgia
+  - Observability
   - OOP
   - Opinion
   - Optimization
@@ -111,6 +114,7 @@ tags:
   - Tips
   - Tool
   - Tools
+  - Tracing
   - Travel
   - TV
   - VCS
