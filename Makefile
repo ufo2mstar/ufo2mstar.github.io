@@ -1,38 +1,74 @@
 # Makefile for ufo2mstar.github.io (Hugo site)
 #
-# Run `make` (no args) to see all targets grouped by purpose.
-# Each target is a thin wrapper around a single command - the goal is
-# muscle memory + discoverability, not abstraction.
+# Content-first day-to-day (this is what you usually need):
+#   make draft POST=my_thought   # new draft bundle under content/blog/<year>/
+#   make preview                 # localhost:1313 with drafts (-D)
+#   make check                   # pre-push gate (frontmatter + build + links)
+#   # when ready to ship (Naren only): flip draft=false, then
+#   make publish MSG="post: my thought"
 #
-# History (so future-us remembers what we ran):
-#   - Site scaffolded with `hugo new site . --force --format=toml` on the
-#     orphan `main` branch. The --force was needed because the dir already
-#     had .git, .gitignore, README.md from the orphan init.
-#   - Theme: TBD (Blowfish planned, see .cursor/plans/hugo_migration_plan_*).
-#   - Legacy Jekyll site frozen on `master` branch + `legacy-jekyll` tag.
+# Run `make` (no args) to see all targets.
+# Each target is a thin wrapper - muscle memory + discoverability, not abstraction.
+#
+# Branches / publish:
+#   - Hugo source + Actions deploy: `main` (live site is Hugo via GitHub Pages Actions)
+#   - Legacy Jekyll freeze: `master` + tag `legacy-jekyll` (rollback only; do not edit for content)
+#   - WIP drafts: feature branches (e.g. bloggy/*). Prefer PR into main; do not force-push main.
+#
+# History:
+#   - Site scaffolded with `hugo new site . --force --format=toml` on orphan `main`.
+#   - Theme: Blowfish (git submodule under themes/blowfish).
+#   - Legacy Jekyll frozen on `master` + `legacy-jekyll` tag.
 
 .DEFAULT_GOAL := help
 
 # ---- Help ----------------------------------------------------------------
 
 help: ## Show this help (default target)
-	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage: make \033[36m<target>\033[0m\n"} \
+	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage: make \033[36m<target>\033[0m\n\nContent-first recipe:\n  make draft POST=slug && make preview && edit markdown && make check\n  # ship only when ready: draft=false, then make publish MSG=\"post: ...\"\n"} \
 	  /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-14s\033[0m %s\n", $$1, $$2 } \
 	  /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) }' $(MAKEFILE_LIST)
 
-##@ Develop
+##@ Author (content)
 
-serve: ## Run dev server with hot reload, including drafts (localhost:1313)
+draft: ## Create a draft post bundle. Usage: make draft POST=my_thought
+	@$(MAKE) --no-print-directory new POST="$(POST)"
+
+new: ## Same as draft. Usage: make new POST=my_thought (underscores preferred)
+	@test -n "$(POST)" || (echo "ERROR: pass POST=slug, e.g. make draft POST=hello_world" && exit 1)
+	@slug=$$(echo "$(POST)" | tr '-' '_'); \
+	  if [ "$$slug" != "$(POST)" ]; then echo "Note: normalized POST '$(POST)' -> '$$slug' (underscores)"; fi; \
+	  hugo new "content/blog/$$(date +%Y)/$$slug/index.md"; \
+	  echo "Created: content/blog/$$(date +%Y)/$$slug/index.md (draft=true)"
+
+new-page: ## Create a top-level page. Usage: make new-page PAGE=resume
+	@test -n "$(PAGE)" || (echo "ERROR: pass PAGE=name, e.g. make new-page PAGE=resume" && exit 1)
+	hugo new content/$(PAGE).md
+	@echo "Created: content/$(PAGE).md"
+
+##@ Preview / build
+
+preview: ## Alias for serve - draft-aware local preview
+	@$(MAKE) --no-print-directory serve
+
+serve: ## Dev server with hot reload, including drafts (localhost:1313)
 	hugo server -D --navigateToChanged
 
-# Preview the legacy Jekyll site locally for visual diffing against the new
-# Hugo build. Master branch holds pre-built HTML (Jekyll output committed
-# directly), so we just materialize it as a git worktree at _legacy/ and
-# serve with python -m http.server. No Ruby/Bundler needed.
-#
-# Stop the server with Ctrl+C. Refresh master with `make refresh-legacy`.
-# Tear down with `make clean-legacy`.
-serve-legacy: _legacy ## Serve legacy Jekyll site (master branch) on localhost:4000
+build: ## Build static site to ./public/ (no minify, fast; excludes drafts)
+	hugo
+
+build-prod: ## Production build with minification (excludes drafts)
+	hugo --minify
+
+clean: ## Remove generated artifacts
+	rm -rf public resources .hugo_build.lock
+
+config-dump: ## Print the fully-merged Hugo config (defaults + theme + ours)
+	@hugo config
+
+# Preview the legacy Jekyll site locally for visual diffing against Hugo.
+# Master holds pre-built HTML; materialize as worktree at _legacy/.
+serve-legacy: _legacy ## Serve legacy Jekyll freeze (master) on localhost:4000
 	@echo "Legacy site (master) at http://localhost:4000/  (Ctrl+C to stop)"
 	@cd _legacy && python3 -m http.server 4000
 
@@ -50,19 +86,7 @@ clean-legacy: ## Remove the _legacy/ worktree
 	@git worktree remove --force _legacy 2>/dev/null || /bin/rm -rf _legacy
 	@git worktree prune
 
-build: ## Build static site to ./public/ (no minify, fast)
-	hugo
-
-build-prod: ## Build for production with minification
-	hugo --minify
-
-clean: ## Remove generated artifacts
-	rm -rf public resources .hugo_build.lock
-
-config-dump: ## Print the fully-merged Hugo config (defaults + theme + ours)
-	@hugo config
-
-##@ Check (run before push)
+##@ Check (run before push / PR)
 
 # `make check` is the pre-push gate: build cleanly, validate front matter,
 # verify internal links resolve. External links are NOT checked by default
@@ -104,30 +128,19 @@ check-links-external: ## Also check external (http/https) links - slow and flaky
 	@test -d public || (echo "no public/ - run 'make check-build' first" && exit 1)
 	@python3 tools/check_links.py --external
 
-##@ Author
-
-new: ## Create a new post bundle. Usage: make new POST=my-thought (lands in content/blog/<current-year>/)
-	@test -n "$(POST)" || (echo "ERROR: pass POST=slug, e.g. make new POST=hello-world" && exit 1)
-	hugo new content/blog/$$(date +%Y)/$(POST)/index.md
-	@echo "Created: content/blog/$$(date +%Y)/$(POST)/index.md"
-
-new-page: ## Create a top-level page. Usage: make new-page PAGE=resume
-	@test -n "$(PAGE)" || (echo "ERROR: pass PAGE=name, e.g. make new-page PAGE=resume" && exit 1)
-	hugo new content/$(PAGE).md
-	@echo "Created: content/$(PAGE).md"
-
-##@ Publish
+##@ Publish (main only; prefer PR unless shipping)
 
 status: ## Show what would be committed
 	git status -sb
 
-publish: ## Stage all, commit with MSG, push to origin/main. Usage: make publish MSG="post: foo"
+publish: ## Stage all, commit with MSG, push origin/main, watch Actions. Usage: make publish MSG="post: foo"
 	@test -n "$(MSG)" || (echo "ERROR: pass MSG=\"...\"" && exit 1)
+	@echo "NOTE: live site deploys from main via GitHub Actions (Hugo). master is legacy Jekyll freeze only."
 	git add -A
 	git commit -m "$(MSG)"
 	@$(MAKE) --no-print-directory _push-and-watch
 
-push: check ## Validate locally, push, and watch GitHub Actions until green
+push: check ## Validate locally, push origin/main, watch GitHub Actions until green
 	@$(MAKE) --no-print-directory _push-and-watch
 
 _push-and-watch:
@@ -141,16 +154,10 @@ peek-post: ## View a Jekyll post from master. Usage: make peek-post POST=2018-01
 	@test -n "$(POST)" || (echo "ERROR: pass POST=YYYY-MM-DD-slug" && exit 1)
 	@git show master:_posts/$(POST).md
 
-list-legacy-posts: ## List all Jekyll posts on master
+list-legacy-posts: ## List all Jekyll posts on origin/source
 	@git ls-tree -r --name-only origin/source -- _posts | sort
 
 # Bulk-convert Jekyll posts (origin/source:_posts) to Hugo page bundles.
-# Usage:
-#   make migrate-dry                       # print everything to stdout, write nothing
-#   make migrate-dry ONLY=primer_git       # dry-run a single post (substring match)
-#   make migrate ONLY=2018                 # convert all 2018 posts
-#   make migrate FORCE=1                   # overwrite existing index.md files
-#   make migrate                           # convert all (skips files that already exist)
 migrate-dry: ## Dry-run converter; prints to stdout. Vars: ONLY=substr
 	@python3 tools/jekyll_to_hugo.py --dry-run $(if $(ONLY),--only $(ONLY))
 
@@ -158,10 +165,6 @@ migrate: ## Convert Jekyll posts to Hugo bundles. Vars: ONLY=substr FORCE=1
 	@python3 tools/jekyll_to_hugo.py $(if $(ONLY),--only $(ONLY)) $(if $(FORCE),--force)
 
 ##@ Reference (do not run; documents one-time setup commands)
-
-# These targets are NOT meant to be invoked - they're inert documentation
-# of commands we ran during initial setup. Reading the recipe tells you
-# exactly what was done and why.
 
 ref-init: ## (no-op) How the site was initially scaffolded
 	@echo "# This is a reference, not meant to run. Commands used:"
