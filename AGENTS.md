@@ -4,9 +4,9 @@
 
 ## What this is
 
-Personal blog at [ufo2mstar.github.io](https://ufo2mstar.github.io/). Hugo + Blowfish theme. Mid-migration from a legacy Jekyll site (still live on `master` branch).
+Personal blog at [ufo2mstar.github.io](https://ufo2mstar.github.io/). Hugo + Blowfish theme. **Live site is Hugo**, deployed from `main` via GitHub Actions Pages. Legacy Jekyll is frozen on `master` + tag `legacy-jekyll` (rollback only).
 
-Content goal: turn years of accumulated thoughts into published articles - an online portfolio of ideas. Optimize the workflow for low friction between "I want to write something" and "it's live".
+Content goal: turn years of accumulated thoughts into published articles - an online portfolio of ideas. Optimize the workflow for low friction between "I want to write something" and "it's live". Day-to-day: edit markdown drafts; ignore process beyond `make draft` / `make preview` / `make check`.
 
 ## Repo map (one glance)
 
@@ -35,36 +35,40 @@ The user runs `make serve` in a persistent terminal outside the agent session. D
 ### Writing a new post
 
 ```bash
-make new POST=my-thought              # creates content/blog/<current-year>/my-thought/index.md
-# edit the file - set title, date, categories, tags. Leave draft = true while drafting.
-make serve                            # localhost:1313, hot reload, drafts visible
-# when ready: flip draft = false (or delete the line)
-make publish MSG="post: my thought"   # add + commit + push
+make draft POST=my_thought            # creates content/blog/<current-year>/my_thought/index.md (draft=true)
+# edit the file - fill title, categories, tags, summary. Keep draft = true while drafting.
+make preview                          # localhost:1313, hot reload, drafts visible (alias: make serve)
+make check                            # before any PR/push
+# when Naren says ship: flip draft = false (or delete the line), then PR or:
+make publish MSG="post: my thought"   # add + commit + push origin/main + watch Actions
 ```
 
-The post is live ~45s after push (once the Pages workflow is wired - see migration plan N4/N5).
+Prefer underscores in folder slugs (`my_thought`, not `my-thought`). `make draft`/`make new` auto-normalize dashes to underscores. The post is live ~45s after a green deploy from `main`.
 
 ### Previewing changes
 
 ```bash
-make serve         # dev server, includes drafts (-D), hot reload
-make build         # one-shot to ./public/, no minify
-make build-prod    # production build with minify (what CI will run)
+make preview       # preferred alias: drafts (-D), hot reload on :1313
+make serve         # same as preview
+make build         # one-shot to ./public/, no minify (excludes drafts)
+make build-prod    # production build with minify (what CI runs)
 make clean         # nuke public/, resources/, .hugo_build.lock if things wedge
 make config-dump   # print fully-merged config (defaults + theme + ours)
 ```
 
-If `make serve` starts returning 500s on every URL after a config edit, kill it and restart - the dev server can wedge on bad config reloads. `hugo config` from the CLI is a good way to verify config health independent of the dev server.
+If `make serve`/`preview` starts returning 500s on every URL after a config edit, kill it and restart - the dev server can wedge on bad config reloads. `hugo config` from the CLI is a good way to verify config health independent of the dev server.
+
+For remote preview (Cloudflare tunnel / similar), keep using local `make preview` and expose :1313 outside this Makefile - do not commit tunnel tokens.
 
 ### Publishing a post
 
 ```bash
 make status                  # what's about to be committed
 make check                   # pre-push gate (frontmatter + strict build + internal links)
-make publish MSG="..."       # add -A + commit + push to origin/main
+make publish MSG="..."       # add -A + commit + push to origin/main + watch deploy
 ```
 
-Or do it manually with `git add` + `git commit` + `git push` if you want to stage selectively (often the right call - see "Commit conventions").
+Safe path today: **Hugo on `main` via Actions** -> https://ufo2mstar.github.io/. Do **not** push content to `master` (Jekyll freeze). Prefer a PR into `main` for draft/WIP branches; use `make publish` only when intentionally shipping. Or `git add` + `git commit` + `git push` selectively (often the right call - see "Commit conventions"). Authors: ufo2mstar only - never Bloggy/assistant names.
 
 ### Pre-push checks (`make check`)
 
@@ -155,7 +159,8 @@ Blowfish is a git submodule. Anyone cloning needs `--recurse-submodules` or them
 - **What's next on the migration:** `.cursor/plans/hugo_migration_next_steps.plan.md` - source of truth for staged work, decisions, and known gotchas.
 - **All available commands:** `make` (no args). The Makefile is intentionally thin - each target is a one-line wrapper around the actual command, optimized for muscle memory and discoverability.
 - **What's currently in effect:** `make config-dump`.
-- **Legacy site:** `master` branch (still serving prod) + `legacy-jekyll` tag (permanent marker).
+- **Live site:** Hugo from `main` via `.github/workflows/deploy.yml` (GitHub Pages Actions). Repo default branch may still show as `master` in GitHub settings - ignore for content; do not cut over Settings without an explicit ask.
+- **Legacy site:** `master` branch + `legacy-jekyll` tag (freeze / rollback only).
 - **Legacy post source:** `origin/source:_posts/` (not on `master` either).
 
 ## Why Python for `tools/`
@@ -191,23 +196,21 @@ Three lessons from the Hugo migration that generalize:
 - **Test harness as a forcing function.** Built `make check` (frontmatter + strict build + internal links). First run found a real bug (`/resume.html` -> `/resume/` in `share_birthday_mashup`). Pattern: on any accumulated codebase, the harness pays for itself day one - don't wait until "after content is in" to add validation.
 - **Don't pre-engineer for hypothetical flexibility.** Picked direct GA4 over GTM because the GA4 -> GTM migration is ~10 lines of partial override if it ever matters. Pattern: when migration cost between two options is small, ship the simpler one and migrate when there's a real second use case, not before.
 
-## Working with Ellie on this repo
+## Working with Bloggy / agents on this repo
 
-> This section is a placeholder for the workflow we want to build. Update as it crystallizes.
+Goal: Naren narrates in chat; the agent drafts markdown so he stays focused on content, not process.
 
-Goal: Ellie helps capture, draft, and refine post ideas with the same low-friction loop she uses for the vault.
+Day-to-day loop:
 
-Sketch (to validate):
+1. **Capture / draft:** Agent creates or edits `content/blog/<year>/<slug>/index.md` with `draft = true` (prefer `make draft POST=slug`). Sniper edits. No em dashes in posts.
+2. **Preview:** Prefer preview URLs. Local: `make preview` (Hugo `-D`). Optional Cloudflare tunnel in a separate terminal - never commit tunnel credentials.
+3. **Check:** `make check` before asking for a PR/push.
+4. **Ship:** Only when Naren says ship - flip `draft = false`, open/merge PR to `main` (or he runs `make publish`). Live publish is Actions on `main`, not `master`.
 
-1. **Capture:** "ellie, new post idea: <one-liner>" -> Ellie creates `content/blog/<year>/<slug>/index.md` with `draft = true`, fills in front matter from the one-liner, drops the seed thought into the body. No commit yet.
-2. **Draft:** "ellie, expand the dunbar post" -> Ellie reads the draft, asks 2-3 sharpening questions, writes a next pass. Iterate in-place.
-3. **Refine:** "ellie, prep the dunbar post for publish" -> Ellie does a final read, flags weak claims, suggests title/summary tweaks, lists the categories/tags, asks if draft should flip to false.
-4. **Publish:** Naren runs `make publish MSG="..."` himself (commits and pushes are explicit, never automated).
-
-Constraints to respect:
-- Never auto-commit. Drafts stay local until Naren says ship.
-- Don't over-format. The voice of these posts is Naren's, not Ellie's. Light suggestions > heavy rewrites.
+Constraints:
+- Commits as **ufo2mstar <ufo2mstar@gmail.com>** only - never Bloggy or any assistant name.
+- Never force-push `main`. Do not destroy WIP branches (`bloggy/*`, etc.).
+- Do not merge draft WIP branches or publish drafts unless asked.
 - Use page bundles (`content/blog/<year>/<slug>/index.md`), never flat files.
-- One post = one folder. If a post grows images, they live alongside `index.md` in the bundle.
-
-When the workflow is real, factor it out into `~/.claude/skills/ellie-blog/SKILL.md` and link it from here.
+- One post = one folder; images live alongside `index.md` in the bundle.
+- Voice stays Naren's. Light suggestions > heavy rewrites.
