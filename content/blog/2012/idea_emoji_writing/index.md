@@ -3,8 +3,8 @@ date = '2012-02-01'
 title = 'Emoji Writing'
 categories = ['Idea']
 tags = ['Writing', 'Communication', 'Personal', 'Emoji']
-summary = ''
-draft = true
+summary = 'A trick to convey tone in prose: using inline glyphs and emojis!'
+draft = false
 +++
 
 Back in my Nokia 1100 days (best phone ever made, by the way - doubled as a brick at home!), texting had a natural expressiveness that got lost somewhere along the way. Tone in general, is hard to communicate in written language. You'd fire off a message like:
