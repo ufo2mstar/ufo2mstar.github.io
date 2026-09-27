@@ -157,7 +157,7 @@ Blowfish is a git submodule. Anyone cloning needs `--recurse-submodules` or them
 ## Where to find things
 
 - **What's next on the migration:** `.cursor/plans/hugo_migration_next_steps.plan.md` - source of truth for staged work, decisions, and known gotchas.
-- **All available commands:** `make` (no args). The Makefile is intentionally thin - each target is a one-line wrapper around the actual command, optimized for muscle memory and discoverability.
+- **All available commands:** `make` (no args) shows the daily preview → check → push loop and the targets you should actually use. `make help-all` lists everything. `make status` suggests the next command. The Makefile is intentionally thin — muscle memory + discoverability.
 - **What's currently in effect:** `make config-dump`.
 - **Live site:** Hugo from `main` via `.github/workflows/deploy.yml` (GitHub Pages Actions). Repo default branch may still show as `master` in GitHub settings - ignore for content; do not cut over Settings without an explicit ask.
 - **Legacy site:** `master` branch + `legacy-jekyll` tag (freeze / rollback only).

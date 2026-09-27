@@ -28,3 +28,6 @@ Thumbs.db
 # Personal / scratch (kept locally, not published)
 .personal/
 
+# Local tool installs from `make setup` (hugo binary; mise is preferred)
+/bin/
+

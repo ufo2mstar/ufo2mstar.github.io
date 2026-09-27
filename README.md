@@ -16,6 +16,8 @@ make check                   # frontmatter + build + links
 make publish MSG="post: my thought"   # commit + push main + watch Actions
 ```
 
-Run `make` for the full target list. Author orientation for agents: `AGENTS.md`. Shortcode examples: `docs/authoring-reference.md`.
+First clone: `make setup` (Hugo extended, theme submodule, git author, gh credentials). Then `make` (no args) for the daily loop. `make status` says what to run next. `make help-all` is the full catalog.
+
+Author orientation for agents: `AGENTS.md`. Shortcode examples: `docs/authoring-reference.md`.
 
 Hugo version used in CI: **0.158.0 extended** (see `.github/workflows/deploy.yml`).

@@ -1,35 +1,70 @@
 # Makefile for ufo2mstar.github.io (Hugo site)
 #
-# Content-first day-to-day (this is what you usually need):
-#   make draft POST=my_thought   # new draft bundle under content/blog/<year>/
-#   make preview                 # localhost:1313 with drafts (-D)
-#   make check                   # pre-push gate (frontmatter + build + links)
-#   # when ready to ship (Naren only): flip draft=false, then
-#   make publish MSG="post: my thought"
+# `make` (no args) is the interface — daily loop, copy-paste commands, next step.
+# `make help-all` lists every target. Thin wrappers: muscle memory, not abstraction.
 #
-# Run `make` (no args) to see all targets.
-# Each target is a thin wrapper - muscle memory + discoverability, not abstraction.
-#
-# Branches / publish:
-#   - Hugo source + Actions deploy: `main` (live site is Hugo via GitHub Pages Actions)
-#   - Legacy Jekyll freeze: `master` + tag `legacy-jekyll` (rollback only; do not edit for content)
-#   - WIP drafts: feature branches (e.g. bloggy/*). Prefer PR into main; do not force-push main.
-#
-# History:
-#   - Site scaffolded with `hugo new site . --force --format=toml` on orphan `main`.
-#   - Theme: Blowfish (git submodule under themes/blowfish).
-#   - Legacy Jekyll frozen on `master` + `legacy-jekyll` tag.
+# Live site: Hugo from `main` via GitHub Actions Pages.
+# Legacy Jekyll freeze: `master` + tag `legacy-jekyll` (rollback only).
+# WIP: bloggy/* branches; PR into main. Never force-push main.
 
 .DEFAULT_GOAL := help
 
+BLUE   := $(shell tput setaf 4 2>/dev/null)
+GREEN  := $(shell tput setaf 2 2>/dev/null)
+YELLOW := $(shell tput setaf 3 2>/dev/null)
+BOLD   := $(shell tput bold 2>/dev/null)
+DIM    := $(shell tput dim 2>/dev/null)
+RESET  := $(shell tput sgr0 2>/dev/null)
+
+# `make setup` drops a real hugo into ./bin so recipes work even when the
+# mise shim is present but not pinned. CI installs Hugo itself.
+export PATH := $(CURDIR)/bin:$(PATH)
+
+.PHONY: help help-all setup draft new new-page preview serve build build-prod clean \
+	config-dump serve-legacy refresh-legacy clean-legacy check check-imports \
+	check-frontmatter check-slugs check-taxonomies check-build check-content \
+	check-links check-links-external status doctor publish push peek-post \
+	list-legacy-posts migrate-dry migrate ref-init
+
 # ---- Help ----------------------------------------------------------------
 
-help: ## Show this help (default target)
-	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage: make \033[36m<target>\033[0m\n\nContent-first recipe:\n  make draft POST=slug && make preview && edit markdown && make check\n  # ship only when ready: draft=false, then make publish MSG=\"post: ...\"\n"} \
-	  /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-14s\033[0m %s\n", $$1, $$2 } \
-	  /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) }' $(MAKEFILE_LIST)
+help:
+	@printf '\n$(BOLD)%s$(RESET)  $(DIM)·  Hugo + Blowfish  ·  %s$(RESET)\n' \
+		"ufo2mstar.github.io" "$$(git branch --show-current 2>/dev/null || echo '?')"
+	@printf '\n$(BOLD)Daily loop$(RESET)  $(DIM)setup → preview → check → live$(RESET)\n'
+	@printf '  $(BLUE)%-40s$(RESET) %s\n' 'make setup' 'first clone: hugo extended, theme, git author, gh credentials'
+	@printf '  $(BLUE)%-40s$(RESET) %s\n' 'make draft POST=my_thought' 'new bundle under content/blog/<year>/  (draft=true)'
+	@printf '  $(BLUE)%-40s$(RESET) %s\n' 'make preview' 'http://localhost:1313  drafts on, hot reload'
+	@printf '  $(DIM)%-40s$(RESET) %s\n' '# edit the markdown' 'leave draft=true until you mean to ship'
+	@printf '  $(BLUE)%-40s$(RESET) %s\n' 'make check' 'gate: imports, frontmatter, slugs, taxonomies, build, links'
+	@printf '  $(BLUE)%-40s$(RESET) %s\n' 'make publish MSG="post: my thought"' 'check + commit + push main + watch Actions'
+	@printf '\n  $(DIM)already committed?$(RESET)  $(BLUE)make push$(RESET)     check + git push origin main + watch\n'
+	@printf '  $(DIM)where am I?$(RESET)         $(BLUE)make status$(RESET)   branch, dirty, drafts, next command\n'
+	@printf '  $(DIM)machine ok?$(RESET)         $(BLUE)make doctor$(RESET)   hugo extended, theme, git author, gh\n'
+	@printf '\n$(BOLD)Daily$(RESET)\n'
+	@printf '  $(BLUE)%-16s$(RESET) %s  $(DIM)hugo + theme + git author + gh auth setup-git$(RESET)\n' 'setup' 'one-shot machine bootstrap'
+	@printf '  $(BLUE)%-16s$(RESET) %s\n' 'draft' 'make draft POST=slug'
+	@printf '  $(BLUE)%-16s$(RESET) %s  $(DIM)hugo server -D --navigateToChanged$(RESET)\n' 'preview' 'localhost:1313 including drafts'
+	@printf '  $(BLUE)%-16s$(RESET) %s  $(DIM)tools/check_*.py + hugo --minify$(RESET)\n' 'check' 'must pass before any push'
+	@printf '  $(BLUE)%-16s$(RESET) %s\n' 'status' 'you-are-here + suggested next command'
+	@printf '  $(BLUE)%-16s$(RESET) %s\n' 'doctor' 'prereqs (hugo / submodule / identity / gh)'
+	@printf '  $(BLUE)%-16s$(RESET) %s  $(DIM)git push origin main && gh run watch$(RESET)\n' 'push' 'check, then push + watch deploy'
+	@printf '  $(BLUE)%-16s$(RESET) %s  $(DIM)git add -A && git commit && push$(RESET)\n' 'publish' 'check + commit MSG + push + watch'
+	@printf '\n$(DIM)Everything else (build, migrate, legacy Jekyll):  make help-all$(RESET)\n'
+	@echo ""
+	@./tools/site.sh status --brief
 
-##@ Author (content)
+help-all:
+	@grep --color=never -hE '^(##@ |[^ .]+: .*?## )' $(MAKEFILE_LIST) | \
+		awk 'BEGIN {FS = ":.*?## "} \
+			/^##@ / { printf "\n$(BOLD)%s$(RESET)\n", substr($$0, 5) } \
+			/:.*?## / { printf "  $(BLUE)%-22s$(RESET) %s\n", $$1, $$2 }'
+	@echo ""
+
+##@ Daily (this is the loop)
+
+setup: ## First clone: hugo extended, Blowfish submodule, git author, gh credentials
+	@./tools/site.sh setup
 
 draft: ## Create a draft post bundle. Usage: make draft POST=my_thought
 	@$(MAKE) --no-print-directory new POST="$(POST)"
@@ -39,20 +74,47 @@ new: ## Same as draft. Usage: make new POST=my_thought (underscores preferred)
 	@slug=$$(echo "$(POST)" | tr '-' '_'); \
 	  if [ "$$slug" != "$(POST)" ]; then echo "Note: normalized POST '$(POST)' -> '$$slug' (underscores)"; fi; \
 	  hugo new "content/blog/$$(date +%Y)/$$slug/index.md"; \
-	  echo "Created: content/blog/$$(date +%Y)/$$slug/index.md (draft=true)"
+	  echo "Created: content/blog/$$(date +%Y)/$$slug/index.md (draft=true)"; \
+	  echo "Next: make preview"
+
+preview: ## Dev server with drafts (localhost:1313). Alias: serve
+	@$(MAKE) --no-print-directory serve
+
+serve: ## Same as preview — hugo server -D --navigateToChanged
+	hugo server -D --navigateToChanged
+
+check: check-imports check-frontmatter check-slugs check-taxonomies check-build check-content check-links ## Pre-push gate (run this before push / publish)
+	@echo ""
+	@echo "$(GREEN)All checks passed.$(RESET)  $(DIM)next: make push   or   make publish MSG=\"…\"$(RESET)"
+
+status: ## Branch, dirty files, drafts, suggested next command
+	@./tools/site.sh status
+
+doctor: ## Verify hugo extended, theme submodule, git author, gh
+	@./tools/site.sh doctor
+
+push: check ## check → git push origin/main → watch GitHub Actions
+	@$(MAKE) --no-print-directory _push-and-watch
+
+publish: check ## check → git add -A → commit MSG → push main → watch. Usage: make publish MSG="post: foo"
+	@test -n "$(MSG)" || (echo "ERROR: pass MSG=\"...\"" && exit 1)
+	@echo "NOTE: live site deploys from main via GitHub Actions (Hugo). master is legacy Jekyll freeze only."
+	git add -A
+	git commit -m "$(MSG)"
+	@$(MAKE) --no-print-directory _push-and-watch
+
+_push-and-watch:
+	@./tools/site.sh status --brief
+	@./tools/push-and-watch.sh
+
+##@ Author (extras)
 
 new-page: ## Create a top-level page. Usage: make new-page PAGE=resume
 	@test -n "$(PAGE)" || (echo "ERROR: pass PAGE=name, e.g. make new-page PAGE=resume" && exit 1)
 	hugo new content/$(PAGE).md
 	@echo "Created: content/$(PAGE).md"
 
-##@ Preview / build
-
-preview: ## Alias for serve - draft-aware local preview
-	@$(MAKE) --no-print-directory serve
-
-serve: ## Dev server with hot reload, including drafts (localhost:1313)
-	hugo server -D --navigateToChanged
+##@ Preview / build extras
 
 build: ## Build static site to ./public/ (no minify, fast; excludes drafts)
 	hugo
@@ -86,14 +148,7 @@ clean-legacy: ## Remove the _legacy/ worktree
 	@git worktree remove --force _legacy 2>/dev/null || /bin/rm -rf _legacy
 	@git worktree prune
 
-##@ Check (run before push / PR)
-
-# `make check` is the pre-push gate: build cleanly, validate front matter,
-# verify internal links resolve. External links are NOT checked by default
-# (slow + flaky). Run `make check-links-external` separately if you want.
-
-check: check-imports check-frontmatter check-slugs check-taxonomies check-build check-content check-links ## Run all checks (imports + frontmatter + slugs + taxonomies + build + content + links)
-	@echo "\nAll checks passed."
+##@ Check pieces (also: make check)
 
 check-imports: ## Flag unused imports in tools/ (catches accidental third-party deps)
 	@python3 tools/check_imports.py
@@ -124,32 +179,12 @@ check-links: ## Verify internal links/images resolve in built site (requires pub
 	@test -d public || (echo "no public/ - run 'make check-build' first" && exit 1)
 	@python3 tools/check_links.py
 
-check-links-external: ## Also check external (http/https) links - slow and flaky
+check-links-external: ## Also check external (http/https) links — slow and flaky
 	@test -d public || (echo "no public/ - run 'make check-build' first" && exit 1)
 	@python3 tools/check_links.py --external
 
-##@ Publish (main only; prefer PR unless shipping)
-
-status: ## Show what would be committed
-	git status -sb
-
-publish: ## Stage all, commit with MSG, push origin/main, watch Actions. Usage: make publish MSG="post: foo"
-	@test -n "$(MSG)" || (echo "ERROR: pass MSG=\"...\"" && exit 1)
-	@echo "NOTE: live site deploys from main via GitHub Actions (Hugo). master is legacy Jekyll freeze only."
-	git add -A
-	git commit -m "$(MSG)"
-	@$(MAKE) --no-print-directory _push-and-watch
-
-push: check ## Validate locally, push origin/main, watch GitHub Actions until green
-	@$(MAKE) --no-print-directory _push-and-watch
-
-_push-and-watch:
-	@./tools/push-and-watch.sh
-
 ##@ Migration (one-time, removable after content is in)
 
-# Pull a Jekyll post from master without switching branches.
-# Usage: make peek-post POST=2018-01-24-reco_cs_fundamentals
 peek-post: ## View a Jekyll post from master. Usage: make peek-post POST=2018-01-24-name
 	@test -n "$(POST)" || (echo "ERROR: pass POST=YYYY-MM-DD-slug" && exit 1)
 	@git show master:_posts/$(POST).md
@@ -157,7 +192,6 @@ peek-post: ## View a Jekyll post from master. Usage: make peek-post POST=2018-01
 list-legacy-posts: ## List all Jekyll posts on origin/source
 	@git ls-tree -r --name-only origin/source -- _posts | sort
 
-# Bulk-convert Jekyll posts (origin/source:_posts) to Hugo page bundles.
 migrate-dry: ## Dry-run converter; prints to stdout. Vars: ONLY=substr
 	@python3 tools/jekyll_to_hugo.py --dry-run $(if $(ONLY),--only $(ONLY))
 

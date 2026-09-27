@@ -1,0 +1,4 @@
+# Pin matches CI (.github/workflows/deploy.yml HUGO_VERSION).
+# `make setup` installs this; `make doctor` verifies it.
+[tools]
+hugo-extended = "0.158.0"
