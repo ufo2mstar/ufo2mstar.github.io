@@ -1,9 +1,10 @@
 +++
-date = '2026-09-27'
+date = '2012-06-01'
 title = 'Emoji Writing'
 categories = ['Idea']
 tags = ['Writing', 'Communication', 'Personal', 'Emoji']
 summary = 'Nokia emoticons were stage directions. Emoji writing is the same trick in longer prose: inline glyphs that carry the tone the words cannot.'
+aliases = ['/blog/2026/09/27/idea_emoji_writing/']
 +++
 
 Back in my Nokia 1100 days (best phone ever made, by the way - doubled as a brick at home!), texting had a natural expressiveness that got lost somewhere along the way. Tone, in general, is hard to communicate in written language. You'd fire off a message like:

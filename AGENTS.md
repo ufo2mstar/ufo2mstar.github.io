@@ -111,6 +111,7 @@ draft = false
 - **No `slug` field.** The directory name is the slug. Hugo's `:slugorcontentbasename` permalink token reads it directly from the folder name - no front matter duplication needed. `check_frontmatter.py` will flag any `slug` field as redundant.
 - `categories` and `tags` keep original case (`Thoughts`, not `thoughts`).
 - `draft = true` shows in `make serve` (-D), excluded from `make build-prod`.
+- **Do not redate backlog posts.** Years of notes are going live now. The `date` is when Naren wrote it, not when it ships. Keep the year folder in sync. Only a post written today gets today's date.
 
 ### URL structure
 
