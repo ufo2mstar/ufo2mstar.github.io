@@ -47,7 +47,7 @@ help:
 	@printf '\n$(BOLD)Daily$(RESET)\n'
 	@printf '  $(BLUE)%-16s$(RESET) %s  $(DIM)hugo + theme + git author + gh auth setup-git$(RESET)\n' 'setup' 'one-shot machine bootstrap'
 	@printf '  $(BLUE)%-16s$(RESET) %s\n' 'draft' 'make draft POST=slug'
-	@printf '  $(BLUE)%-16s$(RESET) %s  $(DIM)hugo server -D --navigateToChanged --port $(PORT) --open$(RESET)\n' 'preview' 'localhost:$(PORT) including drafts'
+	@printf '  $(BLUE)%-16s$(RESET) %s  $(DIM)hugo server -D --navigateToChanged --port $(PORT) --openBrowser$(RESET)\n' 'preview' 'localhost:$(PORT) including drafts'
 	@printf '  $(BLUE)%-16s$(RESET) %s  $(DIM)tools/check_*.py + hugo --minify$(RESET)\n' 'check' 'must pass before any push'
 	@printf '  $(BLUE)%-16s$(RESET) %s\n' 'status' 'you-are-here + suggested next command'
 	@printf '  $(BLUE)%-16s$(RESET) %s\n' 'doctor' 'prereqs (hugo / submodule / identity / gh)'
@@ -83,8 +83,8 @@ new: ## Same as draft. Usage: make new POST=my_thought (underscores preferred)
 preview: ## Dev server with drafts (localhost:$(PORT)). Alias: serve
 	@$(MAKE) --no-print-directory serve
 
-serve: ## Same as preview — hugo server -D --navigateToChanged --port $(PORT) --open
-	hugo server -D --navigateToChanged --port $(PORT) --open
+serve: ## Same as preview — hugo server -D --navigateToChanged --port $(PORT) --openBrowser
+	hugo server -D --navigateToChanged --port $(PORT) --openBrowser
 
 check: check-imports check-frontmatter check-slugs check-taxonomies check-build check-content check-links ## Pre-push gate (run this before push / publish)
 	@echo ""
