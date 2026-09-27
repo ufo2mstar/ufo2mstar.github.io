@@ -8,7 +8,7 @@ Legacy Jekyll freeze lives on the `master` branch and the `legacy-jekyll` tag (r
 
 ```bash
 make draft POST=my_thought   # content/blog/<year>/my_thought/index.md (draft=true)
-make preview                 # http://localhost:1313 (includes drafts)
+make preview                 # http://localhost:1515 (includes drafts, opens browser)
 # edit the markdown; leave draft=true until ready
 make check                   # frontmatter + build + links
 # when Naren says ship: set draft=false, then either

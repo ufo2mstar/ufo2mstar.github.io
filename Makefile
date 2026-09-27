@@ -20,6 +20,9 @@ RESET  := $(shell tput sgr0 2>/dev/null)
 # mise shim is present but not pinned. CI installs Hugo itself.
 export PATH := $(CURDIR)/bin:$(PATH)
 
+# Dev server port. Override per-run: `make serve PORT=8080`.
+PORT ?= 1515
+
 .PHONY: help help-all setup draft new new-page preview serve build build-prod clean \
 	config-dump serve-legacy refresh-legacy clean-legacy check check-imports \
 	check-frontmatter check-slugs check-taxonomies check-build check-content \
@@ -34,7 +37,7 @@ help:
 	@printf '\n$(BOLD)Daily loop$(RESET)  $(DIM)setup → preview → check → live$(RESET)\n'
 	@printf '  $(BLUE)%-40s$(RESET) %s\n' 'make setup' 'first clone: hugo extended, theme, git author, gh credentials'
 	@printf '  $(BLUE)%-40s$(RESET) %s\n' 'make draft POST=my_thought' 'new bundle under content/blog/<year>/  (draft=true)'
-	@printf '  $(BLUE)%-40s$(RESET) %s\n' 'make preview' 'http://localhost:1313  drafts on, hot reload'
+	@printf '  $(BLUE)%-40s$(RESET) %s\n' 'make preview' 'http://localhost:$(PORT)  drafts on, hot reload, opens browser'
 	@printf '  $(DIM)%-40s$(RESET) %s\n' '# edit the markdown' 'leave draft=true until you mean to ship'
 	@printf '  $(BLUE)%-40s$(RESET) %s\n' 'make check' 'gate: imports, frontmatter, slugs, taxonomies, build, links'
 	@printf '  $(BLUE)%-40s$(RESET) %s\n' 'make publish MSG="post: my thought"' 'check + commit + push main + watch Actions'
@@ -44,7 +47,7 @@ help:
 	@printf '\n$(BOLD)Daily$(RESET)\n'
 	@printf '  $(BLUE)%-16s$(RESET) %s  $(DIM)hugo + theme + git author + gh auth setup-git$(RESET)\n' 'setup' 'one-shot machine bootstrap'
 	@printf '  $(BLUE)%-16s$(RESET) %s\n' 'draft' 'make draft POST=slug'
-	@printf '  $(BLUE)%-16s$(RESET) %s  $(DIM)hugo server -D --navigateToChanged$(RESET)\n' 'preview' 'localhost:1313 including drafts'
+	@printf '  $(BLUE)%-16s$(RESET) %s  $(DIM)hugo server -D --navigateToChanged --port $(PORT) --open$(RESET)\n' 'preview' 'localhost:$(PORT) including drafts'
 	@printf '  $(BLUE)%-16s$(RESET) %s  $(DIM)tools/check_*.py + hugo --minify$(RESET)\n' 'check' 'must pass before any push'
 	@printf '  $(BLUE)%-16s$(RESET) %s\n' 'status' 'you-are-here + suggested next command'
 	@printf '  $(BLUE)%-16s$(RESET) %s\n' 'doctor' 'prereqs (hugo / submodule / identity / gh)'
@@ -77,11 +80,11 @@ new: ## Same as draft. Usage: make new POST=my_thought (underscores preferred)
 	  echo "Created: content/blog/$$(date +%Y)/$$slug/index.md (draft=true)"; \
 	  echo "Next: make preview"
 
-preview: ## Dev server with drafts (localhost:1313). Alias: serve
+preview: ## Dev server with drafts (localhost:$(PORT)). Alias: serve
 	@$(MAKE) --no-print-directory serve
 
-serve: ## Same as preview — hugo server -D --navigateToChanged
-	hugo server -D --navigateToChanged
+serve: ## Same as preview — hugo server -D --navigateToChanged --port $(PORT) --open
+	hugo server -D --navigateToChanged --port $(PORT) --open
 
 check: check-imports check-frontmatter check-slugs check-taxonomies check-build check-content check-links ## Pre-push gate (run this before push / publish)
 	@echo ""

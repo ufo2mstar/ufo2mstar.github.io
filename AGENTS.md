@@ -28,7 +28,7 @@ Makefile                              All workflows. Run `make` (no args) to lis
 
 ## Dev server
 
-The user runs `make serve` in a persistent terminal outside the agent session. Don't spin up your own. If `localhost:1313` doesn't respond, ask Naren to start it - don't run `make serve` yourself.
+The user runs `make serve` in a persistent terminal outside the agent session. Don't spin up your own. If `localhost:1515` doesn't respond, ask Naren to start it - don't run `make serve` yourself.
 
 ## Workflows
 
@@ -37,7 +37,7 @@ The user runs `make serve` in a persistent terminal outside the agent session. D
 ```bash
 make draft POST=my_thought            # creates content/blog/<current-year>/my_thought/index.md (draft=true)
 # edit the file - fill title, categories, tags, summary. Keep draft = true while drafting.
-make preview                          # localhost:1313, hot reload, drafts visible (alias: make serve)
+make preview                          # localhost:1515, hot reload, drafts visible, opens browser (alias: make serve)
 make check                            # before any PR/push
 # when Naren says ship: flip draft = false (or delete the line), then PR or:
 make publish MSG="post: my thought"   # add + commit + push origin/main + watch Actions
@@ -48,7 +48,7 @@ Prefer underscores in folder slugs (`my_thought`, not `my-thought`). `make draft
 ### Previewing changes
 
 ```bash
-make preview       # preferred alias: drafts (-D), hot reload on :1313
+make preview       # preferred alias: drafts (-D), hot reload on :1515, opens browser
 make serve         # same as preview
 make build         # one-shot to ./public/, no minify (excludes drafts)
 make build-prod    # production build with minify (what CI runs)
@@ -58,7 +58,7 @@ make config-dump   # print fully-merged config (defaults + theme + ours)
 
 If `make serve`/`preview` starts returning 500s on every URL after a config edit, kill it and restart - the dev server can wedge on bad config reloads. `hugo config` from the CLI is a good way to verify config health independent of the dev server.
 
-For remote preview (Cloudflare tunnel / similar), keep using local `make preview` and expose :1313 outside this Makefile - do not commit tunnel tokens.
+For remote preview (Cloudflare tunnel / similar), keep using local `make preview` and expose :1515 outside this Makefile - do not commit tunnel tokens.
 
 ### Publishing a post
 
