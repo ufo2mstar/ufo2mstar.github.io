@@ -1,0 +1,18 @@
+{{/* One line on /blog/: date + title. No summary, no taxonomy badges. */}}
+<article class="archive-link relative border-b border-neutral-200 py-2 dark:border-neutral-800">
+  <a
+    href="{{ .RelPermalink }}"
+    class="group flex items-baseline gap-3 no-underline">
+    <time
+      class="w-16 shrink-0 text-sm tabular-nums text-neutral-500 dark:text-neutral-400"
+      datetime="{{ .Date.Format "2006-01-02" }}">
+      {{ .Date.Format "Jan 2" }}
+    </time>
+    <span class="text-lg font-semibold text-neutral-800 decoration-primary-500 group-hover:underline group-hover:underline-offset-2 dark:text-neutral">
+      {{ .Title | emojify }}
+    </span>
+    {{ if and .Draft .Site.Params.article.showDraftLabel }}
+      <span class="shrink-0">{{ partial "badge.html" (i18n "article.draft" | emojify) }}</span>
+    {{ end }}
+  </a>
+</article>

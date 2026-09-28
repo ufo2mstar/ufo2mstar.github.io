@@ -1,0 +1,57 @@
+{{ define "main" }}
+  {{/* /blog/ only. Theme list.html paginates and builds its TOC from markdown
+       headings, so the year groups never become jump links. Home stays on the
+       theme profile layout. Tag and category pages stay on the theme list. */}}
+  <header>
+    {{ if .Params.showBreadcrumbs | default (site.Params.list.showBreadcrumbs | default false) }}
+      {{ partial "breadcrumbs.html" . }}
+    {{ end }}
+    <h1 class="mt-5 text-4xl font-extrabold text-neutral-900 dark:text-neutral">{{ .Title }}</h1>
+  </header>
+
+  {{ $groups := .Pages.GroupByDate "2006" }}
+  {{ if gt (len $groups) 0 }}
+    <section class="mt-8 flex max-w-full flex-col gap-8 lg:flex-row">
+      <nav
+        aria-label="Years"
+        class="print:hidden lg:sticky lg:top-8 lg:order-last lg:w-32 lg:shrink-0 lg:self-start">
+        <div class="mb-2 text-sm font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+          Years
+        </div>
+        <ul class="flex flex-wrap gap-x-4 gap-y-1 lg:flex-col lg:gap-y-1">
+          {{ range $groups }}
+            <li>
+              <a
+                class="text-primary-700 hover:underline dark:text-primary-400"
+                href="#year-{{ .Key }}">
+                {{ .Key }}
+              </a>
+              <span class="ms-1 text-xs text-neutral-400">{{ len .Pages }}</span>
+            </li>
+          {{ end }}
+        </ul>
+      </nav>
+
+      <div class="min-w-0 flex-1">
+        {{ range $groups }}
+          <h2
+            id="year-{{ .Key }}"
+            class="mt-10 scroll-mt-8 border-b border-neutral-300 pb-1 text-2xl font-bold text-neutral-700 first:mt-0 dark:border-neutral-600 dark:text-neutral-300">
+            {{ .Key }}
+          </h2>
+          <div>
+            {{ range .Pages }}
+              {{ partial "article-link/archive.html" . }}
+            {{ end }}
+          </div>
+        {{ end }}
+      </div>
+    </section>
+  {{ else }}
+    <section class="mt-10 prose dark:prose-invert">
+      <p class="border-t py-8">
+        <em>{{ i18n "list.no_articles" | emojify }}</em>
+      </p>
+    </section>
+  {{ end }}
+{{ end }}
