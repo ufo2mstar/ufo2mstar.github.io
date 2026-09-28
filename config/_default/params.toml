@@ -45,9 +45,9 @@ showScrollToTop = true
 [homepage]
   layout = 'profile'
   showRecent = true
-  showRecentItems = 5
-  showMoreLink = true
-  showMoreLinkDest = '/blog'
+  # Home is the full feed, paged by [pagination].pagerSize. /blog/ is the
+  # condensed archive, so there is no Show More jump off this page.
+  showMoreLink = false
   cardView = false
 
 # Author block shown on the profile homepage and post bylines.

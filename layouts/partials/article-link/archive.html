@@ -1,18 +1,50 @@
-{{/* One line on /blog/: date + title. No summary, no taxonomy badges. */}}
-<article class="archive-link relative border-b border-neutral-200 py-2 dark:border-neutral-800">
-  <a
-    href="{{ .RelPermalink }}"
-    class="group flex items-baseline gap-3 no-underline">
+{{/* One compact row on /blog/: date, title, reading time, tags. No summary. */}}
+<article class="archive-link relative border-b border-neutral-200 py-3 dark:border-neutral-800">
+  <div class="grid grid-cols-[4rem_minmax(0,1fr)] gap-x-3">
     <time
-      class="w-16 shrink-0 text-sm tabular-nums text-neutral-500 dark:text-neutral-400"
+      class="pt-1 text-sm tabular-nums text-neutral-500 dark:text-neutral-400"
       datetime="{{ .Date.Format "2006-01-02" }}">
       {{ .Date.Format "Jan 2" }}
     </time>
-    <span class="text-lg font-semibold text-neutral-800 decoration-primary-500 group-hover:underline group-hover:underline-offset-2 dark:text-neutral">
-      {{ .Title | emojify }}
-    </span>
-    {{ if and .Draft .Site.Params.article.showDraftLabel }}
-      <span class="shrink-0">{{ partial "badge.html" (i18n "article.draft" | emojify) }}</span>
-    {{ end }}
-  </a>
+    <div class="min-w-0">
+      <a
+        href="{{ .RelPermalink }}"
+        class="text-lg font-semibold text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral">
+        {{ .Title | emojify }}
+      </a>
+      {{ if and .Draft .Site.Params.article.showDraftLabel }}
+        <span class="ms-2 align-middle">{{ partial "badge.html" (i18n "article.draft" | emojify) }}</span>
+      {{ end }}
+      <div class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
+        {{ if and (.Params.showReadingTime | default (.Site.Params.article.showReadingTime | default true)) (ne .ReadingTime 0) }}
+          <span>{{ partial "meta/reading-time.html" . }}</span>
+        {{ end }}
+        {{ if .Params.showTaxonomies | default (.Site.Params.article.showTaxonomies | default false) }}
+          <div class="flex flex-row flex-wrap items-center">
+            {{ range $taxonomy, $terms := .Site.Taxonomies }}
+              {{ if gt (len ($.GetTerms $taxonomy)) 0 }}
+                {{ range $.GetTerms $taxonomy }}
+                  {{ if $.Params.showCategories | default ($.Site.Params.article.showCategories | default true) }}
+                    {{ if eq $taxonomy "categories" }}
+                      <a class="relative mt-[0.5rem] me-2" href="{{ .RelPermalink }}">
+                        {{ $useSecondaryColor := $.Params.showCategoriesInSecondaryColor | default ($.Site.Params.article.showCategoriesInSecondaryColor | default false) }}
+                        {{ partial "badge.html" (dict "linkTitle" .LinkTitle "useSecondaryColor" $useSecondaryColor) }}
+                      </a>
+                    {{ end }}
+                  {{ end }}
+                  {{ if $.Params.showTags | default ($.Site.Params.article.showTags | default true) }}
+                    {{ if eq $taxonomy "tags" }}
+                      <a class="relative mt-[0.5rem] me-2" href="{{ .RelPermalink }}">
+                        {{ partial "badge.html" .LinkTitle }}
+                      </a>
+                    {{ end }}
+                  {{ end }}
+                {{ end }}
+              {{ end }}
+            {{ end }}
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
 </article>
