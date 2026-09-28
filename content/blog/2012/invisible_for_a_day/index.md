@@ -4,7 +4,7 @@ title = 'If I Were Invisible for a Day'
 categories = ['Life']
 tags = ['CreativeWriting', 'Fiction', 'College', 'Humor']
 summary = 'College creative writing, year two of two, and why I am putting early writing out in public.'
-draft = true
+draft = false
 +++
 
 I've always been interested in writing, but somehow never had time to pursue it as a solid hobby. Transitioning to this American life made me realize writing is a way of thinking: crystallizing ideas into text.
