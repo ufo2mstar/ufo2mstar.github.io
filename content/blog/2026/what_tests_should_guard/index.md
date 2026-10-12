@@ -7,41 +7,52 @@ summary = 'A test that compares a function to itself proves nothing. That tautol
 draft = true
 +++
 
-# A test that guards nothing
+# Generated tests these days, if you aren't looking
 
-I was cleaning up a mapper test and found this line:
+I was implementing with AI a mapper test and found this line:
 
 ```go
 assert.Equal(t, nzUUID(testLeadID), nzUUID(testLeadID))
 ```
+<too contrieved! we should make this more human and better>
 
-Same function. Same input. Both sides. It passes. It will always pass. It would pass if `nzUUID` returned garbage, as long as it returned the *same* garbage twice. The test asserts that a deterministic function is deterministic, which I already knew.
+A simple util function checking for a non-zero UUID (nzUUID).
+Same function. Same input on both sides. It passes now, and it will always pass. 
+It would pass if `nzUUID` returned garbage, as long as it returned the *same* garbage twice. 
+Barring any cosmic-ray mischief.
+
+The test asserts that a deterministic function is deterministic, which is already implicit.
 
 Easy to delete and move on. But it nagged at me, because the thing it was *trying* to do - confirm that a UUID parses and round-trips - is a real behavior worth pinning. The fix was to assert against something the function doesn't get to define:
 
+<better example>
 ```go
 got := nzUUID(testLeadID)
 assert.NotNil(t, got)
 assert.Equal(t, testLeadID, got.String())
 ```
 
-Now the test has an opinion the implementation can't satisfy by accident.
-
 <!-- TODO: maybe tighten this opener - the code is doing a lot of work, want to make sure the "asserts against something the function doesn't define" idea lands clean -->
 
 # The question underneath
 
-`nzUUID` is a private function. Unexported, lives next to the mapper it serves. And the higher-level mapper test - the one that builds a full `Lead` and diffs it against an expected object - already exercises `nzUUID` on the happy path. So why test the private function at all?
+`nzUUID` is a private function. Lives next to the mapper it serves. And the higher-level mapper test - the one that builds a full `Lead` and diffs it against an expected object - already exercises `nzUUID` on the happy path. So why test the private function at all?
 
-That's the actual question. Not "was the assertion bad" (it was), but: if the higher-level test already walks through some of these branches, do the lower-level private tests earn their place? Is it fine for some branches to be covered up top and some only down low?
+but: if the higher-level test already walks through some of these branches, are the lower-level private tests really needed?
+Is it fine for some branches to be covered up top (public methods) and some only down low (private space)?
 
-There are a few camps here, and I don't think they're all wrong.
+There are a few camps of opinions here, and I don't think there is one true golden answer - so makings of a good philosophical topic to discuss!
 
 # The case against testing privates
 
-The purist position: test through the public surface only. Privates are implementation. The moment you write a test against `nzUUID`, you've nailed that function in place. Tomorrow you want to inline it into the mapper, or rename it, or fold three helpers into one - and now you're editing test files for a change that didn't alter a single observable behavior.
+The purist position: unit tests should use public surfaces only. Privates are implementation details, which should be left alone.
+The moment you write a test against `nzUUID` directly, you've nailed that function in place. 
+Tomorrow you want to inline it into the mapper, or rename it, or fold three helpers into one - 
+and now you're editing test files for a change that didn't alter a single observable behavior.
 
-Tests should be a safety net for *behavior*, the argument goes, not a cast around *structure*. Every test against a private is a small bet that the private will keep existing. Make enough of those bets and refactoring stops feeling free.
+Tests should be a safety net for *behavior*, the argument goes, not a cast around *structure*. 
+Every test against a private is a small bet that the private will keep existing. 
+Make enough of those bets and refactoring stops feeling free.
 
 <!-- TODO: Naren - this is the strongest version of the against case I can make. Do you buy it? Where does it overreach? -->
 
