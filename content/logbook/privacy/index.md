@@ -22,7 +22,7 @@ Effective: November 13, 2026 (app version 0.26.0)
 
 Logbook (package `com.kyubits.logbook`) is an Android app for logging personal metrics like weight, steps, and other health check-ins. This policy explains what the app handles and where it goes.
 
-**Short version:** Logbook has no accounts, ads, analytics, or tracking. The app does not have internet permission, and the developer runs no server that receives your data. Everything you log stays on your phone.
+**My promise:** I build Logbook for you, and I use it myself. I don't want anyone collecting my data, so Logbook doesn't collect yours. No accounts, no ads, no analytics, no tracking, and no logs sent to me. The app doesn't even have internet permission, and I run no server that could receive anything. Your data stays on your phone, with you. If you ever want me to see something, like a bug report, you choose to send it. When backup arrives, it will go only to storage you pick and connect yourself, such as your own cloud drive or a local file.
 
 Contact: **nssbusstob@gmail.com**
 
